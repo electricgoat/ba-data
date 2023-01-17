@@ -1,5 +1,5 @@
 {
-  "Version": "1.0",
+  "Version": "1.03",
   "Global": {
     "Position": {
       "x": 0,
@@ -25,20 +25,63 @@
             "WaitExecuteEnd": false
           },
           {
-            "$type": "GroundCommandLocateCamera, BlueArchive",
-            "ID": 1,
-            "MaxCameraSpeed": 3,
-            "RotationSpeed": 1,
-            "ZoomSpeed": 1,
-            "RailPoints": [],
-            "CommandID": "0",
-            "WaitExecuteEnd": false
-          },
-          {
             "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
             "SectionID": 1,
             "SetConditionCommandOnly": false,
             "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 18,
+            "MaxCameraSpeed": 3,
+            "RotationSpeed": 1,
+            "ZoomSpeed": 1,
+            "RailPoints": [
+              {
+                "UseTableData": true,
+                "Position": {
+                  "x": -21.3548412,
+                  "y": 0.4,
+                  "z": 29.48341
+                },
+                "MinCameraDistance": 58,
+                "MaxCameraDistance": 58,
+                "CameraForward": {
+                  "x": -0.37635693,
+                  "y": -0.441505849,
+                  "z": -0.8145109
+                }
+              }
+            ],
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandTemporaryCanUseSkillArea, BlueArchive",
+            "OnOff": true,
+            "TemporaryCanUseSkillAreaCommandId": "1-1Area",
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "EndBattle",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 0,
+            "CheckSummonedCharacterDead": false,
+            "ConditionID": "ConditionDeadWakamo"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandEndBattle, BlueArchive",
+            "BattleEndType": 4,
+            "CommandID": "",
             "WaitExecuteEnd": false
           }
         ]
@@ -51,11 +94,11 @@
       "Position": {
         "x": 0,
         "y": 0,
-        "z": 5
+        "z": 0
       },
       "Events": [
         {
-          "EventName": "Spawn1-1",
+          "EventName": "SpawnBoss",
           "Operator": 0,
           "Conditions": [
             {
@@ -66,28 +109,35 @@
           "Commands": [
             {
               "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
-              "Interval": 100,
-              "CommandID": "Spwan",
+              "Interval": 0,
+              "CommandID": "CommandSpawnWakamo",
               "WaitExecuteEnd": false
             }
           ]
         },
         {
-          "EventName": "EndBattle",
+          "EventName": "Useskill",
           "Operator": 0,
           "Conditions": [
             {
-              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
-              "DeadCheck": 0,
-              "CheckSummonedCharacterDead": false,
-              "ConditionID": "Dead"
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
             }
           ],
           "Commands": [
             {
-              "$type": "MX.Logic.Battles.GroundCommandEndBattle, BlueArchive",
-              "BattleEndType": 4,
-              "CommandID": "0",
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [],
+              "CreateCharacterStat": false,
+              "CharacterId": 0,
+              "CharacterLevel": 0,
+              "CharacterGrade": 0,
+              "Interval": 0,
+              "SkillGroupId": "HoverCraftResort01",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 1,
+              "CommandID": "ResortPoint",
               "WaitExecuteEnd": false
             }
           ]
@@ -96,14 +146,14 @@
       "Obstacles": [],
       "EnemySpawnPointGroupList": [
         {
-          "GroupName": "SpawnPointParent1-1",
+          "GroupName": "SpawnPointParent",
           "SpawnPoints": [
             {
               "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
               "SpawnData": {
-                "SpawnTemplateId": "Terror_KumabotPapa_Slumpia_SG_E",
+                "SpawnTemplateId": "Wakamo_HoverCraft_A",
                 "AIId": 0,
-                "AppearAction": false,
+                "AppearAction": true,
                 "SkillLevel": {
                   "ExSkill": [],
                   "PublicSkill": [],
@@ -111,18 +161,52 @@
                   "ExtraPassiveSkill": []
                 }
               },
-              "SpawnAIGroupId": "A",
+              "SpawnAIGroupId": "C",
               "SpawnConditionIdList": [
-                "Dead"
+                "ConditionDeadWakamo",
+                "Wakamo"
               ],
+              "SpawnCommandIdList": [
+                "Wakamo"
+              ],
+              "MovePoints": [],
+              "TileX": 169,
+              "TileY": 156,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -26.71,
+                "y": 31.16
+              },
+              "Direction": {
+                "x": 0.99999994,
+                "y": -1.1920929e-07
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandSpawnWakamo"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnUseskillPoint",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SkillUsePoint, BlueArchive",
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [],
               "SpawnCommandIdList": [],
               "MovePoints": [],
-              "TileX": 43,
-              "TileY": 89,
+              "TileX": 371,
+              "TileY": 155,
               "PositionHeight": 0,
               "Position": {
-                "x": 0.52,
-                "y": 13.25
+                "x": 13.7,
+                "y": 31
               },
               "Direction": {
                 "x": -8.742278e-08,
@@ -130,130 +214,7 @@
               },
               "ConditionIdList": [],
               "CommandIdList": [
-                "Spwan"
-              ],
-              "EntityId": {
-                "uniqueId": 0
-              },
-              "Active": false
-            },
-            {
-              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
-              "SpawnData": {
-                "SpawnTemplateId": "Terror_KumabotPapa_Slumpia_SG_E",
-                "AIId": 0,
-                "AppearAction": false,
-                "SkillLevel": {
-                  "ExSkill": [],
-                  "PublicSkill": [],
-                  "PassiveSkill": [],
-                  "ExtraPassiveSkill": []
-                }
-              },
-              "SpawnAIGroupId": "A",
-              "SpawnConditionIdList": [
-                "Dead"
-              ],
-              "SpawnCommandIdList": [
-                "11"
-              ],
-              "MovePoints": [],
-              "TileX": 55,
-              "TileY": 89,
-              "PositionHeight": 0,
-              "Position": {
-                "x": 3,
-                "y": 13.25
-              },
-              "Direction": {
-                "x": -8.742278e-08,
-                "y": -1
-              },
-              "ConditionIdList": [],
-              "CommandIdList": [
-                "Spwan"
-              ],
-              "EntityId": {
-                "uniqueId": 0
-              },
-              "Active": false
-            },
-            {
-              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
-              "SpawnData": {
-                "SpawnTemplateId": "Terror_Usagibot_Slumpia_AR_E",
-                "AIId": 0,
-                "AppearAction": false,
-                "SkillLevel": {
-                  "ExSkill": [],
-                  "PublicSkill": [],
-                  "PassiveSkill": [],
-                  "ExtraPassiveSkill": []
-                }
-              },
-              "SpawnAIGroupId": "A",
-              "SpawnConditionIdList": [
-                "Dead"
-              ],
-              "SpawnCommandIdList": [
-                "11"
-              ],
-              "MovePoints": [],
-              "TileX": 40,
-              "TileY": 99,
-              "PositionHeight": 0,
-              "Position": {
-                "x": 0.03,
-                "y": 15.37
-              },
-              "Direction": {
-                "x": -8.742278e-08,
-                "y": -1
-              },
-              "ConditionIdList": [],
-              "CommandIdList": [
-                "Spwan"
-              ],
-              "EntityId": {
-                "uniqueId": 0
-              },
-              "Active": false
-            },
-            {
-              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
-              "SpawnData": {
-                "SpawnTemplateId": "Terror_Usagibot_Slumpia_AR_E",
-                "AIId": 0,
-                "AppearAction": false,
-                "SkillLevel": {
-                  "ExSkill": [],
-                  "PublicSkill": [],
-                  "PassiveSkill": [],
-                  "ExtraPassiveSkill": []
-                }
-              },
-              "SpawnAIGroupId": "A",
-              "SpawnConditionIdList": [
-                "Dead"
-              ],
-              "SpawnCommandIdList": [
-                "11"
-              ],
-              "MovePoints": [],
-              "TileX": 55,
-              "TileY": 99,
-              "PositionHeight": 0,
-              "Position": {
-                "x": 3.05,
-                "y": 15.37
-              },
-              "Direction": {
-                "x": -8.742278e-08,
-                "y": -1
-              },
-              "ConditionIdList": [],
-              "CommandIdList": [
-                "Spwan"
+                "ResortPoint"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -271,12 +232,12 @@
       "IgnorePathFind": false,
       "Index": 0,
       "Position": {
-        "x": 0,
-        "y": 0
+        "x": -9.56,
+        "y": 31.51
       },
       "Forward": {
-        "x": 0,
-        "y": 1
+        "x": -0.99999994,
+        "y": -1.1920929e-07
       },
       "Height": 0,
       "IsEnemy": false
@@ -286,47 +247,34 @@
       "IgnorePathFind": false,
       "Index": 0,
       "Position": {
-        "x": 0,
-        "y": 24
+        "x": -17.28,
+        "y": 31.4413624
       },
       "Forward": {
-        "x": 0,
-        "y": 1
-      },
-      "Height": 0,
-      "IsEnemy": false
-    },
-    {
-      "SectionIndex": 2,
-      "IgnorePathFind": false,
-      "Index": 0,
-      "Position": {
-        "x": 0,
-        "y": 44
-      },
-      "Forward": {
-        "x": 0,
-        "y": 1
-      },
-      "Height": 0,
-      "IsEnemy": false
-    },
-    {
-      "SectionIndex": 3,
-      "IgnorePathFind": false,
-      "Index": 0,
-      "Position": {
-        "x": 0,
-        "y": 64
-      },
-      "Forward": {
-        "x": 0,
-        "y": 1
+        "x": -0.99999994,
+        "y": -1.1920929e-07
       },
       "Height": 0,
       "IsEnemy": false
     }
   ],
   "EnemyFormations": [],
-  "TemporaryCanUseSkillAreas": []
+  "TemporaryCanUseSkillAreas": [
+    {
+      "IsHideVisual": false,
+      "CommandId": "1-1Area",
+      "Radius": 1800,
+      "GroupTag": 1,
+      "Position": {
+        "x": -17.95,
+        "y": 0,
+        "z": 32.67
+      },
+      "RadiusSqr": 0,
+      "Position2D": {
+        "x": 0,
+        "y": 0
+      }
+    }
+  ]
 }
