@@ -1,0 +1,1257 @@
+{
+  "Version": "1.0",
+  "Global": {
+    "Position": {
+      "x": 1.74,
+      "y": 0,
+      "z": 9.393
+    },
+    "Events": [
+      {
+        "EventName": "SpawnPlayer",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": "0"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSpawnPlayer, BlueArchive",
+            "IsEnemy": false,
+            "IgnoreSkillCardShuffle": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 2,
+            "MaxCameraSpeed": 3,
+            "RotationSpeed": 1,
+            "ZoomSpeed": 1,
+            "RailPoints": [
+              {
+                "UseTableData": true,
+                "Position": {
+                  "x": 0,
+                  "y": 0.8,
+                  "z": 33.09
+                },
+                "MinCameraDistance": 42,
+                "MaxCameraDistance": 42,
+                "CameraForward": {
+                  "x": -0.8034657,
+                  "y": -0.426617682,
+                  "z": 0.4152592
+                }
+              },
+              {
+                "UseTableData": true,
+                "Position": {
+                  "x": 0,
+                  "y": 0.8,
+                  "z": 44.42
+                },
+                "MinCameraDistance": 42,
+                "MaxCameraDistance": 42,
+                "CameraForward": {
+                  "x": -0.8034657,
+                  "y": -0.426617682,
+                  "z": 0.4152592
+                }
+              }
+            ],
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 1,
+            "SetConditionCommandOnly": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          }
+        ]
+      }
+    ]
+  },
+  "Sections": [
+    {
+      "SectionID": 1,
+      "Position": {
+        "x": 1.74,
+        "y": 0,
+        "z": 15.3029995
+      },
+      "Events": [
+        {
+          "EventName": "SpawnBoss",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundConditionArea, BlueArchive",
+              "SpawnTemplateId": "",
+              "Shape": 0,
+              "Target": 0,
+              "Trigger": 0,
+              "StayTime": 0,
+              "Position": {
+                "x": 0.53,
+                "y": 0,
+                "z": 42.443
+              },
+              "Rect": {
+                "Direction": {
+                  "x": 0,
+                  "y": 0
+                },
+                "Width": 10,
+                "Height": 2
+              },
+              "Circle": {
+                "Radius": 1
+              },
+              "InactivateWhenStart": false,
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "NPC",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "BossSpawn",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "UseSKill_Buff_CCGuard",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 44000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [
+                "CommandBoss"
+              ],
+              "CreateCharacterStat": false,
+              "CharacterId": 0,
+              "CharacterLevel": 0,
+              "CharacterGrade": 0,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_Buff_ImmuneCrowdControl_Ally_300s",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 2,
+              "CommandID": "UseSkillCharacterAPoint",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "Wave_Sweeper",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+              "ConditionID": "0"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 20000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWave, BlueArchive",
+              "UniqueId": "",
+              "ClearCondition": 1,
+              "Waves": [
+                {
+                  "SpawnPointCommandId": "1",
+                  "EndCount": 0,
+                  "WaveDelay": 10000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 0
+                },
+                {
+                  "SpawnPointCommandId": "2",
+                  "EndCount": 0,
+                  "WaveDelay": 10000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 0
+                },
+                {
+                  "SpawnPointCommandId": "3",
+                  "EndCount": 0,
+                  "WaveDelay": 10000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 0
+                },
+                {
+                  "SpawnPointCommandId": "4",
+                  "EndCount": 0,
+                  "WaveDelay": 10000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 0
+                },
+                {
+                  "SpawnPointCommandId": "5",
+                  "EndCount": 0,
+                  "WaveDelay": 10000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 0
+                },
+                {
+                  "SpawnPointCommandId": "6",
+                  "EndCount": 0,
+                  "WaveDelay": 10000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 0
+                },
+                {
+                  "SpawnPointCommandId": "7",
+                  "EndCount": 0,
+                  "WaveDelay": 10000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 0
+                },
+                {
+                  "SpawnPointCommandId": "8",
+                  "EndCount": 0,
+                  "WaveDelay": 10000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 0
+                },
+                {
+                  "SpawnPointCommandId": "9",
+                  "EndCount": 0,
+                  "WaveDelay": 10000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 0
+                },
+                {
+                  "SpawnPointCommandId": "10",
+                  "EndCount": 0,
+                  "WaveDelay": 10000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 0
+                }
+              ],
+              "StartWaveAction": null,
+              "ClearWaveAction": null,
+              "TotalCountChangedAction": null,
+              "AllClearAction": null,
+              "OnAddEntityAction": null,
+              "CommandID": "1",
+              "CurWaveNum": 0,
+              "CurrProcess": null,
+              "IsClearLastWave": false,
+              "TotalCount": 0,
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "EndBattle",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+              "DeadCheck": 1,
+              "CheckSummonedCharacterDead": false,
+              "CheckDelayMilliSecond": 0,
+              "ConditionID": "ConditionDeadBoss"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandCharacterDie, BlueArchive",
+              "CharacterCommandIdList": [
+                "Enemy"
+              ],
+              "CharacterSpawnTemplateIdList": [],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandEndBattle, BlueArchive",
+              "BattleEndType": 4,
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "Wave_Hippie_HG",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+              "ConditionID": "0"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 20000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWave, BlueArchive",
+              "UniqueId": "",
+              "ClearCondition": 1,
+              "Waves": [
+                {
+                  "SpawnPointCommandId": "20",
+                  "EndCount": 0,
+                  "WaveDelay": 10000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 0
+                },
+                {
+                  "SpawnPointCommandId": "20",
+                  "EndCount": 0,
+                  "WaveDelay": 10000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 0
+                },
+                {
+                  "SpawnPointCommandId": "20",
+                  "EndCount": 0,
+                  "WaveDelay": 10000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 0
+                },
+                {
+                  "SpawnPointCommandId": "20",
+                  "EndCount": 0,
+                  "WaveDelay": 10000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 0
+                },
+                {
+                  "SpawnPointCommandId": "20",
+                  "EndCount": 0,
+                  "WaveDelay": 10000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 0
+                },
+                {
+                  "SpawnPointCommandId": "20",
+                  "EndCount": 0,
+                  "WaveDelay": 10000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 0
+                },
+                {
+                  "SpawnPointCommandId": "20",
+                  "EndCount": 0,
+                  "WaveDelay": 10000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 0
+                },
+                {
+                  "SpawnPointCommandId": "20",
+                  "EndCount": 0,
+                  "WaveDelay": 10000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 0
+                },
+                {
+                  "SpawnPointCommandId": "20",
+                  "EndCount": 0,
+                  "WaveDelay": 10000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 0
+                },
+                {
+                  "SpawnPointCommandId": "20",
+                  "EndCount": 0,
+                  "WaveDelay": 10000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 0
+                }
+              ],
+              "StartWaveAction": null,
+              "ClearWaveAction": null,
+              "TotalCountChangedAction": null,
+              "AllClearAction": null,
+              "OnAddEntityAction": null,
+              "CommandID": "2",
+              "CurWaveNum": 0,
+              "CurrProcess": null,
+              "IsClearLastWave": false,
+              "TotalCount": 0,
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "Wave_Hippie_SR",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionEndWave, BlueArchive",
+              "UniqueName": "",
+              "Step": 1,
+              "ConditionID": "2"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWave, BlueArchive",
+              "UniqueId": "",
+              "ClearCondition": 1,
+              "Waves": [
+                {
+                  "SpawnPointCommandId": "30",
+                  "EndCount": 0,
+                  "WaveDelay": 10000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 0
+                },
+                {
+                  "SpawnPointCommandId": "30",
+                  "EndCount": 0,
+                  "WaveDelay": 10000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 0
+                },
+                {
+                  "SpawnPointCommandId": "30",
+                  "EndCount": 0,
+                  "WaveDelay": 10000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 0
+                },
+                {
+                  "SpawnPointCommandId": "30",
+                  "EndCount": 0,
+                  "WaveDelay": 10000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 0
+                },
+                {
+                  "SpawnPointCommandId": "30",
+                  "EndCount": 0,
+                  "WaveDelay": 10000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 0
+                },
+                {
+                  "SpawnPointCommandId": "30",
+                  "EndCount": 0,
+                  "WaveDelay": 10000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 0
+                },
+                {
+                  "SpawnPointCommandId": "30",
+                  "EndCount": 0,
+                  "WaveDelay": 10000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 0
+                },
+                {
+                  "SpawnPointCommandId": "30",
+                  "EndCount": 0,
+                  "WaveDelay": 10000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 0
+                },
+                {
+                  "SpawnPointCommandId": "30",
+                  "EndCount": 0,
+                  "WaveDelay": 10000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 0
+                },
+                {
+                  "SpawnPointCommandId": "30",
+                  "EndCount": 0,
+                  "WaveDelay": 10000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 0
+                }
+              ],
+              "StartWaveAction": null,
+              "ClearWaveAction": null,
+              "TotalCountChangedAction": null,
+              "AllClearAction": null,
+              "OnAddEntityAction": null,
+              "CommandID": "3",
+              "CurWaveNum": 0,
+              "CurrProcess": null,
+              "IsClearLastWave": false,
+              "TotalCount": 0,
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "SpawnTotem",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "TotemSpawn",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "UseSKill_Debuff_Turret1Dead",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+              "DeadCheck": 0,
+              "CheckSummonedCharacterDead": false,
+              "CheckDelayMilliSecond": 0,
+              "ConditionID": "ConditionDeadNPC_1"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 1000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [
+                "CommnadNPC"
+              ],
+              "CreateCharacterStat": false,
+              "CharacterId": 0,
+              "CharacterLevel": 0,
+              "CharacterGrade": 0,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_DeBuff_StatChange_AttackPower_Ally_10s_75_Ratio",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 1,
+              "CommandID": "UseSkillCharacterAPoint",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "UseSKill_Debuff_Turret2Dead (1)",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+              "DeadCheck": 0,
+              "CheckSummonedCharacterDead": false,
+              "CheckDelayMilliSecond": 0,
+              "ConditionID": "ConditionDeadNPC_2"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 1000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [
+                "CommnadNPC"
+              ],
+              "CreateCharacterStat": false,
+              "CharacterId": 0,
+              "CharacterLevel": 0,
+              "CharacterGrade": 0,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_DeBuff_StatChange_AttackPower_Ally_10s_75_Ratio",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 1,
+              "CommandID": "UseSkillCharacterAPoint",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "UseSKill_Debuff_Turret3Dead (2)",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+              "DeadCheck": 0,
+              "CheckSummonedCharacterDead": false,
+              "CheckDelayMilliSecond": 0,
+              "ConditionID": "ConditionDeadNPC_3"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 1000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [
+                "CommnadNPC"
+              ],
+              "CreateCharacterStat": false,
+              "CharacterId": 0,
+              "CharacterLevel": 0,
+              "CharacterGrade": 0,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_DeBuff_StatChange_AttackPower_Ally_10s_75_Ratio",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 1,
+              "CommandID": "UseSkillCharacterAPoint",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "GuardTurret_Kurokame_Grenede_C_817Event05",
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "ConditionDeadBoss"
+              ],
+              "SpawnCommandIdList": [
+                "CommandBoss"
+              ],
+              "MovePoints": [],
+              "TileX": 43,
+              "TileY": 263,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.6,
+                "y": 48.013
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                "1"
+              ],
+              "CommandIdList": [
+                "BossSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Totem03_TimeAttack_M_817Event05",
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "G",
+              "SpawnConditionIdList": [
+                "ConditionDeadTotem"
+              ],
+              "SpawnCommandIdList": [
+                "CommnadTotem"
+              ],
+              "MovePoints": [],
+              "TileX": 23,
+              "TileY": 222,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -3.35000014,
+                "y": 39.943
+              },
+              "Direction": {
+                "x": 0.99999994,
+                "y": -1.1920929e-07
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "TotemSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SkillUsePoint, BlueArchive",
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
+              "MovePoints": [],
+              "TileX": 23,
+              "TileY": 203,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -3.41999984,
+                "y": 36.072998
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "UseSkillCharacterAPoint"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointNPC",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Utaha_Turret_default_NPC_817Event05",
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "G",
+              "SpawnConditionIdList": [
+                "ConditionDeadNPC_1"
+              ],
+              "SpawnCommandIdList": [
+                "CommnadNPC"
+              ],
+              "MovePoints": [],
+              "TileX": 43,
+              "TileY": 252,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.576,
+                "y": 45.898
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "NPC"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Utaha_Turret_Public_NPC_817Event05",
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "G",
+              "SpawnConditionIdList": [
+                "ConditionDeadNPC_2"
+              ],
+              "SpawnCommandIdList": [
+                "CommnadNPC"
+              ],
+              "MovePoints": [],
+              "TileX": 36,
+              "TileY": 248,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.7980001,
+                "y": 45.086998
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "NPC"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Utaha_Turret_Public_NPC_817Event05",
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "G",
+              "SpawnConditionIdList": [
+                "ConditionDeadNPC_3"
+              ],
+              "SpawnCommandIdList": [
+                "CommnadNPC"
+              ],
+              "MovePoints": [],
+              "TileX": 50,
+              "TileY": 248,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 1.9,
+                "y": 45.1009979
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "NPC"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "Hippie_1",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 5000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "DroidThin_Hippie_HG_E_817Event05",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "ConditionDead1"
+              ],
+              "SpawnCommandIdList": [
+                "Enemy"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 34,
+                  "TileY": 267,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -1.2300005,
+                    "y": 48.8700027
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 34,
+              "TileY": 289,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.23,
+                "y": 53.33
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "20"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 5000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "DroidThin_Hippie_SR_E_817Event05",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "ConditionDead1"
+              ],
+              "SpawnCommandIdList": [
+                "Enemy"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 51,
+                  "TileY": 267,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 2.28999949,
+                    "y": 48.8000031
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 51,
+              "TileY": 289,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 2.29,
+                "y": 53.33
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "30"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "Sweeper",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 5000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Taser_Black_E_817Event05",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "ConditionDead1"
+              ],
+              "SpawnCommandIdList": [
+                "Enemy"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 22,
+                  "TileY": 226,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -3.65000033,
+                    "y": 40.6
+                  },
+                  "Direction": {
+                    "x": 0.99999994,
+                    "y": -1.1920929e-07
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 1,
+              "TileY": 226,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -7.78000069,
+                "y": 40.6
+              },
+              "Direction": {
+                "x": 0.99999994,
+                "y": -1.1920929e-07
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 5000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Taser_Black_E_817Event05",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "ConditionDead1"
+              ],
+              "SpawnCommandIdList": [
+                "Enemy"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 22,
+                  "TileY": 228,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -3.65000033,
+                    "y": 41.1200027
+                  },
+                  "Direction": {
+                    "x": 0.99999994,
+                    "y": -1.1920929e-07
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 1,
+              "TileY": 228,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -7.78000069,
+                "y": 41.1200027
+              },
+              "Direction": {
+                "x": 0.99999994,
+                "y": -1.1920929e-07
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "3",
+                "4",
+                "5",
+                "6",
+                "7"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Formations": [
+    {
+      "SectionIndex": 0,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0.54,
+        "y": 29.63
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 1,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0.32,
+        "y": 41.92
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    }
+  ],
+  "EnemyFormations": [],
+  "TemporaryCanUseSkillAreas": []
+}

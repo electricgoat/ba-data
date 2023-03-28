@@ -1,5 +1,5 @@
 {
-  "Version": "1.0",
+  "Version": "1.1",
   "Global": {
     "Position": {
       "x": 0,
@@ -212,18 +212,63 @@
               "WaitExecuteEnd": false
             },
             {
-              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
-              "TargetCharacterCommandId": [],
-              "CreateCharacterStat": false,
-              "CharacterId": 0,
-              "CharacterLevel": 0,
-              "CharacterGrade": 0,
-              "Interval": 0,
-              "SkillGroupId": "ScenarioBattle01_NPC01_StudentMikaSMG02",
-              "SkillLevel": 1,
-              "ExecuterLevel": 1,
-              "CharacterGroup": 1,
-              "CommandID": "NPC_Point_Mika",
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "MikaSpawn",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandChangeGroundNodeType, BlueArchive",
+              "ShapeType": 0,
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 42.39
+              },
+              "Rect": {
+                "Direction": {
+                  "x": 0,
+                  "y": 1
+                },
+                "Width": 10,
+                "Height": 1
+              },
+              "Circle": {
+                "Radius": 1
+              },
+              "GroundNodeTypeToChange": 2147483647,
+              "IsResetToOriginal": false,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 8000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandChangeGroundNodeType, BlueArchive",
+              "ShapeType": 0,
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 42.39
+              },
+              "Rect": {
+                "Direction": {
+                  "x": 0,
+                  "y": 1
+                },
+                "Width": 10,
+                "Height": 1
+              },
+              "Circle": {
+                "Radius": 1
+              },
+              "GroundNodeTypeToChange": 0,
+              "IsResetToOriginal": true,
+              "CommandID": "",
               "WaitExecuteEnd": false
             }
           ]
@@ -519,6 +564,7 @@
               "ClearWaveAction": null,
               "TotalCountChangedAction": null,
               "AllClearAction": null,
+              "OnAddEntityAction": null,
               "CommandID": "0",
               "CurWaveNum": 0,
               "CurrProcess": null,
@@ -1030,11 +1076,45 @@
           "GroupName": "UseskillSpawnPointParent_Mika",
           "SpawnPoints": [
             {
-              "$type": "MX.Logic.BattleEntities.SkillUsePoint, BlueArchive",
-              "SpawnAIGroupId": "\u0000",
-              "SpawnConditionIdList": [],
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "NPC_Student_Mika_SMG_02",
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "G",
+              "SpawnConditionIdList": [
+                "MikaDead"
+              ],
               "SpawnCommandIdList": [],
-              "MovePoints": [],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 39,
+                  "TileY": 217,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.1899991,
+                    "y": 38.99
+                  },
+                  "Direction": {
+                    "x": 1.00000012,
+                    "y": -1.1920929e-07
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
               "TileX": 3,
               "TileY": 217,
               "PositionHeight": 0,
@@ -1043,12 +1123,12 @@
                 "y": 38.99
               },
               "Direction": {
-                "x": -8.742278e-08,
-                "y": -1
+                "x": 1.00000012,
+                "y": -1.1920929e-07
               },
               "ConditionIdList": [],
               "CommandIdList": [
-                "NPC_Point_Mika"
+                "MikaSpawn"
               ],
               "EntityId": {
                 "uniqueId": 0
