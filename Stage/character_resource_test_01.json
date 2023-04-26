@@ -1,10 +1,10 @@
 {
-  "Version": "",
+  "Version": "1.0",
   "Global": {
     "Position": {
-      "x": 0,
+      "x": 1.74,
       "y": 0,
-      "z": 0
+      "z": 9.393
     },
     "Events": [
       {
@@ -51,7 +51,7 @@
                 "Position": {
                   "x": 0,
                   "y": 0,
-                  "z": 44.39
+                  "z": 18.93
                 },
                 "MinCameraDistance": 42,
                 "MaxCameraDistance": 42,
@@ -71,71 +71,11 @@
             "SetConditionCommandOnly": false,
             "CommandID": "0",
             "WaitExecuteEnd": false
-          }
-        ]
-      },
-      {
-        "EventName": "StartSection2",
-        "Operator": 0,
-        "Conditions": [
-          {
-            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
-            "DeadCheck": 1,
-            "CheckSummonedCharacterDead": false,
-            "ConditionID": "911"
           },
           {
-            "$type": "MX.Logic.Battles.GroundConditionCharacterHPChanged, BlueArchive",
-            "TriggerRateUnder": 9000,
-            "TriggerRateOver": -9999999,
-            "TriggerMaxCount": 1,
-            "ConditionID": "991"
-          }
-        ],
-        "Commands": [
-          {
-            "$type": "MX.Logic.Battles.GroundCommandSetSyncUseSkillGroup, BlueArchive",
-            "SyncUseSkillGroupId": 9999,
-            "SkillSlot": "PublicSkill01",
-            "IsAdd": false,
-            "IsAllyGroup": false,
-            "CommandID": "5551",
-            "WaitExecuteEnd": false
-          },
-          {
-            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
-            "SectionID": 2,
-            "SetConditionCommandOnly": false,
+            "$type": "MX.Logic.Battles.GroundCommandOperator, BlueArchive",
+            "GroupId": "WeekDungeonCombatStart_03_01",
             "CommandID": "0",
-            "WaitExecuteEnd": false
-          }
-        ]
-      },
-      {
-        "EventName": "EndBattle",
-        "Operator": 0,
-        "Conditions": [
-          {
-            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
-            "DeadCheck": 1,
-            "CheckSummonedCharacterDead": false,
-            "ConditionID": "991"
-          }
-        ],
-        "Commands": [
-          {
-            "$type": "MX.Logic.Battles.GroundCommandCharacterDie, BlueArchive",
-            "CharacterCommandIdList": [
-              "Killenemy"
-            ],
-            "CharacterSpawnTemplateIdList": [],
-            "CommandID": "",
-            "WaitExecuteEnd": false
-          },
-          {
-            "$type": "MX.Logic.Battles.GroundCommandEndBattle, BlueArchive",
-            "BattleEndType": 4,
-            "CommandID": "99",
             "WaitExecuteEnd": false
           }
         ]
@@ -146,17 +86,38 @@
     {
       "SectionID": 1,
       "Position": {
-        "x": 0,
+        "x": 1.74,
         "y": 0,
-        "z": 5
+        "z": 15.3029995
       },
       "Events": [
         {
-          "EventName": "Spawn1-1",
+          "EventName": "SpawnUnit",
           "Operator": 0,
           "Conditions": [
             {
-              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+              "ConditionID": "0"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "1",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "SpawnUnit_1",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+              "DeadCheck": 0,
+              "CheckSummonedCharacterDead": false,
+              "CheckDelayMilliSecond": 0,
               "ConditionID": "1"
             }
           ],
@@ -164,107 +125,7 @@
             {
               "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
               "Interval": 100,
-              "CommandID": "Spawn-1",
-              "WaitExecuteEnd": false
-            }
-          ]
-        },
-        {
-          "EventName": "Spawn1-2",
-          "Operator": 0,
-          "Conditions": [
-            {
-              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
-              "DeadCheck": 0,
-              "CheckSummonedCharacterDead": true,
-              "ConditionID": "Dead-1"
-            }
-          ],
-          "Commands": [
-            {
-              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
-              "Interval": 100,
-              "CommandID": "Spawn-2",
-              "WaitExecuteEnd": false
-            }
-          ]
-        },
-        {
-          "EventName": "Spawn1-3",
-          "Operator": 0,
-          "Conditions": [
-            {
-              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
-              "DeadCheck": 0,
-              "CheckSummonedCharacterDead": false,
-              "ConditionID": "Dead-2"
-            }
-          ],
-          "Commands": [
-            {
-              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
-              "Interval": 100,
-              "CommandID": "Spawn-3",
-              "WaitExecuteEnd": false
-            }
-          ]
-        },
-        {
-          "EventName": "Spawn1-4",
-          "Operator": 0,
-          "Conditions": [
-            {
-              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
-              "DeadCheck": 0,
-              "CheckSummonedCharacterDead": false,
-              "ConditionID": "Dead-3"
-            }
-          ],
-          "Commands": [
-            {
-              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
-              "Interval": 100,
-              "CommandID": "Spawn-4",
-              "WaitExecuteEnd": false
-            }
-          ]
-        },
-        {
-          "EventName": "Spawn1-5",
-          "Operator": 0,
-          "Conditions": [
-            {
-              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
-              "DeadCheck": 0,
-              "CheckSummonedCharacterDead": false,
-              "ConditionID": "Dead-4"
-            }
-          ],
-          "Commands": [
-            {
-              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
-              "Interval": 100,
-              "CommandID": "Spawn-5",
-              "WaitExecuteEnd": false
-            }
-          ]
-        },
-        {
-          "EventName": "Spawn1-6",
-          "Operator": 0,
-          "Conditions": [
-            {
-              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
-              "DeadCheck": 0,
-              "CheckSummonedCharacterDead": false,
-              "ConditionID": "Dead-5"
-            }
-          ],
-          "Commands": [
-            {
-              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
-              "Interval": 100,
-              "CommandID": "Spawn-6",
+              "CommandID": "2",
               "WaitExecuteEnd": false
             }
           ]
@@ -273,14 +134,14 @@
       "Obstacles": [],
       "EnemySpawnPointGroupList": [
         {
-          "GroupName": "SpawnPointParent1-1",
+          "GroupName": "SpawnPointParent",
           "SpawnPoints": [
             {
               "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
               "SpawnData": {
-                "SpawnTemplateId": "ChesedDroid_Decagram_AR_Insane",
+                "SpawnTemplateId": "Kaito_Trinity_HG_C",
                 "AIId": 0,
-                "AppearAction": true,
+                "AppearAction": false,
                 "SkillLevel": {
                   "ExSkill": [],
                   "PublicSkill": [],
@@ -288,281 +149,30 @@
                   "ExtraPassiveSkill": []
                 }
               },
-              "SpawnAIGroupId": "A",
+              "SpawnAIGroupId": "\u0000",
               "SpawnConditionIdList": [
-                "Dead-1"
+                "1"
               ],
               "SpawnCommandIdList": [
-                "1",
-                "Killenemy"
-              ],
-              "MovePoints": [],
-              "TileX": 33,
-              "TileY": 155,
-              "PositionHeight": 0,
-              "Position": {
-                "x": -1.49,
-                "y": 18.5600014
-              },
-              "Direction": {
-                "x": -8.742278e-08,
-                "y": -1
-              },
-              "ConditionIdList": [],
-              "CommandIdList": [
-                "Spawn-1"
-              ],
-              "EntityId": {
-                "uniqueId": 0
-              },
-              "Active": false
-            },
-            {
-              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
-              "SpawnData": {
-                "SpawnTemplateId": "ChesedDroid_Decagram_AR_Insane",
-                "AIId": 0,
-                "AppearAction": true,
-                "SkillLevel": {
-                  "ExSkill": [],
-                  "PublicSkill": [],
-                  "PassiveSkill": [],
-                  "ExtraPassiveSkill": []
-                }
-              },
-              "SpawnAIGroupId": "A",
-              "SpawnConditionIdList": [
-                "Dead-1"
-              ],
-              "SpawnCommandIdList": [
-                "1",
-                "Killenemy"
-              ],
-              "MovePoints": [],
-              "TileX": 37,
-              "TileY": 152,
-              "PositionHeight": 0,
-              "Position": {
-                "x": -0.68,
-                "y": 17.83
-              },
-              "Direction": {
-                "x": -8.742278e-08,
-                "y": -1
-              },
-              "ConditionIdList": [],
-              "CommandIdList": [
-                "Spawn-1"
-              ],
-              "EntityId": {
-                "uniqueId": 0
-              },
-              "Active": false
-            },
-            {
-              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
-              "SpawnData": {
-                "SpawnTemplateId": "ChesedDroid_Decagram_AR_Insane",
-                "AIId": 0,
-                "AppearAction": true,
-                "SkillLevel": {
-                  "ExSkill": [],
-                  "PublicSkill": [],
-                  "PassiveSkill": [],
-                  "ExtraPassiveSkill": []
-                }
-              },
-              "SpawnAIGroupId": "A",
-              "SpawnConditionIdList": [
-                "Dead-1"
-              ],
-              "SpawnCommandIdList": [
-                "1",
-                "Killenemy"
-              ],
-              "MovePoints": [],
-              "TileX": 37,
-              "TileY": 158,
-              "PositionHeight": 0,
-              "Position": {
-                "x": -0.51,
-                "y": 19.18
-              },
-              "Direction": {
-                "x": -8.742278e-08,
-                "y": -1
-              },
-              "ConditionIdList": [],
-              "CommandIdList": [
-                "Spawn-1"
-              ],
-              "EntityId": {
-                "uniqueId": 0
-              },
-              "Active": false
-            },
-            {
-              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
-              "SpawnData": {
-                "SpawnTemplateId": "ChesedDroid_Decagram_AR_Insane",
-                "AIId": 0,
-                "AppearAction": true,
-                "SkillLevel": {
-                  "ExSkill": [],
-                  "PublicSkill": [],
-                  "PassiveSkill": [],
-                  "ExtraPassiveSkill": []
-                }
-              },
-              "SpawnAIGroupId": "A",
-              "SpawnConditionIdList": [
-                "Dead-1"
-              ],
-              "SpawnCommandIdList": [
-                "1",
-                "Killenemy"
-              ],
-              "MovePoints": [],
-              "TileX": 42,
-              "TileY": 152,
-              "PositionHeight": 0,
-              "Position": {
-                "x": 0.49,
-                "y": 17.93
-              },
-              "Direction": {
-                "x": -8.742278e-08,
-                "y": -1
-              },
-              "ConditionIdList": [],
-              "CommandIdList": [
-                "Spawn-1"
-              ],
-              "EntityId": {
-                "uniqueId": 0
-              },
-              "Active": false
-            },
-            {
-              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
-              "SpawnData": {
-                "SpawnTemplateId": "ChesedDroid_Decagram_AR_Insane",
-                "AIId": 0,
-                "AppearAction": true,
-                "SkillLevel": {
-                  "ExSkill": [],
-                  "PublicSkill": [],
-                  "PassiveSkill": [],
-                  "ExtraPassiveSkill": []
-                }
-              },
-              "SpawnAIGroupId": "A",
-              "SpawnConditionIdList": [
-                "Dead-1"
-              ],
-              "SpawnCommandIdList": [
-                "1",
-                "Killenemy"
+                "1"
               ],
               "MovePoints": [],
               "TileX": 43,
-              "TileY": 158,
+              "TileY": 126,
               "PositionHeight": 0,
               "Position": {
-                "x": 0.65,
-                "y": 19.02
+                "x": 0.53,
+                "y": 20.6829987
               },
               "Direction": {
                 "x": -8.742278e-08,
                 "y": -1
               },
-              "ConditionIdList": [],
+              "ConditionIdList": [
+                "1"
+              ],
               "CommandIdList": [
-                "Spawn-1"
-              ],
-              "EntityId": {
-                "uniqueId": 0
-              },
-              "Active": false
-            },
-            {
-              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
-              "SpawnData": {
-                "SpawnTemplateId": "ChesedDroid_Decagram_AR_Insane",
-                "AIId": 0,
-                "AppearAction": true,
-                "SkillLevel": {
-                  "ExSkill": [],
-                  "PublicSkill": [],
-                  "PassiveSkill": [],
-                  "ExtraPassiveSkill": []
-                }
-              },
-              "SpawnAIGroupId": "A",
-              "SpawnConditionIdList": [
-                "Dead-1"
-              ],
-              "SpawnCommandIdList": [
-                "1",
-                "Killenemy"
-              ],
-              "MovePoints": [],
-              "TileX": 47,
-              "TileY": 152,
-              "PositionHeight": 0,
-              "Position": {
-                "x": 1.36,
-                "y": 17.93
-              },
-              "Direction": {
-                "x": -8.742278e-08,
-                "y": -1
-              },
-              "ConditionIdList": [],
-              "CommandIdList": [
-                "Spawn-1"
-              ],
-              "EntityId": {
-                "uniqueId": 0
-              },
-              "Active": false
-            },
-            {
-              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
-              "SpawnData": {
-                "SpawnTemplateId": "ChesedDroid_Decagram_AR_Insane",
-                "AIId": 0,
-                "AppearAction": true,
-                "SkillLevel": {
-                  "ExSkill": [],
-                  "PublicSkill": [],
-                  "PassiveSkill": [],
-                  "ExtraPassiveSkill": []
-                }
-              },
-              "SpawnAIGroupId": "A",
-              "SpawnConditionIdList": [
-                "Dead-1"
-              ],
-              "SpawnCommandIdList": [
-                "1",
-                "Killenemy"
-              ],
-              "MovePoints": [],
-              "TileX": 47,
-              "TileY": 157,
-              "PositionHeight": 0,
-              "Position": {
-                "x": 1.44,
-                "y": 18.9700012
-              },
-              "Direction": {
-                "x": -8.742278e-08,
-                "y": -1
-              },
-              "ConditionIdList": [],
-              "CommandIdList": [
-                "Spawn-1"
+                "1"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -572,14 +182,14 @@
           ]
         },
         {
-          "GroupName": "색채 데카그라마톤",
+          "GroupName": "SpawnPointParent_1",
           "SpawnPoints": [
             {
               "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
               "SpawnData": {
-                "SpawnTemplateId": "Droid_Decagram_Shield_Colour_E",
+                "SpawnTemplateId": "Mafia_Genryumon_HG_E",
                 "AIId": 0,
-                "AppearAction": true,
+                "AppearAction": false,
                 "SkillLevel": {
                   "ExSkill": [],
                   "PublicSkill": [],
@@ -587,29 +197,30 @@
                   "ExtraPassiveSkill": []
                 }
               },
-              "SpawnAIGroupId": "A",
+              "SpawnAIGroupId": "\u0000",
               "SpawnConditionIdList": [
-                "Dead-2"
+                "2"
               ],
               "SpawnCommandIdList": [
-                "1",
-                "Killenemy"
+                "2"
               ],
               "MovePoints": [],
-              "TileX": 39,
-              "TileY": 164,
+              "TileX": 43,
+              "TileY": 126,
               "PositionHeight": 0,
               "Position": {
-                "x": -0.28,
-                "y": 20.36
+                "x": 0.53,
+                "y": 20.6829987
               },
               "Direction": {
                 "x": -8.742278e-08,
                 "y": -1
               },
-              "ConditionIdList": [],
+              "ConditionIdList": [
+                "2"
+              ],
               "CommandIdList": [
-                "Spawn-2"
+                "2"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -619,9 +230,9 @@
             {
               "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
               "SpawnData": {
-                "SpawnTemplateId": "Droid_Decagram_AR_Colour_E",
+                "SpawnTemplateId": "Mafia_Genryumon_AR_E",
                 "AIId": 0,
-                "AppearAction": true,
+                "AppearAction": false,
                 "SkillLevel": {
                   "ExSkill": [],
                   "PublicSkill": [],
@@ -629,29 +240,30 @@
                   "ExtraPassiveSkill": []
                 }
               },
-              "SpawnAIGroupId": "A",
+              "SpawnAIGroupId": "\u0000",
               "SpawnConditionIdList": [
-                "Dead-2"
+                "2"
               ],
               "SpawnCommandIdList": [
-                "1",
-                "Killenemy"
+                "2"
               ],
               "MovePoints": [],
-              "TileX": 39,
-              "TileY": 171,
+              "TileX": 32,
+              "TileY": 134,
               "PositionHeight": 0,
               "Position": {
-                "x": -0.28,
-                "y": 21.71
+                "x": -1.53,
+                "y": 22.323
               },
               "Direction": {
                 "x": -8.742278e-08,
                 "y": -1
               },
-              "ConditionIdList": [],
+              "ConditionIdList": [
+                "2"
+              ],
               "CommandIdList": [
-                "Spawn-2"
+                "2"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -661,9 +273,9 @@
             {
               "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
               "SpawnData": {
-                "SpawnTemplateId": "Droid_Decagram_RL_Colour_E",
+                "SpawnTemplateId": "Mafia_Genryumon_MG_E",
                 "AIId": 0,
-                "AppearAction": true,
+                "AppearAction": false,
                 "SkillLevel": {
                   "ExSkill": [],
                   "PublicSkill": [],
@@ -671,202 +283,30 @@
                   "ExtraPassiveSkill": []
                 }
               },
-              "SpawnAIGroupId": "A",
+              "SpawnAIGroupId": "\u0000",
               "SpawnConditionIdList": [
-                "Dead-2"
+                "2"
               ],
               "SpawnCommandIdList": [
-                "1",
-                "Killenemy"
+                "2"
               ],
               "MovePoints": [],
-              "TileX": 39,
-              "TileY": 179,
+              "TileX": 43,
+              "TileY": 143,
               "PositionHeight": 0,
               "Position": {
-                "x": -0.28,
-                "y": 23.22
+                "x": 0.549999952,
+                "y": 24.133
               },
               "Direction": {
                 "x": -8.742278e-08,
                 "y": -1
               },
-              "ConditionIdList": [],
+              "ConditionIdList": [
+                "2"
+              ],
               "CommandIdList": [
-                "Spawn-2"
-              ],
-              "EntityId": {
-                "uniqueId": 0
-              },
-              "Active": false
-            },
-            {
-              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
-              "SpawnData": {
-                "SpawnTemplateId": "Goliath_Decagram_Vulcan_Colour_C",
-                "AIId": 0,
-                "AppearAction": true,
-                "SkillLevel": {
-                  "ExSkill": [],
-                  "PublicSkill": [],
-                  "PassiveSkill": [],
-                  "ExtraPassiveSkill": []
-                }
-              },
-              "SpawnAIGroupId": "A",
-              "SpawnConditionIdList": [
-                "Dead-3"
-              ],
-              "SpawnCommandIdList": [
-                "1",
-                "Killenemy"
-              ],
-              "MovePoints": [],
-              "TileX": 39,
-              "TileY": 185,
-              "PositionHeight": 0,
-              "Position": {
-                "x": -0.28,
-                "y": 24.53
-              },
-              "Direction": {
-                "x": -8.742278e-08,
-                "y": -1
-              },
-              "ConditionIdList": [],
-              "CommandIdList": [
-                "Spawn-3"
-              ],
-              "EntityId": {
-                "uniqueId": 0
-              },
-              "Active": false
-            }
-          ]
-        },
-        {
-          "GroupName": "케테르",
-          "SpawnPoints": [
-            {
-              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
-              "SpawnData": {
-                "SpawnTemplateId": "Kether_Decagram_Cannon_Colour_C",
-                "AIId": 0,
-                "AppearAction": true,
-                "SkillLevel": {
-                  "ExSkill": [],
-                  "PublicSkill": [],
-                  "PassiveSkill": [],
-                  "ExtraPassiveSkill": []
-                }
-              },
-              "SpawnAIGroupId": "A",
-              "SpawnConditionIdList": [
-                "Dead-4"
-              ],
-              "SpawnCommandIdList": [
-                "1",
-                "Killenemy"
-              ],
-              "MovePoints": [],
-              "TileX": 39,
-              "TileY": 199,
-              "PositionHeight": 0,
-              "Position": {
-                "x": -0.28,
-                "y": 27.3
-              },
-              "Direction": {
-                "x": -8.742278e-08,
-                "y": -1
-              },
-              "ConditionIdList": [],
-              "CommandIdList": [
-                "Spawn-4"
-              ],
-              "EntityId": {
-                "uniqueId": 0
-              },
-              "Active": false
-            },
-            {
-              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
-              "SpawnData": {
-                "SpawnTemplateId": "Kether_Decagram_Vulcan_Colour_C",
-                "AIId": 0,
-                "AppearAction": true,
-                "SkillLevel": {
-                  "ExSkill": [],
-                  "PublicSkill": [],
-                  "PassiveSkill": [],
-                  "ExtraPassiveSkill": []
-                }
-              },
-              "SpawnAIGroupId": "A",
-              "SpawnConditionIdList": [
-                "Dead-5"
-              ],
-              "SpawnCommandIdList": [
-                "1",
-                "Killenemy"
-              ],
-              "MovePoints": [],
-              "TileX": 39,
-              "TileY": 205,
-              "PositionHeight": 0,
-              "Position": {
-                "x": -0.28,
-                "y": 28.46
-              },
-              "Direction": {
-                "x": -8.742278e-08,
-                "y": -1
-              },
-              "ConditionIdList": [],
-              "CommandIdList": [
-                "Spawn-5"
-              ],
-              "EntityId": {
-                "uniqueId": 0
-              },
-              "Active": false
-            },
-            {
-              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
-              "SpawnData": {
-                "SpawnTemplateId": "Kether_Decagram_EMP_Colour_C",
-                "AIId": 0,
-                "AppearAction": true,
-                "SkillLevel": {
-                  "ExSkill": [],
-                  "PublicSkill": [],
-                  "PassiveSkill": [],
-                  "ExtraPassiveSkill": []
-                }
-              },
-              "SpawnAIGroupId": "A",
-              "SpawnConditionIdList": [
-                "Dead-6"
-              ],
-              "SpawnCommandIdList": [
-                "1",
-                "Killenemy"
-              ],
-              "MovePoints": [],
-              "TileX": 39,
-              "TileY": 205,
-              "PositionHeight": 0,
-              "Position": {
-                "x": -0.28,
-                "y": 28.46
-              },
-              "Direction": {
-                "x": -8.742278e-08,
-                "y": -1
-              },
-              "ConditionIdList": [],
-              "CommandIdList": [
-                "Spawn-6"
+                "2"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -884,8 +324,8 @@
       "IgnorePathFind": false,
       "Index": 0,
       "Position": {
-        "x": 0,
-        "y": 0
+        "x": 0.659999967,
+        "y": 12.67
       },
       "Forward": {
         "x": 0,
@@ -899,23 +339,8 @@
       "IgnorePathFind": false,
       "Index": 0,
       "Position": {
-        "x": -1.29,
-        "y": 28.93
-      },
-      "Forward": {
-        "x": 0,
-        "y": 1
-      },
-      "Height": 0,
-      "IsEnemy": false
-    },
-    {
-      "SectionIndex": 2,
-      "IgnorePathFind": false,
-      "Index": 0,
-      "Position": {
-        "x": 0,
-        "y": 44
+        "x": 0.76,
+        "y": 17.53
       },
       "Forward": {
         "x": 0,
