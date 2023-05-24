@@ -1,5 +1,5 @@
 {
-  "Version": "1.0",
+  "Version": "",
   "Global": {
     "Position": {
       "x": 1.74,
@@ -26,39 +26,24 @@
           },
           {
             "$type": "GroundCommandLocateCamera, BlueArchive",
-            "ID": 2,
-            "MaxCameraSpeed": 3,
+            "ID": 34,
+            "MaxCameraSpeed": 0.1,
             "RotationSpeed": 1,
             "ZoomSpeed": 1,
             "RailPoints": [
               {
                 "UseTableData": false,
                 "Position": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 11.37
+                  "x": -3.26,
+                  "y": 1,
+                  "z": 15.84
                 },
-                "MinCameraDistance": 63,
-                "MaxCameraDistance": 63,
+                "MinCameraDistance": 70,
+                "MaxCameraDistance": 70,
                 "CameraForward": {
-                  "x": -0.3661761,
-                  "y": -0.441407263,
-                  "z": 0.8191915
-                }
-              },
-              {
-                "UseTableData": false,
-                "Position": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 18.93
-                },
-                "MinCameraDistance": 63,
-                "MaxCameraDistance": 63,
-                "CameraForward": {
-                  "x": -0.3661761,
-                  "y": -0.441407263,
-                  "z": 0.8191915
+                  "x": -0.5316987,
+                  "y": -0.5594139,
+                  "z": 0.6358873
                 }
               }
             ],
@@ -75,6 +60,57 @@
           {
             "$type": "MX.Logic.Battles.GroundCommandOperator, BlueArchive",
             "GroupId": "WeekDungeonCombatStart_03_01",
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "Phase2Start",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": "0"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+            "Milliseconds": 20000,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 2,
+            "SetConditionCommandOnly": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 34,
+            "MaxCameraSpeed": 2.62,
+            "RotationSpeed": 3,
+            "ZoomSpeed": 2.41,
+            "RailPoints": [
+              {
+                "UseTableData": false,
+                "Position": {
+                  "x": 4.27,
+                  "y": 1,
+                  "z": 13.38
+                },
+                "MinCameraDistance": 70,
+                "MaxCameraDistance": 70,
+                "CameraForward": {
+                  "x": 0.588183165,
+                  "y": -0.5594192,
+                  "z": 0.584029734
+                }
+              }
+            ],
             "CommandID": "0",
             "WaitExecuteEnd": false
           }
@@ -730,6 +766,91 @@
           ]
         },
         {
+          "GroupName": "SpawnPipe",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EN0005_Subpipe",
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "1"
+              ],
+              "SpawnCommandIdList": [
+                "1"
+              ],
+              "MovePoints": [],
+              "TileX": 55,
+              "TileY": 87,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.08000004,
+                "y": 13.6229992
+              },
+              "Direction": {
+                "x": 0.938214064,
+                "y": -0.346055746
+              },
+              "ConditionIdList": [
+                "1"
+              ],
+              "CommandIdList": [
+                "1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "SectionID": 2,
+      "Position": {
+        "x": 1.74,
+        "y": 0,
+        "z": 15.3029995
+      },
+      "Events": [
+        {
+          "EventName": "SpawnUnit",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+              "ConditionID": "0"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 20000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "Phase2_Right",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [],
+      "EnemySpawnPointGroupList": [
+        {
           "GroupName": "SpawnJyaco_Right",
           "SpawnPoints": [
             {
@@ -761,14 +882,14 @@
                 "y": 11.2529993
               },
               "Direction": {
-                "x": -0.9787213,
+                "x": -0.9787214,
                 "y": 0.205193639
               },
               "ConditionIdList": [
                 "1"
               ],
               "CommandIdList": [
-                "1"
+                "Phase2_Right"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -804,14 +925,14 @@
                 "y": 12.032999
               },
               "Direction": {
-                "x": -0.9787213,
+                "x": -0.9787214,
                 "y": 0.205193639
               },
               "ConditionIdList": [
                 "1"
               ],
               "CommandIdList": [
-                "1"
+                "Phase2_Right"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -847,14 +968,14 @@
                 "y": 13.032999
               },
               "Direction": {
-                "x": -0.9787213,
+                "x": -0.9787214,
                 "y": 0.205193639
               },
               "ConditionIdList": [
                 "1"
               ],
               "CommandIdList": [
-                "1"
+                "Phase2_Right"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -890,14 +1011,14 @@
                 "y": 12.983
               },
               "Direction": {
-                "x": -0.9787213,
+                "x": -0.9787214,
                 "y": 0.205193639
               },
               "ConditionIdList": [
                 "1"
               ],
               "CommandIdList": [
-                "1"
+                "Phase2_Right"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -933,14 +1054,14 @@
                 "y": 11.7029991
               },
               "Direction": {
-                "x": -0.9787213,
+                "x": -0.9787214,
                 "y": 0.205193639
               },
               "ConditionIdList": [
                 "1"
               ],
               "CommandIdList": [
-                "1"
+                "Phase2_Right"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -976,14 +1097,14 @@
                 "y": 11.513
               },
               "Direction": {
-                "x": -0.9787213,
+                "x": -0.9787214,
                 "y": 0.205193639
               },
               "ConditionIdList": [
                 "1"
               ],
               "CommandIdList": [
-                "1"
+                "Phase2_Right"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -1019,14 +1140,14 @@
                 "y": 12.903
               },
               "Direction": {
-                "x": -0.9787213,
+                "x": -0.9787214,
                 "y": 0.205193639
               },
               "ConditionIdList": [
                 "1"
               ],
               "CommandIdList": [
-                "1"
+                "Phase2_Right"
               ],
               "EntityId": {
                 "uniqueId": 0
