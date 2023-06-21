@@ -8,7 +8,7 @@
     },
     "Events": [
       {
-        "EventName": "SpawnPlayer",
+        "EventName": "Phase1Start",
         "Operator": 0,
         "Conditions": [
           {
@@ -28,15 +28,15 @@
             "$type": "GroundCommandLocateCamera, BlueArchive",
             "ID": 34,
             "MaxCameraSpeed": 0.1,
-            "RotationSpeed": 1,
+            "RotationSpeed": 0.27,
             "ZoomSpeed": 1,
             "RailPoints": [
               {
                 "UseTableData": false,
                 "Position": {
-                  "x": -3.26,
-                  "y": 1,
-                  "z": 15.84
+                  "x": -0.6400001,
+                  "y": 0.6,
+                  "z": 16.936
                 },
                 "MinCameraDistance": 70,
                 "MaxCameraDistance": 70,
@@ -44,6 +44,21 @@
                   "x": -0.5316987,
                   "y": -0.5594139,
                   "z": 0.6358873
+                }
+              },
+              {
+                "UseTableData": false,
+                "Position": {
+                  "x": 6.05999947,
+                  "y": 0.89,
+                  "z": 23.74
+                },
+                "MinCameraDistance": 70,
+                "MaxCameraDistance": 70,
+                "CameraForward": {
+                  "x": -0.8034657,
+                  "y": -0.426617682,
+                  "z": 0.4152592
                 }
               }
             ],
@@ -56,12 +71,6 @@
             "SetConditionCommandOnly": false,
             "CommandID": "0",
             "WaitExecuteEnd": false
-          },
-          {
-            "$type": "MX.Logic.Battles.GroundCommandOperator, BlueArchive",
-            "GroupId": "WeekDungeonCombatStart_03_01",
-            "CommandID": "0",
-            "WaitExecuteEnd": false
           }
         ]
       },
@@ -70,20 +79,50 @@
         "Operator": 0,
         "Conditions": [
           {
-            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
-            "ConditionID": "0"
+            "$type": "MX.Logic.Battles.GroundConditionCharacterPhaseChanged, BlueArchive",
+            "Phase": 1,
+            "MaxTriggerCount": 1,
+            "ConditionID": "Command_Boss"
           }
         ],
         "Commands": [
           {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 2,
+            "SetConditionCommandOnly": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
             "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
-            "Milliseconds": 20000,
+            "Milliseconds": 5000,
             "CommandID": "",
             "WaitExecuteEnd": false
           },
           {
+            "$type": "MX.Logic.Battles.GroundCommandPlayPropAnimation, BlueArchive",
+            "propKey": 1,
+            "animationName": "BG_Mat_Color_On",
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "Phase3Start",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharacterPhaseChanged, BlueArchive",
+            "Phase": 2,
+            "MaxTriggerCount": 1,
+            "ConditionID": "Command_Boss"
+          }
+        ],
+        "Commands": [
+          {
             "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
-            "SectionID": 2,
+            "SectionID": 3,
             "SetConditionCommandOnly": false,
             "CommandID": "0",
             "WaitExecuteEnd": false
@@ -98,9 +137,9 @@
               {
                 "UseTableData": false,
                 "Position": {
-                  "x": 4.27,
-                  "y": 1,
-                  "z": 13.38
+                  "x": 3.62,
+                  "y": -0.96,
+                  "z": 16.08
                 },
                 "MinCameraDistance": 70,
                 "MaxCameraDistance": 70,
@@ -109,9 +148,113 @@
                   "y": -0.5594192,
                   "z": 0.584029734
                 }
+              },
+              {
+                "UseTableData": false,
+                "Position": {
+                  "x": -1.27,
+                  "y": 0,
+                  "z": 30.16
+                },
+                "MinCameraDistance": 70,
+                "MaxCameraDistance": 70,
+                "CameraForward": {
+                  "x": -0.8034657,
+                  "y": -0.426617682,
+                  "z": 0.4152592
+                }
               }
             ],
             "CommandID": "0",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "Phase4Start",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharacterPhaseChanged, BlueArchive",
+            "Phase": 3,
+            "MaxTriggerCount": 1,
+            "ConditionID": "Command_Boss"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 4,
+            "SetConditionCommandOnly": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 34,
+            "MaxCameraSpeed": 2.62,
+            "RotationSpeed": 3,
+            "ZoomSpeed": 2.41,
+            "RailPoints": [
+              {
+                "UseTableData": false,
+                "Position": {
+                  "x": 0.0599999428,
+                  "y": -1.69,
+                  "z": 22.6
+                },
+                "MinCameraDistance": 70,
+                "MaxCameraDistance": 70,
+                "CameraForward": {
+                  "x": -0.008717294,
+                  "y": -0.4587352,
+                  "z": 0.888530254
+                }
+              },
+              {
+                "UseTableData": false,
+                "Position": {
+                  "x": -8.66,
+                  "y": 0,
+                  "z": 33.88
+                },
+                "MinCameraDistance": 70,
+                "MaxCameraDistance": 70,
+                "CameraForward": {
+                  "x": -0.8034657,
+                  "y": -0.426617682,
+                  "z": 0.4152592
+                }
+              }
+            ],
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "Phase5Start",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharacterPhaseChanged, BlueArchive",
+            "Phase": 4,
+            "MaxTriggerCount": 1,
+            "ConditionID": "Command_Boss"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+            "Milliseconds": 24000,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandPlayPropAnimation, BlueArchive",
+            "propKey": 1,
+            "animationName": "BG_Mat_Color_EX4",
+            "CommandID": "",
             "WaitExecuteEnd": false
           }
         ]
@@ -139,8 +282,8 @@
           "Commands": [
             {
               "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
-              "Interval": 100,
-              "CommandID": "1",
+              "Interval": 10,
+              "CommandID": "Init_Spawn",
               "WaitExecuteEnd": false
             }
           ]
@@ -166,10 +309,10 @@
               },
               "SpawnAIGroupId": "\u0000",
               "SpawnConditionIdList": [
-                "1"
+                "Command_Boss"
               ],
               "SpawnCommandIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "MovePoints": [],
               "TileX": 55,
@@ -184,10 +327,10 @@
                 "y": -1
               },
               "ConditionIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "CommandIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -202,7 +345,7 @@
             {
               "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
               "SpawnData": {
-                "SpawnTemplateId": "EN0005_choir_Normal",
+                "SpawnTemplateId": "EN0005_choir_Normal_Left",
                 "AIId": 0,
                 "AppearAction": false,
                 "SkillLevel": {
@@ -214,10 +357,10 @@
               },
               "SpawnAIGroupId": "\u0000",
               "SpawnConditionIdList": [
-                "1"
+                ""
               ],
               "SpawnCommandIdList": [
-                "1"
+                "LeftToCenter01"
               ],
               "MovePoints": [],
               "TileX": 10,
@@ -232,10 +375,10 @@
                 "y": -0.346055746
               },
               "ConditionIdList": [
-                "1"
+                ""
               ],
               "CommandIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -245,7 +388,7 @@
             {
               "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
               "SpawnData": {
-                "SpawnTemplateId": "EN0005_choir_Normal",
+                "SpawnTemplateId": "EN0005_choir_Normal_Left",
                 "AIId": 0,
                 "AppearAction": false,
                 "SkillLevel": {
@@ -257,10 +400,10 @@
               },
               "SpawnAIGroupId": "\u0000",
               "SpawnConditionIdList": [
-                "1"
+                ""
               ],
               "SpawnCommandIdList": [
-                "1"
+                "LeftToCenter02"
               ],
               "MovePoints": [],
               "TileX": 11,
@@ -275,10 +418,10 @@
                 "y": -0.346055746
               },
               "ConditionIdList": [
-                "1"
+                ""
               ],
               "CommandIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -288,7 +431,7 @@
             {
               "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
               "SpawnData": {
-                "SpawnTemplateId": "EN0005_choir_Normal",
+                "SpawnTemplateId": "EN0005_choir_Normal_Left",
                 "AIId": 0,
                 "AppearAction": false,
                 "SkillLevel": {
@@ -300,10 +443,10 @@
               },
               "SpawnAIGroupId": "\u0000",
               "SpawnConditionIdList": [
-                "1"
+                ""
               ],
               "SpawnCommandIdList": [
-                "1"
+                "LeftToCenter03"
               ],
               "MovePoints": [],
               "TileX": 18,
@@ -318,10 +461,10 @@
                 "y": -0.346055746
               },
               "ConditionIdList": [
-                "1"
+                ""
               ],
               "CommandIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -331,7 +474,7 @@
             {
               "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
               "SpawnData": {
-                "SpawnTemplateId": "EN0005_choir_Normal",
+                "SpawnTemplateId": "EN0005_choir_Normal_Left",
                 "AIId": 0,
                 "AppearAction": false,
                 "SkillLevel": {
@@ -343,10 +486,10 @@
               },
               "SpawnAIGroupId": "\u0000",
               "SpawnConditionIdList": [
-                "1"
+                ""
               ],
               "SpawnCommandIdList": [
-                "1"
+                "LeftToCenter04"
               ],
               "MovePoints": [],
               "TileX": 18,
@@ -361,10 +504,10 @@
                 "y": -0.346055746
               },
               "ConditionIdList": [
-                "1"
+                ""
               ],
               "CommandIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -374,7 +517,7 @@
             {
               "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
               "SpawnData": {
-                "SpawnTemplateId": "EN0005_choir_Normal",
+                "SpawnTemplateId": "EN0005_choir_Normal_Left",
                 "AIId": 0,
                 "AppearAction": false,
                 "SkillLevel": {
@@ -386,10 +529,10 @@
               },
               "SpawnAIGroupId": "\u0000",
               "SpawnConditionIdList": [
-                "1"
+                ""
               ],
               "SpawnCommandIdList": [
-                "1"
+                "LeftToCenter05"
               ],
               "MovePoints": [],
               "TileX": 26,
@@ -404,10 +547,10 @@
                 "y": -0.346055746
               },
               "ConditionIdList": [
-                "1"
+                ""
               ],
               "CommandIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -417,7 +560,7 @@
             {
               "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
               "SpawnData": {
-                "SpawnTemplateId": "EN0005_choir_Normal",
+                "SpawnTemplateId": "EN0005_choir_Normal_Left",
                 "AIId": 0,
                 "AppearAction": false,
                 "SkillLevel": {
@@ -429,10 +572,10 @@
               },
               "SpawnAIGroupId": "\u0000",
               "SpawnConditionIdList": [
-                "1"
+                ""
               ],
               "SpawnCommandIdList": [
-                "1"
+                "LeftToCenter06"
               ],
               "MovePoints": [],
               "TileX": 26,
@@ -447,10 +590,10 @@
                 "y": -0.346055746
               },
               "ConditionIdList": [
-                "1"
+                ""
               ],
               "CommandIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -460,7 +603,7 @@
             {
               "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
               "SpawnData": {
-                "SpawnTemplateId": "EN0005_choir_Normal",
+                "SpawnTemplateId": "EN0005_choir_Normal_Left",
                 "AIId": 0,
                 "AppearAction": false,
                 "SkillLevel": {
@@ -472,10 +615,10 @@
               },
               "SpawnAIGroupId": "\u0000",
               "SpawnConditionIdList": [
-                "1"
+                ""
               ],
               "SpawnCommandIdList": [
-                "1"
+                "LeftToCenter07"
               ],
               "MovePoints": [],
               "TileX": 26,
@@ -490,10 +633,10 @@
                 "y": -0.346055746
               },
               "ConditionIdList": [
-                "1"
+                ""
               ],
               "CommandIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -508,7 +651,7 @@
             {
               "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
               "SpawnData": {
-                "SpawnTemplateId": "EN0005_choir_Normal",
+                "SpawnTemplateId": "EN0005_choir_Normal_Center",
                 "AIId": 0,
                 "AppearAction": false,
                 "SkillLevel": {
@@ -520,10 +663,10 @@
               },
               "SpawnAIGroupId": "\u0000",
               "SpawnConditionIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "SpawnCommandIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "MovePoints": [],
               "TileX": 48,
@@ -538,10 +681,10 @@
                 "y": -1
               },
               "ConditionIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "CommandIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -551,7 +694,7 @@
             {
               "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
               "SpawnData": {
-                "SpawnTemplateId": "EN0005_choir_Normal",
+                "SpawnTemplateId": "EN0005_choir_Normal_Center",
                 "AIId": 0,
                 "AppearAction": false,
                 "SkillLevel": {
@@ -563,10 +706,10 @@
               },
               "SpawnAIGroupId": "\u0000",
               "SpawnConditionIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "SpawnCommandIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "MovePoints": [],
               "TileX": 41,
@@ -581,10 +724,10 @@
                 "y": -1
               },
               "ConditionIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "CommandIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -594,7 +737,7 @@
             {
               "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
               "SpawnData": {
-                "SpawnTemplateId": "EN0005_choir_Normal",
+                "SpawnTemplateId": "EN0005_choir_Normal_Center",
                 "AIId": 0,
                 "AppearAction": false,
                 "SkillLevel": {
@@ -606,10 +749,10 @@
               },
               "SpawnAIGroupId": "\u0000",
               "SpawnConditionIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "SpawnCommandIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "MovePoints": [],
               "TileX": 35,
@@ -624,10 +767,10 @@
                 "y": -1
               },
               "ConditionIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "CommandIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -637,7 +780,7 @@
             {
               "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
               "SpawnData": {
-                "SpawnTemplateId": "EN0005_choir_Normal",
+                "SpawnTemplateId": "EN0005_choir_Normal_Center",
                 "AIId": 0,
                 "AppearAction": false,
                 "SkillLevel": {
@@ -649,10 +792,10 @@
               },
               "SpawnAIGroupId": "\u0000",
               "SpawnConditionIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "SpawnCommandIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "MovePoints": [],
               "TileX": 63,
@@ -667,10 +810,10 @@
                 "y": -1
               },
               "ConditionIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "CommandIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -680,7 +823,7 @@
             {
               "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
               "SpawnData": {
-                "SpawnTemplateId": "EN0005_choir_Normal",
+                "SpawnTemplateId": "EN0005_choir_Normal_Center",
                 "AIId": 0,
                 "AppearAction": false,
                 "SkillLevel": {
@@ -692,10 +835,10 @@
               },
               "SpawnAIGroupId": "\u0000",
               "SpawnConditionIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "SpawnCommandIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "MovePoints": [],
               "TileX": 69,
@@ -710,10 +853,10 @@
                 "y": -1
               },
               "ConditionIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "CommandIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -723,7 +866,7 @@
             {
               "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
               "SpawnData": {
-                "SpawnTemplateId": "EN0005_choir_Normal",
+                "SpawnTemplateId": "EN0005_choir_Normal_Center",
                 "AIId": 0,
                 "AppearAction": false,
                 "SkillLevel": {
@@ -735,10 +878,10 @@
               },
               "SpawnAIGroupId": "\u0000",
               "SpawnConditionIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "SpawnCommandIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "MovePoints": [],
               "TileX": 75,
@@ -753,10 +896,316 @@
                 "y": -1
               },
               "ConditionIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "CommandIdList": [
-                "1"
+                "Init_Spawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnJyaco_Right",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EN0005_choir_Normal_Right",
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                ""
+              ],
+              "SpawnCommandIdList": [
+                "RightToCenter01"
+              ],
+              "MovePoints": [],
+              "TileX": 84,
+              "TileY": 76,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 5.83,
+                "y": 11.2529993
+              },
+              "Direction": {
+                "x": -0.9787214,
+                "y": 0.205193639
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "Init_Spawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EN0005_choir_Normal_Right",
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                ""
+              ],
+              "SpawnCommandIdList": [
+                "RightToCenter02"
+              ],
+              "MovePoints": [],
+              "TileX": 85,
+              "TileY": 79,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 5.95,
+                "y": 12.032999
+              },
+              "Direction": {
+                "x": -0.9787214,
+                "y": 0.205193639
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "Init_Spawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EN0005_choir_Normal_Right",
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                ""
+              ],
+              "SpawnCommandIdList": [
+                "RightToCenter03"
+              ],
+              "MovePoints": [],
+              "TileX": 84,
+              "TileY": 84,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 5.81000042,
+                "y": 13.032999
+              },
+              "Direction": {
+                "x": -0.9787214,
+                "y": 0.205193639
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "Init_Spawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EN0005_choir_Normal_Right",
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                ""
+              ],
+              "SpawnCommandIdList": [
+                "RightToCenter04"
+              ],
+              "MovePoints": [],
+              "TileX": 92,
+              "TileY": 84,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 7.27000046,
+                "y": 12.983
+              },
+              "Direction": {
+                "x": -0.9787214,
+                "y": 0.205193639
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "Init_Spawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EN0005_choir_Normal_Right",
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                ""
+              ],
+              "SpawnCommandIdList": [
+                "RightToCenter05"
+              ],
+              "MovePoints": [],
+              "TileX": 92,
+              "TileY": 78,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 7.27000046,
+                "y": 11.7029991
+              },
+              "Direction": {
+                "x": -0.9787214,
+                "y": 0.205193639
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "Init_Spawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EN0005_choir_Normal_Right",
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                ""
+              ],
+              "SpawnCommandIdList": [
+                "RightToCenter06"
+              ],
+              "MovePoints": [],
+              "TileX": 99,
+              "TileY": 77,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 8.84,
+                "y": 11.513
+              },
+              "Direction": {
+                "x": -0.9787214,
+                "y": 0.205193639
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "Init_Spawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EN0005_choir_Normal_Right",
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                ""
+              ],
+              "SpawnCommandIdList": [
+                "RightToCenter07"
+              ],
+              "MovePoints": [],
+              "TileX": 98,
+              "TileY": 84,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 8.66,
+                "y": 12.903
+              },
+              "Direction": {
+                "x": -0.9787214,
+                "y": 0.205193639
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "Init_Spawn"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -783,10 +1232,10 @@
               },
               "SpawnAIGroupId": "\u0000",
               "SpawnConditionIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "SpawnCommandIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "MovePoints": [],
               "TileX": 55,
@@ -797,14 +1246,14 @@
                 "y": 13.6229992
               },
               "Direction": {
-                "x": 0.938214064,
-                "y": -0.346055746
+                "x": 0,
+                "y": 1
               },
               "ConditionIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "CommandIdList": [
-                "1"
+                "Init_Spawn"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -822,27 +1271,177 @@
         "y": 0,
         "z": 15.3029995
       },
+      "Events": [],
+      "Obstacles": [],
+      "EnemySpawnPointGroupList": []
+    },
+    {
+      "SectionID": 3,
+      "Position": {
+        "x": 1.74,
+        "y": 0,
+        "z": 15.3029995
+      },
+      "Events": [],
+      "Obstacles": [],
+      "EnemySpawnPointGroupList": []
+    },
+    {
+      "SectionID": 4,
+      "Position": {
+        "x": 1.74,
+        "y": 0,
+        "z": 15.3029995
+      },
       "Events": [
         {
-          "EventName": "SpawnUnit",
+          "EventName": "MoveToCenter",
           "Operator": 0,
           "Conditions": [
             {
-              "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
-              "ConditionID": "0"
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
             }
           ],
           "Commands": [
             {
-              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
-              "Milliseconds": 20000,
-              "CommandID": "",
+              "$type": "MX.Logic.Battles.GroundCommandForceMoveToGroundPoint, BlueArchive",
+              "IsInstantMove": true,
+              "IsInterruptCurrentAction": true,
+              "PointCommandID": "LeftToCenter01_MovePoint",
+              "IsCommandWaitForMoveStart": false,
+              "IsCommandWaitForMoveEnd": false,
+              "CommandID": "LeftToCenter01",
               "WaitExecuteEnd": false
             },
             {
-              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
-              "Interval": 100,
-              "CommandID": "Phase2_Right",
+              "$type": "MX.Logic.Battles.GroundCommandForceMoveToGroundPoint, BlueArchive",
+              "IsInstantMove": true,
+              "IsInterruptCurrentAction": true,
+              "PointCommandID": "LeftToCenter02_MovePoint",
+              "IsCommandWaitForMoveStart": false,
+              "IsCommandWaitForMoveEnd": false,
+              "CommandID": "LeftToCenter02",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceMoveToGroundPoint, BlueArchive",
+              "IsInstantMove": true,
+              "IsInterruptCurrentAction": true,
+              "PointCommandID": "LeftToCenter03_MovePoint",
+              "IsCommandWaitForMoveStart": false,
+              "IsCommandWaitForMoveEnd": false,
+              "CommandID": "LeftToCenter03",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceMoveToGroundPoint, BlueArchive",
+              "IsInstantMove": true,
+              "IsInterruptCurrentAction": true,
+              "PointCommandID": "LeftToCenter04_MovePoint",
+              "IsCommandWaitForMoveStart": false,
+              "IsCommandWaitForMoveEnd": false,
+              "CommandID": "LeftToCenter04",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceMoveToGroundPoint, BlueArchive",
+              "IsInstantMove": true,
+              "IsInterruptCurrentAction": true,
+              "PointCommandID": "LeftToCenter05_MovePoint",
+              "IsCommandWaitForMoveStart": false,
+              "IsCommandWaitForMoveEnd": false,
+              "CommandID": "LeftToCenter05",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceMoveToGroundPoint, BlueArchive",
+              "IsInstantMove": true,
+              "IsInterruptCurrentAction": true,
+              "PointCommandID": "LeftToCenter06_MovePoint",
+              "IsCommandWaitForMoveStart": false,
+              "IsCommandWaitForMoveEnd": false,
+              "CommandID": "LeftToCenter06",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceMoveToGroundPoint, BlueArchive",
+              "IsInstantMove": true,
+              "IsInterruptCurrentAction": true,
+              "PointCommandID": "LeftToCenter07_MovePoint",
+              "IsCommandWaitForMoveStart": false,
+              "IsCommandWaitForMoveEnd": false,
+              "CommandID": "LeftToCenter07",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceMoveToGroundPoint, BlueArchive",
+              "IsInstantMove": true,
+              "IsInterruptCurrentAction": true,
+              "PointCommandID": "RightToCenter01_MovePoint",
+              "IsCommandWaitForMoveStart": false,
+              "IsCommandWaitForMoveEnd": false,
+              "CommandID": "RightToCenter01",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceMoveToGroundPoint, BlueArchive",
+              "IsInstantMove": true,
+              "IsInterruptCurrentAction": true,
+              "PointCommandID": "RightToCenter02_MovePoint",
+              "IsCommandWaitForMoveStart": false,
+              "IsCommandWaitForMoveEnd": false,
+              "CommandID": "RightToCenter02",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceMoveToGroundPoint, BlueArchive",
+              "IsInstantMove": true,
+              "IsInterruptCurrentAction": true,
+              "PointCommandID": "RightToCenter03_MovePoint",
+              "IsCommandWaitForMoveStart": false,
+              "IsCommandWaitForMoveEnd": false,
+              "CommandID": "RightToCenter03",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceMoveToGroundPoint, BlueArchive",
+              "IsInstantMove": true,
+              "IsInterruptCurrentAction": true,
+              "PointCommandID": "RightToCenter04_MovePoint",
+              "IsCommandWaitForMoveStart": false,
+              "IsCommandWaitForMoveEnd": false,
+              "CommandID": "RightToCenter04",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceMoveToGroundPoint, BlueArchive",
+              "IsInstantMove": true,
+              "IsInterruptCurrentAction": true,
+              "PointCommandID": "RightToCenter05_MovePoint",
+              "IsCommandWaitForMoveStart": false,
+              "IsCommandWaitForMoveEnd": false,
+              "CommandID": "RightToCenter05",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceMoveToGroundPoint, BlueArchive",
+              "IsInstantMove": true,
+              "IsInterruptCurrentAction": true,
+              "PointCommandID": "RightToCenter06_MovePoint",
+              "IsCommandWaitForMoveStart": false,
+              "IsCommandWaitForMoveEnd": false,
+              "CommandID": "RightToCenter06",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceMoveToGroundPoint, BlueArchive",
+              "IsInstantMove": true,
+              "IsInterruptCurrentAction": true,
+              "PointCommandID": "RightToCenter07_MovePoint",
+              "IsCommandWaitForMoveStart": false,
+              "IsCommandWaitForMoveEnd": false,
+              "CommandID": "RightToCenter07",
               "WaitExecuteEnd": false
             }
           ]
@@ -851,12 +1450,12 @@
       "Obstacles": [],
       "EnemySpawnPointGroupList": [
         {
-          "GroupName": "SpawnJyaco_Right",
+          "GroupName": "MovePoint_LeftToCenter",
           "SpawnPoints": [
             {
               "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
               "SpawnData": {
-                "SpawnTemplateId": "EN0005_choir_Normal",
+                "SpawnTemplateId": "",
                 "AIId": 0,
                 "AppearAction": false,
                 "SkillLevel": {
@@ -867,29 +1466,23 @@
                 }
               },
               "SpawnAIGroupId": "\u0000",
-              "SpawnConditionIdList": [
-                "1"
-              ],
-              "SpawnCommandIdList": [
-                "1"
-              ],
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
               "MovePoints": [],
-              "TileX": 84,
-              "TileY": 76,
+              "TileX": 19,
+              "TileY": 108,
               "PositionHeight": 0,
               "Position": {
-                "x": 5.83,
-                "y": 11.2529993
+                "x": -7.26,
+                "y": 17.803
               },
               "Direction": {
-                "x": -0.9787214,
-                "y": 0.205193639
+                "x": -8.742278e-08,
+                "y": -1
               },
-              "ConditionIdList": [
-                "1"
-              ],
+              "ConditionIdList": [],
               "CommandIdList": [
-                "Phase2_Right"
+                "LeftToCenter01_MovePoint"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -899,7 +1492,7 @@
             {
               "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
               "SpawnData": {
-                "SpawnTemplateId": "EN0005_choir_Normal",
+                "SpawnTemplateId": "",
                 "AIId": 0,
                 "AppearAction": false,
                 "SkillLevel": {
@@ -910,29 +1503,23 @@
                 }
               },
               "SpawnAIGroupId": "\u0000",
-              "SpawnConditionIdList": [
-                "1"
-              ],
-              "SpawnCommandIdList": [
-                "1"
-              ],
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
               "MovePoints": [],
-              "TileX": 85,
-              "TileY": 79,
+              "TileX": 24,
+              "TileY": 108,
               "PositionHeight": 0,
               "Position": {
-                "x": 5.95,
-                "y": 12.032999
+                "x": -6.26,
+                "y": 17.803
               },
               "Direction": {
-                "x": -0.9787214,
-                "y": 0.205193639
+                "x": -8.742278e-08,
+                "y": -1
               },
-              "ConditionIdList": [
-                "1"
-              ],
+              "ConditionIdList": [],
               "CommandIdList": [
-                "Phase2_Right"
+                "LeftToCenter02_MovePoint"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -942,7 +1529,7 @@
             {
               "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
               "SpawnData": {
-                "SpawnTemplateId": "EN0005_choir_Normal",
+                "SpawnTemplateId": "",
                 "AIId": 0,
                 "AppearAction": false,
                 "SkillLevel": {
@@ -953,29 +1540,23 @@
                 }
               },
               "SpawnAIGroupId": "\u0000",
-              "SpawnConditionIdList": [
-                "1"
-              ],
-              "SpawnCommandIdList": [
-                "1"
-              ],
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
               "MovePoints": [],
-              "TileX": 84,
-              "TileY": 84,
+              "TileX": 29,
+              "TileY": 108,
               "PositionHeight": 0,
               "Position": {
-                "x": 5.81000042,
-                "y": 13.032999
+                "x": -5.26,
+                "y": 17.803
               },
               "Direction": {
-                "x": -0.9787214,
-                "y": 0.205193639
+                "x": -8.742278e-08,
+                "y": -1
               },
-              "ConditionIdList": [
-                "1"
-              ],
+              "ConditionIdList": [],
               "CommandIdList": [
-                "Phase2_Right"
+                "LeftToCenter03_MovePoint"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -985,7 +1566,7 @@
             {
               "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
               "SpawnData": {
-                "SpawnTemplateId": "EN0005_choir_Normal",
+                "SpawnTemplateId": "",
                 "AIId": 0,
                 "AppearAction": false,
                 "SkillLevel": {
@@ -996,29 +1577,23 @@
                 }
               },
               "SpawnAIGroupId": "\u0000",
-              "SpawnConditionIdList": [
-                "1"
-              ],
-              "SpawnCommandIdList": [
-                "1"
-              ],
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
               "MovePoints": [],
-              "TileX": 92,
-              "TileY": 84,
+              "TileX": 19,
+              "TileY": 101,
               "PositionHeight": 0,
               "Position": {
-                "x": 7.27000046,
-                "y": 12.983
+                "x": -7.26,
+                "y": 16.303
               },
               "Direction": {
-                "x": -0.9787214,
-                "y": 0.205193639
+                "x": -8.742278e-08,
+                "y": -1
               },
-              "ConditionIdList": [
-                "1"
-              ],
+              "ConditionIdList": [],
               "CommandIdList": [
-                "Phase2_Right"
+                "LeftToCenter04_MovePoint"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -1028,7 +1603,7 @@
             {
               "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
               "SpawnData": {
-                "SpawnTemplateId": "EN0005_choir_Normal",
+                "SpawnTemplateId": "",
                 "AIId": 0,
                 "AppearAction": false,
                 "SkillLevel": {
@@ -1039,29 +1614,23 @@
                 }
               },
               "SpawnAIGroupId": "\u0000",
-              "SpawnConditionIdList": [
-                "1"
-              ],
-              "SpawnCommandIdList": [
-                "1"
-              ],
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
               "MovePoints": [],
-              "TileX": 92,
-              "TileY": 78,
+              "TileX": 24,
+              "TileY": 101,
               "PositionHeight": 0,
               "Position": {
-                "x": 7.27000046,
-                "y": 11.7029991
+                "x": -6.26,
+                "y": 16.303
               },
               "Direction": {
-                "x": -0.9787214,
-                "y": 0.205193639
+                "x": -8.742278e-08,
+                "y": -1
               },
-              "ConditionIdList": [
-                "1"
-              ],
+              "ConditionIdList": [],
               "CommandIdList": [
-                "Phase2_Right"
+                "LeftToCenter05_MovePoint"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -1071,7 +1640,7 @@
             {
               "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
               "SpawnData": {
-                "SpawnTemplateId": "EN0005_choir_Normal",
+                "SpawnTemplateId": "",
                 "AIId": 0,
                 "AppearAction": false,
                 "SkillLevel": {
@@ -1082,29 +1651,23 @@
                 }
               },
               "SpawnAIGroupId": "\u0000",
-              "SpawnConditionIdList": [
-                "1"
-              ],
-              "SpawnCommandIdList": [
-                "1"
-              ],
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
               "MovePoints": [],
-              "TileX": 99,
-              "TileY": 77,
+              "TileX": 29,
+              "TileY": 101,
               "PositionHeight": 0,
               "Position": {
-                "x": 8.84,
-                "y": 11.513
+                "x": -5.26,
+                "y": 16.303
               },
               "Direction": {
-                "x": -0.9787214,
-                "y": 0.205193639
+                "x": -8.742278e-08,
+                "y": -1
               },
-              "ConditionIdList": [
-                "1"
-              ],
+              "ConditionIdList": [],
               "CommandIdList": [
-                "Phase2_Right"
+                "LeftToCenter06_MovePoint"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -1114,7 +1677,7 @@
             {
               "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
               "SpawnData": {
-                "SpawnTemplateId": "EN0005_choir_Normal",
+                "SpawnTemplateId": "",
                 "AIId": 0,
                 "AppearAction": false,
                 "SkillLevel": {
@@ -1125,29 +1688,282 @@
                 }
               },
               "SpawnAIGroupId": "\u0000",
-              "SpawnConditionIdList": [
-                "1"
-              ],
-              "SpawnCommandIdList": [
-                "1"
-              ],
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
               "MovePoints": [],
-              "TileX": 98,
-              "TileY": 84,
+              "TileX": 34,
+              "TileY": 101,
               "PositionHeight": 0,
               "Position": {
-                "x": 8.66,
-                "y": 12.903
+                "x": -4.26,
+                "y": 16.303
               },
               "Direction": {
-                "x": -0.9787214,
-                "y": 0.205193639
+                "x": -8.742278e-08,
+                "y": -1
               },
-              "ConditionIdList": [
-                "1"
-              ],
+              "ConditionIdList": [],
               "CommandIdList": [
-                "Phase2_Right"
+                "LeftToCenter07_MovePoint"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "",
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
+              "MovePoints": [],
+              "TileX": 91,
+              "TileY": 108,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 7.24,
+                "y": 17.803
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "RightToCenter01_MovePoint"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "",
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
+              "MovePoints": [],
+              "TileX": 86,
+              "TileY": 108,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 6.24,
+                "y": 17.803
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "RightToCenter02_MovePoint"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "",
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
+              "MovePoints": [],
+              "TileX": 81,
+              "TileY": 108,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 5.24,
+                "y": 17.803
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "RightToCenter03_MovePoint"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "",
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
+              "MovePoints": [],
+              "TileX": 91,
+              "TileY": 101,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 7.24,
+                "y": 16.303
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "RightToCenter04_MovePoint"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "",
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
+              "MovePoints": [],
+              "TileX": 86,
+              "TileY": 101,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 6.24,
+                "y": 16.303
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "RightToCenter05_MovePoint"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "",
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
+              "MovePoints": [],
+              "TileX": 81,
+              "TileY": 101,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 5.24,
+                "y": 16.303
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "RightToCenter06_MovePoint"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "",
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
+              "MovePoints": [],
+              "TileX": 76,
+              "TileY": 101,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 4.24,
+                "y": 16.303
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "RightToCenter07_MovePoint"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -1177,6 +1993,36 @@
     },
     {
       "SectionIndex": 1,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": -0.01,
+        "y": 11.85
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 2,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": -0.01,
+        "y": 11.85
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 3,
       "IgnorePathFind": false,
       "Index": 0,
       "Position": {
