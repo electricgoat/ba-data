@@ -1,0 +1,624 @@
+{
+  "Version": "1.5",
+  "Global": {
+    "Position": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "Events": [
+      {
+        "EventName": "SpawnPlayer",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": "0"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSpawnPlayer, BlueArchive",
+            "IsEnemy": false,
+            "IgnoreSkillCardShuffle": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 29,
+            "MaxCameraSpeed": 3,
+            "RotationSpeed": 1,
+            "ZoomSpeed": 1,
+            "RailPoints": [
+              {
+                "UseTableData": true,
+                "Position": {
+                  "x": 0.54,
+                  "y": 1.02,
+                  "z": 0.2
+                },
+                "MinCameraDistance": 42,
+                "MaxCameraDistance": 42,
+                "CameraForward": {
+                  "x": -0.8034657,
+                  "y": -0.426617682,
+                  "z": 0.4152592
+                }
+              }
+            ],
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 1,
+            "SetConditionCommandOnly": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "EndBattle",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 1,
+            "CheckSummonedCharacterDead": false,
+            "ConditionID": "EN0002_Dead"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandOperator, BlueArchive",
+            "GroupId": "823_EN0002Victory_01",
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandEndBattle, BlueArchive",
+            "BattleEndType": 4,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      }
+    ]
+  },
+  "Sections": [
+    {
+      "SectionID": 1,
+      "Position": {
+        "x": 0,
+        "y": 0,
+        "z": 112.6
+      },
+      "Events": [
+        {
+          "EventName": "SpawnBoss",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandPlayPropAnimation, BlueArchive",
+              "propKey": 1,
+              "animationName": "Scene_1",
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 0,
+              "CommandID": "EN0002_Spawn",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 0,
+              "CommandID": "EN0001_Spawn",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 10,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandActivateConfrontationGauge, BlueArchive",
+              "TargetCharacterSpawnCommandId": "EN0002_Command",
+              "MaxGaugeValue": 2000000,
+              "StartGaugeValue": 1000000,
+              "PortraitPathLeft": "",
+              "PortraitPathRight": "",
+              "HideDelayInSecond": 5,
+              "GaugeActivationDelayInFrame": 87,
+              "DivideGaugeMagnificationSettings": [
+                {
+                  "StartTime": 0,
+                  "EndTime": 15000,
+                  "MagnificationList": [
+                    {
+                      "GaugeBottom": 0,
+                      "MagnificationValue": 2000
+                    },
+                    {
+                      "GaugeBottom": 200000,
+                      "MagnificationValue": 5000
+                    },
+                    {
+                      "GaugeBottom": 400000,
+                      "MagnificationValue": 7000
+                    },
+                    {
+                      "GaugeBottom": 600000,
+                      "MagnificationValue": 10000
+                    },
+                    {
+                      "GaugeBottom": 800000,
+                      "MagnificationValue": 10000
+                    },
+                    {
+                      "GaugeBottom": 1000000,
+                      "MagnificationValue": 10000
+                    },
+                    {
+                      "GaugeBottom": 1200000,
+                      "MagnificationValue": 9000
+                    },
+                    {
+                      "GaugeBottom": 1400000,
+                      "MagnificationValue": 5000
+                    },
+                    {
+                      "GaugeBottom": 1600000,
+                      "MagnificationValue": 3000
+                    },
+                    {
+                      "GaugeBottom": 1800000,
+                      "MagnificationValue": 1000
+                    }
+                  ],
+                  "StartTick": 0,
+                  "EndTick": 0
+                },
+                {
+                  "StartTime": 15000,
+                  "EndTime": 30000,
+                  "MagnificationList": [
+                    {
+                      "GaugeBottom": 0,
+                      "MagnificationValue": 3500
+                    },
+                    {
+                      "GaugeBottom": 200000,
+                      "MagnificationValue": 5000
+                    },
+                    {
+                      "GaugeBottom": 400000,
+                      "MagnificationValue": 7000
+                    },
+                    {
+                      "GaugeBottom": 600000,
+                      "MagnificationValue": 11000
+                    },
+                    {
+                      "GaugeBottom": 800000,
+                      "MagnificationValue": 11000
+                    },
+                    {
+                      "GaugeBottom": 1000000,
+                      "MagnificationValue": 11000
+                    },
+                    {
+                      "GaugeBottom": 1200000,
+                      "MagnificationValue": 10000
+                    },
+                    {
+                      "GaugeBottom": 1400000,
+                      "MagnificationValue": 10000
+                    },
+                    {
+                      "GaugeBottom": 1600000,
+                      "MagnificationValue": 2000
+                    },
+                    {
+                      "GaugeBottom": 1800000,
+                      "MagnificationValue": 1000
+                    }
+                  ],
+                  "StartTick": 0,
+                  "EndTick": 0
+                },
+                {
+                  "StartTime": 30000,
+                  "EndTime": 50000,
+                  "MagnificationList": [
+                    {
+                      "GaugeBottom": 0,
+                      "MagnificationValue": 3500
+                    },
+                    {
+                      "GaugeBottom": 200000,
+                      "MagnificationValue": 5000
+                    },
+                    {
+                      "GaugeBottom": 400000,
+                      "MagnificationValue": 8000
+                    },
+                    {
+                      "GaugeBottom": 600000,
+                      "MagnificationValue": 9000
+                    },
+                    {
+                      "GaugeBottom": 800000,
+                      "MagnificationValue": 10000
+                    },
+                    {
+                      "GaugeBottom": 1000000,
+                      "MagnificationValue": 10000
+                    },
+                    {
+                      "GaugeBottom": 1200000,
+                      "MagnificationValue": 10000
+                    },
+                    {
+                      "GaugeBottom": 1400000,
+                      "MagnificationValue": 9000
+                    },
+                    {
+                      "GaugeBottom": 1600000,
+                      "MagnificationValue": 3000
+                    },
+                    {
+                      "GaugeBottom": 1800000,
+                      "MagnificationValue": 500
+                    }
+                  ],
+                  "StartTick": 0,
+                  "EndTick": 0
+                },
+                {
+                  "StartTime": 50000,
+                  "EndTime": 110000,
+                  "MagnificationList": [
+                    {
+                      "GaugeBottom": 0,
+                      "MagnificationValue": 10000
+                    },
+                    {
+                      "GaugeBottom": 200000,
+                      "MagnificationValue": 10000
+                    },
+                    {
+                      "GaugeBottom": 400000,
+                      "MagnificationValue": 10000
+                    },
+                    {
+                      "GaugeBottom": 600000,
+                      "MagnificationValue": 10000
+                    },
+                    {
+                      "GaugeBottom": 800000,
+                      "MagnificationValue": 10000
+                    },
+                    {
+                      "GaugeBottom": 1000000,
+                      "MagnificationValue": 11000
+                    },
+                    {
+                      "GaugeBottom": 1200000,
+                      "MagnificationValue": 11000
+                    },
+                    {
+                      "GaugeBottom": 1400000,
+                      "MagnificationValue": 10000
+                    },
+                    {
+                      "GaugeBottom": 1600000,
+                      "MagnificationValue": 10000
+                    },
+                    {
+                      "GaugeBottom": 1800000,
+                      "MagnificationValue": 10000
+                    }
+                  ],
+                  "StartTick": 0,
+                  "EndTick": 0
+                }
+              ],
+              "ApplySkillSettings": [
+                {
+                  "GaugeBarRate": 0,
+                  "Operator": 3,
+                  "SkillToUse": {
+                    "SkillGroupId": "EN0001Ex07",
+                    "SkillLevel": 1,
+                    "UseToDefaultNotUsingSkillTargetRule": false
+                  },
+                  "MaxApplyCount": 1,
+                  "CurrentApplyCount": 0,
+                  "IsResetCondition": false
+                },
+                {
+                  "GaugeBarRate": 10000,
+                  "Operator": 5,
+                  "SkillToUse": {
+                    "SkillGroupId": "EN0001Ex09",
+                    "SkillLevel": 1,
+                    "UseToDefaultNotUsingSkillTargetRule": false
+                  },
+                  "MaxApplyCount": 1,
+                  "CurrentApplyCount": 0,
+                  "IsResetCondition": false
+                }
+              ],
+              "CommandID": "",
+              "TargetCharacter": null,
+              "CurrentGaugeValue": 0,
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceIdle, BlueArchive",
+              "IsForceIdleOn": true,
+              "CommandID": "EN0002_Command",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 100,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceIdle, BlueArchive",
+              "IsForceIdleOn": false,
+              "CommandID": "EN0002_Command",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "Operator_Enter",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "GroundConditionWaitForSeconds, BlueArchive",
+              "Milliseconds": 1000,
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 500,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandOperator, BlueArchive",
+              "GroupId": "823_EN0002Phase2_01",
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "Operator_Fever",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "GroundConditionWaitForSeconds, BlueArchive",
+              "Milliseconds": 47000,
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandOperator, BlueArchive",
+              "GroupId": "823_EN0002FeverTime_01",
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "FeverTime",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "GroundCommandShowFeverUI, BlueArchive",
+              "TargetSideId": "Enemy",
+              "ConditionIdToCheckTargetSideEnemy": "EN0002_Condition",
+              "CheckAlreadyAppliedLogicEffect": true,
+              "LogicEffectCheckList": [
+                "EN0001_Ex06_Effect01"
+              ],
+              "ShowMaxCount": 1,
+              "CommandID": "",
+              "Show": false,
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "PlayPropAni_1",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 30000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandPlayPropAnimation, BlueArchive",
+              "propKey": 2,
+              "animationName": "Phase_1",
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 30000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandPlayPropAnimation, BlueArchive",
+              "propKey": 2,
+              "animationName": "Phase_2",
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EN0002_Extreme_Gauge",
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "EN0002_Dead",
+                "EN0002_Condition"
+              ],
+              "SpawnCommandIdList": [
+                "EN0002_Command"
+              ],
+              "MovePoints": [],
+              "TileX": 36,
+              "TileY": 82,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.013,
+                "y": 2.44000244
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "EN0002_Spawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EN0001_Extreme",
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "EN0001_Dead",
+                "EN0001_Condition"
+              ],
+              "SpawnCommandIdList": [
+                "EN0001_Command"
+              ],
+              "MovePoints": [],
+              "TileX": 36,
+              "TileY": 97,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.013,
+                "y": 5.50000763
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "EN0001_Spawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Formations": [
+    {
+      "SectionIndex": 0,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": -4.61
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 1,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": 2.95
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    }
+  ],
+  "EnemyFormations": [],
+  "TemporaryCanUseSkillAreas": []
+}

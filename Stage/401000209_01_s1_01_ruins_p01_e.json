@@ -1,0 +1,5001 @@
+{
+  "Version": "1.0",
+  "Global": {
+    "Position": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "Events": [
+      {
+        "EventName": "SpawnPlayer",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": "0"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSpawnPlayer, BlueArchive",
+            "IsEnemy": false,
+            "IgnoreSkillCardShuffle": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 1,
+            "MaxCameraSpeed": 3,
+            "RotationSpeed": 1,
+            "ZoomSpeed": 1,
+            "RailPoints": [
+              {
+                "UseTableData": true,
+                "Position": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "MinCameraDistance": 30,
+                "MaxCameraDistance": 42,
+                "CameraForward": {
+                  "x": -0.8034657,
+                  "y": -0.426617682,
+                  "z": 0.4152592
+                }
+              },
+              {
+                "UseTableData": true,
+                "Position": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 25.62
+                },
+                "MinCameraDistance": 30,
+                "MaxCameraDistance": 42,
+                "CameraForward": {
+                  "x": -0.8034657,
+                  "y": -0.426617682,
+                  "z": 0.4152592
+                }
+              }
+            ],
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 1,
+            "SetConditionCommandOnly": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "EndBattle",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionEndWave, BlueArchive",
+            "UniqueName": "10",
+            "Step": 3,
+            "ConditionID": "10"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandCharacterDie, BlueArchive",
+            "CharacterCommandIdList": [
+              "EnemyCommand"
+            ],
+            "CharacterSpawnTemplateIdList": [],
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandEndBattle, BlueArchive",
+            "BattleEndType": 4,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      }
+    ]
+  },
+  "Sections": [
+    {
+      "SectionID": 1,
+      "Position": {
+        "x": 0,
+        "y": 0,
+        "z": 5
+      },
+      "Events": [
+        {
+          "EventName": "Spawn1-1",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWave, BlueArchive",
+              "UniqueId": "10",
+              "ClearCondition": 0,
+              "Waves": [
+                {
+                  "SpawnPointCommandId": "1",
+                  "EndCount": 12,
+                  "WaveDelay": 0,
+                  "StartOperator": "",
+                  "ClearOperator": ""
+                },
+                {
+                  "SpawnPointCommandId": "2",
+                  "EndCount": 10,
+                  "WaveDelay": 0,
+                  "StartOperator": "",
+                  "ClearOperator": ""
+                },
+                {
+                  "SpawnPointCommandId": "3",
+                  "EndCount": 0,
+                  "WaveDelay": 0,
+                  "StartOperator": "",
+                  "ClearOperator": ""
+                }
+              ],
+              "StartWaveAction": null,
+              "ClearWaveAction": null,
+              "TotalCountChangedAction": null,
+              "AllClearAction": null,
+              "OnAddEntityAction": null,
+              "CommandID": "10",
+              "CurWaveNum": 0,
+              "CurrProcess": null,
+              "IsClearLastWave": false,
+              "TotalCount": 0,
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "CostUp_1",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 300,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [],
+              "CreateCharacterStat": false,
+              "CharacterId": 0,
+              "CharacterLevel": 0,
+              "CharacterGrade": 0,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_Buff_StatChange_RegenCost_Ally_300s_1400_Fixed",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 1,
+              "CommandID": "UseSkillCostSkillPoint",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [],
+              "CreateCharacterStat": false,
+              "CharacterId": 0,
+              "CharacterLevel": 0,
+              "CharacterGrade": 0,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_Buff_StatChange_NormalAttackSpeed_Ally_15s_75_Ratio",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 1,
+              "CommandID": "UseSkillCostSkillPoint",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 14999,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [],
+              "CreateCharacterStat": false,
+              "CharacterId": 0,
+              "CharacterLevel": 0,
+              "CharacterGrade": 0,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_Buff_StatChange_NormalAttackSpeed_Ally_15s_75_Ratio",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 1,
+              "CommandID": "UseSkillCostSkillPoint",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 14999,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [],
+              "CreateCharacterStat": false,
+              "CharacterId": 0,
+              "CharacterLevel": 0,
+              "CharacterGrade": 0,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_Buff_StatChange_NormalAttackSpeed_Ally_15s_75_Ratio",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 1,
+              "CommandID": "UseSkillCostSkillPoint",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 14999,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [],
+              "CreateCharacterStat": false,
+              "CharacterId": 0,
+              "CharacterLevel": 0,
+              "CharacterGrade": 0,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_Buff_StatChange_NormalAttackSpeed_Ally_15s_75_Ratio",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 1,
+              "CommandID": "UseSkillCostSkillPoint",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 14999,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [],
+              "CreateCharacterStat": false,
+              "CharacterId": 0,
+              "CharacterLevel": 0,
+              "CharacterGrade": 0,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_Buff_StatChange_NormalAttackSpeed_Ally_15s_75_Ratio",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 1,
+              "CommandID": "UseSkillCostSkillPoint",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 14999,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [],
+              "CreateCharacterStat": false,
+              "CharacterId": 0,
+              "CharacterLevel": 0,
+              "CharacterGrade": 0,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_Buff_StatChange_NormalAttackSpeed_Ally_15s_75_Ratio",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 1,
+              "CommandID": "UseSkillCostSkillPoint",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 14999,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [],
+              "CreateCharacterStat": false,
+              "CharacterId": 0,
+              "CharacterLevel": 0,
+              "CharacterGrade": 0,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_Buff_StatChange_NormalAttackSpeed_Ally_15s_75_Ratio",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 1,
+              "CommandID": "UseSkillCostSkillPoint",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 14999,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [],
+              "CreateCharacterStat": false,
+              "CharacterId": 0,
+              "CharacterLevel": 0,
+              "CharacterGrade": 0,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_Buff_StatChange_NormalAttackSpeed_Ally_15s_75_Ratio",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 1,
+              "CommandID": "UseSkillCostSkillPoint",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 14999,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [],
+              "CreateCharacterStat": false,
+              "CharacterId": 0,
+              "CharacterLevel": 0,
+              "CharacterGrade": 0,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_Buff_StatChange_NormalAttackSpeed_Ally_15s_75_Ratio",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 1,
+              "CommandID": "UseSkillCostSkillPoint",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 14999,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [],
+              "CreateCharacterStat": false,
+              "CharacterId": 0,
+              "CharacterLevel": 0,
+              "CharacterGrade": 0,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_Buff_StatChange_NormalAttackSpeed_Ally_15s_75_Ratio",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 1,
+              "CommandID": "UseSkillCostSkillPoint",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 14999,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [],
+              "CreateCharacterStat": false,
+              "CharacterId": 0,
+              "CharacterLevel": 0,
+              "CharacterGrade": 0,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_Buff_StatChange_NormalAttackSpeed_Ally_15s_75_Ratio",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 1,
+              "CommandID": "UseSkillCostSkillPoint",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 14999,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [],
+              "CreateCharacterStat": false,
+              "CharacterId": 0,
+              "CharacterLevel": 0,
+              "CharacterGrade": 0,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_Buff_StatChange_NormalAttackSpeed_Ally_15s_75_Ratio",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 1,
+              "CommandID": "UseSkillCostSkillPoint",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 14999,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [],
+              "CreateCharacterStat": false,
+              "CharacterId": 0,
+              "CharacterLevel": 0,
+              "CharacterGrade": 0,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_Buff_StatChange_NormalAttackSpeed_Ally_15s_75_Ratio",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 1,
+              "CommandID": "UseSkillCostSkillPoint",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 14999,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [],
+              "CreateCharacterStat": false,
+              "CharacterId": 0,
+              "CharacterLevel": 0,
+              "CharacterGrade": 0,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_Buff_StatChange_NormalAttackSpeed_Ally_15s_75_Ratio",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 1,
+              "CommandID": "UseSkillCostSkillPoint",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 14999,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [],
+              "CreateCharacterStat": false,
+              "CharacterId": 0,
+              "CharacterLevel": 0,
+              "CharacterGrade": 0,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_Buff_StatChange_NormalAttackSpeed_Ally_15s_75_Ratio",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 1,
+              "CommandID": "UseSkillCostSkillPoint",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 14999,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [],
+              "CreateCharacterStat": false,
+              "CharacterId": 0,
+              "CharacterLevel": 0,
+              "CharacterGrade": 0,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_Buff_StatChange_NormalAttackSpeed_Ally_15s_75_Ratio",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 1,
+              "CommandID": "UseSkillCostSkillPoint",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 14999,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [],
+              "CreateCharacterStat": false,
+              "CharacterId": 0,
+              "CharacterLevel": 0,
+              "CharacterGrade": 0,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_Buff_StatChange_NormalAttackSpeed_Ally_15s_75_Ratio",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 1,
+              "CommandID": "UseSkillCostSkillPoint",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 14999,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [],
+              "CreateCharacterStat": false,
+              "CharacterId": 0,
+              "CharacterLevel": 0,
+              "CharacterGrade": 0,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_Buff_StatChange_NormalAttackSpeed_Ally_15s_75_Ratio",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 1,
+              "CommandID": "UseSkillCostSkillPoint",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 14999,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [],
+              "CreateCharacterStat": false,
+              "CharacterId": 0,
+              "CharacterLevel": 0,
+              "CharacterGrade": 0,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_Buff_StatChange_NormalAttackSpeed_Ally_15s_75_Ratio",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 1,
+              "CommandID": "UseSkillCostSkillPoint",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [
+        {
+          "UniqueName": "Ruins_IronPipe",
+          "Position": {
+            "x": -2.91,
+            "y": 0,
+            "z": 19.45
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Ruins_Stone1",
+          "Position": {
+            "x": 2.71,
+            "y": 0,
+            "z": 7.10999966
+          },
+          "Forward": {
+            "x": 0.128795266,
+            "y": 0,
+            "z": 0.9916712
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "52101_CarBlack",
+          "Position": {
+            "x": -3.12,
+            "y": 0,
+            "z": 11.92
+          },
+          "Forward": {
+            "x": 0.165438518,
+            "y": 0,
+            "z": -0.9862201
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        }
+      ],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SkillPoint",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SkillUsePoint, BlueArchive",
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
+              "MovePoints": [],
+              "TileX": 40,
+              "TileY": 49,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.02,
+                "y": 5.24
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "UseSkillCostSkillPoint"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointParent1",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 39,
+                  "TileY": 149,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.140000284,
+                    "y": 25.36
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 37,
+              "TileY": 167,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.59,
+                "y": 28.87
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 38,
+                  "TileY": 144,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.4300003,
+                    "y": 24.34
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 41,
+              "TileY": 165,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.210000038,
+                "y": 28.42
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 36,
+                  "TileY": 145,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.7100005,
+                    "y": 24.4100018
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 37,
+              "TileY": 179,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.619999945,
+                "y": 31.2200012
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 37,
+                  "TileY": 157,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.620000243,
+                    "y": 26.98
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 35,
+              "TileY": 175,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.06999993,
+                "y": 30.49
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 43,
+                  "TileY": 156,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.5399997,
+                    "y": 26.73
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 40,
+              "TileY": 174,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.09000005,
+                "y": 30.24
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 44,
+                  "TileY": 146,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.7299994,
+                    "y": 24.7300014
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 44,
+              "TileY": 180,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.820000052,
+                "y": 31.54
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 41,
+                  "TileY": 164,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.199999392,
+                    "y": 28.29
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 41,
+              "TileY": 198,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.29,
+                "y": 35.1
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 38,
+                  "TileY": 162,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.3900008,
+                    "y": 27.9399986
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 36,
+              "TileY": 207,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.73,
+                "y": 36.8
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 35,
+                  "TileY": 159,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.950000763,
+                    "y": 27.2699966
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 34,
+              "TileY": 203,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.29,
+                "y": 36.1299973
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 35,
+                  "TileY": 169,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -1.04000092,
+                    "y": 29.2999954
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 33,
+              "TileY": 213,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.38000011,
+                "y": 38.159996
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 40,
+                  "TileY": 171,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.0399992168,
+                    "y": 29.6199989
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 39,
+              "TileY": 215,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.3,
+                "y": 38.48
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 45,
+                  "TileY": 173,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.9499992,
+                    "y": 30.079998
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 43,
+              "TileY": 217,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.61,
+                "y": 38.94
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 47,
+                  "TileY": 165,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 1.319999,
+                    "y": 28.5499973
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 45,
+              "TileY": 221,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.909999967,
+                "y": 39.7899971
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 39,
+                  "TileY": 163,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.260000348,
+                    "y": 28.1899986
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 42,
+              "TileY": 184,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.38,
+                "y": 32.2699966
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 40,
+                  "TileY": 169,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.0299996734,
+                    "y": 29.21
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 38,
+              "TileY": 186,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.420000017,
+                "y": 32.72
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 37,
+                  "TileY": 164,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.540000558,
+                    "y": 28.26
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 38,
+              "TileY": 198,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.45,
+                "y": 35.07
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 38,
+                  "TileY": 177,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.4500003,
+                    "y": 30.829998
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 36,
+              "TileY": 194,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.9,
+                "y": 34.3399963
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 44,
+                  "TileY": 175,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.7099997,
+                    "y": 30.579998
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 41,
+              "TileY": 193,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.26,
+                "y": 34.0899963
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 45,
+                  "TileY": 165,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.8999994,
+                    "y": 28.58
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 45,
+              "TileY": 199,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.99,
+                "y": 35.39
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 42,
+                  "TileY": 159,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.369998932,
+                    "y": 27.329998
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 42,
+              "TileY": 217,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.459999949,
+                "y": 38.9499969
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointParent2",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 39,
+                  "TileY": 166,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.260000348,
+                    "y": 28.75
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 36,
+              "TileY": 184,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.710000038,
+                "y": 32.2600021
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 37,
+                  "TileY": 161,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.5500003,
+                    "y": 27.73
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 40,
+              "TileY": 182,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.09,
+                "y": 31.81
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 36,
+                  "TileY": 162,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.830000639,
+                    "y": 27.8000011
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 36,
+              "TileY": 196,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.74,
+                "y": 34.61
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 36,
+                  "TileY": 174,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.740000248,
+                    "y": 30.369997
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 34,
+              "TileY": 192,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.18999994,
+                "y": 33.8799973
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 42,
+                  "TileY": 173,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.419999719,
+                    "y": 30.1199989
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 40,
+              "TileY": 191,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.0299999863,
+                "y": 33.6299973
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 43,
+                  "TileY": 163,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.6099994,
+                    "y": 28.12
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 44,
+              "TileY": 197,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.700000048,
+                "y": 34.93
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 40,
+                  "TileY": 168,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.0299994051,
+                    "y": 29.039999
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 41,
+              "TileY": 202,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.120000005,
+                "y": 35.85
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 37,
+                  "TileY": 161,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.5100008,
+                    "y": 27.79
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 36,
+              "TileY": 206,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.85,
+                "y": 36.65
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 35,
+                  "TileY": 158,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -1.07000077,
+                    "y": 27.1199989
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 33,
+              "TileY": 202,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.41,
+                "y": 35.98
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 35,
+                  "TileY": 149,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -1.09000087,
+                    "y": 25.2499962
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 33,
+              "TileY": 193,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.43000007,
+                "y": 34.1099968
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 40,
+                  "TileY": 150,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.0100007653,
+                    "y": 25.57
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 38,
+              "TileY": 195,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.35,
+                "y": 34.43
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 45,
+                  "TileY": 153,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.899999261,
+                    "y": 26.0299988
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 43,
+              "TileY": 197,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.560000062,
+                "y": 34.89
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 47,
+                  "TileY": 153,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 1.319999,
+                    "y": 26.19
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 45,
+              "TileY": 210,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.909999967,
+                "y": 37.43
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 40,
+                  "TileY": 154,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.049999,
+                    "y": 26.3000011
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 38,
+              "TileY": 210,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.36,
+                "y": 37.54
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 37,
+                  "TileY": 152,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.590001,
+                    "y": 25.99
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 35,
+              "TileY": 209,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1,
+                "y": 37.23
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 34,
+                  "TileY": 155,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -1.26000106,
+                    "y": 26.44
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 32,
+              "TileY": 211,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.67000008,
+                "y": 37.68
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 39,
+                  "TileY": 160,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.290000975,
+                    "y": 27.49
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 37,
+              "TileY": 216,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.7,
+                "y": 38.73
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 45,
+                  "TileY": 160,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.899999,
+                    "y": 27.4
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 42,
+              "TileY": 216,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.49,
+                "y": 38.64
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 47,
+                  "TileY": 162,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 1.349999,
+                    "y": 27.85
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 45,
+              "TileY": 218,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.94,
+                "y": 39.09
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 35,
+                  "TileY": 163,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.9300009,
+                    "y": 28.08
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 33,
+              "TileY": 219,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.33999991,
+                "y": 39.32
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointParent3",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 39,
+                  "TileY": 182,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.160000324,
+                    "y": 31.9000015
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 37,
+              "TileY": 200,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.61,
+                "y": 35.4100037
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 38,
+                  "TileY": 177,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.450000346,
+                    "y": 30.8800011
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 41,
+              "TileY": 197,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.19,
+                "y": 34.96
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 36,
+                  "TileY": 177,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.7300006,
+                    "y": 30.9500027
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 37,
+              "TileY": 211,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.64,
+                "y": 37.7600021
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 37,
+                  "TileY": 166,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.640000641,
+                    "y": 28.71
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 35,
+              "TileY": 208,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.08999991,
+                "y": 37.03
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 43,
+                  "TileY": 165,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.519999266,
+                    "y": 28.460001
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 40,
+              "TileY": 206,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.07000001,
+                "y": 36.78
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 44,
+                  "TileY": 179,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.709999442,
+                    "y": 31.2700024
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 44,
+              "TileY": 213,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.8,
+                "y": 38.08
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 41,
+                  "TileY": 159,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.129998982,
+                    "y": 27.3800011
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 41,
+              "TileY": 218,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.22,
+                "y": 39
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 38,
+                  "TileY": 177,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.410000771,
+                    "y": 30.9400024
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 36,
+              "TileY": 222,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.75,
+                "y": 39.8000031
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 35,
+                  "TileY": 174,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.970000744,
+                    "y": 30.27
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 33,
+              "TileY": 218,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.31,
+                "y": 39.13
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 35,
+                  "TileY": 165,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.990000844,
+                    "y": 28.3999977
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 33,
+              "TileY": 209,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.33,
+                "y": 37.26
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 40,
+                  "TileY": 166,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.08999923,
+                    "y": 28.7200012
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 39,
+              "TileY": 210,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.25,
+                "y": 37.58
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 45,
+                  "TileY": 168,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.9999993,
+                    "y": 29.18
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 43,
+              "TileY": 213,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.66,
+                "y": 38.04
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 47,
+                  "TileY": 161,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 1.36999893,
+                    "y": 27.65
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 45,
+              "TileY": 217,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.96,
+                "y": 38.89
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 41,
+                  "TileY": 161,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.09999901,
+                    "y": 27.76
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 38,
+              "TileY": 218,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.31,
+                "y": 39
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Sweeper_Decagram_Colour_Taser_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 37,
+                  "TileY": 160,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.540001,
+                    "y": 27.4499989
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 35,
+              "TileY": 216,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.95,
+                "y": 38.69
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Droid_Decagram_AR_Colour_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [],
+              "TileX": 25,
+              "TileY": 140,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -3,
+                "y": 23.43
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Droid_Decagram_AR_Colour_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [],
+              "TileX": 44,
+              "TileY": 156,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.79,
+                "y": 26.69
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Droid_Decagram_AR_Colour_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [],
+              "TileX": 51,
+              "TileY": 164,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 2.18,
+                "y": 28.2600021
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Droid_Decagram_AR_Colour_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [],
+              "TileX": 41,
+              "TileY": 163,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.220000029,
+                "y": 28.1
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Droid_Decagram_AR_Colour_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [],
+              "TileX": 35,
+              "TileY": 156,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.01,
+                "y": 26.7300014
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Droid_Decagram_AR_Colour_M",
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "EnemyCommand"
+              ],
+              "MovePoints": [],
+              "TileX": 31,
+              "TileY": 163,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.85,
+                "y": 28.0900021
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "SectionID": 2,
+      "Position": {
+        "x": 0,
+        "y": 0,
+        "z": 25
+      },
+      "Events": [],
+      "Obstacles": [
+        {
+          "UniqueName": "Ruins_Baricade",
+          "Position": {
+            "x": -2.89,
+            "y": 0,
+            "z": 40.04
+          },
+          "Forward": {
+            "x": 0.238533542,
+            "y": 0,
+            "z": 0.971134245
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Ruins_Stone2",
+          "Position": {
+            "x": 2.63,
+            "y": 0,
+            "z": 31.5
+          },
+          "Forward": {
+            "x": 0.08245995,
+            "y": 0,
+            "z": 0.996594369
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        }
+      ],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent2-1",
+          "SpawnPoints": []
+        },
+        {
+          "GroupName": "SpawnPointParent2-2",
+          "SpawnPoints": []
+        }
+      ]
+    },
+    {
+      "SectionID": 3,
+      "Position": {
+        "x": 0,
+        "y": 0,
+        "z": 45
+      },
+      "Events": [],
+      "Obstacles": [
+        {
+          "UniqueName": "Ruins_Baricade",
+          "Position": {
+            "x": 2.94,
+            "y": 0,
+            "z": 51.65
+          },
+          "Forward": {
+            "x": -0.1287956,
+            "y": 0,
+            "z": 0.991671145
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Ruins_Tires",
+          "Position": {
+            "x": 2.85,
+            "y": 0,
+            "z": 62.3099976
+          },
+          "Forward": {
+            "x": -0.1856666,
+            "y": 0,
+            "z": 0.9826128
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Ruins_Stone1",
+          "Position": {
+            "x": -1.28,
+            "y": 0,
+            "z": 47.39
+          },
+          "Forward": {
+            "x": -0.122042581,
+            "y": 0,
+            "z": 0.992524862
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Ruins_Stone2",
+          "Position": {
+            "x": 2.87,
+            "y": 0,
+            "z": 58.42
+          },
+          "Forward": {
+            "x": 0.156434357,
+            "y": 0,
+            "z": 0.987688363
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Ruins_Stone2",
+          "Position": {
+            "x": -3.06,
+            "y": 0,
+            "z": 61.9899979
+          },
+          "Forward": {
+            "x": -0.19936794,
+            "y": 0,
+            "z": 0.9799247
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        }
+      ],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent3-1",
+          "SpawnPoints": []
+        },
+        {
+          "GroupName": "SpawnPointParent3-2",
+          "SpawnPoints": []
+        }
+      ]
+    }
+  ],
+  "Formations": [
+    {
+      "SectionIndex": 0,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": 0
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 1,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": 16.73
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 2,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": 30.42
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 3,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": 38.52
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    }
+  ],
+  "EnemyFormations": [],
+  "TemporaryCanUseSkillAreas": []
+}

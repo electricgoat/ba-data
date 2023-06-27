@@ -1,0 +1,789 @@
+{
+  "Version": "1.0",
+  "Global": {
+    "Position": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "Events": [
+      {
+        "EventName": "SpawnPlayer",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": "0"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSpawnPlayer, BlueArchive",
+            "IsEnemy": false,
+            "IgnoreSkillCardShuffle": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 7,
+            "MaxCameraSpeed": 3,
+            "RotationSpeed": 1,
+            "ZoomSpeed": 1,
+            "RailPoints": [
+              {
+                "UseTableData": true,
+                "Position": {
+                  "x": 0,
+                  "y": 1.45,
+                  "z": 16.01
+                },
+                "MinCameraDistance": 53,
+                "MaxCameraDistance": 53,
+                "CameraForward": {
+                  "x": -0.6977434,
+                  "y": -0.38783738,
+                  "z": 0.602275968
+                }
+              },
+              {
+                "UseTableData": true,
+                "Position": {
+                  "x": 0,
+                  "y": 1.45,
+                  "z": 28.41
+                },
+                "MinCameraDistance": 53,
+                "MaxCameraDistance": 53,
+                "CameraForward": {
+                  "x": -0.6977434,
+                  "y": -0.38783738,
+                  "z": 0.602275968
+                }
+              }
+            ],
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 1,
+            "SetConditionCommandOnly": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "EndBattle",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 0,
+            "CheckSummonedCharacterDead": false,
+            "ConditionID": "ConditionDeadKuro"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandEndBattle, BlueArchive",
+            "BattleEndType": 4,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      }
+    ]
+  },
+  "Sections": [
+    {
+      "SectionID": 1,
+      "Position": {
+        "x": 0,
+        "y": 0,
+        "z": 5
+      },
+      "Events": [
+        {
+          "EventName": "SpawnShiro",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 0,
+              "CommandID": "CommandSpawnShiro",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "SpawnNPC",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 0,
+              "CommandID": "CommandNPC",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "ShiroLightRed",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharacterPhaseChanged, BlueArchive",
+              "Phase": 4,
+              "MaxTriggerCount": -1,
+              "ConditionID": "Shiro"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandPlayPropAnimation, BlueArchive",
+              "propKey": 1,
+              "animationName": "rb_shirokuro_light_GrayToRed_ani",
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "ShiroLightBlue",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharacterPhaseChanged, BlueArchive",
+              "Phase": 6,
+              "MaxTriggerCount": -1,
+              "ConditionID": "Shiro"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandPlayPropAnimation, BlueArchive",
+              "propKey": 1,
+              "animationName": "rb_shirokuro_light_GrayToBlue_ani",
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "StartSection2",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+              "DeadCheck": 0,
+              "CheckSummonedCharacterDead": false,
+              "ConditionID": "ConditionDeadShiro"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 1000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+              "SectionID": 2,
+              "SetConditionCommandOnly": false,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Shiro_Colour_HardCore",
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "ConditionDeadShiro",
+                "Shiro"
+              ],
+              "SpawnCommandIdList": [],
+              "MovePoints": [],
+              "TileX": 55,
+              "TileY": 217,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.03,
+                "y": 32.0599976
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandSpawnShiro"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointParent_NPC",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "NPC_Vol100_EB_Midori_default_E",
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "Z",
+              "SpawnConditionIdList": [
+                "SpawnConditionNPC"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommandNPC"
+              ],
+              "MovePoints": [],
+              "TileX": 45,
+              "TileY": 122,
+              "PositionHeight": 0.1,
+              "Position": {
+                "x": -1.99,
+                "y": 13.04
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandNPC"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "NPC_Vol100_EB_Avantgardekun_Millenium_AR_E",
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "Z",
+              "SpawnConditionIdList": [
+                "SpawnConditionNPC"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommandNPC"
+              ],
+              "MovePoints": [],
+              "TileX": 54,
+              "TileY": 122,
+              "PositionHeight": 0.1,
+              "Position": {
+                "x": -0.04,
+                "y": 13.04
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandNPC"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "NPC_Vol100_EB_Momoi_default_E",
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "Z",
+              "SpawnConditionIdList": [
+                "SpawnConditionNPC"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommandNPC"
+              ],
+              "MovePoints": [],
+              "TileX": 65,
+              "TileY": 122,
+              "PositionHeight": 0.1,
+              "Position": {
+                "x": 2.08,
+                "y": 13
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandNPC"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "SectionID": 2,
+      "Position": {
+        "x": 0,
+        "y": 0,
+        "z": 112.6
+      },
+      "Events": [
+        {
+          "EventName": "InstantMove",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandPlayPropAnimation, BlueArchive",
+              "propKey": 1,
+              "animationName": "rb_shirokuro_light_GrayToBlue_ani",
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandFadeOutIn, BlueArchive",
+              "DelayBeforeFadeOut": 0,
+              "DelayBeforeFadeIn": 1.5,
+              "VisualDelayFadeInStart": 1.5,
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceMoveToGroundPoint, BlueArchive",
+              "IsInstantMove": true,
+              "IsInterruptCurrentAction": true,
+              "PointCommandID": "3Sec2PhaseNPCsPoint",
+              "IsCommandWaitForMoveStart": false,
+              "IsCommandWaitForMoveEnd": false,
+              "CommandID": "SpawnCommandNPC",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceMoveToFormationBeacon, BlueArchive",
+              "IsInstantMove": true,
+              "IsInterruptCurrentAction": true,
+              "KeepRelativePosition": false,
+              "DatumPointBeforeMove": {
+                "x": 0,
+                "y": 0
+              },
+              "DatumPointAfterMove": {
+                "x": 0,
+                "y": 0
+              },
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandLocateCamera, BlueArchive",
+              "ID": 7,
+              "MaxCameraSpeed": 3,
+              "RotationSpeed": 1,
+              "ZoomSpeed": 1,
+              "RailPoints": [
+                {
+                  "UseTableData": true,
+                  "Position": {
+                    "x": 0,
+                    "y": 1.45,
+                    "z": 127.76
+                  },
+                  "MinCameraDistance": 53,
+                  "MaxCameraDistance": 53,
+                  "CameraForward": {
+                    "x": -0.6977434,
+                    "y": -0.38783738,
+                    "z": 0.602275968
+                  }
+                },
+                {
+                  "UseTableData": true,
+                  "Position": {
+                    "x": 0.45,
+                    "y": 1.45,
+                    "z": 133.24
+                  },
+                  "MinCameraDistance": 53,
+                  "MaxCameraDistance": 53,
+                  "CameraForward": {
+                    "x": -0.6977434,
+                    "y": -0.38783738,
+                    "z": 0.602275968
+                  }
+                }
+              ],
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 1490,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandPlayTransition, BlueArchive",
+              "resourceName": "UI_Timeline_ColourRaid_Transition",
+              "IsUI": true,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "SpawnKuro",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 2000,
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 0,
+              "CommandID": "CommandSpawnKuro",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "StartSection3",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionArea, BlueArchive",
+              "SpawnTemplateId": "",
+              "Shape": 0,
+              "Target": 0,
+              "Trigger": 0,
+              "StayTime": 0,
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 125.21
+              },
+              "Rect": {
+                "Direction": {
+                  "x": 0,
+                  "y": 0
+                },
+                "Width": 13,
+                "Height": 5
+              },
+              "Circle": {
+                "Radius": 1
+              },
+              "InactivateWhenStart": false,
+              "ConditionID": "0"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 1550,
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+              "SectionID": 3,
+              "SetConditionCommandOnly": false,
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Kuro_Colour_HardCore",
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "ConditionDeadKuro",
+                "Kuro"
+              ],
+              "SpawnCommandIdList": [],
+              "MovePoints": [],
+              "TileX": 54,
+              "TileY": 748,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.08,
+                "y": 138.26
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandSpawnKuro"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "SectionID": 3,
+      "Position": {
+        "x": 0,
+        "y": 0,
+        "z": 112.6
+      },
+      "Events": [
+        {
+          "EventName": "KuroLightRed",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharacterPhaseChanged, BlueArchive",
+              "Phase": 11,
+              "MaxTriggerCount": -1,
+              "ConditionID": "Kuro"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandPlayPropAnimation, BlueArchive",
+              "propKey": 1,
+              "animationName": "rb_shirokuro_light_GrayToRed_ani",
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "KuroLightBlue",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharacterPhaseChanged, BlueArchive",
+              "Phase": 7,
+              "MaxTriggerCount": -1,
+              "ConditionID": "Kuro"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandPlayPropAnimation, BlueArchive",
+              "propKey": 1,
+              "animationName": "rb_shirokuro_light_GrayToBlue_ani",
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "",
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
+              "MovePoints": [],
+              "TileX": 54,
+              "TileY": 670,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.05,
+                "y": 122.659996
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "3Sec2PhaseNPCsPoint"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Formations": [
+    {
+      "SectionIndex": 0,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": 16
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 1,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": 29.46
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 2,
+      "IgnorePathFind": true,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": 125.37
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 3,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": 136.37
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    }
+  ],
+  "EnemyFormations": [],
+  "TemporaryCanUseSkillAreas": []
+}

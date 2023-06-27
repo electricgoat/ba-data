@@ -1,0 +1,839 @@
+{
+  "Version": "",
+  "Global": {
+    "Position": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "Events": [
+      {
+        "EventName": "SpawnPlayer",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": "0"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSpawnPlayer, BlueArchive",
+            "IsEnemy": false,
+            "IgnoreSkillCardShuffle": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 6,
+            "MaxCameraSpeed": 3,
+            "RotationSpeed": 1,
+            "ZoomSpeed": 1,
+            "RailPoints": [
+              {
+                "UseTableData": true,
+                "Position": {
+                  "x": 0,
+                  "y": 1.4,
+                  "z": 125.07
+                },
+                "MinCameraDistance": 50,
+                "MaxCameraDistance": 50,
+                "CameraForward": {
+                  "x": -0.8034657,
+                  "y": -0.426617682,
+                  "z": 0.4152592
+                }
+              },
+              {
+                "UseTableData": true,
+                "Position": {
+                  "x": 0,
+                  "y": 1.4,
+                  "z": 138.06
+                },
+                "MinCameraDistance": 50,
+                "MaxCameraDistance": 50,
+                "CameraForward": {
+                  "x": -0.8034657,
+                  "y": -0.426617682,
+                  "z": 0.4152592
+                }
+              }
+            ],
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 1,
+            "SetConditionCommandOnly": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          }
+        ]
+      }
+    ]
+  },
+  "Sections": [
+    {
+      "SectionID": 1,
+      "Position": {
+        "x": 0,
+        "y": 0,
+        "z": 120
+      },
+      "Events": [
+        {
+          "EventName": "SpawnChesed",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": "4"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 0,
+              "CommandID": "41",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "SpawnNPC",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": "4"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 0,
+              "CommandID": "CommandNPC",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "PropAnimation",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionArea, BlueArchive",
+              "SpawnTemplateId": "",
+              "Shape": 0,
+              "Target": 0,
+              "Trigger": 0,
+              "StayTime": 0,
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 132.5
+              },
+              "Rect": {
+                "Direction": {
+                  "x": 0,
+                  "y": 0
+                },
+                "Width": 13,
+                "Height": 5
+              },
+              "Circle": {
+                "Radius": 1
+              },
+              "InactivateWhenStart": false,
+              "ConditionID": "0"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandPlayPropAnimation, BlueArchive",
+              "propKey": 10,
+              "animationName": "Chesed_02_BossState_02",
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "EndBattle",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+              "DeadCheck": 0,
+              "CheckSummonedCharacterDead": false,
+              "ConditionID": "99"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandPlayPropAnimation, BlueArchive",
+              "propKey": 10,
+              "animationName": "Chesed_02_BossState_03",
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandEndBattle, BlueArchive",
+              "BattleEndType": 4,
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Chesed_Colour_HardCore",
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "99"
+              ],
+              "SpawnCommandIdList": [],
+              "MovePoints": [],
+              "TileX": 117,
+              "TileY": 737,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0,
+                "y": 143
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "41"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointParent_NPC",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "NPC_Vol100_EB_Tsurugi_default_E",
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SpawnConditionNPC"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommandNPC"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 115,
+                  "TileY": 670,
+                  "PositionHeight": 0.1,
+                  "Position": {
+                    "x": -0.561779737,
+                    "y": 129.564728
+                  },
+                  "Direction": {
+                    "x": 0.03417077,
+                    "y": 0.999416
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 113,
+              "TileY": 625,
+              "PositionHeight": 0.1,
+              "Position": {
+                "x": -0.87,
+                "y": 120.55
+              },
+              "Direction": {
+                "x": 0.03417077,
+                "y": 0.999416
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandNPC"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "NPC_Vol100_EB_Akane_default_E",
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SpawnConditionNPC"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommandNPC"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 122,
+                  "TileY": 670,
+                  "PositionHeight": 0.1,
+                  "Position": {
+                    "x": 0.812848449,
+                    "y": 129.520081
+                  },
+                  "Direction": {
+                    "x": 0.03417077,
+                    "y": 0.999416
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 120,
+              "TileY": 625,
+              "PositionHeight": 0.1,
+              "Position": {
+                "x": 0.5046282,
+                "y": 120.505356
+              },
+              "Direction": {
+                "x": 0.03417077,
+                "y": 0.999416
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandNPC"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "NPC_Vol100_EB_RoyalGuard_RedWinter_SMG_E",
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SpawnConditionNPC"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommandNPC"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 105,
+                  "TileY": 684,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -2.59,
+                    "y": 132.3
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 105,
+              "TileY": 619,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -2.59,
+                "y": 119.3
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandNPC"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "NPC_Vol100_EB_RoyalGuard_RedWinter_GL_E",
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SpawnConditionNPC"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommandNPC"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 125,
+                  "TileY": 673,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 1.5,
+                    "y": 130.140015
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 125,
+              "TileY": 608,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 1.5,
+                "y": 117.140007
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandNPC"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "NPC_Vol100_EB_RoyalGuard_RedWinter_AR_E",
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SpawnConditionNPC"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommandNPC"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 114,
+                  "TileY": 681,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.75,
+                    "y": 131.680008
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 114,
+              "TileY": 616,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.75,
+                "y": 118.680008
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandNPC"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "NPC_Vol100_EB_RoyalGuard_RedWinterSergeant_AR_E",
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SpawnConditionNPC"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommandNPC"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 117,
+                  "TileY": 685,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.05,
+                    "y": 132.47
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 117,
+              "TileY": 620,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.05,
+                "y": 119.47
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandNPC"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "NPC_Vol100_EB_RoyalGuard_RedWinter_AR_E",
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SpawnConditionNPC"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommandNPC"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 121,
+                  "TileY": 678,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.8,
+                    "y": 131.140015
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 121,
+              "TileY": 613,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.8,
+                "y": 118.140007
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandNPC"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "NPC_Vol100_EB_RoyalGuard_RedWinter_GL_E",
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SpawnConditionNPC"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommandNPC"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 110,
+                  "TileY": 673,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -1.5,
+                    "y": 130.180008
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 110,
+              "TileY": 608,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.5,
+                "y": 117.180008
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandNPC"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "NPC_Vol100_EB_RoyalGuard_RedWinter_SMG_E",
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SpawnConditionNPC"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommandNPC"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 128,
+                  "TileY": 683,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 2.06,
+                    "y": 132.1
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 128,
+              "TileY": 618,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 2.06,
+                "y": 119.100006
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandNPC"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Formations": [
+    {
+      "SectionIndex": 0,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": 125
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 1,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": 136.43
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    }
+  ],
+  "EnemyFormations": [],
+  "TemporaryCanUseSkillAreas": []
+}

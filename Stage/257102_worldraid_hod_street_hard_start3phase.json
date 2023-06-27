@@ -1,0 +1,406 @@
+{
+  "Version": "1.0",
+  "Global": {
+    "Position": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "Events": [
+      {
+        "EventName": "SpawnPlayer",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": "0"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSpawnPlayer, BlueArchive",
+            "IsEnemy": false,
+            "IgnoreSkillCardShuffle": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 1,
+            "SetConditionCommandOnly": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 17,
+            "MaxCameraSpeed": 3,
+            "RotationSpeed": 1,
+            "ZoomSpeed": 1,
+            "RailPoints": [
+              {
+                "UseTableData": false,
+                "Position": {
+                  "x": -27.010006,
+                  "y": 0.4,
+                  "z": 11.8099976
+                },
+                "MinCameraDistance": 65,
+                "MaxCameraDistance": 65,
+                "CameraForward": {
+                  "x": 0.303935081,
+                  "y": -0.441505849,
+                  "z": 0.844213247
+                }
+              }
+            ],
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandRemoveFromCameraTarget, BlueArchive",
+            "EntityCommandIds": [
+              "Hod"
+            ],
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "EndBattle",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 0,
+            "CheckSummonedCharacterDead": false,
+            "ConditionID": "Hod"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandEndBattle, BlueArchive",
+            "BattleEndType": 4,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      }
+    ]
+  },
+  "Sections": [
+    {
+      "SectionID": 1,
+      "Position": {
+        "x": 0,
+        "y": 0,
+        "z": 45
+      },
+      "Events": [
+        {
+          "EventName": "Spawn&SetStatusRemove",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 0,
+              "CommandID": "Hod",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 200,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 0,
+              "CommandID": "CommandSpawn3",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Untargetable",
+              "isAdd": false,
+              "CommandID": "Hod",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 50,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSkipUntargetableCheckInMove, BlueArchive",
+              "Skip": true,
+              "CommandID": "SkipGuardTower",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [
+                "Hod"
+              ],
+              "CreateCharacterStat": true,
+              "CharacterId": 18001002,
+              "CharacterLevel": 1,
+              "CharacterGrade": 1,
+              "Interval": 100,
+              "SkillGroupId": "HODGroundEx02",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 2,
+              "CommandID": "SkillPointPhase3",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "Operator",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 2000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandOperator, BlueArchive",
+              "GroupId": "HOD_CrowdControlGauge_01",
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "PlayPropAni_2ndBattleEnd",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandPlayPropAnimation, BlueArchive",
+              "propKey": 12,
+              "animationName": "rb_01_hod_Leg_Door02_Open",
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent3",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Hod_Colour_Hard",
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "Z",
+              "SpawnConditionIdList": [
+                "Hod"
+              ],
+              "SpawnCommandIdList": [
+                "Hod"
+              ],
+              "MovePoints": [],
+              "TileX": 97,
+              "TileY": 96,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -22.0300121,
+                "y": 10.6100006
+              },
+              "Direction": {
+                "x": -0.99999994,
+                "y": -1.1920929e-07
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Hod"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SkillUsePoint, BlueArchive",
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
+              "MovePoints": [],
+              "TileX": 127,
+              "TileY": 96,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -15.98,
+                "y": 10.7000008
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                "SkillPointPhase3"
+              ],
+              "CommandIdList": [
+                "SkillPointPhase3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Hod_Colour_GuardTower_Cannon_Hard",
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [
+                "SkipGuardTower",
+                "ForceIdleGuardTower"
+              ],
+              "MovePoints": [],
+              "TileX": 42,
+              "TileY": 118,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -32.99,
+                "y": 15
+              },
+              "Direction": {
+                "x": 0.99999994,
+                "y": -1.1920929e-07
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandSpawn3",
+                "ForceIdleGuardTower"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Hod_Colour_GuardTower_Cannon_Hard",
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [
+                "SkipGuardTower",
+                "ForceIdleGuardTower"
+              ],
+              "MovePoints": [],
+              "TileX": 42,
+              "TileY": 73,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -32.99,
+                "y": 6.09999847
+              },
+              "Direction": {
+                "x": 0.99999994,
+                "y": -1.1920929e-07
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandSpawn3",
+                "ForceIdleGuardTower"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Formations": [
+    {
+      "SectionIndex": 0,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": -36.1999931,
+        "y": 10.53
+      },
+      "Forward": {
+        "x": 0.99999994,
+        "y": -1.1920929e-07
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 1,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": -27.57,
+        "y": 10.55
+      },
+      "Forward": {
+        "x": 0.5,
+        "y": -0.866025567
+      },
+      "Height": 0,
+      "IsEnemy": false
+    }
+  ],
+  "EnemyFormations": [],
+  "TemporaryCanUseSkillAreas": []
+}

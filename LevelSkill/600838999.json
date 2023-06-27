@@ -102,8 +102,25 @@
         "Frame": 1,
         "DamageDistributeRate": 0,
         "Entity": {
-          "$type": "MX.Logic.Data.LevelTargetAttachedEntityData, BlueArchive",
-          "Abilities": [
+          "$type": "MX.Logic.Data.LevelCircleAreaEntityData, BlueArchive",
+          "Radius": 10000,
+          "AttachTarget": false,
+          "AllowDuplicateHit": false,
+          "RemoveEntityIfSkillCancel": false,
+          "ApplyOnStay": false,
+          "Duration": 2,
+          "RotateEntityDirectionEveryFrame": false,
+          "ApplyOffsetRotateEntityDirection": false,
+          "HitFrames": [
+            1
+          ],
+          "CollisionProperty": {
+            "$type": "MX.Logic.Data.AreaCollisionProperty, BlueArchive",
+            "TransformType": "None",
+            "TransformCount": 0
+          },
+          "CheckBlockHit": true,
+          "AreaAbilities": [
             {
               "$type": "MX.Logic.Data.LevelOneTimeAbilityData, BlueArchive",
               "StartDelay": 0,
@@ -113,10 +130,21 @@
               "Modifiers": [
                 {
                   "$type": "MX.Logic.Data.LogicEffectTemplateModifierData, BlueArchive",
-                  "TemplateId": "Debuff_StatChange_HealEffectivenessRate_TimeAttack",
+                  "TemplateId": "Deuff_HealedLimit",
                   "IncludeType": 1,
                   "CheckTarget": 0,
                   "name": "Ally_Debuff_StatChange_Damage_TriggerHealed_LogicEffectTemplateModifier01",
+                  "hideFlags": 0
+                },
+                {
+                  "$type": "MX.Logic.Data.WeaponConditionalModifierData, BlueArchive",
+                  "WeaponConstraint": {
+                    "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
+                    "Weapon": 18,
+                    "IncludeType": 1
+                  },
+                  "CheckTarget": 0,
+                  "name": "Ally_Debuff_StatChange_Damage_TriggerHealed_WeaponConditionalModifier01",
                   "hideFlags": 0
                 }
               ],
@@ -124,13 +152,13 @@
               "hideFlags": 0
             }
           ],
-          "EntityName": "Ally_Debuff_StatChange_Damage_TriggerHealed_LevelTargetAttachedEntity01",
+          "EntityName": "Ally_Debuff_StatChange_Damage_TriggerHealed_LevelCircleAreaEntity01",
           "SpawnRate": 10000,
           "SpawnDelay": 0,
           "ApplyType": 4,
           "DecideTiming": 0,
           "EntitySpawnIncludeOutOfRangeInputTarget": false,
-          "SpawnPositionType": "None",
+          "SpawnPositionType": "Invoker",
           "SpawnWorldPosition": {
             "x": 0,
             "y": 0
@@ -140,8 +168,8 @@
             "y": 0
           },
           "PositionRandomOffsetRange": 0,
-          "OffsetDirectionType": "None",
-          "SpawnDirectionType": "None",
+          "OffsetDirectionType": "Invoker",
+          "SpawnDirectionType": "Invoker",
           "OverrideTargetingRule": true,
           "TargetSortRule": {
             "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
@@ -153,8 +181,8 @@
           "EssentialCandidateRule": {
             "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
             "TargetSide": "Ally_Except_Self",
-            "TargetingType": "Target",
-            "ApplyEntityType": 1,
+            "TargetingType": "Position",
+            "ApplyEntityType": 5,
             "MaxTargetCount": -1
           },
           "OptionalCandidateRule": {
@@ -199,7 +227,7 @@
           },
           "HighlightOption": 0,
           "CheckSpawnPositionMovable": false,
-          "name": "Ally_Debuff_StatChange_Damage_TriggerHealed_LevelTargetAttachedEntity01",
+          "name": "Ally_Debuff_StatChange_Damage_TriggerHealed_LevelCircleAreaEntity01",
           "hideFlags": 0
         }
       },
