@@ -2,9 +2,9 @@
   "Version": "1.0",
   "Global": {
     "Position": {
-      "x": 0,
+      "x": 1.74,
       "y": 0,
-      "z": 0
+      "z": 9.393
     },
     "Events": [
       {
@@ -51,7 +51,7 @@
                 "Position": {
                   "x": 0,
                   "y": 0,
-                  "z": 44.39
+                  "z": 18.93
                 },
                 "MinCameraDistance": 42,
                 "MaxCameraDistance": 42,
@@ -71,71 +71,11 @@
             "SetConditionCommandOnly": false,
             "CommandID": "0",
             "WaitExecuteEnd": false
-          }
-        ]
-      },
-      {
-        "EventName": "StartSection2",
-        "Operator": 0,
-        "Conditions": [
-          {
-            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
-            "DeadCheck": 1,
-            "CheckSummonedCharacterDead": false,
-            "ConditionID": "911"
           },
           {
-            "$type": "MX.Logic.Battles.GroundConditionCharacterHPChanged, BlueArchive",
-            "TriggerRateUnder": 9000,
-            "TriggerRateOver": -9999999,
-            "TriggerMaxCount": 1,
-            "ConditionID": "991"
-          }
-        ],
-        "Commands": [
-          {
-            "$type": "MX.Logic.Battles.GroundCommandSetSyncUseSkillGroup, BlueArchive",
-            "SyncUseSkillGroupId": 9999,
-            "SkillSlot": "PublicSkill01",
-            "IsAdd": false,
-            "IsAllyGroup": false,
-            "CommandID": "5551",
-            "WaitExecuteEnd": false
-          },
-          {
-            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
-            "SectionID": 2,
-            "SetConditionCommandOnly": false,
+            "$type": "MX.Logic.Battles.GroundCommandOperator, BlueArchive",
+            "GroupId": "WeekDungeonCombatStart_03_01",
             "CommandID": "0",
-            "WaitExecuteEnd": false
-          }
-        ]
-      },
-      {
-        "EventName": "EndBattle",
-        "Operator": 0,
-        "Conditions": [
-          {
-            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
-            "DeadCheck": 1,
-            "CheckSummonedCharacterDead": false,
-            "ConditionID": "991"
-          }
-        ],
-        "Commands": [
-          {
-            "$type": "MX.Logic.Battles.GroundCommandCharacterDie, BlueArchive",
-            "CharacterCommandIdList": [
-              "Killenemy"
-            ],
-            "CharacterSpawnTemplateIdList": [],
-            "CommandID": "",
-            "WaitExecuteEnd": false
-          },
-          {
-            "$type": "MX.Logic.Battles.GroundCommandEndBattle, BlueArchive",
-            "BattleEndType": 4,
-            "CommandID": "99",
             "WaitExecuteEnd": false
           }
         ]
@@ -146,482 +86,480 @@
     {
       "SectionID": 1,
       "Position": {
-        "x": 0,
+        "x": 1.74,
         "y": 0,
-        "z": 5
+        "z": 15.3029995
       },
       "Events": [
         {
-          "EventName": "Spawn1-1",
+          "EventName": "SpawnUnit",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+              "ConditionID": "0"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "1",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "SpawnUnit_1",
           "Operator": 0,
           "Conditions": [
             {
               "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
-              "ConditionID": "1"
+              "ConditionID": null
             }
           ],
           "Commands": [
             {
-              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
-              "Interval": 100,
-              "CommandID": "Spawn-1",
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 10000,
+              "CommandID": "",
               "WaitExecuteEnd": false
-            }
-          ]
-        },
-        {
-          "EventName": "Spawn1-2",
-          "Operator": 0,
-          "Conditions": [
+            },
             {
-              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
-              "DeadCheck": 0,
-              "CheckSummonedCharacterDead": false,
-              "ConditionID": "Dead-1"
-            }
-          ],
-          "Commands": [
-            {
-              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
-              "Interval": 100,
-              "CommandID": "Spawn-2",
+              "$type": "MX.Logic.Battles.GroundCommandDestroyObstacle, BlueArchive",
+              "CommandID": "1",
               "WaitExecuteEnd": false
-            }
-          ]
-        },
-        {
-          "EventName": "Spawn1-3",
-          "Operator": 0,
-          "Conditions": [
+            },
             {
-              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
-              "DeadCheck": 0,
-              "CheckSummonedCharacterDead": false,
-              "ConditionID": "Dead-2"
-            }
-          ],
-          "Commands": [
-            {
-              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
-              "Interval": 100,
-              "CommandID": "Spawn-3",
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 10000,
+              "CommandID": "",
               "WaitExecuteEnd": false
-            }
-          ]
-        },
-        {
-          "EventName": "Spawn1-4",
-          "Operator": 0,
-          "Conditions": [
+            },
             {
-              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
-              "DeadCheck": 0,
-              "CheckSummonedCharacterDead": false,
-              "ConditionID": "Dead-3"
-            }
-          ],
-          "Commands": [
-            {
-              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
-              "Interval": 100,
-              "CommandID": "Spawn-4",
+              "$type": "MX.Logic.Battles.GroundCommandDestroyObstacle, BlueArchive",
+              "CommandID": "2",
               "WaitExecuteEnd": false
-            }
-          ]
-        },
-        {
-          "EventName": "Spawn1-5",
-          "Operator": 0,
-          "Conditions": [
+            },
             {
-              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
-              "DeadCheck": 0,
-              "CheckSummonedCharacterDead": false,
-              "ConditionID": "Dead-4"
-            }
-          ],
-          "Commands": [
-            {
-              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
-              "Interval": 100,
-              "CommandID": "Spawn-5",
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 10000,
+              "CommandID": "",
               "WaitExecuteEnd": false
-            }
-          ]
-        },
-        {
-          "EventName": "Spawn1-6",
-          "Operator": 0,
-          "Conditions": [
+            },
             {
-              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
-              "DeadCheck": 0,
-              "CheckSummonedCharacterDead": false,
-              "ConditionID": "Dead-5"
-            }
-          ],
-          "Commands": [
+              "$type": "MX.Logic.Battles.GroundCommandDestroyObstacle, BlueArchive",
+              "CommandID": "3",
+              "WaitExecuteEnd": false
+            },
             {
-              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
-              "Interval": 100,
-              "CommandID": "Spawn-6",
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 10000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandDestroyObstacle, BlueArchive",
+              "CommandID": "4",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 10000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandDestroyObstacle, BlueArchive",
+              "CommandID": "5",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 10000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandDestroyObstacle, BlueArchive",
+              "CommandID": "6",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 10000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandDestroyObstacle, BlueArchive",
+              "CommandID": "7",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 10000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandDestroyObstacle, BlueArchive",
+              "CommandID": "8",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 10000,
+              "CommandID": "",
               "WaitExecuteEnd": false
             }
           ]
         }
       ],
-      "Obstacles": [],
+      "Obstacles": [
+        {
+          "UniqueName": "Backstreet_Storesign",
+          "Position": {
+            "x": 1.78,
+            "y": 0,
+            "z": 19.02
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [
+            "1"
+          ],
+          "SubObstacles": [
+            {
+              "UniqueName": "Backstreet_Storesign_Sub",
+              "Position": {
+                "x": 1.78,
+                "y": 0,
+                "z": 19.02
+              },
+              "Forward": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              },
+              "ActiveEnemyPointIndices": [],
+              "ActivePlayerPointIndices": [
+                0
+              ],
+              "ConditionIdList": [],
+              "CommandIdList": [],
+              "SubObstacles": [],
+              "IsDummy": false
+            }
+          ],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "City_ClockTower",
+          "Position": {
+            "x": 1.48,
+            "y": 0,
+            "z": 20.98
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [
+            "2"
+          ],
+          "SubObstacles": [
+            {
+              "UniqueName": "City_ClockTower_Sub",
+              "Position": {
+                "x": 1.48,
+                "y": 0,
+                "z": 20.98
+              },
+              "Forward": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              },
+              "ActiveEnemyPointIndices": [],
+              "ActivePlayerPointIndices": [],
+              "ConditionIdList": [],
+              "CommandIdList": [],
+              "SubObstacles": [],
+              "IsDummy": false
+            }
+          ],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Mainstreet_Storesign",
+          "Position": {
+            "x": 1.89,
+            "y": 0.66,
+            "z": 17.12
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [
+            "3"
+          ],
+          "SubObstacles": [
+            {
+              "UniqueName": "Mainstreet_Storesign_Sub",
+              "Position": {
+                "x": 1.89,
+                "y": 0.66,
+                "z": 17.12
+              },
+              "Forward": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              },
+              "ActiveEnemyPointIndices": [],
+              "ActivePlayerPointIndices": [
+                0
+              ],
+              "ConditionIdList": [],
+              "CommandIdList": [],
+              "SubObstacles": [],
+              "IsDummy": false
+            }
+          ],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Chesed_Shield",
+          "Position": {
+            "x": -0.649999857,
+            "y": 0,
+            "z": 18.5
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [
+            "4"
+          ],
+          "SubObstacles": [
+            {
+              "UniqueName": "Chesed_Shield_Sub",
+              "Position": {
+                "x": -0.649999857,
+                "y": 0,
+                "z": 18.5
+              },
+              "Forward": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              },
+              "ActiveEnemyPointIndices": [],
+              "ActivePlayerPointIndices": [
+                0
+              ],
+              "ConditionIdList": [],
+              "CommandIdList": [],
+              "SubObstacles": [],
+              "IsDummy": false
+            }
+          ],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Desert_IronTower",
+          "Position": {
+            "x": -2.9400003,
+            "y": 0,
+            "z": 20.06
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [
+            "5"
+          ],
+          "SubObstacles": [
+            {
+              "UniqueName": "Desert_IronTower_Sub",
+              "Position": {
+                "x": -2.9400003,
+                "y": 0,
+                "z": 20.06
+              },
+              "Forward": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              },
+              "ActiveEnemyPointIndices": [],
+              "ActivePlayerPointIndices": [],
+              "ConditionIdList": [],
+              "CommandIdList": [],
+              "SubObstacles": [],
+              "IsDummy": false
+            }
+          ],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Resort_flowergarden_01",
+          "Position": {
+            "x": -3.10000014,
+            "y": 0,
+            "z": 16.45
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [
+            "6"
+          ],
+          "SubObstacles": [
+            {
+              "UniqueName": "Resort_flowergarden_01_Sub",
+              "Position": {
+                "x": -3.10000014,
+                "y": 0,
+                "z": 16.45
+              },
+              "Forward": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              },
+              "ActiveEnemyPointIndices": [],
+              "ActivePlayerPointIndices": [],
+              "ConditionIdList": [],
+              "CommandIdList": [],
+              "SubObstacles": [],
+              "IsDummy": false
+            }
+          ],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "School_Closet",
+          "Position": {
+            "x": -0.52,
+            "y": 0,
+            "z": 20.72
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [
+            "7"
+          ],
+          "SubObstacles": [
+            {
+              "UniqueName": "School_Closet_Sub",
+              "Position": {
+                "x": -0.52,
+                "y": 0,
+                "z": 20.72
+              },
+              "Forward": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              },
+              "ActiveEnemyPointIndices": [],
+              "ActivePlayerPointIndices": [],
+              "ConditionIdList": [],
+              "CommandIdList": [],
+              "SubObstacles": [],
+              "IsDummy": false
+            }
+          ],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "SweeperFactory_Shield",
+          "Position": {
+            "x": -2.02,
+            "y": 0,
+            "z": 18.39
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [
+            "8"
+          ],
+          "SubObstacles": [
+            {
+              "UniqueName": "SweeperFactory_Shield_Sub",
+              "Position": {
+                "x": -2.02,
+                "y": 0,
+                "z": 18.39
+              },
+              "Forward": {
+                "x": 0,
+                "y": 0,
+                "z": 1
+              },
+              "ActiveEnemyPointIndices": [],
+              "ActivePlayerPointIndices": [],
+              "ConditionIdList": [],
+              "CommandIdList": [],
+              "SubObstacles": [],
+              "IsDummy": false
+            }
+          ],
+          "IsDummy": false
+        }
+      ],
       "EnemySpawnPointGroupList": [
         {
-          "GroupName": "SpawnPointParent1-1",
-          "SpawnPoints": [
-            {
-              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
-              "SpawnData": {
-                "SpawnTemplateId": "EN0002_C",
-                "AIId": 0,
-                "AppearAction": true,
-                "SkillLevel": {
-                  "ExSkill": [],
-                  "PublicSkill": [],
-                  "PassiveSkill": [],
-                  "ExtraPassiveSkill": []
-                }
-              },
-              "SpawnAIGroupId": "A",
-              "SpawnConditionIdList": [
-                "Dead-1"
-              ],
-              "SpawnCommandIdList": [
-                "1",
-                "Killenemy"
-              ],
-              "MovePoints": [],
-              "TileX": 38,
-              "TileY": 155,
-              "PositionHeight": 0,
-              "Position": {
-                "x": -0.31,
-                "y": 18.52
-              },
-              "Direction": {
-                "x": -8.742278e-08,
-                "y": -1
-              },
-              "ConditionIdList": [],
-              "CommandIdList": [
-                "Spawn-1"
-              ],
-              "EntityId": {
-                "uniqueId": 0
-              },
-              "Active": false
-            }
-          ]
+          "GroupName": "SpawnPointParent",
+          "SpawnPoints": []
         },
         {
-          "GroupName": "색채 데카그라마톤",
-          "SpawnPoints": [
-            {
-              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
-              "SpawnData": {
-                "SpawnTemplateId": "Droid_Decagram_Shield_Colour_E",
-                "AIId": 0,
-                "AppearAction": true,
-                "SkillLevel": {
-                  "ExSkill": [],
-                  "PublicSkill": [],
-                  "PassiveSkill": [],
-                  "ExtraPassiveSkill": []
-                }
-              },
-              "SpawnAIGroupId": "A",
-              "SpawnConditionIdList": [
-                "Dead-2"
-              ],
-              "SpawnCommandIdList": [
-                "1",
-                "Killenemy"
-              ],
-              "MovePoints": [],
-              "TileX": 39,
-              "TileY": 164,
-              "PositionHeight": 0,
-              "Position": {
-                "x": -0.28,
-                "y": 20.36
-              },
-              "Direction": {
-                "x": -8.742278e-08,
-                "y": -1
-              },
-              "ConditionIdList": [],
-              "CommandIdList": [
-                "Spawn-2"
-              ],
-              "EntityId": {
-                "uniqueId": 0
-              },
-              "Active": false
-            },
-            {
-              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
-              "SpawnData": {
-                "SpawnTemplateId": "Droid_Decagram_AR_Colour_E",
-                "AIId": 0,
-                "AppearAction": true,
-                "SkillLevel": {
-                  "ExSkill": [],
-                  "PublicSkill": [],
-                  "PassiveSkill": [],
-                  "ExtraPassiveSkill": []
-                }
-              },
-              "SpawnAIGroupId": "A",
-              "SpawnConditionIdList": [
-                "Dead-2"
-              ],
-              "SpawnCommandIdList": [
-                "1",
-                "Killenemy"
-              ],
-              "MovePoints": [],
-              "TileX": 39,
-              "TileY": 171,
-              "PositionHeight": 0,
-              "Position": {
-                "x": -0.28,
-                "y": 21.71
-              },
-              "Direction": {
-                "x": -8.742278e-08,
-                "y": -1
-              },
-              "ConditionIdList": [],
-              "CommandIdList": [
-                "Spawn-2"
-              ],
-              "EntityId": {
-                "uniqueId": 0
-              },
-              "Active": false
-            },
-            {
-              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
-              "SpawnData": {
-                "SpawnTemplateId": "Droid_Decagram_RL_Colour_E",
-                "AIId": 0,
-                "AppearAction": true,
-                "SkillLevel": {
-                  "ExSkill": [],
-                  "PublicSkill": [],
-                  "PassiveSkill": [],
-                  "ExtraPassiveSkill": []
-                }
-              },
-              "SpawnAIGroupId": "A",
-              "SpawnConditionIdList": [
-                "Dead-2"
-              ],
-              "SpawnCommandIdList": [
-                "1",
-                "Killenemy"
-              ],
-              "MovePoints": [],
-              "TileX": 39,
-              "TileY": 179,
-              "PositionHeight": 0,
-              "Position": {
-                "x": -0.28,
-                "y": 23.22
-              },
-              "Direction": {
-                "x": -8.742278e-08,
-                "y": -1
-              },
-              "ConditionIdList": [],
-              "CommandIdList": [
-                "Spawn-2"
-              ],
-              "EntityId": {
-                "uniqueId": 0
-              },
-              "Active": false
-            },
-            {
-              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
-              "SpawnData": {
-                "SpawnTemplateId": "Goliath_Decagram_Vulcan_Colour_C",
-                "AIId": 0,
-                "AppearAction": true,
-                "SkillLevel": {
-                  "ExSkill": [],
-                  "PublicSkill": [],
-                  "PassiveSkill": [],
-                  "ExtraPassiveSkill": []
-                }
-              },
-              "SpawnAIGroupId": "A",
-              "SpawnConditionIdList": [
-                "Dead-3"
-              ],
-              "SpawnCommandIdList": [
-                "1",
-                "Killenemy"
-              ],
-              "MovePoints": [],
-              "TileX": 39,
-              "TileY": 185,
-              "PositionHeight": 0,
-              "Position": {
-                "x": -0.28,
-                "y": 24.53
-              },
-              "Direction": {
-                "x": -8.742278e-08,
-                "y": -1
-              },
-              "ConditionIdList": [],
-              "CommandIdList": [
-                "Spawn-3"
-              ],
-              "EntityId": {
-                "uniqueId": 0
-              },
-              "Active": false
-            }
-          ]
-        },
-        {
-          "GroupName": "케테르",
-          "SpawnPoints": [
-            {
-              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
-              "SpawnData": {
-                "SpawnTemplateId": "Kether_Decagram_Cannon_Colour_C",
-                "AIId": 0,
-                "AppearAction": true,
-                "SkillLevel": {
-                  "ExSkill": [],
-                  "PublicSkill": [],
-                  "PassiveSkill": [],
-                  "ExtraPassiveSkill": []
-                }
-              },
-              "SpawnAIGroupId": "A",
-              "SpawnConditionIdList": [
-                "Dead-4"
-              ],
-              "SpawnCommandIdList": [
-                "1",
-                "Killenemy"
-              ],
-              "MovePoints": [],
-              "TileX": 39,
-              "TileY": 199,
-              "PositionHeight": 0,
-              "Position": {
-                "x": -0.28,
-                "y": 27.3
-              },
-              "Direction": {
-                "x": -8.742278e-08,
-                "y": -1
-              },
-              "ConditionIdList": [],
-              "CommandIdList": [
-                "Spawn-4"
-              ],
-              "EntityId": {
-                "uniqueId": 0
-              },
-              "Active": false
-            },
-            {
-              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
-              "SpawnData": {
-                "SpawnTemplateId": "Kether_Decagram_Vulcan_Colour_C",
-                "AIId": 0,
-                "AppearAction": true,
-                "SkillLevel": {
-                  "ExSkill": [],
-                  "PublicSkill": [],
-                  "PassiveSkill": [],
-                  "ExtraPassiveSkill": []
-                }
-              },
-              "SpawnAIGroupId": "A",
-              "SpawnConditionIdList": [
-                "Dead-5"
-              ],
-              "SpawnCommandIdList": [
-                "1",
-                "Killenemy"
-              ],
-              "MovePoints": [],
-              "TileX": 39,
-              "TileY": 205,
-              "PositionHeight": 0,
-              "Position": {
-                "x": -0.28,
-                "y": 28.46
-              },
-              "Direction": {
-                "x": -8.742278e-08,
-                "y": -1
-              },
-              "ConditionIdList": [],
-              "CommandIdList": [
-                "Spawn-5"
-              ],
-              "EntityId": {
-                "uniqueId": 0
-              },
-              "Active": false
-            },
-            {
-              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
-              "SpawnData": {
-                "SpawnTemplateId": "Kether_Decagram_EMP_Colour_C",
-                "AIId": 0,
-                "AppearAction": true,
-                "SkillLevel": {
-                  "ExSkill": [],
-                  "PublicSkill": [],
-                  "PassiveSkill": [],
-                  "ExtraPassiveSkill": []
-                }
-              },
-              "SpawnAIGroupId": "A",
-              "SpawnConditionIdList": [
-                "Dead-6"
-              ],
-              "SpawnCommandIdList": [
-                "1",
-                "Killenemy"
-              ],
-              "MovePoints": [],
-              "TileX": 39,
-              "TileY": 205,
-              "PositionHeight": 0,
-              "Position": {
-                "x": -0.28,
-                "y": 28.46
-              },
-              "Direction": {
-                "x": -8.742278e-08,
-                "y": -1
-              },
-              "ConditionIdList": [],
-              "CommandIdList": [
-                "Spawn-6"
-              ],
-              "EntityId": {
-                "uniqueId": 0
-              },
-              "Active": false
-            }
-          ]
+          "GroupName": "SpawnPointParent_1",
+          "SpawnPoints": []
         }
       ]
     }
@@ -632,8 +570,8 @@
       "IgnorePathFind": false,
       "Index": 0,
       "Position": {
-        "x": 0,
-        "y": 0
+        "x": 0.659999967,
+        "y": 12.67
       },
       "Forward": {
         "x": 0,
@@ -647,23 +585,8 @@
       "IgnorePathFind": false,
       "Index": 0,
       "Position": {
-        "x": -1.29,
-        "y": 28.93
-      },
-      "Forward": {
-        "x": 0,
-        "y": 1
-      },
-      "Height": 0,
-      "IsEnemy": false
-    },
-    {
-      "SectionIndex": 2,
-      "IgnorePathFind": false,
-      "Index": 0,
-      "Position": {
-        "x": 0,
-        "y": 44
+        "x": 0.76,
+        "y": 17.53
       },
       "Forward": {
         "x": 0,
