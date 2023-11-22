@@ -1,14 +1,14 @@
 {
   "$type": "MX.Logic.Data.PassiveSkillData, BlueArchive",
   "Duration": -1,
-  "MaxTriggerCount": 1,
+  "MaxTriggerCount": -1,
   "CoolTimeNotTrigger": 0,
   "TryCount": 0,
   "ResetTryCountUseSkill": false,
   "TriggerCondition": {
     "$type": "MX.Logic.Data.PassiveTriggerData, BlueArchive",
     "Event": 105,
-    "Parameters": "600",
+    "Parameters": "200",
     "ConditionExpression": "",
     "TriggerRate": 10000,
     "EchelonConstraint": {
@@ -44,7 +44,7 @@
       "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
       "TargetSide": "Self",
       "TargetingType": "Target",
-      "ApplyEntityType": 1,
+      "ApplyEntityType": 5,
       "MaxTargetCount": 1
     },
     "OptionalCandidate": {
@@ -101,241 +101,1157 @@
       "Frame": 1,
       "DamageDistributeRate": 10000,
       "Entity": {
-        "$type": "MX.Logic.Data.SkillEntitySpawnerData, BlueArchive",
-        "Duration": 151,
-        "SpawnRule": "SpawnAll",
-        "RemoveEntityIfSkillCancel": false,
-        "OverrideSkillStartTimingWithSpawnerSpawn": false,
-        "EntityTimeline": [
-          {
-            "$type": "MX.Logic.Data.SkillEntitySpawnerTimelineData, BlueArchive",
-            "SpawnCondition": "None",
-            "SpawnConditionParameter": "",
-            "SpawnConditionCheckTarget": "Caster",
-            "Frame": 1,
-            "DamageDistributeRate": 0,
-            "Entity": {
-              "$type": "MX.Logic.Data.LevelCircleAreaEntityData, BlueArchive",
-              "Radius": 150,
-              "AttachTarget": false,
-              "AllowDuplicateHit": false,
-              "RemoveEntityIfSkillCancel": false,
-              "ApplyOnStay": false,
-              "Duration": 150,
-              "RotateEntityDirectionEveryFrame": false,
-              "ApplyOffsetRotateEntityDirection": false,
-              "HitFrames": [
-                0
-              ],
-              "CollisionProperty": {
-                "$type": "MX.Logic.Data.AreaCollisionProperty, BlueArchive",
-                "TransformType": "None",
-                "TransformCount": 0
-              },
-              "CheckBlockHit": false,
-              "EntityName": "EN0006Passive01Entity01",
-              "SpawnRate": 10000,
-              "SpawnDelay": 0,
-              "ApplyType": 4,
-              "DecideTiming": 1,
-              "EntitySpawnIncludeOutOfRangeInputTarget": false,
-              "SpawnPositionType": "InputPosition",
-              "SpawnWorldPosition": {
-                "x": 0,
-                "y": 0
-              },
-              "PositionOffset": {
-                "x": 0,
-                "y": 0
-              },
-              "PositionRandomOffsetRange": 0,
-              "OffsetDirectionType": "Input",
-              "SpawnDirectionType": "Input",
-              "OverrideTargetingRule": true,
-              "TargetSortRule": {
-                "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
-                "SortCriteria": "Distance",
-                "SortStat": 0,
-                "SortParameter": null,
-                "OrderBy": "Lowest"
-              },
-              "EssentialCandidateRule": {
-                "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
-                "TargetSide": "Enemy",
-                "TargetingType": "Position",
-                "ApplyEntityType": 7,
-                "MaxTargetCount": -1
-              },
-              "OptionalCandidateRule": {
-                "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
-                "AliveState": 0,
-                "SchoolConstraint": {
-                  "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
-                  "School": 0,
-                  "IncludeType": 0
+        "$type": "MX.Logic.Data.LevelTargetProjectileEntityData, BlueArchive",
+        "TransitionType": "None",
+        "DestinationType": "BattleEntity",
+        "DestinationWorldPosition": {
+          "x": 0,
+          "y": 0
+        },
+        "DestinationPositionOffset": {
+          "x": 0,
+          "y": 0
+        },
+        "DestinationPositionRandomOffsetRange": 0,
+        "DestinationOffsetDirectionType": "ToTarget",
+        "ReduceDamageRatePerHit": 0,
+        "MaxReducedDamageRate": 0,
+        "ProjectileType": "TargetCharacter",
+        "ShapeType": 3,
+        "Width": 20,
+        "Height": 20,
+        "Speed": 2000,
+        "FireDelayFrame": 0,
+        "IsStickToTargetAfterHit": false,
+        "SplashDelayFrame": 0,
+        "SplashAreaEntityData": null,
+        "AreaSpawnerData": null,
+        "SkillEntitySpawnerData": {
+          "$type": "MX.Logic.Data.SkillEntitySpawnerData, BlueArchive",
+          "Duration": 151,
+          "SpawnRule": "SpawnAll",
+          "RemoveEntityIfSkillCancel": false,
+          "OverrideSkillStartTimingWithSpawnerSpawn": false,
+          "EntityTimeline": [
+            {
+              "$type": "MX.Logic.Data.SkillEntitySpawnerTimelineData, BlueArchive",
+              "SpawnCondition": "None",
+              "SpawnConditionParameter": "",
+              "SpawnConditionCheckTarget": "Caster",
+              "Frame": 1,
+              "DamageDistributeRate": 0,
+              "Entity": {
+                "$type": "MX.Logic.Data.LevelCircleAreaEntityData, BlueArchive",
+                "Radius": 150,
+                "AttachTarget": false,
+                "AllowDuplicateHit": false,
+                "RemoveEntityIfSkillCancel": false,
+                "ApplyOnStay": false,
+                "Duration": 150,
+                "RotateEntityDirectionEveryFrame": false,
+                "ApplyOffsetRotateEntityDirection": false,
+                "HitFrames": [
+                  0
+                ],
+                "CollisionProperty": {
+                  "$type": "MX.Logic.Data.AreaCollisionProperty, BlueArchive",
+                  "TransformType": "None",
+                  "TransformCount": 0
                 },
-                "WeaponConstraint": {
-                  "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
-                  "Weapon": 0,
-                  "IncludeType": 0
+                "CheckBlockHit": false,
+                "EntityName": "EN0006Passive01Entity01",
+                "SpawnRate": 10000,
+                "SpawnDelay": 0,
+                "ApplyType": 4,
+                "DecideTiming": 1,
+                "EntitySpawnIncludeOutOfRangeInputTarget": false,
+                "SpawnPositionType": "InputPosition",
+                "SpawnWorldPosition": {
+                  "x": 0,
+                  "y": 0
                 },
-                "SquadTypeConstraint": {
-                  "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
-                  "SquadType": 0,
-                  "IncludeType": 0
+                "PositionOffset": {
+                  "x": 0,
+                  "y": 0
                 },
-                "AdaptationConstraint": {
-                  "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
-                  "AdaptationType": 0,
-                  "AdaptationValues": [],
-                  "IncludeType": 0
+                "PositionRandomOffsetRange": 0,
+                "OffsetDirectionType": "Input",
+                "SpawnDirectionType": "Input",
+                "OverrideTargetingRule": true,
+                "TargetSortRule": {
+                  "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+                  "SortCriteria": "Distance",
+                  "SortStat": 0,
+                  "SortParameter": null,
+                  "OrderBy": "Lowest"
                 },
-                "BulletConstraint": {
-                  "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
-                  "BulletType": 5,
-                  "IncludeType": 0
+                "EssentialCandidateRule": {
+                  "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
+                  "TargetSide": "Enemy",
+                  "TargetingType": "Position",
+                  "ApplyEntityType": 7,
+                  "MaxTargetCount": -1
                 },
-                "TagConstraint": {
-                  "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
-                  "IncludeType": 0
+                "OptionalCandidateRule": {
+                  "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+                  "AliveState": 0,
+                  "SchoolConstraint": {
+                    "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
+                    "School": 0,
+                    "IncludeType": 0
+                  },
+                  "WeaponConstraint": {
+                    "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
+                    "Weapon": 0,
+                    "IncludeType": 0
+                  },
+                  "SquadTypeConstraint": {
+                    "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
+                    "SquadType": 0,
+                    "IncludeType": 0
+                  },
+                  "AdaptationConstraint": {
+                    "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
+                    "AdaptationType": 0,
+                    "AdaptationValues": [],
+                    "IncludeType": 0
+                  },
+                  "BulletConstraint": {
+                    "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
+                    "BulletType": 5,
+                    "IncludeType": 0
+                  },
+                  "TagConstraint": {
+                    "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
+                    "IncludeType": 0
+                  },
+                  "CoverState": 0,
+                  "HPRateConstraint": {
+                    "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
+                    "ConstraintType": 0,
+                    "HPRate": 0
+                  }
                 },
-                "CoverState": 0,
-                "HPRateConstraint": {
-                  "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
-                  "ConstraintType": 0,
-                  "HPRate": 0
-                }
-              },
-              "HighlightOption": 0,
-              "CheckSpawnPositionMovable": false,
-              "name": "EN0006_Passive01_LevelCircleAreaEntity01",
-              "hideFlags": 0
+                "HighlightOption": 0,
+                "CheckSpawnPositionMovable": false,
+                "name": "EN0006_Passive01_LevelCircleAreaEntity01",
+                "hideFlags": 0
+              }
+            },
+            {
+              "$type": "MX.Logic.Data.SkillEntitySpawnerTimelineData, BlueArchive",
+              "SpawnCondition": "IncludeTag",
+              "SpawnConditionParameter": "515",
+              "SpawnConditionCheckTarget": "Caster",
+              "Frame": 150,
+              "DamageDistributeRate": 10000,
+              "Entity": {
+                "$type": "MX.Logic.Data.LevelCircleAreaEntityData, BlueArchive",
+                "Radius": 150,
+                "AttachTarget": false,
+                "AllowDuplicateHit": false,
+                "RemoveEntityIfSkillCancel": false,
+                "ApplyOnStay": false,
+                "Duration": 2,
+                "RotateEntityDirectionEveryFrame": false,
+                "ApplyOffsetRotateEntityDirection": false,
+                "HitFrames": [
+                  1
+                ],
+                "CollisionProperty": {
+                  "$type": "MX.Logic.Data.AreaCollisionProperty, BlueArchive",
+                  "TransformType": "None",
+                  "TransformCount": 0
+                },
+                "CheckBlockHit": false,
+                "AreaAbilities": [
+                  {
+                    "$type": "MX.Logic.Data.LevelOneTimeAbilityData, BlueArchive",
+                    "StartDelay": 0,
+                    "LogicEffectGroupIds": [
+                      "EN0006_Passive01_Effect01_Normal"
+                    ],
+                    "name": "EN0006_Passive01_LevelOneTimeAbility01_Normal",
+                    "hideFlags": 0
+                  }
+                ],
+                "EntityName": "EN0006Passive01Entity02_Normal",
+                "SpawnRate": 10000,
+                "SpawnDelay": 0,
+                "ApplyType": 4,
+                "DecideTiming": 1,
+                "EntitySpawnIncludeOutOfRangeInputTarget": false,
+                "SpawnPositionType": "InputPosition",
+                "SpawnWorldPosition": {
+                  "x": 0,
+                  "y": 0
+                },
+                "PositionOffset": {
+                  "x": 0,
+                  "y": 0
+                },
+                "PositionRandomOffsetRange": 0,
+                "OffsetDirectionType": "Input",
+                "SpawnDirectionType": "Input",
+                "OverrideTargetingRule": true,
+                "TargetSortRule": {
+                  "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+                  "SortCriteria": "Distance",
+                  "SortStat": 0,
+                  "SortParameter": null,
+                  "OrderBy": "Lowest"
+                },
+                "EssentialCandidateRule": {
+                  "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
+                  "TargetSide": "Enemy",
+                  "TargetingType": "Position",
+                  "ApplyEntityType": 7,
+                  "MaxTargetCount": -1
+                },
+                "OptionalCandidateRule": {
+                  "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+                  "AliveState": 0,
+                  "SchoolConstraint": {
+                    "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
+                    "School": 0,
+                    "IncludeType": 0
+                  },
+                  "WeaponConstraint": {
+                    "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
+                    "Weapon": 0,
+                    "IncludeType": 0
+                  },
+                  "SquadTypeConstraint": {
+                    "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
+                    "SquadType": 0,
+                    "IncludeType": 0
+                  },
+                  "AdaptationConstraint": {
+                    "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
+                    "AdaptationType": 0,
+                    "AdaptationValues": [],
+                    "IncludeType": 0
+                  },
+                  "BulletConstraint": {
+                    "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
+                    "BulletType": 5,
+                    "IncludeType": 0
+                  },
+                  "TagConstraint": {
+                    "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
+                    "IncludeType": 0
+                  },
+                  "CoverState": 0,
+                  "HPRateConstraint": {
+                    "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
+                    "ConstraintType": 0,
+                    "HPRate": 0
+                  }
+                },
+                "HighlightOption": 0,
+                "CheckSpawnPositionMovable": false,
+                "name": "EN0006_Passive01_LevelCircleAreaEntity02_Normal",
+                "hideFlags": 0
+              }
+            },
+            {
+              "$type": "MX.Logic.Data.SkillEntitySpawnerTimelineData, BlueArchive",
+              "SpawnCondition": "IncludeTag",
+              "SpawnConditionParameter": "516",
+              "SpawnConditionCheckTarget": "Caster",
+              "Frame": 150,
+              "DamageDistributeRate": 10000,
+              "Entity": {
+                "$type": "MX.Logic.Data.LevelCircleAreaEntityData, BlueArchive",
+                "Radius": 150,
+                "AttachTarget": false,
+                "AllowDuplicateHit": false,
+                "RemoveEntityIfSkillCancel": false,
+                "ApplyOnStay": false,
+                "Duration": 2,
+                "RotateEntityDirectionEveryFrame": false,
+                "ApplyOffsetRotateEntityDirection": false,
+                "HitFrames": [
+                  1
+                ],
+                "CollisionProperty": {
+                  "$type": "MX.Logic.Data.AreaCollisionProperty, BlueArchive",
+                  "TransformType": "None",
+                  "TransformCount": 0
+                },
+                "CheckBlockHit": false,
+                "AreaAbilities": [
+                  {
+                    "$type": "MX.Logic.Data.LevelOneTimeAbilityData, BlueArchive",
+                    "StartDelay": 0,
+                    "LogicEffectGroupIds": [
+                      "EN0006_Passive01_Effect01_Hard"
+                    ],
+                    "name": "EN0006_Passive01_LevelOneTimeAbility01_Hard",
+                    "hideFlags": 0
+                  }
+                ],
+                "EntityName": "EN0006Passive01Entity02_Hard",
+                "SpawnRate": 10000,
+                "SpawnDelay": 0,
+                "ApplyType": 4,
+                "DecideTiming": 1,
+                "EntitySpawnIncludeOutOfRangeInputTarget": false,
+                "SpawnPositionType": "InputPosition",
+                "SpawnWorldPosition": {
+                  "x": 0,
+                  "y": 0
+                },
+                "PositionOffset": {
+                  "x": 0,
+                  "y": 0
+                },
+                "PositionRandomOffsetRange": 0,
+                "OffsetDirectionType": "Input",
+                "SpawnDirectionType": "Input",
+                "OverrideTargetingRule": true,
+                "TargetSortRule": {
+                  "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+                  "SortCriteria": "Distance",
+                  "SortStat": 0,
+                  "SortParameter": null,
+                  "OrderBy": "Lowest"
+                },
+                "EssentialCandidateRule": {
+                  "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
+                  "TargetSide": "Enemy",
+                  "TargetingType": "Position",
+                  "ApplyEntityType": 7,
+                  "MaxTargetCount": -1
+                },
+                "OptionalCandidateRule": {
+                  "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+                  "AliveState": 0,
+                  "SchoolConstraint": {
+                    "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
+                    "School": 0,
+                    "IncludeType": 0
+                  },
+                  "WeaponConstraint": {
+                    "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
+                    "Weapon": 0,
+                    "IncludeType": 0
+                  },
+                  "SquadTypeConstraint": {
+                    "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
+                    "SquadType": 0,
+                    "IncludeType": 0
+                  },
+                  "AdaptationConstraint": {
+                    "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
+                    "AdaptationType": 0,
+                    "AdaptationValues": [],
+                    "IncludeType": 0
+                  },
+                  "BulletConstraint": {
+                    "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
+                    "BulletType": 5,
+                    "IncludeType": 0
+                  },
+                  "TagConstraint": {
+                    "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
+                    "IncludeType": 0
+                  },
+                  "CoverState": 0,
+                  "HPRateConstraint": {
+                    "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
+                    "ConstraintType": 0,
+                    "HPRate": 0
+                  }
+                },
+                "HighlightOption": 0,
+                "CheckSpawnPositionMovable": false,
+                "name": "EN0006_Passive01_LevelCircleAreaEntity02_Hard",
+                "hideFlags": 0
+              }
+            },
+            {
+              "$type": "MX.Logic.Data.SkillEntitySpawnerTimelineData, BlueArchive",
+              "SpawnCondition": "IncludeTag",
+              "SpawnConditionParameter": "517",
+              "SpawnConditionCheckTarget": "Caster",
+              "Frame": 150,
+              "DamageDistributeRate": 10000,
+              "Entity": {
+                "$type": "MX.Logic.Data.LevelCircleAreaEntityData, BlueArchive",
+                "Radius": 150,
+                "AttachTarget": false,
+                "AllowDuplicateHit": false,
+                "RemoveEntityIfSkillCancel": false,
+                "ApplyOnStay": false,
+                "Duration": 2,
+                "RotateEntityDirectionEveryFrame": false,
+                "ApplyOffsetRotateEntityDirection": false,
+                "HitFrames": [
+                  1
+                ],
+                "CollisionProperty": {
+                  "$type": "MX.Logic.Data.AreaCollisionProperty, BlueArchive",
+                  "TransformType": "None",
+                  "TransformCount": 0
+                },
+                "CheckBlockHit": false,
+                "AreaAbilities": [
+                  {
+                    "$type": "MX.Logic.Data.LevelOneTimeAbilityData, BlueArchive",
+                    "StartDelay": 0,
+                    "LogicEffectGroupIds": [
+                      "EN0006_Passive01_Effect01_VeryHard"
+                    ],
+                    "name": "EN0006_Passive01_LevelOneTimeAbility01_VeryHard",
+                    "hideFlags": 0
+                  }
+                ],
+                "EntityName": "EN0006Passive01Entity02_VeryHard",
+                "SpawnRate": 10000,
+                "SpawnDelay": 0,
+                "ApplyType": 4,
+                "DecideTiming": 1,
+                "EntitySpawnIncludeOutOfRangeInputTarget": false,
+                "SpawnPositionType": "InputPosition",
+                "SpawnWorldPosition": {
+                  "x": 0,
+                  "y": 0
+                },
+                "PositionOffset": {
+                  "x": 0,
+                  "y": 0
+                },
+                "PositionRandomOffsetRange": 0,
+                "OffsetDirectionType": "Input",
+                "SpawnDirectionType": "Input",
+                "OverrideTargetingRule": true,
+                "TargetSortRule": {
+                  "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+                  "SortCriteria": "Distance",
+                  "SortStat": 0,
+                  "SortParameter": null,
+                  "OrderBy": "Lowest"
+                },
+                "EssentialCandidateRule": {
+                  "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
+                  "TargetSide": "Enemy",
+                  "TargetingType": "Position",
+                  "ApplyEntityType": 7,
+                  "MaxTargetCount": -1
+                },
+                "OptionalCandidateRule": {
+                  "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+                  "AliveState": 0,
+                  "SchoolConstraint": {
+                    "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
+                    "School": 0,
+                    "IncludeType": 0
+                  },
+                  "WeaponConstraint": {
+                    "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
+                    "Weapon": 0,
+                    "IncludeType": 0
+                  },
+                  "SquadTypeConstraint": {
+                    "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
+                    "SquadType": 0,
+                    "IncludeType": 0
+                  },
+                  "AdaptationConstraint": {
+                    "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
+                    "AdaptationType": 0,
+                    "AdaptationValues": [],
+                    "IncludeType": 0
+                  },
+                  "BulletConstraint": {
+                    "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
+                    "BulletType": 5,
+                    "IncludeType": 0
+                  },
+                  "TagConstraint": {
+                    "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
+                    "IncludeType": 0
+                  },
+                  "CoverState": 0,
+                  "HPRateConstraint": {
+                    "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
+                    "ConstraintType": 0,
+                    "HPRate": 0
+                  }
+                },
+                "HighlightOption": 0,
+                "CheckSpawnPositionMovable": false,
+                "name": "EN0006_Passive01_LevelCircleAreaEntity02_VeryHard",
+                "hideFlags": 0
+              }
+            },
+            {
+              "$type": "MX.Logic.Data.SkillEntitySpawnerTimelineData, BlueArchive",
+              "SpawnCondition": "IncludeTag",
+              "SpawnConditionParameter": "518",
+              "SpawnConditionCheckTarget": "Caster",
+              "Frame": 150,
+              "DamageDistributeRate": 10000,
+              "Entity": {
+                "$type": "MX.Logic.Data.LevelCircleAreaEntityData, BlueArchive",
+                "Radius": 150,
+                "AttachTarget": false,
+                "AllowDuplicateHit": false,
+                "RemoveEntityIfSkillCancel": false,
+                "ApplyOnStay": false,
+                "Duration": 2,
+                "RotateEntityDirectionEveryFrame": false,
+                "ApplyOffsetRotateEntityDirection": false,
+                "HitFrames": [
+                  1
+                ],
+                "CollisionProperty": {
+                  "$type": "MX.Logic.Data.AreaCollisionProperty, BlueArchive",
+                  "TransformType": "None",
+                  "TransformCount": 0
+                },
+                "CheckBlockHit": false,
+                "AreaAbilities": [
+                  {
+                    "$type": "MX.Logic.Data.LevelOneTimeAbilityData, BlueArchive",
+                    "StartDelay": 0,
+                    "LogicEffectGroupIds": [
+                      "EN0006_Passive01_Effect01_HardCore"
+                    ],
+                    "name": "EN0006_Passive01_LevelOneTimeAbility01_HardCore",
+                    "hideFlags": 0
+                  }
+                ],
+                "EntityName": "EN0006Passive01Entity02_HardCore",
+                "SpawnRate": 10000,
+                "SpawnDelay": 0,
+                "ApplyType": 4,
+                "DecideTiming": 1,
+                "EntitySpawnIncludeOutOfRangeInputTarget": false,
+                "SpawnPositionType": "InputPosition",
+                "SpawnWorldPosition": {
+                  "x": 0,
+                  "y": 0
+                },
+                "PositionOffset": {
+                  "x": 0,
+                  "y": 0
+                },
+                "PositionRandomOffsetRange": 0,
+                "OffsetDirectionType": "Input",
+                "SpawnDirectionType": "Input",
+                "OverrideTargetingRule": true,
+                "TargetSortRule": {
+                  "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+                  "SortCriteria": "Distance",
+                  "SortStat": 0,
+                  "SortParameter": null,
+                  "OrderBy": "Lowest"
+                },
+                "EssentialCandidateRule": {
+                  "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
+                  "TargetSide": "Enemy",
+                  "TargetingType": "Position",
+                  "ApplyEntityType": 7,
+                  "MaxTargetCount": -1
+                },
+                "OptionalCandidateRule": {
+                  "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+                  "AliveState": 0,
+                  "SchoolConstraint": {
+                    "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
+                    "School": 0,
+                    "IncludeType": 0
+                  },
+                  "WeaponConstraint": {
+                    "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
+                    "Weapon": 0,
+                    "IncludeType": 0
+                  },
+                  "SquadTypeConstraint": {
+                    "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
+                    "SquadType": 0,
+                    "IncludeType": 0
+                  },
+                  "AdaptationConstraint": {
+                    "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
+                    "AdaptationType": 0,
+                    "AdaptationValues": [],
+                    "IncludeType": 0
+                  },
+                  "BulletConstraint": {
+                    "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
+                    "BulletType": 5,
+                    "IncludeType": 0
+                  },
+                  "TagConstraint": {
+                    "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
+                    "IncludeType": 0
+                  },
+                  "CoverState": 0,
+                  "HPRateConstraint": {
+                    "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
+                    "ConstraintType": 0,
+                    "HPRate": 0
+                  }
+                },
+                "HighlightOption": 0,
+                "CheckSpawnPositionMovable": false,
+                "name": "EN0006_Passive01_LevelCircleAreaEntity02_HardCore",
+                "hideFlags": 0
+              }
+            },
+            {
+              "$type": "MX.Logic.Data.SkillEntitySpawnerTimelineData, BlueArchive",
+              "SpawnCondition": "IncludeTag",
+              "SpawnConditionParameter": "519",
+              "SpawnConditionCheckTarget": "Caster",
+              "Frame": 150,
+              "DamageDistributeRate": 10000,
+              "Entity": {
+                "$type": "MX.Logic.Data.LevelCircleAreaEntityData, BlueArchive",
+                "Radius": 150,
+                "AttachTarget": false,
+                "AllowDuplicateHit": false,
+                "RemoveEntityIfSkillCancel": false,
+                "ApplyOnStay": false,
+                "Duration": 2,
+                "RotateEntityDirectionEveryFrame": false,
+                "ApplyOffsetRotateEntityDirection": false,
+                "HitFrames": [
+                  1
+                ],
+                "CollisionProperty": {
+                  "$type": "MX.Logic.Data.AreaCollisionProperty, BlueArchive",
+                  "TransformType": "None",
+                  "TransformCount": 0
+                },
+                "CheckBlockHit": false,
+                "AreaAbilities": [
+                  {
+                    "$type": "MX.Logic.Data.LevelOneTimeAbilityData, BlueArchive",
+                    "StartDelay": 0,
+                    "LogicEffectGroupIds": [
+                      "EN0006_Passive01_Effect01_Extreme"
+                    ],
+                    "name": "EN0006_Passive01_LevelOneTimeAbility01_Extreme",
+                    "hideFlags": 0
+                  }
+                ],
+                "EntityName": "EN0006Passive01Entity02_Extreme",
+                "SpawnRate": 10000,
+                "SpawnDelay": 0,
+                "ApplyType": 4,
+                "DecideTiming": 1,
+                "EntitySpawnIncludeOutOfRangeInputTarget": false,
+                "SpawnPositionType": "InputPosition",
+                "SpawnWorldPosition": {
+                  "x": 0,
+                  "y": 0
+                },
+                "PositionOffset": {
+                  "x": 0,
+                  "y": 0
+                },
+                "PositionRandomOffsetRange": 0,
+                "OffsetDirectionType": "Input",
+                "SpawnDirectionType": "Input",
+                "OverrideTargetingRule": true,
+                "TargetSortRule": {
+                  "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+                  "SortCriteria": "Distance",
+                  "SortStat": 0,
+                  "SortParameter": null,
+                  "OrderBy": "Lowest"
+                },
+                "EssentialCandidateRule": {
+                  "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
+                  "TargetSide": "Enemy",
+                  "TargetingType": "Position",
+                  "ApplyEntityType": 7,
+                  "MaxTargetCount": -1
+                },
+                "OptionalCandidateRule": {
+                  "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+                  "AliveState": 0,
+                  "SchoolConstraint": {
+                    "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
+                    "School": 0,
+                    "IncludeType": 0
+                  },
+                  "WeaponConstraint": {
+                    "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
+                    "Weapon": 0,
+                    "IncludeType": 0
+                  },
+                  "SquadTypeConstraint": {
+                    "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
+                    "SquadType": 0,
+                    "IncludeType": 0
+                  },
+                  "AdaptationConstraint": {
+                    "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
+                    "AdaptationType": 0,
+                    "AdaptationValues": [],
+                    "IncludeType": 0
+                  },
+                  "BulletConstraint": {
+                    "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
+                    "BulletType": 5,
+                    "IncludeType": 0
+                  },
+                  "TagConstraint": {
+                    "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
+                    "IncludeType": 0
+                  },
+                  "CoverState": 0,
+                  "HPRateConstraint": {
+                    "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
+                    "ConstraintType": 0,
+                    "HPRate": 0
+                  }
+                },
+                "HighlightOption": 0,
+                "CheckSpawnPositionMovable": false,
+                "name": "EN0006_Passive01_LevelCircleAreaEntity02_Extreme",
+                "hideFlags": 0
+              }
+            },
+            {
+              "$type": "MX.Logic.Data.SkillEntitySpawnerTimelineData, BlueArchive",
+              "SpawnCondition": "IncludeTag",
+              "SpawnConditionParameter": "520",
+              "SpawnConditionCheckTarget": "Caster",
+              "Frame": 150,
+              "DamageDistributeRate": 10000,
+              "Entity": {
+                "$type": "MX.Logic.Data.LevelCircleAreaEntityData, BlueArchive",
+                "Radius": 150,
+                "AttachTarget": false,
+                "AllowDuplicateHit": false,
+                "RemoveEntityIfSkillCancel": false,
+                "ApplyOnStay": false,
+                "Duration": 2,
+                "RotateEntityDirectionEveryFrame": false,
+                "ApplyOffsetRotateEntityDirection": false,
+                "HitFrames": [
+                  1
+                ],
+                "CollisionProperty": {
+                  "$type": "MX.Logic.Data.AreaCollisionProperty, BlueArchive",
+                  "TransformType": "None",
+                  "TransformCount": 0
+                },
+                "CheckBlockHit": false,
+                "AreaAbilities": [
+                  {
+                    "$type": "MX.Logic.Data.LevelOneTimeAbilityData, BlueArchive",
+                    "StartDelay": 0,
+                    "LogicEffectGroupIds": [
+                      "EN0006_Passive01_Effect01_Insane"
+                    ],
+                    "name": "EN0006_Passive01_LevelOneTimeAbility01_Insane",
+                    "hideFlags": 0
+                  }
+                ],
+                "EntityName": "EN0006Passive01Entity02_Insane",
+                "SpawnRate": 10000,
+                "SpawnDelay": 0,
+                "ApplyType": 4,
+                "DecideTiming": 1,
+                "EntitySpawnIncludeOutOfRangeInputTarget": false,
+                "SpawnPositionType": "InputPosition",
+                "SpawnWorldPosition": {
+                  "x": 0,
+                  "y": 0
+                },
+                "PositionOffset": {
+                  "x": 0,
+                  "y": 0
+                },
+                "PositionRandomOffsetRange": 0,
+                "OffsetDirectionType": "Input",
+                "SpawnDirectionType": "Input",
+                "OverrideTargetingRule": true,
+                "TargetSortRule": {
+                  "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+                  "SortCriteria": "Distance",
+                  "SortStat": 0,
+                  "SortParameter": null,
+                  "OrderBy": "Lowest"
+                },
+                "EssentialCandidateRule": {
+                  "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
+                  "TargetSide": "Enemy",
+                  "TargetingType": "Position",
+                  "ApplyEntityType": 7,
+                  "MaxTargetCount": -1
+                },
+                "OptionalCandidateRule": {
+                  "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+                  "AliveState": 0,
+                  "SchoolConstraint": {
+                    "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
+                    "School": 0,
+                    "IncludeType": 0
+                  },
+                  "WeaponConstraint": {
+                    "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
+                    "Weapon": 0,
+                    "IncludeType": 0
+                  },
+                  "SquadTypeConstraint": {
+                    "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
+                    "SquadType": 0,
+                    "IncludeType": 0
+                  },
+                  "AdaptationConstraint": {
+                    "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
+                    "AdaptationType": 0,
+                    "AdaptationValues": [],
+                    "IncludeType": 0
+                  },
+                  "BulletConstraint": {
+                    "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
+                    "BulletType": 5,
+                    "IncludeType": 0
+                  },
+                  "TagConstraint": {
+                    "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
+                    "IncludeType": 0
+                  },
+                  "CoverState": 0,
+                  "HPRateConstraint": {
+                    "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
+                    "ConstraintType": 0,
+                    "HPRate": 0
+                  }
+                },
+                "HighlightOption": 0,
+                "CheckSpawnPositionMovable": false,
+                "name": "EN0006_Passive01_LevelCircleAreaEntity02_Insane",
+                "hideFlags": 0
+              }
+            },
+            {
+              "$type": "MX.Logic.Data.SkillEntitySpawnerTimelineData, BlueArchive",
+              "SpawnCondition": "IncludeTag",
+              "SpawnConditionParameter": "521",
+              "SpawnConditionCheckTarget": "Caster",
+              "Frame": 150,
+              "DamageDistributeRate": 10000,
+              "Entity": {
+                "$type": "MX.Logic.Data.LevelCircleAreaEntityData, BlueArchive",
+                "Radius": 150,
+                "AttachTarget": false,
+                "AllowDuplicateHit": false,
+                "RemoveEntityIfSkillCancel": false,
+                "ApplyOnStay": false,
+                "Duration": 2,
+                "RotateEntityDirectionEveryFrame": false,
+                "ApplyOffsetRotateEntityDirection": false,
+                "HitFrames": [
+                  1
+                ],
+                "CollisionProperty": {
+                  "$type": "MX.Logic.Data.AreaCollisionProperty, BlueArchive",
+                  "TransformType": "None",
+                  "TransformCount": 0
+                },
+                "CheckBlockHit": false,
+                "AreaAbilities": [
+                  {
+                    "$type": "MX.Logic.Data.LevelOneTimeAbilityData, BlueArchive",
+                    "StartDelay": 0,
+                    "LogicEffectGroupIds": [
+                      "EN0006_Passive01_Effect01_Torment"
+                    ],
+                    "name": "EN0006_Passive01_LevelOneTimeAbility01_Torment",
+                    "hideFlags": 0
+                  }
+                ],
+                "EntityName": "EN0006Passive01Entity02_Torment",
+                "SpawnRate": 10000,
+                "SpawnDelay": 0,
+                "ApplyType": 4,
+                "DecideTiming": 1,
+                "EntitySpawnIncludeOutOfRangeInputTarget": false,
+                "SpawnPositionType": "InputPosition",
+                "SpawnWorldPosition": {
+                  "x": 0,
+                  "y": 0
+                },
+                "PositionOffset": {
+                  "x": 0,
+                  "y": 0
+                },
+                "PositionRandomOffsetRange": 0,
+                "OffsetDirectionType": "Input",
+                "SpawnDirectionType": "Input",
+                "OverrideTargetingRule": true,
+                "TargetSortRule": {
+                  "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+                  "SortCriteria": "Distance",
+                  "SortStat": 0,
+                  "SortParameter": null,
+                  "OrderBy": "Lowest"
+                },
+                "EssentialCandidateRule": {
+                  "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
+                  "TargetSide": "Enemy",
+                  "TargetingType": "Position",
+                  "ApplyEntityType": 7,
+                  "MaxTargetCount": -1
+                },
+                "OptionalCandidateRule": {
+                  "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+                  "AliveState": 0,
+                  "SchoolConstraint": {
+                    "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
+                    "School": 0,
+                    "IncludeType": 0
+                  },
+                  "WeaponConstraint": {
+                    "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
+                    "Weapon": 0,
+                    "IncludeType": 0
+                  },
+                  "SquadTypeConstraint": {
+                    "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
+                    "SquadType": 0,
+                    "IncludeType": 0
+                  },
+                  "AdaptationConstraint": {
+                    "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
+                    "AdaptationType": 0,
+                    "AdaptationValues": [],
+                    "IncludeType": 0
+                  },
+                  "BulletConstraint": {
+                    "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
+                    "BulletType": 5,
+                    "IncludeType": 0
+                  },
+                  "TagConstraint": {
+                    "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
+                    "IncludeType": 0
+                  },
+                  "CoverState": 0,
+                  "HPRateConstraint": {
+                    "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
+                    "ConstraintType": 0,
+                    "HPRate": 0
+                  }
+                },
+                "HighlightOption": 0,
+                "CheckSpawnPositionMovable": false,
+                "name": "EN0006_Passive01_LevelCircleAreaEntity02_Torment",
+                "hideFlags": 0
+              }
+            },
+            {
+              "$type": "MX.Logic.Data.SkillEntitySpawnerTimelineData, BlueArchive",
+              "SpawnCondition": "IncludeTag",
+              "SpawnConditionParameter": "568",
+              "SpawnConditionCheckTarget": "Caster",
+              "Frame": 150,
+              "DamageDistributeRate": 10000,
+              "Entity": {
+                "$type": "MX.Logic.Data.LevelCircleAreaEntityData, BlueArchive",
+                "Radius": 150,
+                "AttachTarget": false,
+                "AllowDuplicateHit": false,
+                "RemoveEntityIfSkillCancel": false,
+                "ApplyOnStay": false,
+                "Duration": 2,
+                "RotateEntityDirectionEveryFrame": false,
+                "ApplyOffsetRotateEntityDirection": false,
+                "HitFrames": [
+                  1
+                ],
+                "CollisionProperty": {
+                  "$type": "MX.Logic.Data.AreaCollisionProperty, BlueArchive",
+                  "TransformType": "None",
+                  "TransformCount": 0
+                },
+                "CheckBlockHit": false,
+                "AreaAbilities": [
+                  {
+                    "$type": "MX.Logic.Data.LevelOneTimeAbilityData, BlueArchive",
+                    "StartDelay": 0,
+                    "LogicEffectGroupIds": [
+                      "EN0006_Passive01_Effect01_Normal"
+                    ],
+                    "name": "EN0006_Passive01_LevelOneTimeAbility01_Scenario",
+                    "hideFlags": 0
+                  }
+                ],
+                "EntityName": "EN0006Passive01Entity02_Scenario",
+                "SpawnRate": 10000,
+                "SpawnDelay": 0,
+                "ApplyType": 4,
+                "DecideTiming": 1,
+                "EntitySpawnIncludeOutOfRangeInputTarget": false,
+                "SpawnPositionType": "InputPosition",
+                "SpawnWorldPosition": {
+                  "x": 0,
+                  "y": 0
+                },
+                "PositionOffset": {
+                  "x": 0,
+                  "y": 0
+                },
+                "PositionRandomOffsetRange": 0,
+                "OffsetDirectionType": "Input",
+                "SpawnDirectionType": "Input",
+                "OverrideTargetingRule": true,
+                "TargetSortRule": {
+                  "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+                  "SortCriteria": "Distance",
+                  "SortStat": 0,
+                  "SortParameter": null,
+                  "OrderBy": "Lowest"
+                },
+                "EssentialCandidateRule": {
+                  "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
+                  "TargetSide": "Enemy",
+                  "TargetingType": "Position",
+                  "ApplyEntityType": 7,
+                  "MaxTargetCount": -1
+                },
+                "OptionalCandidateRule": {
+                  "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+                  "AliveState": 0,
+                  "SchoolConstraint": {
+                    "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
+                    "School": 0,
+                    "IncludeType": 0
+                  },
+                  "WeaponConstraint": {
+                    "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
+                    "Weapon": 0,
+                    "IncludeType": 0
+                  },
+                  "SquadTypeConstraint": {
+                    "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
+                    "SquadType": 0,
+                    "IncludeType": 0
+                  },
+                  "AdaptationConstraint": {
+                    "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
+                    "AdaptationType": 0,
+                    "AdaptationValues": [],
+                    "IncludeType": 0
+                  },
+                  "BulletConstraint": {
+                    "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
+                    "BulletType": 5,
+                    "IncludeType": 0
+                  },
+                  "TagConstraint": {
+                    "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
+                    "IncludeType": 0
+                  },
+                  "CoverState": 0,
+                  "HPRateConstraint": {
+                    "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
+                    "ConstraintType": 0,
+                    "HPRate": 0
+                  }
+                },
+                "HighlightOption": 0,
+                "CheckSpawnPositionMovable": false,
+                "name": "EN0006_Passive01_LevelCircleAreaEntity02_Scenario",
+                "hideFlags": 0
+              }
+            }
+          ],
+          "EntityName": "",
+          "SpawnRate": 10000,
+          "SpawnDelay": 0,
+          "ApplyType": 4,
+          "DecideTiming": 1,
+          "EntitySpawnIncludeOutOfRangeInputTarget": false,
+          "SpawnPositionType": "InputPosition",
+          "SpawnWorldPosition": {
+            "x": 0,
+            "y": 0
+          },
+          "PositionOffset": {
+            "x": 0,
+            "y": 0
+          },
+          "PositionRandomOffsetRange": 0,
+          "OffsetDirectionType": "Input",
+          "SpawnDirectionType": "Input",
+          "OverrideTargetingRule": true,
+          "TargetSortRule": {
+            "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+            "SortCriteria": "Distance",
+            "SortStat": 0,
+            "SortParameter": null,
+            "OrderBy": "Lowest"
+          },
+          "EssentialCandidateRule": {
+            "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
+            "TargetSide": "Enemy",
+            "TargetingType": "Target",
+            "ApplyEntityType": 1,
+            "MaxTargetCount": 1
+          },
+          "OptionalCandidateRule": {
+            "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+            "AliveState": 0,
+            "SchoolConstraint": {
+              "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
+              "School": 0,
+              "IncludeType": 0
+            },
+            "WeaponConstraint": {
+              "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
+              "Weapon": 0,
+              "IncludeType": 0
+            },
+            "SquadTypeConstraint": {
+              "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
+              "SquadType": 0,
+              "IncludeType": 0
+            },
+            "AdaptationConstraint": {
+              "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
+              "AdaptationType": 0,
+              "AdaptationValues": [],
+              "IncludeType": 0
+            },
+            "BulletConstraint": {
+              "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
+              "BulletType": 5,
+              "IncludeType": 0
+            },
+            "TagConstraint": {
+              "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
+              "IncludeType": 0
+            },
+            "CoverState": 0,
+            "HPRateConstraint": {
+              "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
+              "ConstraintType": 0,
+              "HPRate": 0
             }
           },
-          {
-            "$type": "MX.Logic.Data.SkillEntitySpawnerTimelineData, BlueArchive",
-            "SpawnCondition": "None",
-            "SpawnConditionParameter": "",
-            "SpawnConditionCheckTarget": "Caster",
-            "Frame": 150,
-            "DamageDistributeRate": 10000,
-            "Entity": {
-              "$type": "MX.Logic.Data.LevelCircleAreaEntityData, BlueArchive",
-              "Radius": 150,
-              "AttachTarget": false,
-              "AllowDuplicateHit": false,
-              "RemoveEntityIfSkillCancel": false,
-              "ApplyOnStay": false,
-              "Duration": 2,
-              "RotateEntityDirectionEveryFrame": false,
-              "ApplyOffsetRotateEntityDirection": false,
-              "HitFrames": [
-                1
-              ],
-              "CollisionProperty": {
-                "$type": "MX.Logic.Data.AreaCollisionProperty, BlueArchive",
-                "TransformType": "None",
-                "TransformCount": 0
-              },
-              "CheckBlockHit": false,
-              "AreaAbilities": [
-                {
-                  "$type": "MX.Logic.Data.LevelOneTimeAbilityData, BlueArchive",
-                  "StartDelay": 0,
-                  "LogicEffectGroupIds": [
-                    "EN0006_Passive01_Effect01"
-                  ],
-                  "name": "EN0006_Passive01_LevelOneTimeAbility01",
-                  "hideFlags": 0
-                }
-              ],
-              "EntityName": "EN0006Passive01Entity02",
-              "SpawnRate": 10000,
-              "SpawnDelay": 0,
-              "ApplyType": 4,
-              "DecideTiming": 1,
-              "EntitySpawnIncludeOutOfRangeInputTarget": false,
-              "SpawnPositionType": "InputPosition",
-              "SpawnWorldPosition": {
-                "x": 0,
-                "y": 0
-              },
-              "PositionOffset": {
-                "x": 0,
-                "y": 0
-              },
-              "PositionRandomOffsetRange": 0,
-              "OffsetDirectionType": "Input",
-              "SpawnDirectionType": "Input",
-              "OverrideTargetingRule": true,
-              "TargetSortRule": {
-                "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
-                "SortCriteria": "Distance",
-                "SortStat": 0,
-                "SortParameter": null,
-                "OrderBy": "Lowest"
-              },
-              "EssentialCandidateRule": {
-                "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
-                "TargetSide": "Enemy",
-                "TargetingType": "Position",
-                "ApplyEntityType": 7,
-                "MaxTargetCount": -1
-              },
-              "OptionalCandidateRule": {
-                "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
-                "AliveState": 0,
-                "SchoolConstraint": {
-                  "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
-                  "School": 0,
-                  "IncludeType": 0
-                },
-                "WeaponConstraint": {
-                  "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
-                  "Weapon": 0,
-                  "IncludeType": 0
-                },
-                "SquadTypeConstraint": {
-                  "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
-                  "SquadType": 0,
-                  "IncludeType": 0
-                },
-                "AdaptationConstraint": {
-                  "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
-                  "AdaptationType": 0,
-                  "AdaptationValues": [],
-                  "IncludeType": 0
-                },
-                "BulletConstraint": {
-                  "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
-                  "BulletType": 5,
-                  "IncludeType": 0
-                },
-                "TagConstraint": {
-                  "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
-                  "IncludeType": 0
-                },
-                "CoverState": 0,
-                "HPRateConstraint": {
-                  "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
-                  "ConstraintType": 0,
-                  "HPRate": 0
-                }
-              },
-              "HighlightOption": 0,
-              "CheckSpawnPositionMovable": false,
-              "name": "EN0006_Passive01_LevelCircleAreaEntity02",
-              "hideFlags": 0
-            }
-          }
-        ],
-        "EntityName": "",
+          "HighlightOption": 0,
+          "CheckSpawnPositionMovable": false,
+          "name": "EN0006_Passive01_SkillEntitySpawner01",
+          "hideFlags": 0
+        },
+        "EntityName": "EN0006Passive01Entity03",
         "SpawnRate": 10000,
         "SpawnDelay": 0,
         "ApplyType": 4,
-        "DecideTiming": 1,
+        "DecideTiming": 0,
         "EntitySpawnIncludeOutOfRangeInputTarget": false,
-        "SpawnPositionType": "InputPosition",
+        "SpawnPositionType": "Invoker",
         "SpawnWorldPosition": {
           "x": 0,
           "y": 0
@@ -345,15 +1261,15 @@
           "y": 0
         },
         "PositionRandomOffsetRange": 0,
-        "OffsetDirectionType": "Input",
-        "SpawnDirectionType": "Input",
+        "OffsetDirectionType": "Invoker",
+        "SpawnDirectionType": "Invoker",
         "OverrideTargetingRule": true,
         "TargetSortRule": {
           "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
           "SortCriteria": "Distance",
           "SortStat": 0,
           "SortParameter": null,
-          "OrderBy": "Lowest"
+          "OrderBy": "Random"
         },
         "EssentialCandidateRule": {
           "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
@@ -404,7 +1320,7 @@
         },
         "HighlightOption": 0,
         "CheckSpawnPositionMovable": false,
-        "name": "EN0006_Passive01_SkillEntitySpawner01",
+        "name": "EN0006_Passive01_LevelTargetProjectileEntity01",
         "hideFlags": 0
       }
     },
