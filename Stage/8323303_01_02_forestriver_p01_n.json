@@ -1,0 +1,3880 @@
+{
+  "Version": "",
+  "Global": {
+    "Position": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "Events": [
+      {
+        "EventName": "StartBattle",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": "0"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSpawnPlayer, BlueArchive",
+            "IsEnemy": false,
+            "IgnoreSkillCardShuffle": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 3,
+            "MaxCameraSpeed": 3,
+            "RotationSpeed": 1,
+            "ZoomSpeed": 1,
+            "RailPoints": [
+              {
+                "UseTableData": false,
+                "Position": {
+                  "x": 16.32,
+                  "y": 0,
+                  "z": 77.83
+                },
+                "MinCameraDistance": 65,
+                "MaxCameraDistance": 65,
+                "CameraForward": {
+                  "x": -0.6802501,
+                  "y": -0.40035,
+                  "z": 0.6139867
+                }
+              }
+            ],
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 1,
+            "SetConditionCommandOnly": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "EndBattle",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 1,
+            "CheckSummonedCharacterDead": false,
+            "CheckDelayMilliSecond": 0,
+            "ConditionID": "BossDead"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandCharacterDie, BlueArchive",
+            "CharacterCommandIdList": [
+              "FinalWaveCommand"
+            ],
+            "CharacterSpawnTemplateIdList": [],
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandEndBattle, BlueArchive",
+            "BattleEndType": 4,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "KillKuma",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionArea, BlueArchive",
+            "SpawnTemplateId": "KumabotPapa_Slumpia_SG_E_832Event03_Dummy",
+            "Shape": 0,
+            "Target": 3,
+            "Trigger": 0,
+            "StayTime": 0,
+            "Position": {
+              "x": 17.83,
+              "y": 0,
+              "z": 62.89
+            },
+            "Rect": {
+              "Direction": {
+                "x": 0,
+                "y": 0
+              },
+              "Width": 10,
+              "Height": 10
+            },
+            "Circle": {
+              "Radius": 1
+            },
+            "InactivateWhenStart": false,
+            "ConditionID": ""
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandCharacterDie, BlueArchive",
+            "CharacterCommandIdList": [
+              "FirstCommand"
+            ],
+            "CharacterSpawnTemplateIdList": [],
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      }
+    ]
+  },
+  "Sections": [
+    {
+      "SectionID": 1,
+      "Position": {
+        "x": 1.34,
+        "y": 0,
+        "z": 0.09
+      },
+      "Events": [
+        {
+          "EventName": "Spawn1-1",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 150,
+              "CommandID": "FirstSpawn",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 3000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "NPCSpawn",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 3000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandCreateSyncUseSkill, BlueArchive",
+              "CoolDownInMilliSeconds": 999999,
+              "SyncUseSkillGroupId": 1000,
+              "IsAllyGroup": true,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetSyncUseSkillGroup, BlueArchive",
+              "SyncUseSkillGroupId": 1000,
+              "SkillSlot": "PublicSkill01",
+              "IsAdd": true,
+              "IsAllyGroup": true,
+              "CommandID": "NPCCommand",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "Camera",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 7000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandFadeOutIn, BlueArchive",
+              "DelayBeforeFadeOut": 0,
+              "DelayBeforeFadeIn": 1.5,
+              "VisualDelayFadeInStart": 2,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 1500,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandLocateCamera, BlueArchive",
+              "ID": 102,
+              "MaxCameraSpeed": 3,
+              "RotationSpeed": 1,
+              "ZoomSpeed": 1,
+              "RailPoints": [
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": 0.71,
+                    "y": 0,
+                    "z": -9.1
+                  },
+                  "MinCameraDistance": 35,
+                  "MaxCameraDistance": 35,
+                  "CameraForward": {
+                    "x": -0.7494206,
+                    "y": -0.4613375,
+                    "z": 0.4749069
+                  }
+                },
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": 0.609999657,
+                    "y": 0,
+                    "z": 26.49
+                  },
+                  "MinCameraDistance": 50,
+                  "MaxCameraDistance": 50,
+                  "CameraForward": {
+                    "x": -0.6401992,
+                    "y": -0.400350779,
+                    "z": 0.655640364
+                  }
+                },
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": 8.780001,
+                    "y": 0,
+                    "z": 49.13
+                  },
+                  "MinCameraDistance": 65,
+                  "MaxCameraDistance": 65,
+                  "CameraForward": {
+                    "x": -0.6802501,
+                    "y": -0.40035,
+                    "z": 0.6139867
+                  }
+                },
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": 8.99,
+                    "y": 0,
+                    "z": 82.8800049
+                  },
+                  "MinCameraDistance": 65,
+                  "MaxCameraDistance": 65,
+                  "CameraForward": {
+                    "x": -0.6802501,
+                    "y": -0.40035,
+                    "z": 0.6139867
+                  }
+                }
+              ],
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 10,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandChangeLookTarget, BlueArchive",
+              "targetCommandIds": [
+                "NPCCommand"
+              ],
+              "minDistance": 35,
+              "maxDistance": 35,
+              "moveInstantly": true,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 0,
+              "CommandID": "FirstWaveSpawn",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 30,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "ImmuneDamageAll",
+              "isAdd": true,
+              "CommandID": "UsagiCommmand",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "StartSection2",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundConditionArea, BlueArchive",
+              "SpawnTemplateId": "Sumire_default_832Event03",
+              "Shape": 0,
+              "Target": 5,
+              "Trigger": 0,
+              "StayTime": 0,
+              "Position": {
+                "x": 4.89,
+                "y": 0,
+                "z": 30.59
+              },
+              "Rect": {
+                "Direction": {
+                  "x": 0,
+                  "y": 0
+                },
+                "Width": 10,
+                "Height": 10
+              },
+              "Circle": {
+                "Radius": 1
+              },
+              "InactivateWhenStart": false,
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "GroundCommandLocateCamera, BlueArchive",
+              "ID": 104,
+              "MaxCameraSpeed": 3,
+              "RotationSpeed": 1,
+              "ZoomSpeed": 1,
+              "RailPoints": [
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": -1.79999983,
+                    "y": 0,
+                    "z": -9.1
+                  },
+                  "MinCameraDistance": 50,
+                  "MaxCameraDistance": 50,
+                  "CameraForward": {
+                    "x": -0.7494206,
+                    "y": -0.4613375,
+                    "z": 0.4749069
+                  }
+                },
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": -0.6999999,
+                    "y": 0,
+                    "z": 19.11
+                  },
+                  "MinCameraDistance": 50,
+                  "MaxCameraDistance": 50,
+                  "CameraForward": {
+                    "x": -0.6401992,
+                    "y": -0.400350779,
+                    "z": 0.655640364
+                  }
+                },
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": 6.36,
+                    "y": 0,
+                    "z": 37.61
+                  },
+                  "MinCameraDistance": 50,
+                  "MaxCameraDistance": 50,
+                  "CameraForward": {
+                    "x": -0.6509472,
+                    "y": -0.3631095,
+                    "z": 0.666647732
+                  }
+                },
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": 16.58,
+                    "y": 0,
+                    "z": 54.41
+                  },
+                  "MinCameraDistance": 50,
+                  "MaxCameraDistance": 50,
+                  "CameraForward": {
+                    "x": -0.6802501,
+                    "y": -0.40035,
+                    "z": 0.6139867
+                  }
+                },
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": 16.6,
+                    "y": 0,
+                    "z": 82.8800049
+                  },
+                  "MinCameraDistance": 50,
+                  "MaxCameraDistance": 50,
+                  "CameraForward": {
+                    "x": -0.6802501,
+                    "y": -0.40035,
+                    "z": 0.6139867
+                  }
+                }
+              ],
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandShowBattleUI, BlueArchive",
+              "DisappearInstantly": false,
+              "IsShow": true,
+              "ShowBattleStartSign": true,
+              "SoundOn": true,
+              "BGMOn": true,
+              "CommandID": "",
+              "BGMId": null,
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+              "SectionID": 2,
+              "SetConditionCommandOnly": false,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [
+        {
+          "UniqueName": "Forestriver_Destroytable_01_Standard",
+          "Position": {
+            "x": 2.95,
+            "y": 0,
+            "z": 5.52999973
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Forestriver_Stone_01_Standard",
+          "Position": {
+            "x": -4.04,
+            "y": 0,
+            "z": -0.08000007
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Forestriver_Stone_02_Standard",
+          "Position": {
+            "x": -1.73999989,
+            "y": 0,
+            "z": 9.360001
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Forestriver_Wood_03_Standard",
+          "Position": {
+            "x": -3.10999966,
+            "y": 0,
+            "z": -2.47
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Forestriver_Stone_01_Standard",
+          "Position": {
+            "x": 6.02,
+            "y": 0,
+            "z": -3.29
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Forestriver_Stone_01_Standard",
+          "Position": {
+            "x": 2.21,
+            "y": 0,
+            "z": 16.7400017
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        }
+      ],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent1-1",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "KumabotPapa_Slumpia_SG_E_832Event03_Dummy",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "FirstDead"
+              ],
+              "SpawnCommandIdList": [
+                "FirstCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 154,
+                  "TileY": 439,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 15.5699968,
+                    "y": 64.969986
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 154,
+              "TileY": 584,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 15.57,
+                "y": 93.91999
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "FirstSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Usagibot_Slumpia_AR_E_832Event03_Dummy",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "FirstDead"
+              ],
+              "SpawnCommandIdList": [
+                "FirstCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 138,
+                  "TileY": 498,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 12.3599987,
+                    "y": 76.6199951
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 138,
+              "TileY": 612,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 12.3600006,
+                "y": 99.45
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "FirstSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "KumabotPapa_Slumpia_SG_E_832Event03_Dummy",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "FirstDead"
+              ],
+              "SpawnCommandIdList": [
+                "FirstCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 152,
+                  "TileY": 491,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 15.1599979,
+                    "y": 75.24999
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 152,
+              "TileY": 605,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 15.16,
+                "y": 98.0799942
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "FirstSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Usagibot_Slumpia_AR_E_832Event03_Dummy",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "FirstDead"
+              ],
+              "SpawnCommandIdList": [
+                "FirstCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 158,
+                  "TileY": 492,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 16.3899975,
+                    "y": 75.38
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 158,
+              "TileY": 606,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 16.39,
+                "y": 98.21
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "FirstSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "KumabotPapa_Slumpia_SG_E_832Event03_Dummy",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "FirstDead"
+              ],
+              "SpawnCommandIdList": [
+                "FirstCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 154,
+                  "TileY": 474,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 15.5399971,
+                    "y": 71.84
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 154,
+              "TileY": 619,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 15.54,
+                "y": 100.859993
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "FirstSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Usagibot_Slumpia_AR_E_832Event03_Dummy",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "FirstDead"
+              ],
+              "SpawnCommandIdList": [
+                "FirstCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 159,
+                  "TileY": 475,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 16.5399971,
+                    "y": 72.03
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 159,
+              "TileY": 625,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 16.539999,
+                "y": 101.99
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "FirstSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Usagibot_Slumpia_AR_E_832Event03_Dummy",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "FirstDead"
+              ],
+              "SpawnCommandIdList": [
+                "FirstCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 155,
+                  "TileY": 490,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 15.869997,
+                    "y": 75.0499954
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 155,
+              "TileY": 631,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 15.87,
+                "y": 103.259995
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "FirstSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Usagibot_Slumpia_AR_E_832Event03_Dummy",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "FirstDead"
+              ],
+              "SpawnCommandIdList": [
+                "FirstCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 142,
+                  "TileY": 488,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 13.1399975,
+                    "y": 74.63999
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 142,
+              "TileY": 629,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 13.14,
+                "y": 102.849991
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "FirstSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Usagibot_Slumpia_AR_E_832Event03_Dummy",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "FirstDead"
+              ],
+              "SpawnCommandIdList": [
+                "FirstCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 165,
+                  "TileY": 492,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 17.8599987,
+                    "y": 75.38999
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 165,
+              "TileY": 633,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 17.86,
+                "y": 103.599991
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "FirstSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Terror_KumabotPapa_Slumpia_SG_E_832Event03_Dummy",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "FirstDead"
+              ],
+              "SpawnCommandIdList": [
+                "FirstCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 147,
+                  "TileY": 494,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 14.1699982,
+                    "y": 75.81
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 147,
+              "TileY": 608,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 14.17,
+                "y": 98.64
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "FirstSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Terror_Usagibot_Slumpia_AR_E_832Event03_Dummy",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "FirstDead"
+              ],
+              "SpawnCommandIdList": [
+                "FirstCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 164,
+                  "TileY": 474,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 17.63,
+                    "y": 71.92
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 164,
+              "TileY": 612,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 17.6300011,
+                "y": 99.38
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "FirstSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Terror_KumabotPapa_Slumpia_SG_E_832Event03_Dummy",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "FirstDead"
+              ],
+              "SpawnCommandIdList": [
+                "FirstCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 145,
+                  "TileY": 473,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 13.8099976,
+                    "y": 71.6199951
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 145,
+              "TileY": 623,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 13.81,
+                "y": 101.579994
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "FirstSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Terror_Usagibot_Slumpia_AR_E_832Event03_Dummy",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "FirstDead"
+              ],
+              "SpawnCommandIdList": [
+                "FirstCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 170,
+                  "TileY": 477,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 18.7399979,
+                    "y": 72.4399948
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 170,
+              "TileY": 627,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 18.74,
+                "y": 102.399994
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "FirstSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Terror_KumabotPapa_Slumpia_SG_E_832Event03_Dummy",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "FirstDead"
+              ],
+              "SpawnCommandIdList": [
+                "FirstCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 148,
+                  "TileY": 483,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 14.3399973,
+                    "y": 73.74
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 148,
+              "TileY": 633,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 14.34,
+                "y": 103.7
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "FirstSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Terror_Usagibot_Slumpia_AR_E_832Event03_Dummy",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "FirstDead"
+              ],
+              "SpawnCommandIdList": [
+                "FirstCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 141,
+                  "TileY": 503,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 12.9999981,
+                    "y": 77.659996
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 141,
+              "TileY": 617,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 13,
+                "y": 100.49
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "FirstSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Terror_Usagibot_Slumpia_AR_E_832Event03_Dummy",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "FirstDead"
+              ],
+              "SpawnCommandIdList": [
+                "FirstCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 170,
+                  "TileY": 470,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 18.7799988,
+                    "y": 71.0099945
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 170,
+              "TileY": 616,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 18.78,
+                "y": 100.27
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "FirstSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Terror_Usagibot_Slumpia_AR_E_832Event03_Dummy",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "FirstDead"
+              ],
+              "SpawnCommandIdList": [
+                "FirstCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 149,
+                  "TileY": 512,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 14.7199984,
+                    "y": 79.38
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 149,
+              "TileY": 626,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 14.72,
+                "y": 102.21
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "FirstSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Terror_Usagibot_Slumpia_AR_E_832Event03_Dummy",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "FirstDead"
+              ],
+              "SpawnCommandIdList": [
+                "FirstCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 135,
+                  "TileY": 510,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 11.7499981,
+                    "y": 79.09999
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 135,
+              "TileY": 624,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 11.75,
+                "y": 101.929993
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "FirstSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Terror_KumabotPapa_Slumpia_SG_E_832Event03_Dummy",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "FirstDead"
+              ],
+              "SpawnCommandIdList": [
+                "FirstCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 142,
+                  "TileY": 453,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 13.2199974,
+                    "y": 67.61
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 142,
+              "TileY": 602,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 13.22,
+                "y": 97.57
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "FirstSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Terror_KumabotPapa_Slumpia_SG_E_832Event03_Dummy",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "FirstDead"
+              ],
+              "SpawnCommandIdList": [
+                "FirstCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 161,
+                  "TileY": 451,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 16.9799976,
+                    "y": 67.28
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 161,
+              "TileY": 601,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 16.98,
+                "y": 97.24
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "FirstSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Terror_KumabotPapa_Slumpia_SG_E_832Event03_Dummy",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "FirstDead"
+              ],
+              "SpawnCommandIdList": [
+                "FirstCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 167,
+                  "TileY": 457,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 18.329998,
+                    "y": 68.5
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 167,
+              "TileY": 607,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 18.33,
+                "y": 98.46
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "FirstSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointParent1-2",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Sumire_default_832Event03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "NPCDead"
+              ],
+              "SpawnCommandIdList": [
+                "NPCCommand"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 78,
+                  "TileY": 214,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.380000055,
+                    "y": 19.83
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 98,
+                  "TileY": 273,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 4.42,
+                    "y": 31.6300011
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 78,
+              "TileY": 89,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.380000055,
+                "y": -5.16
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "NPCSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "FirstWaveSpawn",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "KumabotPapa_Slumpia_SG_E_832Event03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "FirstWaveDead",
+                "FirstKumaDead"
+              ],
+              "SpawnCommandIdList": [
+                "FirstWaveCommand"
+              ],
+              "MovePoints": [],
+              "TileX": 116,
+              "TileY": 314,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 8,
+                "y": 39.88
+              },
+              "Direction": {
+                "x": -0.410676062,
+                "y": -0.9117813
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "FirstWaveSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "KumabotPapa_Slumpia_SG_E_832Event03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "FirstWaveDead",
+                "FirstKumaDead"
+              ],
+              "SpawnCommandIdList": [
+                "FirstWaveCommand"
+              ],
+              "MovePoints": [],
+              "TileX": 125,
+              "TileY": 309,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 9.74,
+                "y": 38.81
+              },
+              "Direction": {
+                "x": -0.410676062,
+                "y": -0.9117813
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "FirstWaveSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Usagibot_Slumpia_AR_E_832Event03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "FirstWaveDead"
+              ],
+              "SpawnCommandIdList": [
+                "FirstWaveCommand",
+                "UsagiCommmand"
+              ],
+              "MovePoints": [],
+              "TileX": 117,
+              "TileY": 340,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 8.16,
+                "y": 45.04
+              },
+              "Direction": {
+                "x": -0.410676062,
+                "y": -0.9117813
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "FirstWaveSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Usagibot_Slumpia_AR_E_832Event03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "FirstWaveDead"
+              ],
+              "SpawnCommandIdList": [
+                "FirstWaveCommand",
+                "UsagiCommmand"
+              ],
+              "MovePoints": [],
+              "TileX": 149,
+              "TileY": 319,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 14.62,
+                "y": 40.9
+              },
+              "Direction": {
+                "x": -0.410676062,
+                "y": -0.9117813
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "FirstWaveSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Usagibot_Slumpia_AR_E_832Event03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "FirstWaveDead"
+              ],
+              "SpawnCommandIdList": [
+                "FirstWaveCommand",
+                "UsagiCommmand"
+              ],
+              "MovePoints": [],
+              "TileX": 128,
+              "TileY": 334,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 10.35,
+                "y": 43.96
+              },
+              "Direction": {
+                "x": -0.410676062,
+                "y": -0.9117813
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "FirstWaveSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Usagibot_Slumpia_AR_E_832Event03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "FirstWaveDead"
+              ],
+              "SpawnCommandIdList": [
+                "FirstWaveCommand",
+                "UsagiCommmand"
+              ],
+              "MovePoints": [],
+              "TileX": 141,
+              "TileY": 326,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 13.06,
+                "y": 42.33
+              },
+              "Direction": {
+                "x": -0.410676062,
+                "y": -0.9117813
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "FirstWaveSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "KumabotPapa_Slumpia_SG_E_832Event03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "FirstWaveDead",
+                "FirstKumaDead"
+              ],
+              "SpawnCommandIdList": [
+                "FirstWaveCommand"
+              ],
+              "MovePoints": [],
+              "TileX": 132,
+              "TileY": 305,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 11.2,
+                "y": 38.03
+              },
+              "Direction": {
+                "x": -0.410676062,
+                "y": -0.9117813
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "FirstWaveSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "SectionID": 2,
+      "Position": {
+        "x": 1.64,
+        "y": 0,
+        "z": 24.13
+      },
+      "Events": [
+        {
+          "EventName": "StartSection3",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+              "DeadCheck": 0,
+              "CheckSummonedCharacterDead": false,
+              "CheckDelayMilliSecond": 0,
+              "ConditionID": "FirstKumaDead"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandCharacterDie, BlueArchive",
+              "CharacterCommandIdList": [
+                "FirstWaveCommand"
+              ],
+              "CharacterSpawnTemplateIdList": [],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+              "SectionID": 3,
+              "SetConditionCommandOnly": false,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [
+        {
+          "UniqueName": "Forestriver_Wood_03_Standard",
+          "Position": {
+            "x": 6.207601,
+            "y": 0,
+            "z": 27.4078789
+          },
+          "Forward": {
+            "x": 0.264771134,
+            "y": 0,
+            "z": 0.9643113
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Forestriver_Wood_02_Standard",
+          "Position": {
+            "x": 7.967602,
+            "y": 0,
+            "z": 31.0078812
+          },
+          "Forward": {
+            "x": 0.476293057,
+            "y": 0,
+            "z": 0.8792866
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Forestriver_Wood_03_Standard",
+          "Position": {
+            "x": 3.49,
+            "y": 0,
+            "z": 36.01
+          },
+          "Forward": {
+            "x": 0.611013234,
+            "y": 0,
+            "z": 0.7916204
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        }
+      ],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent2-1",
+          "SpawnPoints": []
+        }
+      ]
+    },
+    {
+      "SectionID": 3,
+      "Position": {
+        "x": 10.03,
+        "y": 0,
+        "z": 38.35
+      },
+      "Events": [
+        {
+          "EventName": "Spawn3-1",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 0,
+              "CommandID": "SecondWaveSpawn",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 30,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "ImmuneDamageAll",
+              "isAdd": true,
+              "CommandID": "UsagiCommmand",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "StartSection4",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+              "DeadCheck": 1,
+              "CheckSummonedCharacterDead": false,
+              "CheckDelayMilliSecond": 0,
+              "ConditionID": "SecondKumaDead"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandCharacterDie, BlueArchive",
+              "CharacterCommandIdList": [
+                "SecondWaveCommand"
+              ],
+              "CharacterSpawnTemplateIdList": [],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+              "SectionID": 4,
+              "SetConditionCommandOnly": false,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [
+        {
+          "UniqueName": "Forestriver_Wood_03_Standard",
+          "Position": {
+            "x": 11.6655254,
+            "y": 0,
+            "z": 48.83354
+          },
+          "Forward": {
+            "x": 0.7176909,
+            "y": 0,
+            "z": 0.69636184
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Forestriver_Stone_02_Standard",
+          "Position": {
+            "x": 19.7504234,
+            "y": 0,
+            "z": 55.7079849
+          },
+          "Forward": {
+            "x": 0.02052098,
+            "y": 0,
+            "z": 0.9997894
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        }
+      ],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent3-1",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Terror_KumabotPapa_Slumpia_SG_E_832Event03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "D",
+              "SpawnConditionIdList": [
+                "SecondWaveDead",
+                "SecondKumaDead"
+              ],
+              "SpawnCommandIdList": [
+                "SecondWaveCommand"
+              ],
+              "MovePoints": [],
+              "TileX": 148,
+              "TileY": 383,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 14.43,
+                "y": 53.75
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "SecondWaveSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Terror_KumabotPapa_Slumpia_SG_E_832Event03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "D",
+              "SpawnConditionIdList": [
+                "SecondWaveDead",
+                "SecondKumaDead"
+              ],
+              "SpawnCommandIdList": [
+                "SecondWaveCommand"
+              ],
+              "MovePoints": [],
+              "TileX": 155,
+              "TileY": 379,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 15.81,
+                "y": 52.96
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "SecondWaveSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Terror_KumabotPapa_Slumpia_SG_E_832Event03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "D",
+              "SpawnConditionIdList": [
+                "SecondWaveDead",
+                "SecondKumaDead"
+              ],
+              "SpawnCommandIdList": [
+                "SecondWaveCommand"
+              ],
+              "MovePoints": [],
+              "TileX": 163,
+              "TileY": 382,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 17.41,
+                "y": 53.48
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "SecondWaveSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Terror_Usagibot_Slumpia_AR_E_832Event03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "D",
+              "SpawnConditionIdList": [
+                "SecondWaveDead"
+              ],
+              "SpawnCommandIdList": [
+                "SecondWaveCommand",
+                "UsagiCommmand"
+              ],
+              "MovePoints": [],
+              "TileX": 151,
+              "TileY": 404,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 15.0499992,
+                "y": 57.94
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "SecondWaveSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Terror_Usagibot_Slumpia_AR_E_832Event03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "D",
+              "SpawnConditionIdList": [
+                "SecondWaveDead"
+              ],
+              "SpawnCommandIdList": [
+                "SecondWaveCommand",
+                "UsagiCommmand"
+              ],
+              "MovePoints": [],
+              "TileX": 154,
+              "TileY": 400,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 15.73,
+                "y": 57.17
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "SecondWaveSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Terror_Usagibot_Slumpia_AR_E_832Event03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "D",
+              "SpawnConditionIdList": [
+                "SecondWaveDead"
+              ],
+              "SpawnCommandIdList": [
+                "SecondWaveCommand",
+                "UsagiCommmand"
+              ],
+              "MovePoints": [],
+              "TileX": 144,
+              "TileY": 401,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 13.69,
+                "y": 57.37
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "SecondWaveSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Terror_Usagibot_Slumpia_AR_E_832Event03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "D",
+              "SpawnConditionIdList": [
+                "SecondWaveDead"
+              ],
+              "SpawnCommandIdList": [
+                "SecondWaveCommand",
+                "UsagiCommmand"
+              ],
+              "MovePoints": [],
+              "TileX": 163,
+              "TileY": 401,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 17.3699989,
+                "y": 57.2299957
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "SecondWaveSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "SectionID": 4,
+      "Position": {
+        "x": 16.75,
+        "y": 0,
+        "z": 56.46
+      },
+      "Events": [
+        {
+          "EventName": "Spawn4-1",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 0,
+              "CommandID": "ThirdWaveSpawn",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 30,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "ImmuneDamageAll",
+              "isAdd": true,
+              "CommandID": "UsagiCommmand",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "Spawn4-2",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+              "DeadCheck": 1,
+              "CheckSummonedCharacterDead": false,
+              "CheckDelayMilliSecond": 0,
+              "ConditionID": "ThirdKumaDead"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandCharacterDie, BlueArchive",
+              "CharacterCommandIdList": [
+                "ThirdWaveCommand"
+              ],
+              "CharacterSpawnTemplateIdList": [],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 0,
+              "CommandID": "FinalWaveSpawn",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 30,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "ImmuneDamageAll",
+              "isAdd": true,
+              "CommandID": "FinalJyaco",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [
+        {
+          "UniqueName": "Forestriver_Wood_03_Standard",
+          "Position": {
+            "x": 17.39,
+            "y": 0,
+            "z": 69.32
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Forestriver_Stone_02_Standard",
+          "Position": {
+            "x": 12.68,
+            "y": 0,
+            "z": 63.5599976
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        }
+      ],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent4-1",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "KumabotPapa_Slumpia_SG_E_832Event03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "E",
+              "SpawnConditionIdList": [
+                "ThirdWaveDead",
+                "ThirdKumaDead"
+              ],
+              "SpawnCommandIdList": [
+                "ThirdWaveCommand"
+              ],
+              "MovePoints": [],
+              "TileX": 146,
+              "TileY": 444,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 14.1,
+                "y": 65.92
+              },
+              "Direction": {
+                "x": 0.05233579,
+                "y": -0.99862957
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "ThirdWaveSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Terror_KumabotPapa_Slumpia_SG_E_832Event03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "E",
+              "SpawnConditionIdList": [
+                "ThirdWaveDead",
+                "ThirdKumaDead"
+              ],
+              "SpawnCommandIdList": [
+                "ThirdWaveCommand"
+              ],
+              "MovePoints": [],
+              "TileX": 156,
+              "TileY": 445,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 16.11,
+                "y": 66.08
+              },
+              "Direction": {
+                "x": 0.05233579,
+                "y": -0.99862957
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "ThirdWaveSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "KumabotPapa_Slumpia_SG_E_832Event03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "E",
+              "SpawnConditionIdList": [
+                "ThirdWaveDead",
+                "ThirdKumaDead"
+              ],
+              "SpawnCommandIdList": [
+                "ThirdWaveCommand"
+              ],
+              "MovePoints": [],
+              "TileX": 167,
+              "TileY": 446,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 18.16,
+                "y": 66.25
+              },
+              "Direction": {
+                "x": 0.05233579,
+                "y": -0.99862957
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "ThirdWaveSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Usagibot_Slumpia_AR_E_832Event03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "E",
+              "SpawnConditionIdList": [
+                "ThirdWaveDead"
+              ],
+              "SpawnCommandIdList": [
+                "ThirdWaveCommand",
+                "UsagiCommmand"
+              ],
+              "MovePoints": [],
+              "TileX": 137,
+              "TileY": 463,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 12.27,
+                "y": 69.6199951
+              },
+              "Direction": {
+                "x": 0.05233579,
+                "y": -0.99862957
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "ThirdWaveSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Terror_Usagibot_Slumpia_AR_E_832Event03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "E",
+              "SpawnConditionIdList": [
+                "ThirdWaveDead"
+              ],
+              "SpawnCommandIdList": [
+                "ThirdWaveCommand",
+                "UsagiCommmand"
+              ],
+              "MovePoints": [],
+              "TileX": 145,
+              "TileY": 468,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 13.91,
+                "y": 70.70999
+              },
+              "Direction": {
+                "x": 0.05233579,
+                "y": -0.99862957
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "ThirdWaveSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Usagibot_Slumpia_AR_E_832Event03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "E",
+              "SpawnConditionIdList": [
+                "ThirdWaveDead"
+              ],
+              "SpawnCommandIdList": [
+                "ThirdWaveCommand",
+                "UsagiCommmand"
+              ],
+              "MovePoints": [],
+              "TileX": 155,
+              "TileY": 467,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 15.74,
+                "y": 70.39
+              },
+              "Direction": {
+                "x": 0.05233579,
+                "y": -0.99862957
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "ThirdWaveSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Terror_Usagibot_Slumpia_AR_E_832Event03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "E",
+              "SpawnConditionIdList": [
+                "ThirdWaveDead"
+              ],
+              "SpawnCommandIdList": [
+                "ThirdWaveCommand",
+                "UsagiCommmand"
+              ],
+              "MovePoints": [],
+              "TileX": 161,
+              "TileY": 469,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 17.11,
+                "y": 70.85999
+              },
+              "Direction": {
+                "x": 0.05233579,
+                "y": -0.99862957
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "ThirdWaveSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Usagibot_Slumpia_AR_E_832Event03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "E",
+              "SpawnConditionIdList": [
+                "ThirdWaveDead"
+              ],
+              "SpawnCommandIdList": [
+                "ThirdWaveCommand",
+                "UsagiCommmand"
+              ],
+              "MovePoints": [],
+              "TileX": 169,
+              "TileY": 464,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 18.71,
+                "y": 69.85999
+              },
+              "Direction": {
+                "x": 0.05233579,
+                "y": -0.99862957
+              },
+              "ConditionIdList": [
+                ""
+              ],
+              "CommandIdList": [
+                "ThirdWaveSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointParent4-2",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "KumabotPapa_Slumpia_SG_C_832Event03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "FinalWaveDead",
+                "BossDead"
+              ],
+              "SpawnCommandIdList": [
+                "FinalWaveCommand",
+                "BossCommand"
+              ],
+              "MovePoints": [],
+              "TileX": 152,
+              "TileY": 498,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 15.33,
+                "y": 76.58
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "FinalWaveSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Terror_KumabotPapa_Slumpia_SG_E_832Event03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "FinalWaveDead"
+              ],
+              "SpawnCommandIdList": [
+                "FinalWaveCommand",
+                "FinalJyaco"
+              ],
+              "MovePoints": [],
+              "TileX": 144,
+              "TileY": 502,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 13.59,
+                "y": 77.53
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "FinalWaveSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Terror_KumabotPapa_Slumpia_SG_E_832Event03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "FinalWaveDead"
+              ],
+              "SpawnCommandIdList": [
+                "FinalWaveCommand",
+                "FinalJyaco"
+              ],
+              "MovePoints": [],
+              "TileX": 161,
+              "TileY": 503,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 17.04,
+                "y": 77.64
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "FinalWaveSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Usagibot_Slumpia_AR_E_832Event03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "FinalWaveDead"
+              ],
+              "SpawnCommandIdList": [
+                "FinalWaveCommand",
+                "FinalJyaco"
+              ],
+              "MovePoints": [],
+              "TileX": 137,
+              "TileY": 517,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 12.18,
+                "y": 80.4799957
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "FinalWaveSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Terror_Usagibot_Slumpia_AR_E_832Event03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "FinalWaveDead"
+              ],
+              "SpawnCommandIdList": [
+                "FinalWaveCommand",
+                "FinalJyaco"
+              ],
+              "MovePoints": [],
+              "TileX": 145,
+              "TileY": 517,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 13.93,
+                "y": 80.4799957
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "FinalWaveSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Usagibot_Slumpia_AR_E_832Event03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "FinalWaveDead"
+              ],
+              "SpawnCommandIdList": [
+                "FinalWaveCommand",
+                "FinalJyaco"
+              ],
+              "MovePoints": [],
+              "TileX": 152,
+              "TileY": 517,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 15.28,
+                "y": 80.4799957
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "FinalWaveSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Terror_Usagibot_Slumpia_AR_E_832Event03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "FinalWaveDead"
+              ],
+              "SpawnCommandIdList": [
+                "FinalWaveCommand",
+                "FinalJyaco"
+              ],
+              "MovePoints": [],
+              "TileX": 158,
+              "TileY": 517,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 16.38,
+                "y": 80.4799957
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "FinalWaveSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Usagibot_Slumpia_AR_E_832Event03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "FinalWaveDead"
+              ],
+              "SpawnCommandIdList": [
+                "FinalWaveCommand",
+                "FinalJyaco"
+              ],
+              "MovePoints": [],
+              "TileX": 168,
+              "TileY": 517,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 18.48,
+                "y": 80.4799957
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "FinalWaveSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Formations": [
+    {
+      "SectionIndex": 0,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 2.55,
+        "y": 24
+      },
+      "Forward": {
+        "x": 0.4306538,
+        "y": 0.9025172
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 1,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 3.11,
+        "y": 25.32
+      },
+      "Forward": {
+        "x": 0.4306538,
+        "y": 0.9025172
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 2,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 12.69,
+        "y": 44
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 3,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 16.86,
+        "y": 53.76
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 4,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 16.87,
+        "y": 64
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 4,
+      "IgnorePathFind": false,
+      "Index": 1,
+      "Position": {
+        "x": 16.87,
+        "y": 85.59
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    }
+  ],
+  "EnemyFormations": [],
+  "TemporaryCanUseSkillAreas": []
+}
