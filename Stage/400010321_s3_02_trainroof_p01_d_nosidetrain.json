@@ -1,0 +1,2595 @@
+{
+  "Version": "",
+  "Global": {
+    "Position": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "Events": [
+      {
+        "EventName": "SpawnPlayer",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": "0"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSpawnPlayer, BlueArchive",
+            "IsEnemy": false,
+            "IgnoreSkillCardShuffle": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 50,
+            "MaxCameraSpeed": 3,
+            "RotationSpeed": 1,
+            "ZoomSpeed": 1,
+            "RailPoints": [
+              {
+                "UseTableData": false,
+                "Position": {
+                  "x": -2,
+                  "y": 0,
+                  "z": 21.97
+                },
+                "MinCameraDistance": 33,
+                "MaxCameraDistance": 33,
+                "CameraForward": {
+                  "x": -0.803465664,
+                  "y": -0.426617652,
+                  "z": 0.415259331
+                }
+              }
+            ],
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandCameraShake, BlueArchive",
+            "StartDelay": 0,
+            "Duration": 1,
+            "Intensity": {
+              "x": 0,
+              "y": 0.25,
+              "z": 0
+            },
+            "YawPitchRoll": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "curvePath": "miscellaneous/curves/CurveContainer_ExpressTrain",
+            "Loop": true,
+            "CommandID": "Shake_Train",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 1,
+            "SetConditionCommandOnly": false,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "StartSection2",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 1,
+            "CheckSummonedCharacterDead": false,
+            "CheckDelayMilliSecond": 0,
+            "ConditionID": "SCondition_Enemy02"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 2,
+            "SetConditionCommandOnly": false,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "EndBattle",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 1,
+            "CheckSummonedCharacterDead": false,
+            "CheckDelayMilliSecond": 0,
+            "ConditionID": "SCondition_Enemy05"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandEndBattle, BlueArchive",
+            "BattleEndType": 4,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      }
+    ]
+  },
+  "Sections": [
+    {
+      "SectionID": 1,
+      "Position": {
+        "x": -0.35,
+        "y": 0,
+        "z": 5
+      },
+      "Events": [
+        {
+          "EventName": "Spawn_Enemy01",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 1,
+              "CommandID": "Command_Heli01",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 1,
+              "CommandID": "Command_Enemy01",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandLocateCamera, BlueArchive",
+              "ID": 50,
+              "MaxCameraSpeed": 3,
+              "RotationSpeed": 1,
+              "ZoomSpeed": 1,
+              "RailPoints": [
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": -2,
+                    "y": 0,
+                    "z": 21.98
+                  },
+                  "MinCameraDistance": 33,
+                  "MaxCameraDistance": 33,
+                  "CameraForward": {
+                    "x": -0.803465664,
+                    "y": -0.426617652,
+                    "z": 0.415259331
+                  }
+                }
+              ],
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 1500,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandCharacterDie, BlueArchive",
+              "CharacterCommandIdList": [
+                "SCommand_Heli01"
+              ],
+              "CharacterSpawnTemplateIdList": [],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 4000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandLocateCamera, BlueArchive",
+              "ID": 50,
+              "MaxCameraSpeed": 3,
+              "RotationSpeed": 1,
+              "ZoomSpeed": 1,
+              "RailPoints": [
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": -2,
+                    "y": 0,
+                    "z": 0
+                  },
+                  "MinCameraDistance": 33,
+                  "MaxCameraDistance": 33,
+                  "CameraForward": {
+                    "x": -0.803465664,
+                    "y": -0.426617652,
+                    "z": 0.415259331
+                  }
+                },
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": 0.51,
+                    "y": 0,
+                    "z": 30.98
+                  },
+                  "MinCameraDistance": 52,
+                  "MaxCameraDistance": 52,
+                  "CameraForward": {
+                    "x": -0.803465664,
+                    "y": -0.426617652,
+                    "z": 0.415259331
+                  }
+                }
+              ],
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 6000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandShowBattleUI, BlueArchive",
+              "DisappearInstantly": false,
+              "IsShow": true,
+              "ShowBattleStartSign": true,
+              "SoundOn": true,
+              "BGMOn": true,
+              "CommandID": "",
+              "BGMId": null,
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "Spawn_Enemy02",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+              "DeadCheck": 1,
+              "CheckSummonedCharacterDead": false,
+              "CheckDelayMilliSecond": 0,
+              "ConditionID": "SCondition_Enemy01"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "GroundCommandLocateCamera, BlueArchive",
+              "ID": 50,
+              "MaxCameraSpeed": 3,
+              "RotationSpeed": 1,
+              "ZoomSpeed": 1,
+              "RailPoints": [
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": -2,
+                    "y": 0,
+                    "z": 28.83
+                  },
+                  "MinCameraDistance": 33,
+                  "MaxCameraDistance": 33,
+                  "CameraForward": {
+                    "x": -0.803465664,
+                    "y": -0.426617652,
+                    "z": 0.415259331
+                  }
+                }
+              ],
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 3000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [
+                "Player_command"
+              ],
+              "CreateCharacterStat": true,
+              "CharacterId": 18001002,
+              "CharacterLevel": 1,
+              "CharacterGrade": 1,
+              "Interval": 0,
+              "SkillGroupId": "ScenarioBattle_EffectOnly_HeliRetreat01",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 1,
+              "CommandID": "UseSkillPoint_01",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 200,
+              "CommandID": "Command_Enemy02",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 3000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandLocateCamera, BlueArchive",
+              "ID": 50,
+              "MaxCameraSpeed": 3,
+              "RotationSpeed": 1,
+              "ZoomSpeed": 1,
+              "RailPoints": [
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": -2,
+                    "y": 0,
+                    "z": 0
+                  },
+                  "MinCameraDistance": 33,
+                  "MaxCameraDistance": 33,
+                  "CameraForward": {
+                    "x": -0.803465664,
+                    "y": -0.426617652,
+                    "z": 0.415259331
+                  }
+                },
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": 0.51,
+                    "y": 0,
+                    "z": 30.98
+                  },
+                  "MinCameraDistance": 52,
+                  "MaxCameraDistance": 52,
+                  "CameraForward": {
+                    "x": -0.803465664,
+                    "y": -0.426617652,
+                    "z": 0.415259331
+                  }
+                }
+              ],
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent_Enemy01",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EnemyTSS_Aparche_Blackmarket_Story_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Heli01"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Heli01"
+              ],
+              "MovePoints": [],
+              "TileX": 94,
+              "TileY": 323,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.136707127,
+                "y": 20.8808975
+              },
+              "Direction": {
+                "x": 1.00000012,
+                "y": -1.1920929e-07
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Heli01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Kaiserpmc_AR_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy01"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy01"
+              ],
+              "MovePoints": [],
+              "TileX": 88,
+              "TileY": 314,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.01,
+                "y": 19.230896
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Kaiserpmc_AR_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy01"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy01"
+              ],
+              "MovePoints": [],
+              "TileX": 94,
+              "TileY": 314,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.01000002,
+                "y": 19.230896
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Kaiserpmc_AR_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy01"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy01"
+              ],
+              "MovePoints": [],
+              "TileX": 99,
+              "TileY": 314,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 1.03,
+                "y": 19.230896
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Kaiserpmc_RL_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy01"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy01"
+              ],
+              "MovePoints": [],
+              "TileX": 99,
+              "TileY": 331,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 1.02691853,
+                "y": 22.5491066
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Kaiserpmc_RL_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy01"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy01"
+              ],
+              "MovePoints": [],
+              "TileX": 94,
+              "TileY": 331,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.009997308,
+                "y": 22.47
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Kaiserpmc_RL_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy01"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy01"
+              ],
+              "MovePoints": [],
+              "TileX": 88,
+              "TileY": 330,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.0069257,
+                "y": 22.3908958
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Kaiserpmc_Shield_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy01"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy01"
+              ],
+              "MovePoints": [],
+              "TileX": 94,
+              "TileY": 308,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.01000002,
+                "y": 17.9399986
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointParent_SkillUsePoint1",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SkillUsePoint, BlueArchive",
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
+              "MovePoints": [],
+              "TileX": 93,
+              "TileY": 359,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.099999994,
+                "y": 28.2
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "UseSkillPoint_01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointParent_Enemy02",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Kaiserpmc_Shield_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy02"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy02"
+              ],
+              "MovePoints": [],
+              "TileX": 94,
+              "TileY": 353,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.136707127,
+                "y": 26.87
+              },
+              "Direction": {
+                "x": 0.0582664572,
+                "y": -0.998301148
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy02"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Kaiserpmc_AR_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy02"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy02"
+              ],
+              "MovePoints": [],
+              "TileX": 90,
+              "TileY": 366,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.72,
+                "y": 29.5195065
+              },
+              "Direction": {
+                "x": -0.999515831,
+                "y": -0.0311180353
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy02"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Kaiserpmc_RL_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy02"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy02"
+              ],
+              "MovePoints": [],
+              "TileX": 100,
+              "TileY": 358,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 1.227,
+                "y": 27.907
+              },
+              "Direction": {
+                "x": 0.9997128,
+                "y": -0.0239644051
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy02"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Kaiserpmc_AR_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy02"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy02"
+              ],
+              "MovePoints": [],
+              "TileX": 87,
+              "TileY": 361,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.25,
+                "y": 28.5
+              },
+              "Direction": {
+                "x": -0.999515831,
+                "y": -0.0311180353
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy02"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Kaiserpmc_RL_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy02"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy02"
+              ],
+              "MovePoints": [],
+              "TileX": 97,
+              "TileY": 361,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.748999953,
+                "y": 28.594
+              },
+              "Direction": {
+                "x": 0.998475552,
+                "y": 0.05519539
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy02"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Kaiserpmc_AR_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy02"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy02"
+              ],
+              "MovePoints": [],
+              "TileX": 90,
+              "TileY": 356,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.789999962,
+                "y": 27.55
+              },
+              "Direction": {
+                "x": -0.999515831,
+                "y": -0.0311180353
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy02"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Kaiserpmc_RL_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy02"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy02"
+              ],
+              "MovePoints": [],
+              "TileX": 100,
+              "TileY": 365,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 1.30699992,
+                "y": 29.2599983
+              },
+              "Direction": {
+                "x": 0.9993684,
+                "y": 0.03553909
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy02"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "SectionID": 2,
+      "Position": {
+        "x": -0.35,
+        "y": 0,
+        "z": 5
+      },
+      "Events": [
+        {
+          "EventName": "Play2",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundConditionArea, BlueArchive",
+              "SpawnTemplateId": "",
+              "Shape": 0,
+              "Target": 0,
+              "Trigger": 0,
+              "StayTime": 0,
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 31.75
+              },
+              "Rect": {
+                "Direction": {
+                  "x": 0,
+                  "y": 0
+                },
+                "Width": 4,
+                "Height": 16
+              },
+              "Circle": {
+                "Radius": 1
+              },
+              "InactivateWhenStart": false,
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "GroundCommandLocateCamera, BlueArchive",
+              "ID": 50,
+              "MaxCameraSpeed": 5,
+              "RotationSpeed": 1,
+              "ZoomSpeed": 1,
+              "RailPoints": [
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": -2,
+                    "y": 0,
+                    "z": 43.9299965
+                  },
+                  "MinCameraDistance": 22,
+                  "MaxCameraDistance": 22,
+                  "CameraForward": {
+                    "x": -0.803465664,
+                    "y": -0.426617652,
+                    "z": 0.415259331
+                  }
+                }
+              ],
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 1,
+              "CommandID": "Command_Heli02",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 100,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 1,
+              "CommandID": "Command_Enemy03",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 1500,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandLocateCamera, BlueArchive",
+              "ID": 50,
+              "MaxCameraSpeed": 5,
+              "RotationSpeed": 1,
+              "ZoomSpeed": 5,
+              "RailPoints": [
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": -2,
+                    "y": 0,
+                    "z": 43.94
+                  },
+                  "MinCameraDistance": 33,
+                  "MaxCameraDistance": 33,
+                  "CameraForward": {
+                    "x": -0.803465664,
+                    "y": -0.426617652,
+                    "z": 0.415259331
+                  }
+                }
+              ],
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 1500,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandCharacterDie, BlueArchive",
+              "CharacterCommandIdList": [
+                "SCommand_Heli02"
+              ],
+              "CharacterSpawnTemplateIdList": [],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 6000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandLocateCamera, BlueArchive",
+              "ID": 50,
+              "MaxCameraSpeed": 5,
+              "RotationSpeed": 1,
+              "ZoomSpeed": 5,
+              "RailPoints": [
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": -2,
+                    "y": 0,
+                    "z": 30.3
+                  },
+                  "MinCameraDistance": 33,
+                  "MaxCameraDistance": 37,
+                  "CameraForward": {
+                    "x": -0.803465664,
+                    "y": -0.426617652,
+                    "z": 0.415259331
+                  }
+                },
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": -2,
+                    "y": 0,
+                    "z": 45.84
+                  },
+                  "MinCameraDistance": 33,
+                  "MaxCameraDistance": 37,
+                  "CameraForward": {
+                    "x": -0.803465664,
+                    "y": -0.426617652,
+                    "z": 0.415259331
+                  }
+                }
+              ],
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "Spawn_Enemy0405",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+              "DeadCheck": 1,
+              "CheckSummonedCharacterDead": false,
+              "CheckDelayMilliSecond": 0,
+              "ConditionID": "SCondition_Enemy03"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "GroundCommandLocateCamera, BlueArchive",
+              "ID": 50,
+              "MaxCameraSpeed": 5,
+              "RotationSpeed": 1,
+              "ZoomSpeed": 1,
+              "RailPoints": [
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": -2,
+                    "y": 0,
+                    "z": 31.62
+                  },
+                  "MinCameraDistance": 33,
+                  "MaxCameraDistance": 33,
+                  "CameraForward": {
+                    "x": -0.803465664,
+                    "y": -0.426617652,
+                    "z": 0.415259331
+                  }
+                }
+              ],
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 2000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [
+                "Player_command"
+              ],
+              "CreateCharacterStat": true,
+              "CharacterId": 18001002,
+              "CharacterLevel": 1,
+              "CharacterGrade": 1,
+              "Interval": 0,
+              "SkillGroupId": "ScenarioBattle_EffectOnly_HeliRetreat01",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 2,
+              "CommandID": "UseSkillPoint_02",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 200,
+              "CommandID": "Command_Enemy04",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 3000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandLocateCamera, BlueArchive",
+              "ID": 50,
+              "MaxCameraSpeed": 5,
+              "RotationSpeed": 1,
+              "ZoomSpeed": 1,
+              "RailPoints": [
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": -2,
+                    "y": 0,
+                    "z": 45.56
+                  },
+                  "MinCameraDistance": 33,
+                  "MaxCameraDistance": 33,
+                  "CameraForward": {
+                    "x": -0.803465664,
+                    "y": -0.426617652,
+                    "z": 0.415259331
+                  }
+                }
+              ],
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 2000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [
+                "Player_command"
+              ],
+              "CreateCharacterStat": true,
+              "CharacterId": 18001002,
+              "CharacterLevel": 1,
+              "CharacterGrade": 1,
+              "Interval": 0,
+              "SkillGroupId": "ScenarioBattle_EffectOnly_HeliRetreat01",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 2,
+              "CommandID": "UseSkillPoint_03",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 200,
+              "CommandID": "Command_Enemy05",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 2000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandLocateCamera, BlueArchive",
+              "ID": 50,
+              "MaxCameraSpeed": 5,
+              "RotationSpeed": 1,
+              "ZoomSpeed": 1,
+              "RailPoints": [
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": -2,
+                    "y": 0,
+                    "z": 26.82
+                  },
+                  "MinCameraDistance": 33,
+                  "MaxCameraDistance": 33,
+                  "CameraForward": {
+                    "x": -0.803465664,
+                    "y": -0.426617652,
+                    "z": 0.415259331
+                  }
+                },
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": -2,
+                    "y": 0,
+                    "z": 45.56
+                  },
+                  "MinCameraDistance": 33,
+                  "MaxCameraDistance": 33,
+                  "CameraForward": {
+                    "x": -0.803465664,
+                    "y": -0.426617652,
+                    "z": 0.415259331
+                  }
+                }
+              ],
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [
+        {
+          "UniqueName": "TrainRoof_ExhaustPort_Jump_02_Standard",
+          "Position": {
+            "x": -1.08,
+            "y": 0,
+            "z": 24.41
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "TrainRoof_ExhaustPort_Pipe_01_Standard",
+          "Position": {
+            "x": -0.149999991,
+            "y": 0,
+            "z": 38.18
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": -1
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "TrainRoof_ExhaustPort_Low_01_Standard",
+          "Position": {
+            "x": 1.20999992,
+            "y": 0,
+            "z": 24.29
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "TrainRoof_Railing_01_Standard",
+          "Position": {
+            "x": -2,
+            "y": 0,
+            "z": 30.77
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "TrainRoof_ExhaustPort_Jump_01_Standard",
+          "Position": {
+            "x": 1.43,
+            "y": 0,
+            "z": 31.63
+          },
+          "Forward": {
+            "x": 0.999986053,
+            "y": 0,
+            "z": -0.005283796
+          },
+          "ActiveEnemyPointIndices": [
+            2
+          ],
+          "ActivePlayerPointIndices": [
+            3
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        }
+      ],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent_Enemy03",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EnemyTSS_Aparche_Blackmarket_Story_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "X",
+              "SpawnConditionIdList": [
+                "SCondition_Heli02"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Heli02"
+              ],
+              "MovePoints": [],
+              "TileX": 94,
+              "TileY": 428,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.136707127,
+                "y": 41.8709
+              },
+              "Direction": {
+                "x": 1.00000012,
+                "y": -1.1920929e-07
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Heli02"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Kaiserpmc_AR_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "Z",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy03"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy03"
+              ],
+              "MovePoints": [],
+              "TileX": 88,
+              "TileY": 419,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.01,
+                "y": 40.2208977
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy03"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Kaiserpmc_AR_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "Z",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy03"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy03"
+              ],
+              "MovePoints": [],
+              "TileX": 94,
+              "TileY": 419,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.01000002,
+                "y": 40.2208977
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy03"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Kaiserpmc_AR_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "Z",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy03"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy03"
+              ],
+              "MovePoints": [],
+              "TileX": 99,
+              "TileY": 419,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 1.03,
+                "y": 40.2208977
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy03"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Kaiserpmc_RL_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "Z",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy03"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy03"
+              ],
+              "MovePoints": [],
+              "TileX": 99,
+              "TileY": 436,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 1.02691853,
+                "y": 43.53911
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy03"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Kaiserpmc_RL_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "Z",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy03"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy03"
+              ],
+              "MovePoints": [],
+              "TileX": 94,
+              "TileY": 436,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.009997308,
+                "y": 43.46
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy03"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Kaiserpmc_RL_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "Z",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy03"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy03"
+              ],
+              "MovePoints": [],
+              "TileX": 88,
+              "TileY": 435,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.0069257,
+                "y": 43.3808975
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy03"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Kaiserpmc_Shield_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "Z",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy03"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy03"
+              ],
+              "MovePoints": [],
+              "TileX": 94,
+              "TileY": 441,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.01000002,
+                "y": 44.56
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy03"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EnemyTSS_Aparche_Blackmarket_Story_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "X",
+              "SpawnConditionIdList": [
+                "SCondition_Heli02"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Heli02"
+              ],
+              "MovePoints": [],
+              "TileX": 92,
+              "TileY": 447,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.249372751,
+                "y": 45.8360672
+              },
+              "Direction": {
+                "x": -0.9996064,
+                "y": 0.0280511975
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Heli02"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Kaiserpmc_RL_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "Z",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy03"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy03"
+              ],
+              "MovePoints": [],
+              "TileX": 99,
+              "TileY": 456,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 1.02691853,
+                "y": 47.49821
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy03"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Kaiserpmc_RL_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "Z",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy03"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy03"
+              ],
+              "MovePoints": [],
+              "TileX": 94,
+              "TileY": 455,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.009997308,
+                "y": 47.4191
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy03"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Kaiserpmc_RL_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "Z",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy03"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy03"
+              ],
+              "MovePoints": [],
+              "TileX": 88,
+              "TileY": 455,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.0069257,
+                "y": 47.34
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy03"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointParent_SkillUsePoint2",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SkillUsePoint, BlueArchive",
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
+              "MovePoints": [],
+              "TileX": 93,
+              "TileY": 364,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.099999994,
+                "y": 29.12
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "UseSkillPoint_02"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SkillUsePoint, BlueArchive",
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
+              "MovePoints": [],
+              "TileX": 93,
+              "TileY": 446,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.099999994,
+                "y": 45.57
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "UseSkillPoint_03"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointParent_Enemy04",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Kaiserpmc_Shield_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy04"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy04"
+              ],
+              "MovePoints": [],
+              "TileX": 94,
+              "TileY": 357,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.136707127,
+                "y": 27.76
+              },
+              "Direction": {
+                "x": 0.0582664572,
+                "y": -0.998301148
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy04"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Kaiserpmc_AR_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy04"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy04"
+              ],
+              "MovePoints": [],
+              "TileX": 90,
+              "TileY": 370,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.72,
+                "y": 30.4095058
+              },
+              "Direction": {
+                "x": -0.999515831,
+                "y": -0.0311180353
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy04"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Kaiserpmc_RL_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy04"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy04"
+              ],
+              "MovePoints": [],
+              "TileX": 100,
+              "TileY": 362,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 1.227,
+                "y": 28.796999
+              },
+              "Direction": {
+                "x": 0.9997128,
+                "y": -0.0239644051
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy04"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Kaiserpmc_AR_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy04"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy04"
+              ],
+              "MovePoints": [],
+              "TileX": 87,
+              "TileY": 365,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.25,
+                "y": 29.39
+              },
+              "Direction": {
+                "x": -0.999515831,
+                "y": -0.0311180353
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy04"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Kaiserpmc_RL_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy04"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy04"
+              ],
+              "MovePoints": [],
+              "TileX": 97,
+              "TileY": 366,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.748999953,
+                "y": 29.484
+              },
+              "Direction": {
+                "x": 0.998475552,
+                "y": 0.05519539
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy04"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Kaiserpmc_AR_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy04"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy04"
+              ],
+              "MovePoints": [],
+              "TileX": 90,
+              "TileY": 361,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.789999962,
+                "y": 28.4399986
+              },
+              "Direction": {
+                "x": -0.999515831,
+                "y": -0.0311180353
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy04"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Kaiserpmc_RL_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy04"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy04"
+              ],
+              "MovePoints": [],
+              "TileX": 100,
+              "TileY": 369,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 1.30699992,
+                "y": 30.1499977
+              },
+              "Direction": {
+                "x": 0.9993684,
+                "y": 0.03553909
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy04"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointParent_Enemy05",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "HeavyTank_Kaiserpmc_Cannon_C",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy05"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy05"
+              ],
+              "MovePoints": [],
+              "TileX": 94,
+              "TileY": 443,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.136707127,
+                "y": 45.02
+              },
+              "Direction": {
+                "x": 0.0582664572,
+                "y": -0.998301148
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy05"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Formations": [
+    {
+      "SectionIndex": 0,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": -3.27
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 1,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": 24
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 2,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": 37.29
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 3,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": 54.81
+      },
+      "Forward": {
+        "x": -0.8661931,
+        "y": 0.499709427
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 4,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": 61.25
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    }
+  ],
+  "EnemyFormations": [],
+  "TemporaryCanUseSkillAreas": [
+    {
+      "IsHideVisual": false,
+      "CommandId": "1-1Area",
+      "Radius": 1100,
+      "GroupTag": 1,
+      "Position": {
+        "x": 0,
+        "y": 0,
+        "z": 7.83
+      },
+      "RadiusSqr": 0,
+      "Position2D": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "IsHideVisual": false,
+      "CommandId": "1-2Area",
+      "Radius": 1800,
+      "GroupTag": 1,
+      "Position": {
+        "x": 0,
+        "y": 0,
+        "z": 16.87
+      },
+      "RadiusSqr": 0,
+      "Position2D": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "IsHideVisual": false,
+      "CommandId": "2-1Area",
+      "Radius": 1100,
+      "GroupTag": 1,
+      "Position": {
+        "x": 0,
+        "y": 0,
+        "z": 25.59
+      },
+      "RadiusSqr": 0,
+      "Position2D": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "IsHideVisual": false,
+      "CommandId": "2-2Area",
+      "Radius": 1800,
+      "GroupTag": 1,
+      "Position": {
+        "x": 0,
+        "y": 0,
+        "z": 34.52
+      },
+      "RadiusSqr": 0,
+      "Position2D": {
+        "x": 0,
+        "y": 0
+      }
+    }
+  ]
+}
