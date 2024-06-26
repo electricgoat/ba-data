@@ -1,0 +1,3002 @@
+{
+  "Version": "1.0",
+  "Global": {
+    "Position": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "Events": [
+      {
+        "EventName": "SpawnPlayer",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": "0"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSpawnPlayer, BlueArchive",
+            "IsEnemy": false,
+            "IgnoreSkillCardShuffle": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 1,
+            "MaxCameraSpeed": 3,
+            "RotationSpeed": 1,
+            "ZoomSpeed": 1,
+            "RailPoints": [
+              {
+                "UseTableData": false,
+                "Position": {
+                  "x": -0.29,
+                  "y": 0,
+                  "z": 0
+                },
+                "MinCameraDistance": 30,
+                "MaxCameraDistance": 42,
+                "CameraForward": {
+                  "x": -0.8034659,
+                  "y": -0.426618159,
+                  "z": 0.415258348
+                }
+              }
+            ],
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 1,
+            "SetConditionCommandOnly": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "KannaStop1",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionArea, BlueArchive",
+            "SpawnTemplateId": "CH0260_E_837Event_Challenge03",
+            "Shape": 0,
+            "Target": 3,
+            "Trigger": 0,
+            "StayTime": 0,
+            "Position": {
+              "x": 0.3,
+              "y": 0,
+              "z": 15.34
+            },
+            "Rect": {
+              "Direction": {
+                "x": 0,
+                "y": 0
+              },
+              "Width": 10,
+              "Height": 1
+            },
+            "Circle": {
+              "Radius": 11
+            },
+            "InactivateWhenStart": false,
+            "ConditionID": ""
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandForceIdle, BlueArchive",
+            "IsForceIdleOn": true,
+            "CommandID": "CommandKanna",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+            "Milliseconds": 5000,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandForceIdle, BlueArchive",
+            "IsForceIdleOn": false,
+            "CommandID": "CommandKanna",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "EndBattle",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 1,
+            "CheckSummonedCharacterDead": false,
+            "CheckDelayMilliSecond": 0,
+            "ConditionID": "ConditionDeadBoss"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandEndBattle, BlueArchive",
+            "BattleEndType": 4,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      }
+    ]
+  },
+  "Sections": [
+    {
+      "SectionID": 1,
+      "Position": {
+        "x": 0,
+        "y": 0,
+        "z": 5
+      },
+      "Events": [
+        {
+          "EventName": "Spawn1-1",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceIdle, BlueArchive",
+              "IsForceIdleOn": true,
+              "CommandID": "Player_command",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "CommandSpawn1-1",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "CommandSpawn1-2",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "CommandKanna",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSkipUntargetableCheckInMove, BlueArchive",
+              "Skip": true,
+              "CommandID": "CommandSpawn1-1",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandRemoveFromCameraTarget, BlueArchive",
+              "EntityCommandIds": [
+                "CommandSpawn1-1"
+              ],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSkipUntargetableCheckInMove, BlueArchive",
+              "Skip": true,
+              "CommandID": "CommandSpawn1-2",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandRemoveFromCameraTarget, BlueArchive",
+              "EntityCommandIds": [
+                "CommandSpawn1-2"
+              ],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSkipUntargetableCheckInMove, BlueArchive",
+              "Skip": true,
+              "CommandID": "CommandKanna",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandRemoveFromCameraTarget, BlueArchive",
+              "EntityCommandIds": [
+                "CommandKanna"
+              ],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandLocateCamera, BlueArchive",
+              "ID": 1,
+              "MaxCameraSpeed": 3,
+              "RotationSpeed": 1,
+              "ZoomSpeed": 1,
+              "RailPoints": [
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": 0.59,
+                    "y": 0,
+                    "z": -1.19
+                  },
+                  "MinCameraDistance": 30,
+                  "MaxCameraDistance": 35,
+                  "CameraForward": {
+                    "x": -0.8034659,
+                    "y": -0.426618159,
+                    "z": 0.415258348
+                  }
+                }
+              ],
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "CommandKannaNPC",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "CommandDroid",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 1000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetSyncUseSkillGroup, BlueArchive",
+              "SyncUseSkillGroupId": 3333,
+              "SkillSlot": "ExSkill01",
+              "IsAdd": true,
+              "IsAllyGroup": true,
+              "CommandID": "CommandKannaNPC",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandCreateSyncUseSkill, BlueArchive",
+              "CoolDownInMilliSeconds": 500,
+              "SyncUseSkillGroupId": 3333,
+              "IsAllyGroup": true,
+              "CommandID": "CommandKannaNPC",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 1000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandCharacterDie, BlueArchive",
+              "CharacterCommandIdList": [
+                "CommandKannaNPC"
+              ],
+              "CharacterSpawnTemplateIdList": [],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandCharacterDie, BlueArchive",
+              "CharacterCommandIdList": [
+                "CommandDroid"
+              ],
+              "CharacterSpawnTemplateIdList": [],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceIdle, BlueArchive",
+              "IsForceIdleOn": false,
+              "CommandID": "Player_command",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 6000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+              "SectionID": 2,
+              "SetConditionCommandOnly": false,
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent1-1",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SMG_NPC_837Event_Challenge03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "ConditionDead1-1"
+              ],
+              "SpawnCommandIdList": [
+                "CommandSpawn1-1"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 57,
+                  "TileY": 16,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 3.41999984,
+                    "y": -1.21
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 37,
+              "TileY": 17,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.66,
+                "y": -1.15999985
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandSpawn1-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointParent1-2",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SMG_NPC_837Event_Challenge03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "ConditionDead1-2"
+              ],
+              "SpawnCommandIdList": [
+                "CommandSpawn1-2"
+              ],
+              "MovePoints": [],
+              "TileX": 42,
+              "TileY": 31,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.44,
+                "y": 1.75999975
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandSpawn1-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SMG_NPC_837Event_Challenge03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "ConditionDead1-2"
+              ],
+              "SpawnCommandIdList": [
+                "CommandSpawn1-2"
+              ],
+              "MovePoints": [],
+              "TileX": 50,
+              "TileY": 31,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 1.92,
+                "y": 1.5999999
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandSpawn1-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointParent1-3",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "CH0260_E_837Event_Challenge03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [
+                "CommandKanna"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 47,
+                  "TileY": 7,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 1.34000015,
+                    "y": -3.17
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 40,
+              "TileY": 0,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.02,
+                "y": -4.43000031
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandKanna"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointParent1-4",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "CH0260_NPC_837Event_Challenge03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [
+                "CommandKannaNPC"
+              ],
+              "MovePoints": [],
+              "TileX": 44,
+              "TileY": 321,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.74,
+                "y": 59.6399956
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandKannaNPC"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointParent1-5",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Blackmarket_Shield_E_837Event_Challenge03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [
+                "CommandDroid"
+              ],
+              "MovePoints": [],
+              "TileX": 44,
+              "TileY": 328,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.76,
+                "y": 61.03
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandDroid"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "SectionID": 2,
+      "Position": {
+        "x": 0,
+        "y": 0,
+        "z": 25
+      },
+      "Events": [
+        {
+          "EventName": "Spawn2",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "GroundCommandLocateCamera, BlueArchive",
+              "ID": 1,
+              "MaxCameraSpeed": 3,
+              "RotationSpeed": 1,
+              "ZoomSpeed": 1,
+              "RailPoints": [
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": -0.74,
+                    "y": 0,
+                    "z": 20.98
+                  },
+                  "MinCameraDistance": 42,
+                  "MaxCameraDistance": 42,
+                  "CameraForward": {
+                    "x": -0.8034659,
+                    "y": -0.426618159,
+                    "z": 0.415258348
+                  }
+                },
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": -0.74,
+                    "y": 0,
+                    "z": 66.53
+                  },
+                  "MinCameraDistance": 42,
+                  "MaxCameraDistance": 42,
+                  "CameraForward": {
+                    "x": -0.8034659,
+                    "y": -0.426618159,
+                    "z": 0.415258348
+                  }
+                }
+              ],
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 1000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "CommandSpawn2-2",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 2000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandShowBattleUI, BlueArchive",
+              "DisappearInstantly": false,
+              "IsShow": true,
+              "ShowBattleStartSign": true,
+              "SoundOn": true,
+              "BGMOn": true,
+              "CommandID": "",
+              "BGMId": null,
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Immortal",
+              "isAdd": true,
+              "CommandID": "CommandSpawn2-2",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "KannaNearby",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionArea, BlueArchive",
+              "SpawnTemplateId": "CH0260_E_837Event_Challenge03",
+              "Shape": 0,
+              "Target": 3,
+              "Trigger": 0,
+              "StayTime": 0,
+              "Position": {
+                "x": 0.3,
+                "y": 0,
+                "z": 16.54
+              },
+              "Rect": {
+                "Direction": {
+                  "x": 0,
+                  "y": 0
+                },
+                "Width": 10,
+                "Height": 1
+              },
+              "Circle": {
+                "Radius": 11
+              },
+              "InactivateWhenStart": false,
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "GroundCommandLocateCamera, BlueArchive",
+              "ID": 1,
+              "MaxCameraSpeed": 5,
+              "RotationSpeed": 1,
+              "ZoomSpeed": 3.5,
+              "RailPoints": [
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": -0.46,
+                    "y": 0,
+                    "z": 27.85
+                  },
+                  "MinCameraDistance": 47,
+                  "MaxCameraDistance": 47,
+                  "CameraForward": {
+                    "x": -0.8034659,
+                    "y": -0.426618159,
+                    "z": 0.415258348
+                  }
+                }
+              ],
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "CCSuccess1",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+              "LogicEffectGroupId": "837Event_Challenge03_CrowdControlGauge01_Effect02",
+              "TriggerMaxCount": 1,
+              "TriggerCooltime": 0,
+              "ConditionID": "Untarget2-1"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSkipUntargetableCheckInMove, BlueArchive",
+              "Skip": true,
+              "CommandID": "Untarget2-1",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandRemoveFromCameraTarget, BlueArchive",
+              "EntityCommandIds": [
+                "Untarget2-1"
+              ],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandHideHPBar, BlueArchive",
+              "IsShow": false,
+              "CommandID": "Untarget2-1",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 5000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Immortal",
+              "isAdd": false,
+              "CommandID": "Untarget2-1",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "CCSuccess2",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+              "LogicEffectGroupId": "837Event_Challenge03_CrowdControlGauge01_Effect02",
+              "TriggerMaxCount": 1,
+              "TriggerCooltime": 0,
+              "ConditionID": "Untarget2-2"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSkipUntargetableCheckInMove, BlueArchive",
+              "Skip": true,
+              "CommandID": "Untarget2-2",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandRemoveFromCameraTarget, BlueArchive",
+              "EntityCommandIds": [
+                "Untarget2-2"
+              ],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandHideHPBar, BlueArchive",
+              "IsShow": false,
+              "CommandID": "Untarget2-2",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 5000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Immortal",
+              "isAdd": false,
+              "CommandID": "Untarget2-2",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "CCSuccess3",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+              "LogicEffectGroupId": "837Event_Challenge03_CrowdControlGauge01_Effect02",
+              "TriggerMaxCount": 1,
+              "TriggerCooltime": 0,
+              "ConditionID": "Untarget2-3"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSkipUntargetableCheckInMove, BlueArchive",
+              "Skip": true,
+              "CommandID": "Untarget2-3",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandRemoveFromCameraTarget, BlueArchive",
+              "EntityCommandIds": [
+                "Untarget2-3"
+              ],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandHideHPBar, BlueArchive",
+              "IsShow": false,
+              "CommandID": "Untarget2-3",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 5000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Immortal",
+              "isAdd": false,
+              "CommandID": "Untarget2-3",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "CCSuccess4",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+              "LogicEffectGroupId": "837Event_Challenge03_CrowdControlGauge01_Effect02",
+              "TriggerMaxCount": 1,
+              "TriggerCooltime": 0,
+              "ConditionID": "Untarget2-4"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSkipUntargetableCheckInMove, BlueArchive",
+              "Skip": true,
+              "CommandID": "Untarget2-4",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandRemoveFromCameraTarget, BlueArchive",
+              "EntityCommandIds": [
+                "Untarget2-4"
+              ],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandHideHPBar, BlueArchive",
+              "IsShow": false,
+              "CommandID": "Untarget2-4",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 5000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Immortal",
+              "isAdd": false,
+              "CommandID": "Untarget2-4",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "CCSuccess5",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+              "LogicEffectGroupId": "837Event_Challenge03_CrowdControlGauge01_Effect02",
+              "TriggerMaxCount": 1,
+              "TriggerCooltime": 0,
+              "ConditionID": "Untarget2-5"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSkipUntargetableCheckInMove, BlueArchive",
+              "Skip": true,
+              "CommandID": "Untarget2-5",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandRemoveFromCameraTarget, BlueArchive",
+              "EntityCommandIds": [
+                "Untarget2-5"
+              ],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandHideHPBar, BlueArchive",
+              "IsShow": false,
+              "CommandID": "Untarget2-5",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 5000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Immortal",
+              "isAdd": false,
+              "CommandID": "Untarget2-5",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "EndSection2",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+              "LogicEffectGroupId": "837Event_Challenge03_CrowdControlGauge01_Effect02",
+              "TriggerMaxCount": 1,
+              "TriggerCooltime": 0,
+              "ConditionID": "Untarget2-1"
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+              "LogicEffectGroupId": "837Event_Challenge03_CrowdControlGauge01_Effect02",
+              "TriggerMaxCount": 1,
+              "TriggerCooltime": 0,
+              "ConditionID": "Untarget2-2"
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+              "LogicEffectGroupId": "837Event_Challenge03_CrowdControlGauge01_Effect02",
+              "TriggerMaxCount": 1,
+              "TriggerCooltime": 0,
+              "ConditionID": "Untarget2-3"
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+              "LogicEffectGroupId": "837Event_Challenge03_CrowdControlGauge01_Effect02",
+              "TriggerMaxCount": 1,
+              "TriggerCooltime": 0,
+              "ConditionID": "Untarget2-4"
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+              "LogicEffectGroupId": "837Event_Challenge03_CrowdControlGauge01_Effect02",
+              "TriggerMaxCount": 1,
+              "TriggerCooltime": 0,
+              "ConditionID": "Untarget2-5"
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundConditionArea, BlueArchive",
+              "SpawnTemplateId": "",
+              "Shape": 0,
+              "Target": 0,
+              "Trigger": 0,
+              "StayTime": 0,
+              "Position": {
+                "x": 0.3,
+                "y": 0,
+                "z": 38.88
+              },
+              "Rect": {
+                "Direction": {
+                  "x": 0,
+                  "y": 0
+                },
+                "Width": 10,
+                "Height": 8
+              },
+              "Circle": {
+                "Radius": 11
+              },
+              "InactivateWhenStart": false,
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Immortal",
+              "isAdd": false,
+              "CommandID": "Untarget2-1",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Immortal",
+              "isAdd": false,
+              "CommandID": "Untarget2-2",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Immortal",
+              "isAdd": false,
+              "CommandID": "Untarget2-3",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Immortal",
+              "isAdd": false,
+              "CommandID": "Untarget2-4",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Immortal",
+              "isAdd": false,
+              "CommandID": "Untarget2-5",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+              "SectionID": 3,
+              "SetConditionCommandOnly": false,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [
+        {
+          "UniqueName": "Insidecruiseship_Baricade",
+          "Position": {
+            "x": 0.83,
+            "y": 0,
+            "z": 27.32
+          },
+          "Forward": {
+            "x": -0.215279981,
+            "y": 0,
+            "z": 0.976552367
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        }
+      ],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent2",
+          "SpawnPoints": []
+        },
+        {
+          "GroupName": "SpawnPointParent2_Untarget",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_MG_E_837Event_Challenge03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "ConditionDead2-2",
+                "Untarget2-1"
+              ],
+              "SpawnCommandIdList": [
+                "CommandSpawn2-2",
+                "Untarget2-1"
+              ],
+              "MovePoints": [],
+              "TileX": 44,
+              "TileY": 191,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.8260001,
+                "y": 33.629
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                "Untarget2-1"
+              ],
+              "CommandIdList": [
+                "CommandSpawn2-2",
+                "Untarget2-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_MG_E_837Event_Challenge03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "ConditionDead2-2",
+                "Untarget2-2"
+              ],
+              "SpawnCommandIdList": [
+                "CommandSpawn2-2",
+                "Untarget2-2"
+              ],
+              "MovePoints": [],
+              "TileX": 38,
+              "TileY": 187,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.39,
+                "y": 32.91
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                "Untarget2-2"
+              ],
+              "CommandIdList": [
+                "CommandSpawn2-2",
+                "Untarget2-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SR_E_837Event_Challenge03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "ConditionDead2-2",
+                "Untarget2-3"
+              ],
+              "SpawnCommandIdList": [
+                "CommandSpawn2-2",
+                "Untarget2-3"
+              ],
+              "MovePoints": [],
+              "TileX": 39,
+              "TileY": 194,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.289999962,
+                "y": 34.2
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                "Untarget2-3"
+              ],
+              "CommandIdList": [
+                "CommandSpawn2-2",
+                "Untarget2-3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SMG_E_837Event_Challenge03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "ConditionDead2-2",
+                "Untarget2-4"
+              ],
+              "SpawnCommandIdList": [
+                "CommandSpawn2-2",
+                "Untarget2-4"
+              ],
+              "MovePoints": [],
+              "TileX": 40,
+              "TileY": 180,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.01000005,
+                "y": 31.56
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                "Untarget2-4"
+              ],
+              "CommandIdList": [
+                "CommandSpawn2-2",
+                "Untarget2-4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SR_E_837Event_Challenge03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "ConditionDead2-2",
+                "Untarget2-5"
+              ],
+              "SpawnCommandIdList": [
+                "CommandSpawn2-2",
+                "Untarget2-5"
+              ],
+              "MovePoints": [],
+              "TileX": 43,
+              "TileY": 197,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.680000067,
+                "y": 34.89
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [
+                "Untarget2-5"
+              ],
+              "CommandIdList": [
+                "CommandSpawn2-2",
+                "Untarget2-5"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "SectionID": 3,
+      "Position": {
+        "x": 0,
+        "y": 0,
+        "z": 25
+      },
+      "Events": [
+        {
+          "EventName": "Spawn3",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 0,
+              "CommandID": "CommandSpawn3-2",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 0,
+              "CommandID": "CommandSpawn3-3",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandLocateCamera, BlueArchive",
+              "ID": 1,
+              "MaxCameraSpeed": 3,
+              "RotationSpeed": 1,
+              "ZoomSpeed": 1,
+              "RailPoints": [
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 30.91
+                  },
+                  "MinCameraDistance": 42,
+                  "MaxCameraDistance": 42,
+                  "CameraForward": {
+                    "x": -0.8034659,
+                    "y": -0.426618159,
+                    "z": 0.415258348
+                  }
+                },
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 65.58
+                  },
+                  "MinCameraDistance": 42,
+                  "MaxCameraDistance": 42,
+                  "CameraForward": {
+                    "x": -0.8034659,
+                    "y": -0.426618159,
+                    "z": 0.415258348
+                  }
+                }
+              ],
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 2000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Immortal",
+              "isAdd": true,
+              "CommandID": "CommandSpawn3-2",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "KannaNearby",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionArea, BlueArchive",
+              "SpawnTemplateId": "CH0260_E_837Event_Challenge03",
+              "Shape": 0,
+              "Target": 3,
+              "Trigger": 0,
+              "StayTime": 0,
+              "Position": {
+                "x": 0.3,
+                "y": 0,
+                "z": 28.56
+              },
+              "Rect": {
+                "Direction": {
+                  "x": 0,
+                  "y": 0
+                },
+                "Width": 10,
+                "Height": 1
+              },
+              "Circle": {
+                "Radius": 11
+              },
+              "InactivateWhenStart": false,
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "GroundCommandLocateCamera, BlueArchive",
+              "ID": 1,
+              "MaxCameraSpeed": 5,
+              "RotationSpeed": 1,
+              "ZoomSpeed": 3.5,
+              "RailPoints": [
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": -0.39,
+                    "y": 0,
+                    "z": 36.93
+                  },
+                  "MinCameraDistance": 47,
+                  "MaxCameraDistance": 47,
+                  "CameraForward": {
+                    "x": -0.8034659,
+                    "y": -0.426618159,
+                    "z": 0.415258348
+                  }
+                }
+              ],
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 6000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandLocateCamera, BlueArchive",
+              "ID": 1,
+              "MaxCameraSpeed": 5,
+              "RotationSpeed": 1,
+              "ZoomSpeed": 3.5,
+              "RailPoints": [
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": -0.39,
+                    "y": 0,
+                    "z": 39.77
+                  },
+                  "MinCameraDistance": 47,
+                  "MaxCameraDistance": 47,
+                  "CameraForward": {
+                    "x": -0.8034659,
+                    "y": -0.426618159,
+                    "z": 0.415258348
+                  }
+                }
+              ],
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "CCSuccess1",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+              "LogicEffectGroupId": "837Event_Challenge03_CrowdControlGauge01_Effect02",
+              "TriggerMaxCount": 1,
+              "TriggerCooltime": 0,
+              "ConditionID": "Untarget3-1"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSkipUntargetableCheckInMove, BlueArchive",
+              "Skip": true,
+              "CommandID": "Untarget3-1",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandRemoveFromCameraTarget, BlueArchive",
+              "EntityCommandIds": [
+                "Untarget3-1"
+              ],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandHideHPBar, BlueArchive",
+              "IsShow": false,
+              "CommandID": "Untarget3-1",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 5000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Immortal",
+              "isAdd": false,
+              "CommandID": "Untarget3-1",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "CCSuccess2",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+              "LogicEffectGroupId": "837Event_Challenge03_CrowdControlGauge01_Effect02",
+              "TriggerMaxCount": 1,
+              "TriggerCooltime": 0,
+              "ConditionID": "Untarget3-2"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSkipUntargetableCheckInMove, BlueArchive",
+              "Skip": true,
+              "CommandID": "Untarget3-2",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandRemoveFromCameraTarget, BlueArchive",
+              "EntityCommandIds": [
+                "Untarget3-2"
+              ],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandHideHPBar, BlueArchive",
+              "IsShow": false,
+              "CommandID": "Untarget3-2",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 5000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Immortal",
+              "isAdd": false,
+              "CommandID": "Untarget3-2",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "CCSuccess3",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+              "LogicEffectGroupId": "837Event_Challenge03_CrowdControlGauge01_Effect02",
+              "TriggerMaxCount": 1,
+              "TriggerCooltime": 0,
+              "ConditionID": "Untarget3-4"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSkipUntargetableCheckInMove, BlueArchive",
+              "Skip": true,
+              "CommandID": "Untarget3-4",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandRemoveFromCameraTarget, BlueArchive",
+              "EntityCommandIds": [
+                "Untarget3-4"
+              ],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandHideHPBar, BlueArchive",
+              "IsShow": false,
+              "CommandID": "Untarget3-4",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 5000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Immortal",
+              "isAdd": false,
+              "CommandID": "Untarget3-4",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "EndSection3",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionArea, BlueArchive",
+              "SpawnTemplateId": "",
+              "Shape": 0,
+              "Target": 0,
+              "Trigger": 0,
+              "StayTime": 0,
+              "Position": {
+                "x": 0.3,
+                "y": 0,
+                "z": 49.52
+              },
+              "Rect": {
+                "Direction": {
+                  "x": 0,
+                  "y": 0
+                },
+                "Width": 10,
+                "Height": 8
+              },
+              "Circle": {
+                "Radius": 11
+              },
+              "InactivateWhenStart": false,
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSkipUntargetableCheckInMove, BlueArchive",
+              "Skip": true,
+              "CommandID": "Untarget3-3",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandRemoveFromCameraTarget, BlueArchive",
+              "EntityCommandIds": [
+                "Untarget3-3"
+              ],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Immortal",
+              "isAdd": false,
+              "CommandID": "Untarget3-1",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Immortal",
+              "isAdd": false,
+              "CommandID": "Untarget3-2",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Immortal",
+              "isAdd": false,
+              "CommandID": "Untarget3-4",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+              "SectionID": 4,
+              "SetConditionCommandOnly": false,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [
+        {
+          "UniqueName": "Insidecruiseship_Standsignboard",
+          "Position": {
+            "x": -0.01,
+            "y": 0,
+            "z": 39.89
+          },
+          "Forward": {
+            "x": 0.177001253,
+            "y": 0,
+            "z": 0.9842106
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Insidecruiseship_Sunbed",
+          "Position": {
+            "x": 2.35,
+            "y": 0,
+            "z": 41.4200058
+          },
+          "Forward": {
+            "x": 0.9895039,
+            "y": 0,
+            "z": -0.144506082
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        }
+      ],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent3",
+          "SpawnPoints": []
+        },
+        {
+          "GroupName": "SpawnPointParent3_Untarget",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_MG_E_837Event_Challenge03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "D",
+              "SpawnConditionIdList": [
+                "Untarget3-1"
+              ],
+              "SpawnCommandIdList": [
+                "CommandSpawn3-2",
+                "Untarget3-1"
+              ],
+              "MovePoints": [],
+              "TileX": 40,
+              "TileY": 242,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.030000031,
+                "y": 43.9899979
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandSpawn3-2",
+                "Untarget3-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_MG_E_837Event_Challenge03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "D",
+              "SpawnConditionIdList": [
+                "Untarget3-2"
+              ],
+              "SpawnCommandIdList": [
+                "CommandSpawn3-2",
+                "Untarget3-2"
+              ],
+              "MovePoints": [],
+              "TileX": 46,
+              "TileY": 243,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 1.16,
+                "y": 44.03
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandSpawn3-2",
+                "Untarget3-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SR_E_837Event_Challenge03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "D",
+              "SpawnConditionIdList": [
+                "Untarget3-4"
+              ],
+              "SpawnCommandIdList": [
+                "CommandSpawn3-2",
+                "Untarget3-4"
+              ],
+              "MovePoints": [],
+              "TileX": 41,
+              "TileY": 251,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.269999951,
+                "y": 45.6
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandSpawn3-2",
+                "Untarget3-4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Totem01_Common_M_837Event_Challenge03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "D",
+              "SpawnConditionIdList": [
+                "ConditionDead3-2",
+                "Untarget3-3"
+              ],
+              "SpawnCommandIdList": [
+                "Untarget3-3"
+              ],
+              "MovePoints": [],
+              "TileX": 41,
+              "TileY": 232,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.16,
+                "y": 41.82
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandSpawn3-3",
+                "Untarget3-3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "SectionID": 4,
+      "Position": {
+        "x": 0,
+        "y": 0,
+        "z": 45
+      },
+      "Events": [
+        {
+          "EventName": "Spawn4",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 0,
+              "CommandID": "CommandSpawn4-1",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 0,
+              "CommandID": "CommandSpawn4-2",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandLocateCamera, BlueArchive",
+              "ID": 1,
+              "MaxCameraSpeed": 3,
+              "RotationSpeed": 1,
+              "ZoomSpeed": 1,
+              "RailPoints": [
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": -1.33,
+                    "y": 0,
+                    "z": 44.68
+                  },
+                  "MinCameraDistance": 45,
+                  "MaxCameraDistance": 45,
+                  "CameraForward": {
+                    "x": -0.8034659,
+                    "y": -0.426618159,
+                    "z": 0.415258348
+                  }
+                },
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": -1.33,
+                    "y": 0,
+                    "z": 65.67
+                  },
+                  "MinCameraDistance": 45,
+                  "MaxCameraDistance": 45,
+                  "CameraForward": {
+                    "x": -0.8034659,
+                    "y": -0.426618159,
+                    "z": 0.415258348
+                  }
+                }
+              ],
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 2000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Immortal",
+              "isAdd": true,
+              "CommandID": "CommandSpawn4-2",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "CCSuccess1",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+              "LogicEffectGroupId": "837Event_Challenge03_CrowdControlGauge01_Effect02",
+              "TriggerMaxCount": 1,
+              "TriggerCooltime": 0,
+              "ConditionID": "Untarget4-1"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSkipUntargetableCheckInMove, BlueArchive",
+              "Skip": true,
+              "CommandID": "Untarget4-1",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandRemoveFromCameraTarget, BlueArchive",
+              "EntityCommandIds": [
+                "Untarget4-1"
+              ],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandHideHPBar, BlueArchive",
+              "IsShow": false,
+              "CommandID": "Untarget4-1",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 5000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Immortal",
+              "isAdd": false,
+              "CommandID": "Untarget4-1",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "CCSuccess2",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+              "LogicEffectGroupId": "837Event_Challenge03_CrowdControlGauge01_Effect02",
+              "TriggerMaxCount": 1,
+              "TriggerCooltime": 0,
+              "ConditionID": "Untarget4-2"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSkipUntargetableCheckInMove, BlueArchive",
+              "Skip": true,
+              "CommandID": "Untarget4-2",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandRemoveFromCameraTarget, BlueArchive",
+              "EntityCommandIds": [
+                "Untarget4-2"
+              ],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandHideHPBar, BlueArchive",
+              "IsShow": false,
+              "CommandID": "Untarget4-2",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 5000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Immortal",
+              "isAdd": false,
+              "CommandID": "Untarget4-2",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "CCSuccess3",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+              "LogicEffectGroupId": "837Event_Challenge03_CrowdControlGauge01_Effect02",
+              "TriggerMaxCount": 1,
+              "TriggerCooltime": 0,
+              "ConditionID": "Untarget4-3"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSkipUntargetableCheckInMove, BlueArchive",
+              "Skip": true,
+              "CommandID": "Untarget4-3",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandRemoveFromCameraTarget, BlueArchive",
+              "EntityCommandIds": [
+                "Untarget4-3"
+              ],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandHideHPBar, BlueArchive",
+              "IsShow": false,
+              "CommandID": "Untarget4-3",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 5000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Immortal",
+              "isAdd": false,
+              "CommandID": "Untarget4-3",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "CCSuccess4",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+              "LogicEffectGroupId": "837Event_Challenge03_CrowdControlGauge01_Effect02",
+              "TriggerMaxCount": 1,
+              "TriggerCooltime": 0,
+              "ConditionID": "Untarget4-4"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSkipUntargetableCheckInMove, BlueArchive",
+              "Skip": true,
+              "CommandID": "Untarget4-4",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandRemoveFromCameraTarget, BlueArchive",
+              "EntityCommandIds": [
+                "Untarget4-4"
+              ],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandHideHPBar, BlueArchive",
+              "IsShow": false,
+              "CommandID": "Untarget4-4",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 5000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Immortal",
+              "isAdd": false,
+              "CommandID": "Untarget4-4",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "CCSuccess5",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+              "LogicEffectGroupId": "837Event_Challenge03_CrowdControlGauge01_Effect02",
+              "TriggerMaxCount": 1,
+              "TriggerCooltime": 0,
+              "ConditionID": "Untarget4-5"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSkipUntargetableCheckInMove, BlueArchive",
+              "Skip": true,
+              "CommandID": "Untarget4-5",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandRemoveFromCameraTarget, BlueArchive",
+              "EntityCommandIds": [
+                "Untarget4-5"
+              ],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandHideHPBar, BlueArchive",
+              "IsShow": false,
+              "CommandID": "Untarget4-5",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 5000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Immortal",
+              "isAdd": false,
+              "CommandID": "Untarget4-5",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "CCSuccess6",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+              "LogicEffectGroupId": "837Event_Challenge03_CrowdControlGauge01_Effect02",
+              "TriggerMaxCount": 1,
+              "TriggerCooltime": 0,
+              "ConditionID": "Untarget4-6"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSkipUntargetableCheckInMove, BlueArchive",
+              "Skip": true,
+              "CommandID": "Untarget4-6",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandRemoveFromCameraTarget, BlueArchive",
+              "EntityCommandIds": [
+                "Untarget4-6"
+              ],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandHideHPBar, BlueArchive",
+              "IsShow": false,
+              "CommandID": "Untarget4-6",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 5000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Immortal",
+              "isAdd": false,
+              "CommandID": "Untarget4-6",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "KannaNearby",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionArea, BlueArchive",
+              "SpawnTemplateId": "CH0260_E_837Event_Challenge03",
+              "Shape": 0,
+              "Target": 3,
+              "Trigger": 0,
+              "StayTime": 0,
+              "Position": {
+                "x": 0.3,
+                "y": 0,
+                "z": 40.4899979
+              },
+              "Rect": {
+                "Direction": {
+                  "x": 0,
+                  "y": 0
+                },
+                "Width": 10,
+                "Height": 3
+              },
+              "Circle": {
+                "Radius": 11
+              },
+              "InactivateWhenStart": false,
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "GroundCommandLocateCamera, BlueArchive",
+              "ID": 1,
+              "MaxCameraSpeed": 5,
+              "RotationSpeed": 1,
+              "ZoomSpeed": 3.5,
+              "RailPoints": [
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": -1.6,
+                    "y": 0,
+                    "z": 49.67
+                  },
+                  "MinCameraDistance": 50,
+                  "MaxCameraDistance": 50,
+                  "CameraForward": {
+                    "x": -0.8034659,
+                    "y": -0.426618159,
+                    "z": 0.415258348
+                  }
+                },
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": -1.6,
+                    "y": 0,
+                    "z": 51.94
+                  },
+                  "MinCameraDistance": 50,
+                  "MaxCameraDistance": 50,
+                  "CameraForward": {
+                    "x": -0.8034659,
+                    "y": -0.426618159,
+                    "z": 0.415258348
+                  }
+                }
+              ],
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 6000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandLocateCamera, BlueArchive",
+              "ID": 1,
+              "MaxCameraSpeed": 5,
+              "RotationSpeed": 1,
+              "ZoomSpeed": 3.5,
+              "RailPoints": [
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": -1.29,
+                    "y": 0,
+                    "z": 52.3
+                  },
+                  "MinCameraDistance": 48,
+                  "MaxCameraDistance": 48,
+                  "CameraForward": {
+                    "x": -0.8034659,
+                    "y": -0.426618159,
+                    "z": 0.415258348
+                  }
+                },
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": -1.29,
+                    "y": 0,
+                    "z": 58.34
+                  },
+                  "MinCameraDistance": 48,
+                  "MaxCameraDistance": 48,
+                  "CameraForward": {
+                    "x": -0.8034659,
+                    "y": -0.426618159,
+                    "z": 0.415258348
+                  }
+                }
+              ],
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "BossNearby",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionArea, BlueArchive",
+              "SpawnTemplateId": "",
+              "Shape": 0,
+              "Target": 0,
+              "Trigger": 0,
+              "StayTime": 0,
+              "Position": {
+                "x": 0.3,
+                "y": 0,
+                "z": 55.7600021
+              },
+              "Rect": {
+                "Direction": {
+                  "x": 0,
+                  "y": 0
+                },
+                "Width": 10,
+                "Height": 5
+              },
+              "Circle": {
+                "Radius": 11
+              },
+              "InactivateWhenStart": false,
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "GroundCommandLocateCamera, BlueArchive",
+              "ID": 1,
+              "MaxCameraSpeed": 5,
+              "RotationSpeed": 1,
+              "ZoomSpeed": 3.5,
+              "RailPoints": [
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": -1.29,
+                    "y": 0,
+                    "z": 56.21
+                  },
+                  "MinCameraDistance": 48,
+                  "MaxCameraDistance": 48,
+                  "CameraForward": {
+                    "x": -0.8034659,
+                    "y": -0.426618159,
+                    "z": 0.415258348
+                  }
+                }
+              ],
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [
+        {
+          "UniqueName": "Insidecruiseship_Standsignboard",
+          "Position": {
+            "x": 0.42,
+            "y": 0,
+            "z": 48.26
+          },
+          "Forward": {
+            "x": -0.142454535,
+            "y": 0,
+            "z": 0.989801347
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        }
+      ],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent4",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirlBoss_SukebanSwim_MG_C_837Event_Challenge03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [
+                "ConditionDeadBoss"
+              ],
+              "SpawnCommandIdList": [],
+              "MovePoints": [],
+              "TileX": 41,
+              "TileY": 329,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.2,
+                "y": 61.3799973
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandSpawn4-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointParent4_Untaget",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SR_E_837Event_Challenge03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "E",
+              "SpawnConditionIdList": [
+                "ConditionDead4-2",
+                "Untarget4-1"
+              ],
+              "SpawnCommandIdList": [
+                "CommandSpawn4-2",
+                "Untarget4-1"
+              ],
+              "MovePoints": [],
+              "TileX": 41,
+              "TileY": 297,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.236,
+                "y": 54.81
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandSpawn4-2",
+                "Untarget4-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SR_E_837Event_Challenge03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "E",
+              "SpawnConditionIdList": [
+                "ConditionDead4-2",
+                "Untarget4-2"
+              ],
+              "SpawnCommandIdList": [
+                "CommandSpawn4-2",
+                "Untarget4-2"
+              ],
+              "MovePoints": [],
+              "TileX": 48,
+              "TileY": 297,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 1.579,
+                "y": 54.8850021
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandSpawn4-2",
+                "Untarget4-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SMG_E_837Event_Challenge03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "E",
+              "SpawnConditionIdList": [
+                "ConditionDead4-2",
+                "Untarget4-3"
+              ],
+              "SpawnCommandIdList": [
+                "CommandSpawn4-2",
+                "Untarget4-3"
+              ],
+              "MovePoints": [],
+              "TileX": 39,
+              "TileY": 281,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.19,
+                "y": 51.6
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandSpawn4-2",
+                "Untarget43"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_MG_E_837Event_Challenge03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "E",
+              "SpawnConditionIdList": [
+                "ConditionDead4-2",
+                "Untarget4-4"
+              ],
+              "SpawnCommandIdList": [
+                "CommandSpawn4-2",
+                "Untarget4-4"
+              ],
+              "MovePoints": [],
+              "TileX": 46,
+              "TileY": 292,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 1.12,
+                "y": 53.98
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandSpawn4-2",
+                "Untarget4-4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_MG_E_837Event_Challenge03",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "E",
+              "SpawnConditionIdList": [
+                "ConditionDead4-2",
+                "Untarget4-6"
+              ],
+              "SpawnCommandIdList": [
+                "CommandSpawn4-2",
+                "Untarget4-6"
+              ],
+              "MovePoints": [],
+              "TileX": 38,
+              "TileY": 290,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.329999983,
+                "y": 53.5
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandSpawn4-2",
+                "Untarget4-6"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Formations": [
+    {
+      "SectionIndex": 0,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": 25.12
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 1,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": 20.95
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 2,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": 37.63
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 3,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": 50.91
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 4,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": 68.35
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    }
+  ],
+  "EnemyFormations": [],
+  "TemporaryCanUseSkillAreas": []
+}
