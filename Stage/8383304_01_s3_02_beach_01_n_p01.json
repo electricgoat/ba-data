@@ -1,0 +1,873 @@
+{
+  "Version": "1.0",
+  "Global": {
+    "Position": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "Events": [
+      {
+        "EventName": "SpawnPlayer",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": "0"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSpawnPlayer, BlueArchive",
+            "IsEnemy": false,
+            "IgnoreSkillCardShuffle": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 1,
+            "MaxCameraSpeed": 3,
+            "RotationSpeed": 1,
+            "ZoomSpeed": 1,
+            "RailPoints": [
+              {
+                "UseTableData": false,
+                "Position": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 34.6
+                },
+                "MinCameraDistance": 35,
+                "MaxCameraDistance": 42,
+                "CameraForward": {
+                  "x": -0.8034659,
+                  "y": -0.426618159,
+                  "z": 0.415258348
+                }
+              },
+              {
+                "UseTableData": false,
+                "Position": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 58.58
+                },
+                "MinCameraDistance": 35,
+                "MaxCameraDistance": 42,
+                "CameraForward": {
+                  "x": -0.8034659,
+                  "y": -0.426618159,
+                  "z": 0.415258348
+                }
+              }
+            ],
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 1,
+            "SetConditionCommandOnly": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandChangeGroundNodeType, BlueArchive",
+            "ShapeType": 0,
+            "Position": {
+              "x": 0,
+              "y": 0,
+              "z": 52.25
+            },
+            "Rect": {
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "Width": 10,
+              "Height": 0.8
+            },
+            "Circle": {
+              "Radius": 0
+            },
+            "GroundNodeTypeToChange": 2147483647,
+            "IsResetToOriginal": false,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "EndBattle",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 1,
+            "CheckSummonedCharacterDead": false,
+            "CheckDelayMilliSecond": 0,
+            "ConditionID": "Condition_Boss"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandCharacterDie, BlueArchive",
+            "CharacterCommandIdList": [
+              "Command_Enemy"
+            ],
+            "CharacterSpawnTemplateIdList": [],
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandEndBattle, BlueArchive",
+            "BattleEndType": 4,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      }
+    ]
+  },
+  "Sections": [
+    {
+      "SectionID": 1,
+      "Position": {
+        "x": 0,
+        "y": 0,
+        "z": 5
+      },
+      "Events": [
+        {
+          "EventName": "Spawn1-1",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundConditionArea, BlueArchive",
+              "SpawnTemplateId": "",
+              "Shape": 0,
+              "Target": 0,
+              "Trigger": 0,
+              "StayTime": 0,
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 40.94
+              },
+              "Rect": {
+                "Direction": {
+                  "x": 0,
+                  "y": 0
+                },
+                "Width": 10,
+                "Height": 4
+              },
+              "Circle": {
+                "Radius": 1
+              },
+              "InactivateWhenStart": false,
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "GroundCommandPlayTimeline, BlueArchive",
+              "TimelinePath": "Timeline/Timeline_CH0265_Enemy_OP",
+              "UseGameTime": false,
+              "CanSkip": true,
+              "FadeInImmediately": false,
+              "FadeInWhenStart": false,
+              "FadeOutInWhenEnd": false,
+              "FadeInWhenEnd": false,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 10,
+              "CommandID": "Spawn_Jyaco",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 200,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 10,
+              "CommandID": "Spawn_Boss",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 500,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandCreateSyncUseSkill, BlueArchive",
+              "CoolDownInMilliSeconds": 35000,
+              "SyncUseSkillGroupId": 9999,
+              "IsAllyGroup": false,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetSyncUseSkillGroup, BlueArchive",
+              "SyncUseSkillGroupId": 9999,
+              "SkillSlot": "ExSkill01",
+              "IsAdd": true,
+              "IsAllyGroup": false,
+              "CommandID": "Command_MG",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandCreateSyncUseSkill, BlueArchive",
+              "CoolDownInMilliSeconds": 36000,
+              "SyncUseSkillGroupId": 9998,
+              "IsAllyGroup": false,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetSyncUseSkillGroup, BlueArchive",
+              "SyncUseSkillGroupId": 9998,
+              "SkillSlot": "ExSkill02",
+              "IsAdd": true,
+              "IsAllyGroup": false,
+              "CommandID": "Command_MG",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "SetSync",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundConditionArea, BlueArchive",
+              "SpawnTemplateId": "",
+              "Shape": 0,
+              "Target": 0,
+              "Trigger": 0,
+              "StayTime": 0,
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 40.94
+              },
+              "Rect": {
+                "Direction": {
+                  "x": 0,
+                  "y": 0
+                },
+                "Width": 10,
+                "Height": 4
+              },
+              "Circle": {
+                "Radius": 1
+              },
+              "InactivateWhenStart": false,
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 5000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandCreateSyncUseSkill, BlueArchive",
+              "CoolDownInMilliSeconds": 45000,
+              "SyncUseSkillGroupId": 9997,
+              "IsAllyGroup": false,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetSyncUseSkillGroup, BlueArchive",
+              "SyncUseSkillGroupId": 9997,
+              "SkillSlot": "ExSkill03",
+              "IsAdd": true,
+              "IsAllyGroup": false,
+              "CommandID": "Command_Boss",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [
+        {
+          "UniqueName": "icecreamtruck_01_Standard",
+          "Position": {
+            "x": -0.44,
+            "y": 0,
+            "z": 63.7
+          },
+          "Forward": {
+            "x": -0.835863948,
+            "y": 0,
+            "z": -0.548936665
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "HeavyTank01_Helmet_Cannon_Standard",
+          "Position": {
+            "x": -1.63,
+            "y": 0,
+            "z": 57.73
+          },
+          "Forward": {
+            "x": 0.698068261,
+            "y": 0,
+            "z": -0.7160312
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "bus_01_Standard",
+          "Position": {
+            "x": 3.7,
+            "y": 0,
+            "z": 61.89
+          },
+          "Forward": {
+            "x": 0.9232329,
+            "y": 0,
+            "z": 0.3842408
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Shanhaijingstreet_Truck",
+          "Position": {
+            "x": -0.56,
+            "y": 0,
+            "z": 60.97
+          },
+          "Forward": {
+            "x": -0.764699161,
+            "y": 0,
+            "z": -0.6443874
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Beach_LyingTable_Special01",
+          "Position": {
+            "x": 0.426517,
+            "y": 0,
+            "z": 52.056
+          },
+          "Forward": {
+            "x": -0.6295576,
+            "y": 0,
+            "z": 0.776953757
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Beach_Chair_Special01",
+          "Position": {
+            "x": -2.96299982,
+            "y": 0,
+            "z": 52.1720047
+          },
+          "Forward": {
+            "x": 0.8636944,
+            "y": 0,
+            "z": -0.5040158
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Beach_LyingTable_Special01",
+          "Position": {
+            "x": -1.72,
+            "y": 0,
+            "z": 52.073
+          },
+          "Forward": {
+            "x": -0.0284336284,
+            "y": 0,
+            "z": 0.9995957
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Beach_LyingTable_Special01",
+          "Position": {
+            "x": -2.27899981,
+            "y": 0,
+            "z": 52.72
+          },
+          "Forward": {
+            "x": 0.9515533,
+            "y": 0,
+            "z": 0.3074839
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Beach_LyingTable_Special01",
+          "Position": {
+            "x": 2.08,
+            "y": 0,
+            "z": 52.1550026
+          },
+          "Forward": {
+            "x": 0.2990145,
+            "y": 0,
+            "z": 0.954248548
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Beach_LyingTable_Special01",
+          "Position": {
+            "x": 2.751,
+            "y": 0,
+            "z": 52.0990028
+          },
+          "Forward": {
+            "x": -0.59223,
+            "y": 0,
+            "z": 0.805768967
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Beach_Chair_Special01",
+          "Position": {
+            "x": -0.627000034,
+            "y": 0,
+            "z": 52.1450043
+          },
+          "Forward": {
+            "x": 0.8636944,
+            "y": 0,
+            "z": -0.5040158
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Beach_Chair_Special01",
+          "Position": {
+            "x": 1.434,
+            "y": 0,
+            "z": 52.163002
+          },
+          "Forward": {
+            "x": -0.8818645,
+            "y": 0,
+            "z": 0.47150296
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Beach_Chair_Special01",
+          "Position": {
+            "x": 3.578,
+            "y": 0,
+            "z": 51.993
+          },
+          "Forward": {
+            "x": -0.13075082,
+            "y": 0,
+            "z": 0.991415262
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        }
+      ],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent1-1",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirlBoss_SukebanSwim_MG_E_838Event_Challenge04",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "Condition_Jyaco",
+                "Condition_Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "Command_Jyaco",
+                "Command_Enemy",
+                "Command_MG"
+              ],
+              "MovePoints": [],
+              "TileX": 32,
+              "TileY": 293,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.56000006,
+                "y": 54.0370026
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Spawn_Jyaco"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirlBoss_SukebanSwim_MG_E_838Event_Challenge04",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "Condition_Jyaco",
+                "Condition_Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "Command_Jyaco",
+                "Command_Enemy",
+                "Command_MG"
+              ],
+              "MovePoints": [],
+              "TileX": 52,
+              "TileY": 293,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 2.44,
+                "y": 54.067
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Spawn_Jyaco"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SR_M_838Event_Challenge04",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "Condition_Jyaco",
+                "Condition_Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "Command_Jyaco",
+                "Command_Enemy"
+              ],
+              "MovePoints": [],
+              "TileX": 37,
+              "TileY": 298,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.5400001,
+                "y": 55.027
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Spawn_Jyaco"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SR_M_838Event_Challenge04",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "Condition_Jyaco",
+                "Condition_Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "Command_Jyaco",
+                "Command_Enemy"
+              ],
+              "MovePoints": [],
+              "TileX": 47,
+              "TileY": 297,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 1.42,
+                "y": 54.977
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Spawn_Jyaco"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirlBoss_SukebanSwim_MG_E_838Event_Challenge04",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "Condition_Jyaco",
+                "Condition_Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "Command_Jyaco",
+                "Command_Enemy",
+                "Command_MG"
+              ],
+              "MovePoints": [],
+              "TileX": 42,
+              "TileY": 299,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.459999919,
+                "y": 55.3970032
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Spawn_Jyaco"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "CH0265_Enemy_C_838Event_Challenge04",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "Condition_Boss"
+              ],
+              "SpawnCommandIdList": [
+                "Command_Boss"
+              ],
+              "MovePoints": [],
+              "TileX": 42,
+              "TileY": 287,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.449999928,
+                "y": 52.9960022
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Spawn_Boss"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Formations": [
+    {
+      "SectionIndex": 0,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": 32.54
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 1,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": 61.13
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    }
+  ],
+  "EnemyFormations": [],
+  "TemporaryCanUseSkillAreas": []
+}
