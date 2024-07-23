@@ -1,0 +1,2039 @@
+{
+  "Version": "",
+  "Global": {
+    "Position": {
+      "x": 0,
+      "y": 0,
+      "z": 1.5
+    },
+    "Events": [
+      {
+        "EventName": "SpawnPlayer",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": "0"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSpawnPlayer, BlueArchive",
+            "IsEnemy": false,
+            "IgnoreSkillCardShuffle": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 50,
+            "MaxCameraSpeed": 1,
+            "RotationSpeed": 1,
+            "ZoomSpeed": 1,
+            "RailPoints": [
+              {
+                "UseTableData": true,
+                "Position": {
+                  "x": 0.78,
+                  "y": 0.4,
+                  "z": 46.12
+                },
+                "MinCameraDistance": 30,
+                "MaxCameraDistance": 30,
+                "CameraForward": {
+                  "x": -0.8034657,
+                  "y": -0.426617682,
+                  "z": 0.4152592
+                }
+              }
+            ],
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 1,
+            "SetConditionCommandOnly": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandHideHPBar, BlueArchive",
+            "IsShow": false,
+            "CommandID": "Command_player",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "EndBattle",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharacterHPChanged, BlueArchive",
+            "TriggerRateUnder": 2000,
+            "TriggerRateOver": -1,
+            "TriggerMaxCount": 1,
+            "ConditionID": "SCondition_Iori"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+            "TargetCharacterCommandId": [
+              "SCommand_Iori"
+            ],
+            "CreateCharacterStat": true,
+            "CharacterId": 18001002,
+            "CharacterLevel": 1,
+            "CharacterGrade": 1,
+            "Interval": 0,
+            "SkillGroupId": "EventChallenge_CrowdControl_Stunned_Ally_5s",
+            "SkillLevel": 1,
+            "ExecuterLevel": 1,
+            "CharacterGroup": 2,
+            "CommandID": "UseSkillPoint_Section01",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+            "Milliseconds": 1000,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandEndBattle, BlueArchive",
+            "BattleEndType": 4,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "1-1AreaOn",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": ""
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandTemporaryCanUseSkillArea, BlueArchive",
+            "OnOff": true,
+            "TemporaryCanUseSkillAreaCommandId": "1-1Area",
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      }
+    ]
+  },
+  "Sections": [
+    {
+      "SectionID": 1,
+      "Position": {
+        "x": 0,
+        "y": 0,
+        "z": 6.5
+      },
+      "Events": [
+        {
+          "EventName": "0.SpawnFuuki3",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 10,
+              "CommandID": "Command_Fuuki3",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "1.SpawnFuuki",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [
+                "Player_command"
+              ],
+              "CreateCharacterStat": true,
+              "CharacterId": 18001002,
+              "CharacterLevel": 1,
+              "CharacterGrade": 1,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_DeBuff_StatChange_AttackPower_Ally_10s_25_Ratio",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 1,
+              "CommandID": "UseSkillPoint_Section01",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 2600,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 10,
+              "CommandID": "Command_Fuuki",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 4500,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [
+                "SCommand_FuukiSG"
+              ],
+              "CreateCharacterStat": true,
+              "CharacterId": 18001002,
+              "CharacterLevel": 1,
+              "CharacterGrade": 1,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_DeBuff_ConcentratedTarget_Ally_10s",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 2,
+              "CommandID": "UseSkillPoint_Section01",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [
+                "Player_command"
+              ],
+              "CreateCharacterStat": true,
+              "CharacterId": 18001002,
+              "CharacterLevel": 1,
+              "CharacterGrade": 1,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_Buff_StatChange_RegenCost_Ally_300s_2800_Fixed",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 1,
+              "CommandID": "UseSkillPoint_Section01",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaveLoop, BlueArchive",
+              "UniqueId": "waveID",
+              "Waves": [
+                {
+                  "SpawnPointCommandId": "Command_Wave1",
+                  "EndCount": 4,
+                  "WaveDelay": 3000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 100
+                }
+              ],
+              "OnAddEntityAction": null,
+              "CommandID": "Command_Wave",
+              "CurWaveNum": 0,
+              "CurrProcess": null,
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaveLoop, BlueArchive",
+              "UniqueId": "waveID",
+              "Waves": [
+                {
+                  "SpawnPointCommandId": "Command_Wave2",
+                  "EndCount": 4,
+                  "WaveDelay": 3000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 100
+                }
+              ],
+              "OnAddEntityAction": null,
+              "CommandID": "Command_Wave",
+              "CurWaveNum": 0,
+              "CurrProcess": null,
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaveLoop, BlueArchive",
+              "UniqueId": "waveID",
+              "Waves": [
+                {
+                  "SpawnPointCommandId": "Command_Wave3",
+                  "EndCount": 4,
+                  "WaveDelay": 3000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 100
+                }
+              ],
+              "OnAddEntityAction": null,
+              "CommandID": "Command_Wave",
+              "CurWaveNum": 0,
+              "CurrProcess": null,
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaveLoop, BlueArchive",
+              "UniqueId": "waveID",
+              "Waves": [
+                {
+                  "SpawnPointCommandId": "Command_Wave4",
+                  "EndCount": 4,
+                  "WaveDelay": 3000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 100
+                }
+              ],
+              "OnAddEntityAction": null,
+              "CommandID": "Command_Wave",
+              "CurWaveNum": 0,
+              "CurrProcess": null,
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaveLoop, BlueArchive",
+              "UniqueId": "waveID",
+              "Waves": [
+                {
+                  "SpawnPointCommandId": "Command_Wave5",
+                  "EndCount": 4,
+                  "WaveDelay": 3000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 100
+                }
+              ],
+              "OnAddEntityAction": null,
+              "CommandID": "Command_Wave",
+              "CurWaveNum": 0,
+              "CurrProcess": null,
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaveLoop, BlueArchive",
+              "UniqueId": "waveID",
+              "Waves": [
+                {
+                  "SpawnPointCommandId": "Command_Wave6",
+                  "EndCount": 4,
+                  "WaveDelay": 3000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 100
+                }
+              ],
+              "OnAddEntityAction": null,
+              "CommandID": "Command_Wave",
+              "CurWaveNum": 0,
+              "CurrProcess": null,
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaveLoop, BlueArchive",
+              "UniqueId": "waveID",
+              "Waves": [
+                {
+                  "SpawnPointCommandId": "Command_Wave7",
+                  "EndCount": 4,
+                  "WaveDelay": 3000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 100
+                }
+              ],
+              "OnAddEntityAction": null,
+              "CommandID": "Command_Wave",
+              "CurWaveNum": 0,
+              "CurrProcess": null,
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaveLoop, BlueArchive",
+              "UniqueId": "waveID",
+              "Waves": [
+                {
+                  "SpawnPointCommandId": "Command_Wave8",
+                  "EndCount": 4,
+                  "WaveDelay": 3000,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 100
+                }
+              ],
+              "OnAddEntityAction": null,
+              "CommandID": "Command_Wave",
+              "CurWaveNum": 0,
+              "CurrProcess": null,
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "1a.SpawnFuuki2",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 3700,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 10,
+              "CommandID": "Command_Fuuki2",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "2.HinaSkillSync_All",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionArea, BlueArchive",
+              "SpawnTemplateId": "",
+              "Shape": 0,
+              "Target": 0,
+              "Trigger": 0,
+              "StayTime": 0,
+              "Position": {
+                "x": 1.07,
+                "y": 0.26,
+                "z": 57.6
+              },
+              "Rect": {
+                "Direction": {
+                  "x": 0,
+                  "y": 0
+                },
+                "Width": 3,
+                "Height": 1
+              },
+              "Circle": {
+                "Radius": 1
+              },
+              "InactivateWhenStart": false,
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 400,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceIdle, BlueArchive",
+              "IsForceIdleOn": true,
+              "CommandID": "Player_command",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 3000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceIdle, BlueArchive",
+              "IsForceIdleOn": false,
+              "CommandID": "Player_command",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetSyncUseSkillGroup, BlueArchive",
+              "SyncUseSkillGroupId": 1002,
+              "SkillSlot": "ExSkill01",
+              "IsAdd": true,
+              "IsAllyGroup": true,
+              "CommandID": "Player_command",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandCreateSyncUseSkill, BlueArchive",
+              "CoolDownInMilliSeconds": 50,
+              "SyncUseSkillGroupId": 1002,
+              "IsAllyGroup": true,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 3000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetSyncUseSkillGroup, BlueArchive",
+              "SyncUseSkillGroupId": 1002,
+              "SkillSlot": "ExSkill01",
+              "IsAdd": false,
+              "IsAllyGroup": true,
+              "CommandID": "Player_command",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "3.HinaCamera",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "GroundCommandLocateCamera, BlueArchive",
+              "ID": 50,
+              "MaxCameraSpeed": 1,
+              "RotationSpeed": 1,
+              "ZoomSpeed": 1,
+              "RailPoints": [
+                {
+                  "UseTableData": true,
+                  "Position": {
+                    "x": 0.78,
+                    "y": 0.4,
+                    "z": 56.27
+                  },
+                  "MinCameraDistance": 30,
+                  "MaxCameraDistance": 30,
+                  "CameraForward": {
+                    "x": -0.8034657,
+                    "y": -0.426617682,
+                    "z": 0.4152592
+                  }
+                }
+              ],
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 7000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandLocateCamera, BlueArchive",
+              "ID": 50,
+              "MaxCameraSpeed": 0.44,
+              "RotationSpeed": 1,
+              "ZoomSpeed": 1,
+              "RailPoints": [
+                {
+                  "UseTableData": true,
+                  "Position": {
+                    "x": 0.78,
+                    "y": 0.4,
+                    "z": 55.05
+                  },
+                  "MinCameraDistance": 30,
+                  "MaxCameraDistance": 30,
+                  "CameraForward": {
+                    "x": -0.8034657,
+                    "y": -0.426617682,
+                    "z": 0.4152592
+                  }
+                }
+              ],
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 5300,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandLocateCamera, BlueArchive",
+              "ID": 57,
+              "MaxCameraSpeed": 1.05,
+              "RotationSpeed": 0.1,
+              "ZoomSpeed": 1.05,
+              "RailPoints": [
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": 0.78,
+                    "y": 0.4,
+                    "z": 55.05
+                  },
+                  "MinCameraDistance": 30,
+                  "MaxCameraDistance": 33,
+                  "CameraForward": {
+                    "x": -0.803465664,
+                    "y": -0.426617652,
+                    "z": 0.415259331
+                  }
+                },
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": 0.78,
+                    "y": 0.4,
+                    "z": 52.65
+                  },
+                  "MinCameraDistance": 30,
+                  "MaxCameraDistance": 33,
+                  "CameraForward": {
+                    "x": -0.803465664,
+                    "y": -0.426617652,
+                    "z": 0.415259331
+                  }
+                }
+              ],
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "4.WaitAfterHPbarHideOff-ShowUi",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 2000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 7300,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandHideHPBar, BlueArchive",
+              "IsShow": true,
+              "CommandID": "Command_player",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandHideHPBar, BlueArchive",
+              "IsShow": true,
+              "CommandID": "SCommand_Fuuki",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandShowBattleUI, BlueArchive",
+              "DisappearInstantly": false,
+              "IsShow": true,
+              "ShowBattleStartSign": false,
+              "SoundOn": true,
+              "BGMOn": true,
+              "CommandID": "",
+              "BGMId": null,
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "5.IoriConcentrate",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 78000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [
+                "SCommand_Iori"
+              ],
+              "CreateCharacterStat": true,
+              "CharacterId": 18001002,
+              "CharacterLevel": 1,
+              "CharacterGrade": 1,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_DeBuff_ConcentratedTarget_Ally_60s",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 2,
+              "CommandID": "UseSkillPoint_Section01",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [
+        {
+          "UniqueName": "School_Baricade",
+          "Position": {
+            "x": -1.16,
+            "y": 0,
+            "z": 12.48
+          },
+          "Forward": {
+            "x": 0.183811113,
+            "y": 0,
+            "z": -0.9829616
+          },
+          "ActiveEnemyPointIndices": [
+            0
+          ],
+          "ActivePlayerPointIndices": [
+            1
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "School_Locker",
+          "Position": {
+            "x": -1.9,
+            "y": 0,
+            "z": 16.17
+          },
+          "Forward": {
+            "x": 0.5829398,
+            "y": 0,
+            "z": -0.8125153
+          },
+          "ActiveEnemyPointIndices": [
+            0
+          ],
+          "ActivePlayerPointIndices": [
+            1
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "School_Desk",
+          "Position": {
+            "x": -1.15,
+            "y": 0,
+            "z": 18.84
+          },
+          "Forward": {
+            "x": -0.9982322,
+            "y": 0,
+            "z": -0.0594350547
+          },
+          "ActiveEnemyPointIndices": [
+            3
+          ],
+          "ActivePlayerPointIndices": [
+            2
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "School_Locker",
+          "Position": {
+            "x": 2.40207934,
+            "y": 0,
+            "z": 25.106432
+          },
+          "Forward": {
+            "x": -0.947559,
+            "y": 0,
+            "z": -0.319580883
+          },
+          "ActiveEnemyPointIndices": [
+            3
+          ],
+          "ActivePlayerPointIndices": [
+            2
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "School_Chair",
+          "Position": {
+            "x": 1.12,
+            "y": 0,
+            "z": 15.92
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        }
+      ],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SkillIUsePoint",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SkillUsePoint, BlueArchive",
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
+              "MovePoints": [],
+              "TileX": 39,
+              "TileY": 293,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.23,
+                "y": 54.16
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "UseSkillPoint_Section01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointParent1",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Iori_default_C_833Event_Production",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Fuuki",
+                "SCondition_Iori"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Fuuki",
+                "SCommand_Iori"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 42,
+                  "TileY": 280,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.46,
+                    "y": 51.421
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 42,
+              "TileY": 235,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.46,
+                "y": 42.421
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Fuuki2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Chinatsu_default_E_833Event_Production",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Fuuki"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Fuuki"
+              ],
+              "MovePoints": [],
+              "TileX": 38,
+              "TileY": 272,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.39,
+                "y": 49.86
+              },
+              "Direction": {
+                "x": -0.00905843,
+                "y": 0.999959
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Fuuki"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Soldier_Fuuki_SG_M_833Event_Production",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Fuuki"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Fuuki",
+                "SCommand_FuukiSG"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 42,
+                  "TileY": 288,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.46,
+                    "y": 53.03
+                  },
+                  "Direction": {
+                    "x": 0.00905843,
+                    "y": 0.999959
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 42,
+              "TileY": 238,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.46,
+                "y": 43.03
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Fuuki"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Soldier_Fuuki_SR_M_833Event_Production",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Fuuki"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Fuuki"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 53,
+                  "TileY": 280,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 2.67931461,
+                    "y": 51.5588951
+                  },
+                  "Direction": {
+                    "x": 0.07396816,
+                    "y": 0.99726063
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 50,
+              "TileY": 230,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 2.03,
+                "y": 41.579998
+              },
+              "Direction": {
+                "x": 0.06493148,
+                "y": 0.9978897
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Fuuki"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Soldier_Fuuki_MG_M_833Event_Production",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Fuuki"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Fuuki"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 51,
+                  "TileY": 280,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 2.119818,
+                    "y": 51.55542
+                  },
+                  "Direction": {
+                    "x": 0.06302485,
+                    "y": 0.998011947
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 48,
+              "TileY": 230,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 1.58,
+                "y": 41.57
+              },
+              "Direction": {
+                "x": 0.0539818,
+                "y": 0.9985419
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Fuuki"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Soldier_Fuuki_AR_M_833Event_Production",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Fuuki"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Fuuki"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 36,
+                  "TileY": 280,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.8805518,
+                    "y": 51.46702
+                  },
+                  "Direction": {
+                    "x": -0.103049219,
+                    "y": 0.994676232
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 41,
+              "TileY": 230,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.24,
+                "y": 41.53
+              },
+              "Direction": {
+                "x": -0.11205519,
+                "y": 0.993702
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Fuuki"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointParent1_Wave",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Soldier_Fuuki_MG_M_833Event_Production",
+                    "CostumeId": 0,
+                    "AIId": 0,
+                    "AppearAction": false,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [
+                "SCondition_Wave"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Wave"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 38,
+                  "TileY": 280,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.49,
+                    "y": 51.57
+                  },
+                  "Direction": {
+                    "x": 0.00905843,
+                    "y": 0.999959
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 38,
+              "TileY": 230,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.49,
+                "y": 41.57
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [
+                "Condition_Wave"
+              ],
+              "CommandIdList": [
+                "Command_Wave1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Soldier_Fuuki_AR_M_833Event_Production",
+                    "CostumeId": 0,
+                    "AIId": 0,
+                    "AppearAction": false,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [
+                "SCondition_Wave"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Wave"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 41,
+                  "TileY": 272,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.190000013,
+                    "y": 49.86
+                  },
+                  "Direction": {
+                    "x": 0.00905843,
+                    "y": 0.999959
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 39,
+              "TileY": 230,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.11,
+                "y": 41.57
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [
+                "Condition_Wave"
+              ],
+              "CommandIdList": [
+                "Command_Wave2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Soldier_Fuuki_SR_M_833Event_Production",
+                    "CostumeId": 0,
+                    "AIId": 0,
+                    "AppearAction": false,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [
+                "SCondition_Wave"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Wave"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 48,
+                  "TileY": 272,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 1.58,
+                    "y": 49.86
+                  },
+                  "Direction": {
+                    "x": 0.00905843,
+                    "y": 0.999959
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 48,
+              "TileY": 230,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 1.69,
+                "y": 41.57
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [
+                "Condition_Wave"
+              ],
+              "CommandIdList": [
+                "Command_Wave3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Soldier_Fuuki_SG_M_833Event_Production",
+                    "CostumeId": 0,
+                    "AIId": 0,
+                    "AppearAction": false,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [
+                "SCondition_Wave"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Wave"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 42,
+                  "TileY": 275,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.409999967,
+                    "y": 50.58
+                  },
+                  "Direction": {
+                    "x": 0.00905843,
+                    "y": 0.999959
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 43,
+              "TileY": 234,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.52,
+                "y": 42.29
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [
+                "Condition_Wave"
+              ],
+              "CommandIdList": [
+                "Command_Wave4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Soldier_Fuuki_MG_M_833Event_Production",
+                    "CostumeId": 0,
+                    "AIId": 0,
+                    "AppearAction": false,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [
+                "SCondition_Wave"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Wave"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 44,
+                  "TileY": 277,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.83,
+                    "y": 50.91
+                  },
+                  "Direction": {
+                    "x": 0.00905843,
+                    "y": 0.999959
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 44,
+              "TileY": 227,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.83,
+                "y": 40.91
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [
+                "Condition_Wave"
+              ],
+              "CommandIdList": [
+                "Command_Wave5"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Soldier_Fuuki_MG_M_833Event_Production",
+                    "CostumeId": 0,
+                    "AIId": 0,
+                    "AppearAction": false,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [
+                "SCondition_Wave"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Wave"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 41,
+                  "TileY": 277,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.25,
+                    "y": 50.91
+                  },
+                  "Direction": {
+                    "x": 0.00905843,
+                    "y": 0.999959
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 41,
+              "TileY": 227,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.25,
+                "y": 40.91
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [
+                "Condition_Wave"
+              ],
+              "CommandIdList": [
+                "Command_Wave6"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Soldier_Fuuki_SG_M_833Event_Production",
+                    "CostumeId": 0,
+                    "AIId": 0,
+                    "AppearAction": false,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [
+                "SCondition_Wave"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Wave"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 41,
+                  "TileY": 283,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.099999994,
+                    "y": 52.13
+                  },
+                  "Direction": {
+                    "x": 0.00905843,
+                    "y": 0.999959
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 41,
+              "TileY": 242,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.21,
+                "y": 43.84
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [
+                "Condition_Wave"
+              ],
+              "CommandIdList": [
+                "Command_Wave7"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "Soldier_Fuuki_AR_M_833Event_Production",
+                    "CostumeId": 0,
+                    "AIId": 0,
+                    "AppearAction": false,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [
+                "SCondition_Wave"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Wave"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 47,
+                  "TileY": 278,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 1.32999992,
+                    "y": 51.07
+                  },
+                  "Direction": {
+                    "x": 0.00905843,
+                    "y": 0.999959
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 45,
+              "TileY": 236,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 1.03,
+                "y": 42.78
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [
+                "Condition_Wave"
+              ],
+              "CommandIdList": [
+                "Command_Wave8"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointParent3",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Soldier_Fuuki_SR_M_833Event_Production",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Fuuki3"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Fuuki3"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 45,
+                  "TileY": 247,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.98,
+                    "y": 44.94
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 45,
+              "TileY": 226,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.98,
+                "y": 40.64
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Fuuki3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Soldier_Fuuki_MG_M_833Event_Production",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Fuuki3"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Fuuki3"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 47,
+                  "TileY": 250,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 1.34,
+                    "y": 45.3999977
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 47,
+              "TileY": 219,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 1.34,
+                "y": 39.37
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Fuuki3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Formations": [
+    {
+      "SectionIndex": 0,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0.86,
+        "y": 59.64
+      },
+      "Forward": {
+        "x": -8.742278e-08,
+        "y": -1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 1,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0.86,
+        "y": 57.807
+      },
+      "Forward": {
+        "x": -8.742278e-08,
+        "y": -1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 2,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 1.82,
+        "y": 58.4400024
+      },
+      "Forward": {
+        "x": 0.9626823,
+        "y": -0.270634174
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 3,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 1.82,
+        "y": 58.4400024
+      },
+      "Forward": {
+        "x": 0.9626823,
+        "y": -0.270634174
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 4,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0.85,
+        "y": 59.22
+      },
+      "Forward": {
+        "x": 0.0576968566,
+        "y": 0.998334169
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 5,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": -0.229999989,
+        "y": 58.3500023
+      },
+      "Forward": {
+        "x": -0.9948614,
+        "y": 0.101246536
+      },
+      "Height": 0,
+      "IsEnemy": false
+    }
+  ],
+  "EnemyFormations": [],
+  "TemporaryCanUseSkillAreas": [
+    {
+      "IsHideVisual": false,
+      "CommandId": "1-1Area",
+      "Radius": 1100,
+      "GroupTag": 1,
+      "Position": {
+        "x": 0,
+        "y": 0,
+        "z": 54.44
+      },
+      "RadiusSqr": 0,
+      "Position2D": {
+        "x": 0,
+        "y": 0
+      }
+    }
+  ]
+}
