@@ -1,0 +1,1366 @@
+{
+  "Version": "",
+  "Global": {
+    "Position": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "Events": [
+      {
+        "EventName": "SpawnPlayer",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": "0"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSpawnPlayer, BlueArchive",
+            "IsEnemy": false,
+            "IgnoreSkillCardShuffle": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 111,
+            "MaxCameraSpeed": 3,
+            "RotationSpeed": 1,
+            "ZoomSpeed": 1,
+            "RailPoints": [
+              {
+                "UseTableData": false,
+                "Position": {
+                  "x": -16.47,
+                  "y": 11.65,
+                  "z": 17.033
+                },
+                "MinCameraDistance": 45,
+                "MaxCameraDistance": 45,
+                "CameraForward": {
+                  "x": 0.7443004,
+                  "y": -0.42687884,
+                  "z": -0.5136063
+                }
+              }
+            ],
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 1,
+            "SetConditionCommandOnly": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "EndBattle",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 1,
+            "CheckSummonedCharacterDead": false,
+            "CheckDelayMilliSecond": 0,
+            "ConditionID": "EN0008_Dead"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandBattleTimer, BlueArchive",
+            "Stop": true,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+            "Milliseconds": 6000,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandEndBattle, BlueArchive",
+            "BattleEndType": 4,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      }
+    ]
+  },
+  "Sections": [
+    {
+      "SectionID": 1,
+      "Position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Events": [
+        {
+          "EventName": "SpawnBoss",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 0,
+              "CommandID": "EN0008_Spawn",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "SpawnObel",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 500,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 0,
+              "CommandID": "EN0008_Obelisk_Spawn",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 0,
+              "CommandID": "EN0008_ObeliskLightning_Spawn",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EN0008_Outdoor_LightArmor_FifthSection",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "S",
+              "SpawnConditionIdList": [
+                "EN0008_Dead",
+                "EN0008_Condition"
+              ],
+              "SpawnCommandIdList": [
+                "EN0008_Command"
+              ],
+              "MovePoints": [],
+              "TileX": 63,
+              "TileY": 57,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0,
+                "y": 1.2
+              },
+              "Direction": {
+                "x": -0.3420203,
+                "y": 0.939692557
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "EN0008_Spawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EN0008_Obelisk_Outdoor_Unamred_FifthSection",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "O",
+              "SpawnConditionIdList": [
+                "EN0008_Obelisk_Condition"
+              ],
+              "SpawnCommandIdList": [
+                "EN0008_Obelisk_Command"
+              ],
+              "MovePoints": [],
+              "TileX": 89,
+              "TileY": 106,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 5.20299959,
+                "y": 11.145
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "EN0008_Obelisk_Spawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EN0008_Obelisk_Outdoor_Unamred_FifthSection",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "O",
+              "SpawnConditionIdList": [
+                "EN0008_Obelisk_Condition"
+              ],
+              "SpawnCommandIdList": [
+                "EN0008_Obelisk_Command"
+              ],
+              "MovePoints": [],
+              "TileX": 40,
+              "TileY": 97,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -4.59799957,
+                "y": 9.379
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "EN0008_Obelisk_Spawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EN0008_ObeliskLightning_Outdoor_Unamred_FifthSection",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "L",
+              "SpawnConditionIdList": [
+                "EN0008_ObeliskLightning_Condition"
+              ],
+              "SpawnCommandIdList": [
+                "EN0008_ObeliskLightning_Command"
+              ],
+              "MovePoints": [],
+              "TileX": 98,
+              "TileY": 2,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 7.01,
+                "y": -9.78
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "EN0008_ObeliskLightning_Spawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 80,
+                  "TileY": 92,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 3.42,
+                    "y": 8.28
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move101"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 83,
+                  "TileY": 92,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 4,
+                    "y": 8.349999
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move102"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 86,
+                  "TileY": 93,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 4.62,
+                    "y": 8.5199995
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move103"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 88,
+                  "TileY": 95,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 5.12,
+                    "y": 8.799999
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move104"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 89,
+                  "TileY": 97,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 5.34,
+                    "y": 9.23
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move105"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 90,
+                  "TileY": 99,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 5.48,
+                    "y": 9.75
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move106"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 90,
+                  "TileY": 102,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 5.52,
+                    "y": 10.21
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move107"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 89,
+                  "TileY": 104,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 5.26,
+                    "y": 10.66
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move108"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 87,
+                  "TileY": 106,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 4.82,
+                    "y": 11.01
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move109"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 84,
+                  "TileY": 106,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 4.26,
+                    "y": 11.17
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move110"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 80,
+                  "TileY": 107,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 3.52,
+                    "y": 11.2699995
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move111"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 58,
+                  "TileY": 107,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.98,
+                    "y": 11.2
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move112"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 54,
+                  "TileY": 106,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -1.63999987,
+                    "y": 11.0199995
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move113"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 53,
+                  "TileY": 104,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -1.98999977,
+                    "y": 10.66
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move114"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 52,
+                  "TileY": 102,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -2.19,
+                    "y": 10.21
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move115"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 51,
+                  "TileY": 97,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -2.29,
+                    "y": 9.33
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move116"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 52,
+                  "TileY": 92,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -2.06,
+                    "y": 8.29
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move117"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 53,
+                  "TileY": 87,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -1.81,
+                    "y": 7.30999947
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move118"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 55,
+                  "TileY": 82,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -1.48999977,
+                    "y": 6.33
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move119"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 57,
+                  "TileY": 78,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -1.19999981,
+                    "y": 5.49
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move120"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 62,
+                  "TileY": 59,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.0299999714,
+                    "y": 1.7699995
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move121"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 80,
+              "TileY": 92,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 3.42,
+                "y": 8.28
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "F",
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 42,
+                  "TileY": 83,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -4.1,
+                    "y": 6.5199995
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move201"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 39,
+                  "TileY": 90,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -4.67,
+                    "y": 7.91
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move202"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 39,
+                  "TileY": 93,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -4.77999973,
+                    "y": 8.58
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move203"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 38,
+                  "TileY": 96,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -4.81,
+                    "y": 9.08
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move204"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 38,
+                  "TileY": 99,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -4.82,
+                    "y": 9.59
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move205"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 40,
+                  "TileY": 101,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -4.55,
+                    "y": 9.99
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move206"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 42,
+                  "TileY": 102,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -4.02,
+                    "y": 10.23
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move207"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 45,
+                  "TileY": 102,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -3.55,
+                    "y": 10.36
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move208"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 48,
+                  "TileY": 103,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -2.98,
+                    "y": 10.4599991
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move209"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 51,
+                  "TileY": 104,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -2.35,
+                    "y": 10.59
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move210"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 54,
+                  "TileY": 104,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -1.67,
+                    "y": 10.7
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move211"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 59,
+                  "TileY": 105,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.6600001,
+                    "y": 10.86
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move212"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 75,
+                  "TileY": 105,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 2.56,
+                    "y": 10.9699993
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move213"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 79,
+                  "TileY": 104,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 3.19999981,
+                    "y": 10.67
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move214"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 80,
+                  "TileY": 101,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 3.44999981,
+                    "y": 10.0199995
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move215"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 80,
+                  "TileY": 97,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 3.59000015,
+                    "y": 9.19
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move216"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 80,
+                  "TileY": 92,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 3.42,
+                    "y": 8.2699995
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move217"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 78,
+                  "TileY": 87,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 3.03000021,
+                    "y": 7.32999945
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move218"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 75,
+                  "TileY": 81,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 2.42,
+                    "y": 6.12999964
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move219"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 71,
+                  "TileY": 74,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 1.65999985,
+                    "y": 4.7699995
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move220"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 63,
+                  "TileY": 57,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0,
+                    "y": 1.31999969
+                  },
+                  "Direction": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [
+                    "move221"
+                  ],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 45,
+              "TileY": 91,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -3.5,
+                "y": 8.15
+              },
+              "Direction": {
+                "x": 0,
+                "y": 1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Formations": [
+    {
+      "SectionIndex": 0,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": 15.94
+      },
+      "Forward": {
+        "x": -8.742278e-08,
+        "y": -1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 1,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": 5.89
+      },
+      "Forward": {
+        "x": -8.742278e-08,
+        "y": -1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    }
+  ],
+  "EnemyFormations": [],
+  "TemporaryCanUseSkillAreas": []
+}
