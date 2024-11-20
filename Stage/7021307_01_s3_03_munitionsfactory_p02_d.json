@@ -115,6 +115,61 @@
             "SetConditionCommandOnly": false,
             "CommandID": "",
             "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandTemporaryCanUseSkillArea, BlueArchive",
+            "OnOff": true,
+            "TemporaryCanUseSkillAreaCommandId": "3-1Area",
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "1-1AreaOn",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": ""
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandTemporaryCanUseSkillArea, BlueArchive",
+            "OnOff": true,
+            "TemporaryCanUseSkillAreaCommandId": "1-1Area",
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "3-1AreaOn",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 1,
+            "CheckSummonedCharacterDead": false,
+            "CheckDelayMilliSecond": 0,
+            "ConditionID": "ConditionDead2-2"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandTemporaryCanUseSkillArea, BlueArchive",
+            "OnOff": false,
+            "TemporaryCanUseSkillAreaCommandId": "1-1Area",
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandTemporaryCanUseSkillArea, BlueArchive",
+            "OnOff": true,
+            "TemporaryCanUseSkillAreaCommandId": "3-1Area",
+            "CommandID": "",
+            "WaitExecuteEnd": false
           }
         ]
       }
@@ -258,7 +313,7 @@
             "z": 14.8208313
           },
           "Forward": {
-            "x": -0.0399295725,
+            "x": -0.0399296023,
             "y": 0,
             "z": 0.9992025
           },
@@ -1350,6 +1405,13 @@
               "isAdd": true,
               "CommandID": "Player_command",
               "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "DisableExSkill",
+              "isAdd": true,
+              "CommandID": "Player_command",
+              "WaitExecuteEnd": false
             }
           ]
         },
@@ -1367,7 +1429,7 @@
               "Position": {
                 "x": 0,
                 "y": 0,
-                "z": 67.63
+                "z": 71.97
               },
               "Rect": {
                 "Direction": {
@@ -1393,24 +1455,18 @@
               "WaitExecuteEnd": false
             },
             {
-              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
-              "Interval": 100,
-              "CommandID": "CommandSpawn3-1",
-              "WaitExecuteEnd": false
-            },
-            {
               "$type": "GroundCommandLocateCamera, BlueArchive",
               "ID": 1,
-              "MaxCameraSpeed": 3,
-              "RotationSpeed": 1,
-              "ZoomSpeed": 1,
+              "MaxCameraSpeed": 4,
+              "RotationSpeed": 3,
+              "ZoomSpeed": 3,
               "RailPoints": [
                 {
                   "UseTableData": true,
                   "Position": {
                     "x": 0,
                     "y": 0,
-                    "z": 30.9399986
+                    "z": 19
                   },
                   "MinCameraDistance": 30,
                   "MaxCameraDistance": 42,
@@ -1425,8 +1481,27 @@
               "WaitExecuteEnd": false
             },
             {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "CommandSpawn3-1",
+              "WaitExecuteEnd": false
+            },
+            {
               "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
-              "Milliseconds": 14500,
+              "Milliseconds": 3000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Untargetable",
+              "isAdd": true,
+              "CommandID": "UntargetEnemy",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 13500,
               "CommandID": "",
               "WaitExecuteEnd": false
             },
@@ -1494,7 +1569,7 @@
             "z": 54.88
           },
           "Forward": {
-            "x": -0.0399295725,
+            "x": -0.0399296023,
             "y": 0,
             "z": 0.9992025
           },
@@ -1578,16 +1653,18 @@
               "SpawnConditionIdList": [
                 "ConditionDead3-1"
               ],
-              "SpawnCommandIdList": [],
+              "SpawnCommandIdList": [
+                "UntargetEnemy"
+              ],
               "MovePoints": [
                 {
                   "NeedFindPath": false,
                   "TileX": 40,
-                  "TileY": 360,
+                  "TileY": 269,
                   "PositionHeight": 0,
                   "Position": {
                     "x": 3.54849044e-06,
-                    "y": 67.4
+                    "y": 49.3000069
                   },
                   "Direction": {
                     "x": -8.742278e-08,
@@ -1602,11 +1679,11 @@
                 }
               ],
               "TileX": 40,
-              "TileY": 157,
+              "TileY": 66,
               "PositionHeight": 0,
               "Position": {
                 "x": 0,
-                "y": 26.81
+                "y": 8.710003
               },
               "Direction": {
                 "x": -8.742278e-08,
@@ -1639,16 +1716,18 @@
               "SpawnConditionIdList": [
                 "ConditionDead3-1"
               ],
-              "SpawnCommandIdList": [],
+              "SpawnCommandIdList": [
+                "UntargetEnemy"
+              ],
               "MovePoints": [
                 {
                   "NeedFindPath": false,
                   "TileX": 47,
-                  "TileY": 360,
+                  "TileY": 269,
                   "PositionHeight": 0,
                   "Position": {
                     "x": 1.44000363,
-                    "y": 67.4
+                    "y": 49.3000069
                   },
                   "Direction": {
                     "x": -8.742278e-08,
@@ -1663,11 +1742,11 @@
                 }
               ],
               "TileX": 47,
-              "TileY": 157,
+              "TileY": 66,
               "PositionHeight": 0,
               "Position": {
                 "x": 1.44,
-                "y": 26.81
+                "y": 8.710003
               },
               "Direction": {
                 "x": -8.742278e-08,
@@ -1700,16 +1779,18 @@
               "SpawnConditionIdList": [
                 "ConditionDead3-1"
               ],
-              "SpawnCommandIdList": [],
+              "SpawnCommandIdList": [
+                "UntargetEnemy"
+              ],
               "MovePoints": [
                 {
                   "NeedFindPath": false,
                   "TileX": 32,
-                  "TileY": 360,
+                  "TileY": 269,
                   "PositionHeight": 0,
                   "Position": {
                     "x": -1.55999637,
-                    "y": 67.4
+                    "y": 49.3000069
                   },
                   "Direction": {
                     "x": -8.742278e-08,
@@ -1724,11 +1805,11 @@
                 }
               ],
               "TileX": 32,
-              "TileY": 157,
+              "TileY": 66,
               "PositionHeight": 0,
               "Position": {
                 "x": -1.56,
-                "y": 26.81
+                "y": 8.710003
               },
               "Direction": {
                 "x": -8.742278e-08,
@@ -1761,16 +1842,18 @@
               "SpawnConditionIdList": [
                 "ConditionDead3-1"
               ],
-              "SpawnCommandIdList": [],
+              "SpawnCommandIdList": [
+                "UntargetEnemy"
+              ],
               "MovePoints": [
                 {
                   "NeedFindPath": false,
                   "TileX": 40,
-                  "TileY": 352,
+                  "TileY": 262,
                   "PositionHeight": 0,
                   "Position": {
                     "x": 3.54849044e-06,
-                    "y": 65.909996
+                    "y": 47.8099937
                   },
                   "Direction": {
                     "x": -8.742278e-08,
@@ -1785,11 +1868,11 @@
                 }
               ],
               "TileX": 40,
-              "TileY": 149,
+              "TileY": 59,
               "PositionHeight": 0,
               "Position": {
                 "x": 0,
-                "y": 25.3199978
+                "y": 7.21999741
               },
               "Direction": {
                 "x": -8.742278e-08,
@@ -1822,16 +1905,18 @@
               "SpawnConditionIdList": [
                 "ConditionDead3-1"
               ],
-              "SpawnCommandIdList": [],
+              "SpawnCommandIdList": [
+                "UntargetEnemy"
+              ],
               "MovePoints": [
                 {
                   "NeedFindPath": false,
                   "TileX": 47,
-                  "TileY": 352,
+                  "TileY": 262,
                   "PositionHeight": 0,
                   "Position": {
                     "x": 1.44000363,
-                    "y": 65.909996
+                    "y": 47.8099937
                   },
                   "Direction": {
                     "x": -8.742278e-08,
@@ -1846,11 +1931,11 @@
                 }
               ],
               "TileX": 47,
-              "TileY": 149,
+              "TileY": 59,
               "PositionHeight": 0,
               "Position": {
                 "x": 1.44,
-                "y": 25.3199978
+                "y": 7.21999741
               },
               "Direction": {
                 "x": -8.742278e-08,
@@ -1883,16 +1968,18 @@
               "SpawnConditionIdList": [
                 "ConditionDead3-1"
               ],
-              "SpawnCommandIdList": [],
+              "SpawnCommandIdList": [
+                "UntargetEnemy"
+              ],
               "MovePoints": [
                 {
                   "NeedFindPath": false,
                   "TileX": 32,
-                  "TileY": 352,
+                  "TileY": 262,
                   "PositionHeight": 0,
                   "Position": {
                     "x": -1.55999637,
-                    "y": 65.909996
+                    "y": 47.8099937
                   },
                   "Direction": {
                     "x": -8.742278e-08,
@@ -1907,11 +1994,11 @@
                 }
               ],
               "TileX": 32,
-              "TileY": 149,
+              "TileY": 59,
               "PositionHeight": 0,
               "Position": {
                 "x": -1.56,
-                "y": 25.3199978
+                "y": 7.21999741
               },
               "Direction": {
                 "x": -8.742278e-08,
@@ -1944,16 +2031,18 @@
               "SpawnConditionIdList": [
                 "ConditionDead3-1"
               ],
-              "SpawnCommandIdList": [],
+              "SpawnCommandIdList": [
+                "UntargetEnemy"
+              ],
               "MovePoints": [
                 {
                   "NeedFindPath": false,
                   "TileX": 40,
-                  "TileY": 341,
+                  "TileY": 251,
                   "PositionHeight": 0,
                   "Position": {
                     "x": 3.54849044e-06,
-                    "y": 63.72
+                    "y": 45.6200066
                   },
                   "Direction": {
                     "x": -8.742278e-08,
@@ -1968,11 +2057,11 @@
                 }
               ],
               "TileX": 40,
-              "TileY": 138,
+              "TileY": 48,
               "PositionHeight": 0,
               "Position": {
                 "x": 0,
-                "y": 23.13
+                "y": 5.03000259
               },
               "Direction": {
                 "x": -8.742278e-08,
@@ -2005,16 +2094,18 @@
               "SpawnConditionIdList": [
                 "ConditionDead3-1"
               ],
-              "SpawnCommandIdList": [],
+              "SpawnCommandIdList": [
+                "UntargetEnemy"
+              ],
               "MovePoints": [
                 {
                   "NeedFindPath": false,
                   "TileX": 47,
-                  "TileY": 341,
+                  "TileY": 251,
                   "PositionHeight": 0,
                   "Position": {
                     "x": 1.44000363,
-                    "y": 63.72
+                    "y": 45.6200066
                   },
                   "Direction": {
                     "x": -8.742278e-08,
@@ -2029,11 +2120,11 @@
                 }
               ],
               "TileX": 47,
-              "TileY": 138,
+              "TileY": 48,
               "PositionHeight": 0,
               "Position": {
                 "x": 1.44,
-                "y": 23.13
+                "y": 5.03000259
               },
               "Direction": {
                 "x": -8.742278e-08,
@@ -2066,16 +2157,18 @@
               "SpawnConditionIdList": [
                 "ConditionDead3-1"
               ],
-              "SpawnCommandIdList": [],
+              "SpawnCommandIdList": [
+                "UntargetEnemy"
+              ],
               "MovePoints": [
                 {
                   "NeedFindPath": false,
                   "TileX": 32,
-                  "TileY": 341,
+                  "TileY": 251,
                   "PositionHeight": 0,
                   "Position": {
                     "x": -1.55999637,
-                    "y": 63.72
+                    "y": 45.6200066
                   },
                   "Direction": {
                     "x": -8.742278e-08,
@@ -2090,11 +2183,11 @@
                 }
               ],
               "TileX": 32,
-              "TileY": 138,
+              "TileY": 48,
               "PositionHeight": 0,
               "Position": {
                 "x": -1.56,
-                "y": 23.13
+                "y": 5.03000259
               },
               "Direction": {
                 "x": -8.742278e-08,
@@ -2127,16 +2220,18 @@
               "SpawnConditionIdList": [
                 "ConditionDead3-1"
               ],
-              "SpawnCommandIdList": [],
+              "SpawnCommandIdList": [
+                "UntargetEnemy"
+              ],
               "MovePoints": [
                 {
                   "NeedFindPath": false,
                   "TileX": 40,
-                  "TileY": 330,
+                  "TileY": 240,
                   "PositionHeight": 0,
                   "Position": {
                     "x": 3.54849044e-06,
-                    "y": 61.5899963
+                    "y": 43.489994
                   },
                   "Direction": {
                     "x": -8.742278e-08,
@@ -2151,11 +2246,11 @@
                 }
               ],
               "TileX": 40,
-              "TileY": 128,
+              "TileY": 37,
               "PositionHeight": 0,
               "Position": {
                 "x": 0,
-                "y": 20.9999981
+                "y": 2.89999771
               },
               "Direction": {
                 "x": -8.742278e-08,
@@ -2188,16 +2283,18 @@
               "SpawnConditionIdList": [
                 "ConditionDead3-1"
               ],
-              "SpawnCommandIdList": [],
+              "SpawnCommandIdList": [
+                "UntargetEnemy"
+              ],
               "MovePoints": [
                 {
                   "NeedFindPath": false,
                   "TileX": 47,
-                  "TileY": 330,
+                  "TileY": 240,
                   "PositionHeight": 0,
                   "Position": {
                     "x": 1.44000363,
-                    "y": 61.5899963
+                    "y": 43.489994
                   },
                   "Direction": {
                     "x": -8.742278e-08,
@@ -2212,11 +2309,11 @@
                 }
               ],
               "TileX": 47,
-              "TileY": 128,
+              "TileY": 37,
               "PositionHeight": 0,
               "Position": {
                 "x": 1.44,
-                "y": 20.9999981
+                "y": 2.89999771
               },
               "Direction": {
                 "x": -8.742278e-08,
@@ -2249,16 +2346,18 @@
               "SpawnConditionIdList": [
                 "ConditionDead3-1"
               ],
-              "SpawnCommandIdList": [],
+              "SpawnCommandIdList": [
+                "UntargetEnemy"
+              ],
               "MovePoints": [
                 {
                   "NeedFindPath": false,
                   "TileX": 32,
-                  "TileY": 330,
+                  "TileY": 240,
                   "PositionHeight": 0,
                   "Position": {
                     "x": -1.55999637,
-                    "y": 61.5899963
+                    "y": 43.489994
                   },
                   "Direction": {
                     "x": -8.742278e-08,
@@ -2273,11 +2372,11 @@
                 }
               ],
               "TileX": 32,
-              "TileY": 128,
+              "TileY": 37,
               "PositionHeight": 0,
               "Position": {
                 "x": -1.56,
-                "y": 20.9999981
+                "y": 2.89999771
               },
               "Direction": {
                 "x": -8.742278e-08,
@@ -2310,16 +2409,18 @@
               "SpawnConditionIdList": [
                 "ConditionDead3-1"
               ],
-              "SpawnCommandIdList": [],
+              "SpawnCommandIdList": [
+                "UntargetEnemy"
+              ],
               "MovePoints": [
                 {
                   "NeedFindPath": false,
                   "TileX": 40,
-                  "TileY": 319,
+                  "TileY": 229,
                   "PositionHeight": 0,
                   "Position": {
                     "x": 3.54849044e-06,
-                    "y": 59.39
+                    "y": 41.29
                   },
                   "Direction": {
                     "x": -8.742278e-08,
@@ -2334,11 +2435,11 @@
                 }
               ],
               "TileX": 40,
-              "TileY": 117,
+              "TileY": 26,
               "PositionHeight": 0,
               "Position": {
                 "x": 0,
-                "y": 18.8
+                "y": 0.700000763
               },
               "Direction": {
                 "x": -8.742278e-08,
@@ -2371,16 +2472,18 @@
               "SpawnConditionIdList": [
                 "ConditionDead3-1"
               ],
-              "SpawnCommandIdList": [],
+              "SpawnCommandIdList": [
+                "UntargetEnemy"
+              ],
               "MovePoints": [
                 {
                   "NeedFindPath": false,
                   "TileX": 47,
-                  "TileY": 319,
+                  "TileY": 229,
                   "PositionHeight": 0,
                   "Position": {
                     "x": 1.44000363,
-                    "y": 59.39
+                    "y": 41.29
                   },
                   "Direction": {
                     "x": -8.742278e-08,
@@ -2395,11 +2498,11 @@
                 }
               ],
               "TileX": 47,
-              "TileY": 117,
+              "TileY": 26,
               "PositionHeight": 0,
               "Position": {
                 "x": 1.44,
-                "y": 18.8
+                "y": 0.700000763
               },
               "Direction": {
                 "x": -8.742278e-08,
@@ -2432,16 +2535,18 @@
               "SpawnConditionIdList": [
                 "ConditionDead3-1"
               ],
-              "SpawnCommandIdList": [],
+              "SpawnCommandIdList": [
+                "UntargetEnemy"
+              ],
               "MovePoints": [
                 {
                   "NeedFindPath": false,
                   "TileX": 32,
-                  "TileY": 319,
+                  "TileY": 229,
                   "PositionHeight": 0,
                   "Position": {
                     "x": -1.55999637,
-                    "y": 59.39
+                    "y": 41.29
                   },
                   "Direction": {
                     "x": -8.742278e-08,
@@ -2456,194 +2561,11 @@
                 }
               ],
               "TileX": 32,
-              "TileY": 117,
+              "TileY": 26,
               "PositionHeight": 0,
               "Position": {
                 "x": -1.56,
-                "y": 18.8
-              },
-              "Direction": {
-                "x": -8.742278e-08,
-                "y": -1
-              },
-              "ConditionIdList": [],
-              "CommandIdList": [
-                "CommandSpawn3-1"
-              ],
-              "EntityId": {
-                "uniqueId": 0
-              },
-              "Active": false
-            },
-            {
-              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
-              "SpawnData": {
-                "SpawnTemplateId": "Droid_Decagram_AR_M",
-                "CostumeId": 0,
-                "AIId": 0,
-                "AppearAction": false,
-                "SkillLevel": {
-                  "ExSkill": [],
-                  "PublicSkill": [],
-                  "PassiveSkill": [],
-                  "ExtraPassiveSkill": []
-                }
-              },
-              "SpawnAIGroupId": "E",
-              "SpawnConditionIdList": [
-                "ConditionDead3-1"
-              ],
-              "SpawnCommandIdList": [],
-              "MovePoints": [
-                {
-                  "NeedFindPath": false,
-                  "TileX": 47,
-                  "TileY": 310,
-                  "PositionHeight": 0,
-                  "Position": {
-                    "x": 1.44000363,
-                    "y": 57.4499969
-                  },
-                  "Direction": {
-                    "x": -8.742278e-08,
-                    "y": -1
-                  },
-                  "ConditionIdList": [],
-                  "CommandIdList": [],
-                  "EntityId": {
-                    "uniqueId": 0
-                  },
-                  "Active": false
-                }
-              ],
-              "TileX": 47,
-              "TileY": 107,
-              "PositionHeight": 0,
-              "Position": {
-                "x": 1.44,
-                "y": 16.86
-              },
-              "Direction": {
-                "x": -8.742278e-08,
-                "y": -1
-              },
-              "ConditionIdList": [],
-              "CommandIdList": [
-                "CommandSpawn3-1"
-              ],
-              "EntityId": {
-                "uniqueId": 0
-              },
-              "Active": false
-            },
-            {
-              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
-              "SpawnData": {
-                "SpawnTemplateId": "Droid_Decagram_AR_M",
-                "CostumeId": 0,
-                "AIId": 0,
-                "AppearAction": false,
-                "SkillLevel": {
-                  "ExSkill": [],
-                  "PublicSkill": [],
-                  "PassiveSkill": [],
-                  "ExtraPassiveSkill": []
-                }
-              },
-              "SpawnAIGroupId": "E",
-              "SpawnConditionIdList": [
-                "ConditionDead3-1"
-              ],
-              "SpawnCommandIdList": [],
-              "MovePoints": [
-                {
-                  "NeedFindPath": false,
-                  "TileX": 40,
-                  "TileY": 310,
-                  "PositionHeight": 0,
-                  "Position": {
-                    "x": 3.54849044e-06,
-                    "y": 57.4499969
-                  },
-                  "Direction": {
-                    "x": -8.742278e-08,
-                    "y": -1
-                  },
-                  "ConditionIdList": [],
-                  "CommandIdList": [],
-                  "EntityId": {
-                    "uniqueId": 0
-                  },
-                  "Active": false
-                }
-              ],
-              "TileX": 40,
-              "TileY": 107,
-              "PositionHeight": 0,
-              "Position": {
-                "x": 0,
-                "y": 16.86
-              },
-              "Direction": {
-                "x": -8.742278e-08,
-                "y": -1
-              },
-              "ConditionIdList": [],
-              "CommandIdList": [
-                "CommandSpawn3-1"
-              ],
-              "EntityId": {
-                "uniqueId": 0
-              },
-              "Active": false
-            },
-            {
-              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
-              "SpawnData": {
-                "SpawnTemplateId": "Droid_Decagram_AR_M",
-                "CostumeId": 0,
-                "AIId": 0,
-                "AppearAction": false,
-                "SkillLevel": {
-                  "ExSkill": [],
-                  "PublicSkill": [],
-                  "PassiveSkill": [],
-                  "ExtraPassiveSkill": []
-                }
-              },
-              "SpawnAIGroupId": "E",
-              "SpawnConditionIdList": [
-                "ConditionDead3-1"
-              ],
-              "SpawnCommandIdList": [],
-              "MovePoints": [
-                {
-                  "NeedFindPath": false,
-                  "TileX": 32,
-                  "TileY": 310,
-                  "PositionHeight": 0,
-                  "Position": {
-                    "x": -1.55999637,
-                    "y": 57.4499969
-                  },
-                  "Direction": {
-                    "x": -8.742278e-08,
-                    "y": -1
-                  },
-                  "ConditionIdList": [],
-                  "CommandIdList": [],
-                  "EntityId": {
-                    "uniqueId": 0
-                  },
-                  "Active": false
-                }
-              ],
-              "TileX": 32,
-              "TileY": 107,
-              "PositionHeight": 0,
-              "Position": {
-                "x": -1.56,
-                "y": 16.86
+                "y": 0.700000763
               },
               "Direction": {
                 "x": -8.742278e-08,
