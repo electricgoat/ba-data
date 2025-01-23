@@ -1,0 +1,478 @@
+{
+  "Version": "1.0",
+  "Global": {
+    "Position": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "Events": [
+      {
+        "EventName": "SpawnPlayer",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": "0"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSpawnPlayer, BlueArchive",
+            "IsEnemy": false,
+            "IgnoreSkillCardShuffle": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 1,
+            "MaxCameraSpeed": 3,
+            "RotationSpeed": 1,
+            "ZoomSpeed": 1,
+            "RailPoints": [],
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 1,
+            "SetConditionCommandOnly": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "EndBattle",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 1,
+            "CheckSummonedCharacterDead": false,
+            "CheckDelayMilliSecond": 0,
+            "ConditionID": "SCondition_Boss"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandEndBattle, BlueArchive",
+            "BattleEndType": 4,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      }
+    ]
+  },
+  "Sections": [
+    {
+      "SectionID": 1,
+      "Position": {
+        "x": 0,
+        "y": 0,
+        "z": 5
+      },
+      "Events": [
+        {
+          "EventName": "Spawn1-1",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundConditionArea, BlueArchive",
+              "SpawnTemplateId": "",
+              "Shape": 0,
+              "Target": 0,
+              "Trigger": 0,
+              "StayTime": 0,
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 44.06
+              },
+              "Rect": {
+                "Direction": {
+                  "x": 0,
+                  "y": 0
+                },
+                "Width": 15,
+                "Height": 2
+              },
+              "Circle": {
+                "Radius": 1
+              },
+              "InactivateWhenStart": false,
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "GroundCommandFadeOutIn, BlueArchive",
+              "DelayBeforeFadeOut": 0,
+              "DelayBeforeFadeIn": 2,
+              "VisualDelayFadeInStart": 0,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandPlayTimeline, BlueArchive",
+              "TimelinePath": "Timeline/Timeline_CH0265_Enemy_OP",
+              "UseGameTime": false,
+              "CanSkip": false,
+              "FadeInImmediately": false,
+              "FadeInWhenStart": false,
+              "FadeOutInWhenEnd": false,
+              "FadeInWhenEnd": false,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [],
+              "CreateCharacterStat": false,
+              "CharacterId": 0,
+              "CharacterLevel": 0,
+              "CharacterGrade": 0,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_Buff_StatChange_RegenCost_Ally_300s_2800_Fixed",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 1,
+              "CommandID": "UseSkillCostSkillPoint",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "Command_Boss",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Immortal",
+              "isAdd": true,
+              "CommandID": "Player_command",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [
+        {
+          "UniqueName": "Beach_JetSki",
+          "Position": {
+            "x": -0.69,
+            "y": 0,
+            "z": 51.27
+          },
+          "Forward": {
+            "x": 0.00390012865,
+            "y": 0,
+            "z": -0.9999924
+          },
+          "ActiveEnemyPointIndices": [
+            4
+          ],
+          "ActivePlayerPointIndices": [
+            5
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Beach_Chair",
+          "Position": {
+            "x": 1.31,
+            "y": 0,
+            "z": 54.9
+          },
+          "Forward": {
+            "x": -0.3206509,
+            "y": 0,
+            "z": 0.947197437
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Beach_Standsignboard",
+          "Position": {
+            "x": 1.73,
+            "y": 0,
+            "z": 52.42
+          },
+          "Forward": {
+            "x": -0.5974362,
+            "y": 0,
+            "z": 0.8019164
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Beach_BoxDrink",
+          "Position": {
+            "x": 3.67,
+            "y": 0,
+            "z": 57.7
+          },
+          "Forward": {
+            "x": 0.3294737,
+            "y": 0,
+            "z": 0.944164753
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Beach_Box01",
+          "Position": {
+            "x": 2.72,
+            "y": 0,
+            "z": 49.549
+          },
+          "Forward": {
+            "x": -0.4542872,
+            "y": 0,
+            "z": 0.8908553
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "icecreamtruck_01_Standard",
+          "Position": {
+            "x": -0.44,
+            "y": 0,
+            "z": 63.7
+          },
+          "Forward": {
+            "x": -0.835863948,
+            "y": 0,
+            "z": -0.548936665
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "HeavyTank01_Helmet_Cannon_Standard",
+          "Position": {
+            "x": -1.63,
+            "y": 0,
+            "z": 57.73
+          },
+          "Forward": {
+            "x": 0.698070467,
+            "y": 0,
+            "z": -0.716029048
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "bus_01_Standard",
+          "Position": {
+            "x": 3.7,
+            "y": 0,
+            "z": 61.89
+          },
+          "Forward": {
+            "x": 0.9232329,
+            "y": 0,
+            "z": 0.3842408
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Shanhaijingstreet_Truck",
+          "Position": {
+            "x": -0.56,
+            "y": 0,
+            "z": 60.97
+          },
+          "Forward": {
+            "x": -0.764699161,
+            "y": 0,
+            "z": -0.6443874
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        }
+      ],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent1-1",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "CH0265_Enemy_C_838Event_Story02",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Boss"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Boss"
+              ],
+              "MovePoints": [],
+              "TileX": 49,
+              "TileY": 319,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 1.81,
+                "y": 59.37
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Boss"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SkillPoint",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SkillUsePoint, BlueArchive",
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
+              "MovePoints": [],
+              "TileX": 40,
+              "TileY": 243,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0,
+                "y": 44.13
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "UseSkillCostSkillPoint"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Formations": [
+    {
+      "SectionIndex": 0,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": 35.85
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 1,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": 61.13
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    }
+  ],
+  "EnemyFormations": [],
+  "TemporaryCanUseSkillAreas": []
+}

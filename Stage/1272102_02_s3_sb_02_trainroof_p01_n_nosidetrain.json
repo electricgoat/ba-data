@@ -1,0 +1,1418 @@
+{
+  "Version": "",
+  "Global": {
+    "Position": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "Events": [
+      {
+        "EventName": "SpawnPlayer",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": "0"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSpawnPlayer, BlueArchive",
+            "IsEnemy": false,
+            "IgnoreSkillCardShuffle": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 50,
+            "MaxCameraSpeed": 3,
+            "RotationSpeed": 1,
+            "ZoomSpeed": 1,
+            "RailPoints": [
+              {
+                "UseTableData": false,
+                "Position": {
+                  "x": -1,
+                  "y": 0,
+                  "z": -2.18
+                },
+                "MinCameraDistance": 33,
+                "MaxCameraDistance": 65,
+                "CameraForward": {
+                  "x": -0.803465664,
+                  "y": -0.426617652,
+                  "z": 0.415259331
+                }
+              },
+              {
+                "UseTableData": false,
+                "Position": {
+                  "x": -1,
+                  "y": 0,
+                  "z": 68.76
+                },
+                "MinCameraDistance": 33,
+                "MaxCameraDistance": 65,
+                "CameraForward": {
+                  "x": -0.803465664,
+                  "y": -0.426617652,
+                  "z": 0.415259331
+                }
+              }
+            ],
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandCameraShake, BlueArchive",
+            "StartDelay": 0,
+            "Duration": 1,
+            "Intensity": {
+              "x": 0,
+              "y": 0.25,
+              "z": 0
+            },
+            "YawPitchRoll": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "curvePath": "miscellaneous/curves/CurveContainer_ExpressTrain",
+            "Loop": true,
+            "CommandID": "Shake_Train",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 1,
+            "SetConditionCommandOnly": false,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "StartSection2",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 1,
+            "CheckSummonedCharacterDead": false,
+            "CheckDelayMilliSecond": 0,
+            "ConditionID": "SCondition_Enemy_1-2"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 2,
+            "SetConditionCommandOnly": false,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "EndBattle",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 1,
+            "CheckSummonedCharacterDead": false,
+            "CheckDelayMilliSecond": 0,
+            "ConditionID": "SCondition_Enemy_2-2"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandEndBattle, BlueArchive",
+            "BattleEndType": 4,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      }
+    ]
+  },
+  "Sections": [
+    {
+      "SectionID": 1,
+      "Position": {
+        "x": -0.35,
+        "y": 0,
+        "z": 3.63
+      },
+      "Events": [
+        {
+          "EventName": "Spawn_Enemy_1-1",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "Command_Enemy_1-1",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "Spawn_Enemy_1-2",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+              "DeadCheck": 1,
+              "CheckSummonedCharacterDead": false,
+              "CheckDelayMilliSecond": 0,
+              "ConditionID": "SCondition_Enemy_1-1"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "Command_Enemy_1-2",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [
+        {
+          "UniqueName": "TrainRoof_ExhaustPort_Jump_02_Standard",
+          "Position": {
+            "x": -1.08,
+            "y": 0,
+            "z": 22.7300034
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "TrainRoof_ExhaustPort_Pipe_01_Standard",
+          "Position": {
+            "x": -0.149999991,
+            "y": 0,
+            "z": 36.81
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": -1
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "TrainRoof_ExhaustPort_Low_01_Standard",
+          "Position": {
+            "x": 1.20999992,
+            "y": 0,
+            "z": 22.6300011
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "TrainRoof_Railing_01_Standard",
+          "Position": {
+            "x": -1.96,
+            "y": 0,
+            "z": 28.510006
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "TrainRoof_ExhaustPort_Jump_01_Standard",
+          "Position": {
+            "x": 1.42,
+            "y": 0,
+            "z": 27.8100014
+          },
+          "Forward": {
+            "x": 0.999986053,
+            "y": 0,
+            "z": -0.005283796
+          },
+          "ActiveEnemyPointIndices": [
+            2
+          ],
+          "ActivePlayerPointIndices": [
+            3
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        }
+      ],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent_Enemy_1-1",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Attendant_Highlander_HG_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_1-1"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_1-1"
+              ],
+              "MovePoints": [],
+              "TileX": 100,
+              "TileY": 371,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 1.34,
+                "y": 30.6199989
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_1-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Attendant_Highlander_SG_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_1-1"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_1-1"
+              ],
+              "MovePoints": [],
+              "TileX": 93,
+              "TileY": 367,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.0499999821,
+                "y": 29.6899986
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_1-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Attendant_Highlander_HG_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_1-1"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_1-1"
+              ],
+              "MovePoints": [],
+              "TileX": 94,
+              "TileY": 380,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.0500000119,
+                "y": 32.24
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_1-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Attendant_Highlander_MG_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_1-1"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_1-1"
+              ],
+              "MovePoints": [],
+              "TileX": 89,
+              "TileY": 386,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.9,
+                "y": 33.52
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_1-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Attendant_Highlander_HG_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_1-1"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_1-1"
+              ],
+              "MovePoints": [],
+              "TileX": 88,
+              "TileY": 372,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.03,
+                "y": 30.8300018
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_1-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Attendant_Highlander_MG_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_1-1"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_1-1"
+              ],
+              "MovePoints": [],
+              "TileX": 96,
+              "TileY": 388,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.5,
+                "y": 33.89
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_1-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointParent_Enemy_1-2",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Attendant_Highlander_SG_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_1-2"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_1-2"
+              ],
+              "MovePoints": [],
+              "TileX": 88,
+              "TileY": 409,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.11,
+                "y": 38.16
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_1-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Attendant_Highlander_MG_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_1-2"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_1-2"
+              ],
+              "MovePoints": [],
+              "TileX": 99,
+              "TileY": 416,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 1.05,
+                "y": 39.54
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_1-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Attendant_Highlander_HG_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_1-2"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_1-2"
+              ],
+              "MovePoints": [],
+              "TileX": 93,
+              "TileY": 411,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.0300000012,
+                "y": 38.55
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_1-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Attendant_Highlander_MG_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_1-2"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_1-2"
+              ],
+              "MovePoints": [],
+              "TileX": 88,
+              "TileY": 416,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.13,
+                "y": 39.52
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_1-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "SectionID": 2,
+      "Position": {
+        "x": -0.35,
+        "y": 0,
+        "z": 3.630001
+      },
+      "Events": [
+        {
+          "EventName": "Spawn_Enemy_2-1",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "Command_Enemy_2-1",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "Spawn_Enemy_2-2",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+              "DeadCheck": 1,
+              "CheckSummonedCharacterDead": false,
+              "CheckDelayMilliSecond": 0,
+              "ConditionID": "SCondition_Enemy_2-1"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "Command_Enemy_2-2",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [
+        {
+          "UniqueName": "TrainRoof_ExhaustPort_Jump_02_Standard",
+          "Position": {
+            "x": -1.08,
+            "y": 0,
+            "z": 40.95
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "TrainRoof_ExhaustPort_Low_01_Standard",
+          "Position": {
+            "x": 1.05,
+            "y": 0,
+            "z": 42.29
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "TrainRoof_Railing_01_Standard",
+          "Position": {
+            "x": -1.76,
+            "y": 0,
+            "z": 43.26
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        }
+      ],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent_Enemy_2-1",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Attendant_Highlander_SG_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-1"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-1"
+              ],
+              "MovePoints": [],
+              "TileX": 94,
+              "TileY": 453,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.140000015,
+                "y": 46.99
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Attendant_Highlander_HG_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-1"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-1"
+              ],
+              "MovePoints": [],
+              "TileX": 90,
+              "TileY": 457,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.659999967,
+                "y": 47.72
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Attendant_Highlander_MG_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-1"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-1"
+              ],
+              "MovePoints": [],
+              "TileX": 87,
+              "TileY": 462,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.21,
+                "y": 48.7100029
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Attendant_Highlander_MG_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-1"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-1"
+              ],
+              "MovePoints": [],
+              "TileX": 94,
+              "TileY": 462,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.110000014,
+                "y": 48.7600021
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Attendant_Highlander_MG_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-1"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-1"
+              ],
+              "MovePoints": [],
+              "TileX": 98,
+              "TileY": 459,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.88,
+                "y": 48.22
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointParent_Enemy_2-2",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Attendant_Highlander_SG_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "D",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-2"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-2"
+              ],
+              "MovePoints": [],
+              "TileX": 87,
+              "TileY": 488,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.26,
+                "y": 53.9299965
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Attendant_Highlander_MG_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "D",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-2"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-2"
+              ],
+              "MovePoints": [],
+              "TileX": 98,
+              "TileY": 493,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.87,
+                "y": 54.89
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Attendant_Highlander_SG_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "D",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-2"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-2"
+              ],
+              "MovePoints": [],
+              "TileX": 99,
+              "TileY": 488,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 1.13,
+                "y": 53.95
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Attendant_Highlander_HG_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "D",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-2"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-2"
+              ],
+              "MovePoints": [],
+              "TileX": 94,
+              "TileY": 491,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.03999999,
+                "y": 54.48
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Attendant_Highlander_MG_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "D",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-2"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-2"
+              ],
+              "MovePoints": [],
+              "TileX": 92,
+              "TileY": 495,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.22,
+                "y": 55.39
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Attendant_Highlander_MG_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "D",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-2"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-2"
+              ],
+              "MovePoints": [],
+              "TileX": 88,
+              "TileY": 493,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.03,
+                "y": 54.9600029
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Attendant_Highlander_SG_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "D",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-2"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-2"
+              ],
+              "MovePoints": [],
+              "TileX": 93,
+              "TileY": 485,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.0300000012,
+                "y": 53.36
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Formations": [
+    {
+      "SectionIndex": 0,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0.04,
+        "y": 18.6400013
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 1,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": -0.01,
+        "y": 39.3000031
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 2,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": 60.36
+      },
+      "Forward": {
+        "x": -0.8661931,
+        "y": 0.499709427
+      },
+      "Height": 0,
+      "IsEnemy": false
+    }
+  ],
+  "EnemyFormations": [],
+  "TemporaryCanUseSkillAreas": []
+}

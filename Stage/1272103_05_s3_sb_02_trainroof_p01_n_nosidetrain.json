@@ -1,0 +1,1456 @@
+{
+  "Version": "",
+  "Global": {
+    "Position": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "Events": [
+      {
+        "EventName": "SpawnPlayer",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": "0"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSpawnPlayer, BlueArchive",
+            "IsEnemy": false,
+            "IgnoreSkillCardShuffle": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 50,
+            "MaxCameraSpeed": 3,
+            "RotationSpeed": 1,
+            "ZoomSpeed": 1,
+            "RailPoints": [
+              {
+                "UseTableData": false,
+                "Position": {
+                  "x": -1,
+                  "y": 0,
+                  "z": -2.18
+                },
+                "MinCameraDistance": 33,
+                "MaxCameraDistance": 65,
+                "CameraForward": {
+                  "x": -0.803465664,
+                  "y": -0.426617652,
+                  "z": 0.415259331
+                }
+              },
+              {
+                "UseTableData": false,
+                "Position": {
+                  "x": -1,
+                  "y": 0,
+                  "z": 68.76
+                },
+                "MinCameraDistance": 33,
+                "MaxCameraDistance": 65,
+                "CameraForward": {
+                  "x": -0.803465664,
+                  "y": -0.426617652,
+                  "z": 0.415259331
+                }
+              }
+            ],
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandCameraShake, BlueArchive",
+            "StartDelay": 0,
+            "Duration": 1,
+            "Intensity": {
+              "x": 0,
+              "y": 0.25,
+              "z": 0
+            },
+            "YawPitchRoll": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "curvePath": "miscellaneous/curves/CurveContainer_ExpressTrain",
+            "Loop": true,
+            "CommandID": "Shake_Train",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 1,
+            "SetConditionCommandOnly": false,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "StartSection2",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 1,
+            "CheckSummonedCharacterDead": false,
+            "CheckDelayMilliSecond": 0,
+            "ConditionID": "SCondition_Enemy_1-2"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 2,
+            "SetConditionCommandOnly": false,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "EndBattle",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 1,
+            "CheckSummonedCharacterDead": false,
+            "CheckDelayMilliSecond": 0,
+            "ConditionID": "SCondition_Enemy_2-2"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandEndBattle, BlueArchive",
+            "BattleEndType": 4,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      }
+    ]
+  },
+  "Sections": [
+    {
+      "SectionID": 1,
+      "Position": {
+        "x": -0.35,
+        "y": 0,
+        "z": -9.34
+      },
+      "Events": [
+        {
+          "EventName": "Spawn_Enemy_1-1",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "Command_Enemy_1-1",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "Spawn_Enemy_1-2",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+              "DeadCheck": 1,
+              "CheckSummonedCharacterDead": false,
+              "CheckDelayMilliSecond": 0,
+              "ConditionID": "SCondition_Enemy_1-1"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "Command_Enemy_1-2",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [
+        {
+          "UniqueName": "TrainRoof_ExhaustPort_Jump_02_Standard",
+          "Position": {
+            "x": -1.08,
+            "y": 0,
+            "z": 16.48
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "TrainRoof_ExhaustPort_Pipe_01_Standard",
+          "Position": {
+            "x": -0.11999999,
+            "y": 0,
+            "z": 21.09
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": -1
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "TrainRoof_ExhaustPort_Low_01_Standard",
+          "Position": {
+            "x": 1.20999992,
+            "y": 0,
+            "z": 16.36
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "TrainRoof_Railing_01_Standard",
+          "Position": {
+            "x": -1.94,
+            "y": 0,
+            "z": 30.8999977
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "TrainRoof_ExhaustPort_Jump_01_Standard",
+          "Position": {
+            "x": 1.27,
+            "y": 0,
+            "z": 25.11
+          },
+          "Forward": {
+            "x": 0.999986053,
+            "y": 0,
+            "z": -0.005283796
+          },
+          "ActiveEnemyPointIndices": [
+            2
+          ],
+          "ActivePlayerPointIndices": [
+            3
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        }
+      ],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent_Enemy_1-1",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_Shield_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_1-1"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_1-1"
+              ],
+              "MovePoints": [],
+              "TileX": 87,
+              "TileY": 294,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.2,
+                "y": 15.15
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_1-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_RL_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_1-1"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_1-1"
+              ],
+              "MovePoints": [],
+              "TileX": 99,
+              "TileY": 312,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 1.07999992,
+                "y": 18.73
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_1-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_AR_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_1-1"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_1-1"
+              ],
+              "MovePoints": [],
+              "TileX": 98,
+              "TileY": 306,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.929999948,
+                "y": 17.59
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_1-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_RL_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_1-1"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_1-1"
+              ],
+              "MovePoints": [],
+              "TileX": 91,
+              "TileY": 312,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.57,
+                "y": 18.76
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_1-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_AR_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_1-1"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_1-1"
+              ],
+              "MovePoints": [],
+              "TileX": 88,
+              "TileY": 307,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.1,
+                "y": 17.65
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_1-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_Shield_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_1-1"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_1-1"
+              ],
+              "MovePoints": [],
+              "TileX": 99,
+              "TileY": 294,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 1.06,
+                "y": 15.1399994
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_1-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointParent_Enemy_1-2",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_Shield_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_1-2"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_1-2"
+              ],
+              "MovePoints": [],
+              "TileX": 87,
+              "TileY": 328,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.28,
+                "y": 21.92
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_1-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_AR_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_1-2"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_1-2"
+              ],
+              "MovePoints": [],
+              "TileX": 94,
+              "TileY": 333,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.0600000024,
+                "y": 22.91
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_1-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_RL_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_1-2"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_1-2"
+              ],
+              "MovePoints": [],
+              "TileX": 100,
+              "TileY": 336,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 1.24,
+                "y": 23.54
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_1-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_Shield_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_1-2"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_1-2"
+              ],
+              "MovePoints": [],
+              "TileX": 100,
+              "TileY": 328,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 1.31999993,
+                "y": 21.94
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_1-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_RL_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_1-2"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_1-2"
+              ],
+              "MovePoints": [],
+              "TileX": 88,
+              "TileY": 338,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.06,
+                "y": 23.89
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_1-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_RL_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_1-2"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_1-2"
+              ],
+              "MovePoints": [],
+              "TileX": 94,
+              "TileY": 339,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.140000015,
+                "y": 24.14
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_1-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "SectionID": 2,
+      "Position": {
+        "x": -0.35,
+        "y": 0,
+        "z": -9.34
+      },
+      "Events": [
+        {
+          "EventName": "Spawn_Enemy_2-1",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "Command_Enemy_2-1",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "Spawn_Enemy_2-2",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+              "DeadCheck": 1,
+              "CheckSummonedCharacterDead": false,
+              "CheckDelayMilliSecond": 0,
+              "ConditionID": "SCondition_Enemy_2-1"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "Command_Enemy_2-2",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [
+        {
+          "UniqueName": "TrainRoof_Railing_01_Standard",
+          "Position": {
+            "x": -1.80000007,
+            "y": 0,
+            "z": 41.98
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        }
+      ],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent_Enemy_2-1",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_AR_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-1"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-1"
+              ],
+              "MovePoints": [],
+              "TileX": 91,
+              "TileY": 378,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.57,
+                "y": 32.02
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_Shield_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-1"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-1"
+              ],
+              "MovePoints": [],
+              "TileX": 90,
+              "TileY": 372,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.62,
+                "y": 30.7
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_RL_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-1"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-1"
+              ],
+              "MovePoints": [],
+              "TileX": 96,
+              "TileY": 384,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.580000043,
+                "y": 33.18
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_AR_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-1"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-1"
+              ],
+              "MovePoints": [],
+              "TileX": 99,
+              "TileY": 379,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 1.06999993,
+                "y": 32.16
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_RL_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-1"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-1"
+              ],
+              "MovePoints": [],
+              "TileX": 89,
+              "TileY": 384,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.88,
+                "y": 33.11
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_Shield_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-1"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-1"
+              ],
+              "MovePoints": [],
+              "TileX": 98,
+              "TileY": 372,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.939999938,
+                "y": 30.71
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointParent_Enemy_2-2",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_RL_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "D",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-2"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-2"
+              ],
+              "MovePoints": [],
+              "TileX": 97,
+              "TileY": 426,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.77,
+                "y": 41.52
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_RL_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "D",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-2"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-2"
+              ],
+              "MovePoints": [],
+              "TileX": 88,
+              "TileY": 426,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.15,
+                "y": 41.62
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_RL_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "D",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-2"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-2"
+              ],
+              "MovePoints": [],
+              "TileX": 93,
+              "TileY": 427,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.09,
+                "y": 41.64
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_Shield_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "D",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-2"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-2"
+              ],
+              "MovePoints": [],
+              "TileX": 89,
+              "TileY": 418,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.97,
+                "y": 40.01
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_AR_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "D",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-2"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-2"
+              ],
+              "MovePoints": [],
+              "TileX": 93,
+              "TileY": 422,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.09,
+                "y": 40.69
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_Shield_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "D",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-2"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-2"
+              ],
+              "MovePoints": [],
+              "TileX": 97,
+              "TileY": 417,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.74,
+                "y": 39.71
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Formations": [
+    {
+      "SectionIndex": 0,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0.04,
+        "y": 5.67000055
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 1,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": -0.01,
+        "y": 26.3299961
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 2,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": 47.3900032
+      },
+      "Forward": {
+        "x": -0.8661931,
+        "y": 0.499709427
+      },
+      "Height": 0,
+      "IsEnemy": false
+    }
+  ],
+  "EnemyFormations": [],
+  "TemporaryCanUseSkillAreas": []
+}

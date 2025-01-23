@@ -1,0 +1,948 @@
+{
+  "Version": "1.1",
+  "Global": {
+    "Position": {
+      "x": 0.64,
+      "y": 0,
+      "z": -25.6
+    },
+    "Events": [
+      {
+        "EventName": "SpawnPlayer",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": "0"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSpawnPlayer, BlueArchive",
+            "IsEnemy": false,
+            "IgnoreSkillCardShuffle": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 1,
+            "MaxCameraSpeed": 3,
+            "RotationSpeed": 1,
+            "ZoomSpeed": 1,
+            "RailPoints": [
+              {
+                "UseTableData": false,
+                "Position": {
+                  "x": -1.36,
+                  "y": 0,
+                  "z": 7.21999931
+                },
+                "MinCameraDistance": 38,
+                "MaxCameraDistance": 46,
+                "CameraForward": {
+                  "x": -0.803465664,
+                  "y": -0.426617652,
+                  "z": 0.415259331
+                }
+              },
+              {
+                "UseTableData": false,
+                "Position": {
+                  "x": -1.36,
+                  "y": 0,
+                  "z": 35.5100021
+                },
+                "MinCameraDistance": 38,
+                "MaxCameraDistance": 46,
+                "CameraForward": {
+                  "x": -0.803465664,
+                  "y": -0.426617652,
+                  "z": 0.415259331
+                }
+              }
+            ],
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 1,
+            "SetConditionCommandOnly": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "EndBattle",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 1,
+            "CheckSummonedCharacterDead": false,
+            "CheckDelayMilliSecond": 0,
+            "ConditionID": "SCondition_1Section"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandEndBattle, BlueArchive",
+            "BattleEndType": 4,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "FailBattle",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 1,
+            "CheckSummonedCharacterDead": false,
+            "CheckDelayMilliSecond": 0,
+            "ConditionID": "SCondition_NPC"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandEndBattle, BlueArchive",
+            "BattleEndType": 3,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      }
+    ]
+  },
+  "Sections": [
+    {
+      "SectionID": 1,
+      "Position": {
+        "x": 0.64,
+        "y": 0,
+        "z": -20.6
+      },
+      "Events": [
+        {
+          "EventName": "SpawnNPC",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "CommandSpawn_NPC",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "SpawnEnemy",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 100,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "Command_1Section",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 5000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetSyncUseSkillGroup, BlueArchive",
+              "SyncUseSkillGroupId": 1002,
+              "SkillSlot": "PublicSkill02",
+              "IsAdd": true,
+              "IsAllyGroup": false,
+              "CommandID": "SCommand_SMG",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetSyncUseSkillGroup, BlueArchive",
+              "SyncUseSkillGroupId": 1002,
+              "SkillSlot": "PublicSkill01",
+              "IsAdd": true,
+              "IsAllyGroup": false,
+              "CommandID": "SCommand_AR",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandCreateSyncUseSkill, BlueArchive",
+              "CoolDownInMilliSeconds": 30000,
+              "SyncUseSkillGroupId": 1002,
+              "IsAllyGroup": false,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "UseSkill_Concentrate",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 1000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [
+                "SCommand_NPC"
+              ],
+              "CreateCharacterStat": true,
+              "CharacterId": 18001002,
+              "CharacterLevel": 1,
+              "CharacterGrade": 1,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_DeBuff_ConcentratedTarget_Ally_60s_TSS",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 1,
+              "CommandID": "UseSkillPoint_Section01",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 59000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [
+                "SCommand_NPC"
+              ],
+              "CreateCharacterStat": true,
+              "CharacterId": 18001002,
+              "CharacterLevel": 1,
+              "CharacterGrade": 1,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_DeBuff_ConcentratedTarget_Ally_60s_TSS",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 1,
+              "CommandID": "UseSkillPoint_Section01",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 59000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [
+                "SCommand_NPC"
+              ],
+              "CreateCharacterStat": true,
+              "CharacterId": 18001002,
+              "CharacterLevel": 1,
+              "CharacterGrade": 1,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_DeBuff_ConcentratedTarget_Ally_60s_TSS",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 1,
+              "CommandID": "UseSkillPoint_Section01",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 59000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [
+                "SCommand_NPC"
+              ],
+              "CreateCharacterStat": true,
+              "CharacterId": 18001002,
+              "CharacterLevel": 1,
+              "CharacterGrade": 1,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_DeBuff_ConcentratedTarget_Ally_60s_TSS",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 1,
+              "CommandID": "UseSkillPoint_Section01",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 59000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [
+                "SCommand_NPC"
+              ],
+              "CreateCharacterStat": true,
+              "CharacterId": 18001002,
+              "CharacterLevel": 1,
+              "CharacterGrade": 1,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_DeBuff_ConcentratedTarget_Ally_60s_TSS",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 1,
+              "CommandID": "UseSkillPoint_Section01",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [
+        {
+          "UniqueName": "PlayGround_Hurdle",
+          "Position": {
+            "x": -2.26000023,
+            "y": 0,
+            "z": 12.5699978
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": -1
+          },
+          "ActiveEnemyPointIndices": [
+            0
+          ],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "PlayGround_Hurdle",
+          "Position": {
+            "x": -0.960000038,
+            "y": 0,
+            "z": 13.5699978
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": -1
+          },
+          "ActiveEnemyPointIndices": [
+            0
+          ],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "PlayGround_Hurdle",
+          "Position": {
+            "x": 0.339999974,
+            "y": 0,
+            "z": 14.5699978
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": -1
+          },
+          "ActiveEnemyPointIndices": [
+            0
+          ],
+          "ActivePlayerPointIndices": [
+            1
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "PlayGround_Hurdle",
+          "Position": {
+            "x": 1.64,
+            "y": 0,
+            "z": 15.5699978
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": -1
+          },
+          "ActiveEnemyPointIndices": [
+            0
+          ],
+          "ActivePlayerPointIndices": [
+            1
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "School_BaricadeSports",
+          "Position": {
+            "x": -3.30000019,
+            "y": 0,
+            "z": 22.0199986
+          },
+          "Forward": {
+            "x": -0.486178964,
+            "y": 0,
+            "z": -0.8738593
+          },
+          "ActiveEnemyPointIndices": [
+            0
+          ],
+          "ActivePlayerPointIndices": [
+            1
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "School_ChairSports",
+          "Position": {
+            "x": 3.08,
+            "y": 0,
+            "z": 21.960001
+          },
+          "Forward": {
+            "x": -0.4716864,
+            "y": 0,
+            "z": 0.8817664
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "PlayGround_Hurdle",
+          "Position": {
+            "x": 2.42999983,
+            "y": 0,
+            "z": 19.87
+          },
+          "Forward": {
+            "x": 0.467678457,
+            "y": 0,
+            "z": -0.8838987
+          },
+          "ActiveEnemyPointIndices": [
+            0
+          ],
+          "ActivePlayerPointIndices": [
+            1
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "PlayGround_Hurdle",
+          "Position": {
+            "x": -2.85,
+            "y": 0,
+            "z": 19.08
+          },
+          "Forward": {
+            "x": -0.5397722,
+            "y": 0,
+            "z": -0.8418111
+          },
+          "ActiveEnemyPointIndices": [
+            0
+          ],
+          "ActivePlayerPointIndices": [
+            1
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        }
+      ],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent_NPC",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Avantgardekun_Millenium_AR_E_Explosion_TimeAttack_02",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "Z",
+              "SpawnConditionIdList": [
+                "SCondition_NPC"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_NPC"
+              ],
+              "MovePoints": [],
+              "TileX": 38,
+              "TileY": 121,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.36,
+                "y": 19.6400051
+              },
+              "Direction": {
+                "x": -0.07729981,
+                "y": 0.9970079
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandSpawn_NPC"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SkillUsePoint, BlueArchive",
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
+              "MovePoints": [],
+              "TileX": 38,
+              "TileY": 121,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.350000024,
+                "y": 19.6400051
+              },
+              "Direction": {
+                "x": -0.18092984,
+                "y": 0.983496
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "UseSkillPoint_Section01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointParent_1section",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Amas_Millenium_SMG_E_LightArmor_TimeAttack_02",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_1Section"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_1Section",
+                "SCommand_SMG"
+              ],
+              "MovePoints": [],
+              "TileX": 38,
+              "TileY": 144,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.37,
+                "y": 24.3400021
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_1Section"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Amas_Millenium_AR_E_LightArmor_TimeAttack_02",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_1Section"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_1Section",
+                "SCommand_AR"
+              ],
+              "MovePoints": [],
+              "TileX": 48,
+              "TileY": 148,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 1.51,
+                "y": 25.1000042
+              },
+              "Direction": {
+                "x": -0.342020333,
+                "y": -0.939692736
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_1Section"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Amas_Millenium_AR_E_LightArmor_TimeAttack_02",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_1Section"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_1Section",
+                "SCommand_AR"
+              ],
+              "MovePoints": [],
+              "TileX": 29,
+              "TileY": 148,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -2.23,
+                "y": 25.1000042
+              },
+              "Direction": {
+                "x": 0.342020333,
+                "y": -0.939692736
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_1Section"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Amas_Millenium_Vulcan_E_LightArmor_TimeAttack_02",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_1Section"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_1Section"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 29,
+                  "TileY": 156,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -2.18269062,
+                    "y": 26.6771221
+                  },
+                  "Direction": {
+                    "x": 0.5182062,
+                    "y": -0.8552557
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 25,
+              "TileY": 162,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -2.96,
+                "y": 27.9600048
+              },
+              "Direction": {
+                "x": 0.5182062,
+                "y": -0.8552557
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_1Section"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Amas_Millenium_Vulcan_E_LightArmor_TimeAttack_02",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_1Section"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_1Section"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 38,
+                  "TileY": 156,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.3800001,
+                    "y": 26.7500057
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 38,
+              "TileY": 164,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.38,
+                "y": 28.2500057
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_1Section"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Amas_Millenium_Vulcan_E_LightArmor_TimeAttack_02",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_1Section"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_1Section"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 47,
+                  "TileY": 155,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 1.40032744,
+                    "y": 26.4870434
+                  },
+                  "Direction": {
+                    "x": -0.5597812,
+                    "y": -0.8286406
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 51,
+              "TileY": 161,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 2.24,
+                "y": 27.7300014
+              },
+              "Direction": {
+                "x": -0.5597812,
+                "y": -0.8286406
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_1Section"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Formations": [
+    {
+      "SectionIndex": 0,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": -0.36,
+        "y": 9.659998
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 1,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": -0.36,
+        "y": 37.43
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    }
+  ],
+  "EnemyFormations": [],
+  "TemporaryCanUseSkillAreas": []
+}
