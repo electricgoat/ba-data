@@ -1,0 +1,1956 @@
+{
+  "Version": "1.0",
+  "Global": {
+    "Position": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "Events": [
+      {
+        "EventName": "SpawnPlayer",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": "0"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSpawnPlayer, BlueArchive",
+            "IsEnemy": false,
+            "IgnoreSkillCardShuffle": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 1,
+            "MaxCameraSpeed": 3,
+            "RotationSpeed": 1,
+            "ZoomSpeed": 1,
+            "RailPoints": [
+              {
+                "UseTableData": false,
+                "Position": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "MinCameraDistance": 42,
+                "MaxCameraDistance": 42,
+                "CameraForward": {
+                  "x": -0.8034659,
+                  "y": -0.426618159,
+                  "z": 0.415258348
+                }
+              },
+              {
+                "UseTableData": false,
+                "Position": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 60.9
+                },
+                "MinCameraDistance": 42,
+                "MaxCameraDistance": 42,
+                "CameraForward": {
+                  "x": -0.8034659,
+                  "y": -0.426618159,
+                  "z": 0.415258348
+                }
+              }
+            ],
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 1,
+            "SetConditionCommandOnly": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "EndBattle",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 1,
+            "CheckSummonedCharacterDead": false,
+            "CheckDelayMilliSecond": 0,
+            "ConditionID": "Boss"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandCharacterDie, BlueArchive",
+            "CharacterCommandIdList": [
+              "EatorDieCommand"
+            ],
+            "CharacterSpawnTemplateIdList": [],
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandEndBattle, BlueArchive",
+            "BattleEndType": 4,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      }
+    ]
+  },
+  "Sections": [
+    {
+      "SectionID": 1,
+      "Position": {
+        "x": 0,
+        "y": 0,
+        "z": 5
+      },
+      "Events": [
+        {
+          "EventName": "Spawn68",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 200,
+              "CommandID": "68Spawn",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 1100,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSkipUntargetableCheckInMove, BlueArchive",
+              "Skip": true,
+              "CommandID": "UntargetCheck",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandCreateSyncUseSkill, BlueArchive",
+              "CoolDownInMilliSeconds": 15000,
+              "SyncUseSkillGroupId": 10,
+              "IsAllyGroup": false,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetSyncUseSkillGroup, BlueArchive",
+              "SyncUseSkillGroupId": 10,
+              "SkillSlot": "ExSkill01",
+              "IsAdd": true,
+              "IsAllyGroup": false,
+              "CommandID": "68Command",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "SpawnOnsen",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+              "DeadCheck": 1,
+              "CheckSummonedCharacterDead": false,
+              "CheckDelayMilliSecond": 0,
+              "ConditionID": "68Dead"
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundConditionArea, BlueArchive",
+              "SpawnTemplateId": "",
+              "Shape": 0,
+              "Target": 0,
+              "Trigger": 0,
+              "StayTime": 0,
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 25.61
+              },
+              "Rect": {
+                "Direction": {
+                  "x": 0,
+                  "y": 0
+                },
+                "Width": 10,
+                "Height": 6
+              },
+              "Circle": {
+                "Radius": 1
+              },
+              "InactivateWhenStart": false,
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 1000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 200,
+              "CommandID": "OnsenSpawn",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 1400,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSkipUntargetableCheckInMove, BlueArchive",
+              "Skip": true,
+              "CommandID": "UntargetCheck",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandCreateSyncUseSkill, BlueArchive",
+              "CoolDownInMilliSeconds": 15000,
+              "SyncUseSkillGroupId": 20,
+              "IsAllyGroup": false,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetSyncUseSkillGroup, BlueArchive",
+              "SyncUseSkillGroupId": 20,
+              "SkillSlot": "ExSkill01",
+              "IsAdd": true,
+              "IsAllyGroup": false,
+              "CommandID": "OnsenCommand",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "SpawnEatorDie",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+              "DeadCheck": 1,
+              "CheckSummonedCharacterDead": false,
+              "CheckDelayMilliSecond": 0,
+              "ConditionID": "OnsenDead"
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundConditionArea, BlueArchive",
+              "SpawnTemplateId": "",
+              "Shape": 0,
+              "Target": 0,
+              "Trigger": 0,
+              "StayTime": 0,
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 42.42
+              },
+              "Rect": {
+                "Direction": {
+                  "x": 0,
+                  "y": 0
+                },
+                "Width": 10,
+                "Height": 6
+              },
+              "Circle": {
+                "Radius": 1
+              },
+              "InactivateWhenStart": false,
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 2000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 200,
+              "CommandID": "EatorDieSpawn",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 1100,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSkipUntargetableCheckInMove, BlueArchive",
+              "Skip": true,
+              "CommandID": "UntargetCheck",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandCreateSyncUseSkill, BlueArchive",
+              "CoolDownInMilliSeconds": 15000,
+              "SyncUseSkillGroupId": 30,
+              "IsAllyGroup": false,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetSyncUseSkillGroup, BlueArchive",
+              "SyncUseSkillGroupId": 30,
+              "SkillSlot": "ExSkill01",
+              "IsAdd": true,
+              "IsAllyGroup": false,
+              "CommandID": "EatorDieCommand",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "Kill68",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+              "DeadCheck": 1,
+              "CheckSummonedCharacterDead": false,
+              "CheckDelayMilliSecond": 0,
+              "ConditionID": "68Dead_Boss"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandCharacterDie, BlueArchive",
+              "CharacterCommandIdList": [
+                "68Command"
+              ],
+              "CharacterSpawnTemplateIdList": [],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "KillOnsen",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+              "DeadCheck": 1,
+              "CheckSummonedCharacterDead": false,
+              "CheckDelayMilliSecond": 0,
+              "ConditionID": "OnsenBossDead"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandCharacterDie, BlueArchive",
+              "CharacterCommandIdList": [
+                "OnsenCommand"
+              ],
+              "CharacterSpawnTemplateIdList": [],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "AruDead",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+              "DeadCheck": 1,
+              "CheckSummonedCharacterDead": false,
+              "CheckDelayMilliSecond": 0,
+              "ConditionID": "AruDead"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [
+                "68BossCommand"
+              ],
+              "CreateCharacterStat": true,
+              "CharacterId": 18001002,
+              "CharacterLevel": 1,
+              "CharacterGrade": 1,
+              "Interval": 0,
+              "SkillGroupId": "844Challenge04GroundSkill01",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 2,
+              "CommandID": "UseSkillPointA",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [
+                "68BossCommand"
+              ],
+              "CreateCharacterStat": true,
+              "CharacterId": 18001002,
+              "CharacterLevel": 1,
+              "CharacterGrade": 1,
+              "Interval": 0,
+              "SkillGroupId": "844Challenge04GroundSkill01",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 2,
+              "CommandID": "UseSkillPointA",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [
+                "68BossCommand"
+              ],
+              "CreateCharacterStat": true,
+              "CharacterId": 18001002,
+              "CharacterLevel": 1,
+              "CharacterGrade": 1,
+              "Interval": 0,
+              "SkillGroupId": "844Challenge04GroundSkill01",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 2,
+              "CommandID": "UseSkillPointA",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "KasumiDead",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+              "DeadCheck": 1,
+              "CheckSummonedCharacterDead": false,
+              "CheckDelayMilliSecond": 0,
+              "ConditionID": "KasumiDead"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [
+                "OnsenBossCommand"
+              ],
+              "CreateCharacterStat": true,
+              "CharacterId": 18001002,
+              "CharacterLevel": 1,
+              "CharacterGrade": 1,
+              "Interval": 0,
+              "SkillGroupId": "844Challenge04GroundSkill01",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 2,
+              "CommandID": "UseSkillPointA",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [
+                "OnsenBossCommand"
+              ],
+              "CreateCharacterStat": true,
+              "CharacterId": 18001002,
+              "CharacterLevel": 1,
+              "CharacterGrade": 1,
+              "Interval": 0,
+              "SkillGroupId": "844Challenge04GroundSkill01",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 2,
+              "CommandID": "UseSkillPointA",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [
+                "OnsenBossCommand"
+              ],
+              "CreateCharacterStat": true,
+              "CharacterId": 18001002,
+              "CharacterLevel": 1,
+              "CharacterGrade": 1,
+              "Interval": 0,
+              "SkillGroupId": "844Challenge04GroundSkill01",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 2,
+              "CommandID": "UseSkillPointA",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [
+                "OnsenBossCommand"
+              ],
+              "CreateCharacterStat": true,
+              "CharacterId": 18001002,
+              "CharacterLevel": 1,
+              "CharacterGrade": 1,
+              "Interval": 0,
+              "SkillGroupId": "844Challenge04GroundSkill01",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 2,
+              "CommandID": "UseSkillPointA",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [
+                "OnsenBossCommand"
+              ],
+              "CreateCharacterStat": true,
+              "CharacterId": 18001002,
+              "CharacterLevel": 1,
+              "CharacterGrade": 1,
+              "Interval": 0,
+              "SkillGroupId": "844Challenge04GroundSkill01",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 2,
+              "CommandID": "UseSkillPointA",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "HarunaDead",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+              "DeadCheck": 1,
+              "CheckSummonedCharacterDead": false,
+              "CheckDelayMilliSecond": 0,
+              "ConditionID": "HarunaDead"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [
+                "EatorDieBossCommand"
+              ],
+              "CreateCharacterStat": true,
+              "CharacterId": 18001002,
+              "CharacterLevel": 1,
+              "CharacterGrade": 1,
+              "Interval": 0,
+              "SkillGroupId": "844Challenge04GroundSkill01",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 2,
+              "CommandID": "UseSkillPointA",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [
+                "EatorDieBossCommand"
+              ],
+              "CreateCharacterStat": true,
+              "CharacterId": 18001002,
+              "CharacterLevel": 1,
+              "CharacterGrade": 1,
+              "Interval": 0,
+              "SkillGroupId": "844Challenge04GroundSkill01",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 2,
+              "CommandID": "UseSkillPointA",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [
+                "EatorDieBossCommand"
+              ],
+              "CreateCharacterStat": true,
+              "CharacterId": 18001002,
+              "CharacterLevel": 1,
+              "CharacterGrade": 1,
+              "Interval": 0,
+              "SkillGroupId": "844Challenge04GroundSkill01",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 2,
+              "CommandID": "UseSkillPointA",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [
+                "EatorDieBossCommand"
+              ],
+              "CreateCharacterStat": true,
+              "CharacterId": 18001002,
+              "CharacterLevel": 1,
+              "CharacterGrade": 1,
+              "Interval": 0,
+              "SkillGroupId": "844Challenge04GroundSkill01",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 2,
+              "CommandID": "UseSkillPointA",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [
+                "EatorDieBossCommand"
+              ],
+              "CreateCharacterStat": true,
+              "CharacterId": 18001002,
+              "CharacterLevel": 1,
+              "CharacterGrade": 1,
+              "Interval": 0,
+              "SkillGroupId": "844Challenge04GroundSkill01",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 2,
+              "CommandID": "UseSkillPointA",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [
+                "EatorDieBossCommand"
+              ],
+              "CreateCharacterStat": true,
+              "CharacterId": 18001002,
+              "CharacterLevel": 1,
+              "CharacterGrade": 1,
+              "Interval": 0,
+              "SkillGroupId": "844Challenge04GroundSkill01",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 2,
+              "CommandID": "UseSkillPointA",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "CostUp",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandUseSkill, BlueArchive",
+              "TargetCharacterCommandId": [
+                "Player_command"
+              ],
+              "CreateCharacterStat": true,
+              "CharacterId": 18001002,
+              "CharacterLevel": 1,
+              "CharacterGrade": 1,
+              "Interval": 0,
+              "SkillGroupId": "EventChallenge_Buff_StatChange_RegenCost_Ally_300s_700_Fixed",
+              "SkillLevel": 1,
+              "ExecuterLevel": 1,
+              "CharacterGroup": 1,
+              "CommandID": "UseSkillPointA",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [
+        {
+          "UniqueName": "Gehennaslum_Drum_01",
+          "Position": {
+            "x": 2.73,
+            "y": 0,
+            "z": 22.78
+          },
+          "Forward": {
+            "x": -0.965579033,
+            "y": 0,
+            "z": -0.260109961
+          },
+          "ActiveEnemyPointIndices": [
+            3
+          ],
+          "ActivePlayerPointIndices": [
+            2
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Common_TireMiddle",
+          "Position": {
+            "x": -3.42348862,
+            "y": 0,
+            "z": 23.0128326
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Gehennaslum_Trashbox_01",
+          "Position": {
+            "x": -3.5,
+            "y": 0,
+            "z": 18.45
+          },
+          "Forward": {
+            "x": 0.965069652,
+            "y": 0,
+            "z": -0.261993349
+          },
+          "ActiveEnemyPointIndices": [
+            3
+          ],
+          "ActivePlayerPointIndices": [
+            2
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Gehennaslum_Drum_01",
+          "Position": {
+            "x": -3.15,
+            "y": 0,
+            "z": 7.18
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Gehennaslum_box_02",
+          "Position": {
+            "x": -0.35255605,
+            "y": 2.78949738e-05,
+            "z": 10.63
+          },
+          "Forward": {
+            "x": 0.281021237,
+            "y": 0,
+            "z": -0.959701538
+          },
+          "ActiveEnemyPointIndices": [
+            0
+          ],
+          "ActivePlayerPointIndices": [
+            1
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Gehennaslum_box_01_jump",
+          "Position": {
+            "x": 3.28240228,
+            "y": 0,
+            "z": 7.230685
+          },
+          "Forward": {
+            "x": -0.5262386,
+            "y": 0,
+            "z": 0.850336969
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Gehennaslum_Drum_01",
+          "Position": {
+            "x": 2.82,
+            "y": 0,
+            "z": 14.43
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Gehennaslum_Trashbox_01",
+          "Position": {
+            "x": 1.06,
+            "y": 0,
+            "z": 57.4
+          },
+          "Forward": {
+            "x": 0.9698771,
+            "y": 0,
+            "z": -0.2435946
+          },
+          "ActiveEnemyPointIndices": [
+            3
+          ],
+          "ActivePlayerPointIndices": [
+            2
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Gehennaslum_Drum_02",
+          "Position": {
+            "x": 2.78,
+            "y": 0,
+            "z": 54.03
+          },
+          "Forward": {
+            "x": -0.664538741,
+            "y": 0,
+            "z": 0.747253835
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Common_TireLow",
+          "Position": {
+            "x": -2.33,
+            "y": 0,
+            "z": 55.11
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Gehennaslum_Drum_01",
+          "Position": {
+            "x": 2.462707,
+            "y": 0,
+            "z": 46.57524
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Gehennaslum_Tank_01",
+          "Position": {
+            "x": 6.43,
+            "y": 0.0572234467,
+            "z": 45.54
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Gehennaslum_Tank_01",
+          "Position": {
+            "x": 6.76724768,
+            "y": 0.05722344,
+            "z": 59.2183876
+          },
+          "Forward": {
+            "x": 0.975495338,
+            "y": 0,
+            "z": 0.220020175
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Common_TireLow",
+          "Position": {
+            "x": -3.40855646,
+            "y": 0,
+            "z": 29.8666782
+          },
+          "Forward": {
+            "x": -0.231902942,
+            "y": 0,
+            "z": 0.9727389
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Gehennaslum_Drum_02",
+          "Position": {
+            "x": -3.45,
+            "y": 0,
+            "z": 26.15
+          },
+          "Forward": {
+            "x": -0.9868429,
+            "y": 0,
+            "z": 0.161682114
+          },
+          "ActiveEnemyPointIndices": [
+            3
+          ],
+          "ActivePlayerPointIndices": [
+            2
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Gehennaslum_Drum_02",
+          "Position": {
+            "x": -2.11,
+            "y": 0,
+            "z": 27.24
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Gehennaslum_Tank_01",
+          "Position": {
+            "x": 4.49,
+            "y": 0.05722344,
+            "z": 26.15
+          },
+          "Forward": {
+            "x": 0.8077433,
+            "y": 0,
+            "z": 0.589534342
+          },
+          "ActiveEnemyPointIndices": [
+            2
+          ],
+          "ActivePlayerPointIndices": [
+            4
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Gehennaslum_Drum_02",
+          "Position": {
+            "x": 3.6491735,
+            "y": 0,
+            "z": 43.34272
+          },
+          "Forward": {
+            "x": 0.973320365,
+            "y": 0,
+            "z": 0.229450449
+          },
+          "ActiveEnemyPointIndices": [
+            2
+          ],
+          "ActivePlayerPointIndices": [
+            3
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Common_TireLow",
+          "Position": {
+            "x": -2,
+            "y": 0,
+            "z": 42.29
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Common_TireMiddle",
+          "Position": {
+            "x": -3.39633918,
+            "y": 0,
+            "z": 39.6025047
+          },
+          "Forward": {
+            "x": 0.420919746,
+            "y": 0,
+            "z": 0.9070979
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Gehennaslum_Drum_01",
+          "Position": {
+            "x": 3.23,
+            "y": 0,
+            "z": 27.98
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        }
+      ],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "68",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Aru_E_844Event_Challenge04",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "68Dead",
+                "AruDead"
+              ],
+              "SpawnCommandIdList": [
+                "68Command",
+                "AruCommand"
+              ],
+              "MovePoints": [],
+              "TileX": 40,
+              "TileY": 146,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.07,
+                "y": 24.65
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "68Spawn",
+                "68_Camera_Spawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Mutsuki_E_844Event_Challenge04",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "68Dead"
+              ],
+              "SpawnCommandIdList": [
+                "68Command"
+              ],
+              "MovePoints": [],
+              "TileX": 36,
+              "TileY": 131,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.86,
+                "y": 21.66
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "68Spawn",
+                "68_Camera_Spawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Kayoko_E_844Event_Challenge04",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "68Dead"
+              ],
+              "SpawnCommandIdList": [
+                "68Command"
+              ],
+              "MovePoints": [],
+              "TileX": 47,
+              "TileY": 132,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 1.37,
+                "y": 21.85
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "68Spawn",
+                "68_Camera_Spawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Haruka_E_844Event_Challenge04",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "68Dead"
+              ],
+              "SpawnCommandIdList": [
+                "68Command"
+              ],
+              "MovePoints": [],
+              "TileX": 43,
+              "TileY": 116,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.6,
+                "y": 18.61
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "68Spawn",
+                "68_Camera_Spawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Dummy_C_1_844Event_Challenge04",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "68Dead",
+                "68Dead_Boss"
+              ],
+              "SpawnCommandIdList": [
+                "UntargetCheck",
+                "68BossCommand"
+              ],
+              "MovePoints": [],
+              "TileX": 32,
+              "TileY": 205,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.7,
+                "y": 36.42
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "68Spawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SkillUsePoint, BlueArchive",
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
+              "MovePoints": [],
+              "TileX": 40,
+              "TileY": 248,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0,
+                "y": 45.07
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "UseSkillPointA"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "Onsen",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Megu_E_844Event_Challenge04",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [
+                "OnsenDead"
+              ],
+              "SpawnCommandIdList": [
+                "OnsenCommand"
+              ],
+              "MovePoints": [],
+              "TileX": 42,
+              "TileY": 203,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.41,
+                "y": 36.03
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "OnsenSpawn",
+                "Onsen_Camera_Spawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Kasumi_E_844Event_Challenge04",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [
+                "OnsenDead",
+                "KasumiDead"
+              ],
+              "SpawnCommandIdList": [
+                "OnsenCommand"
+              ],
+              "MovePoints": [],
+              "TileX": 35,
+              "TileY": 227,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.91,
+                "y": 40.8099976
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "OnsenSpawn",
+                "Onsen_Camera_Spawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "OnsenDev_SG_E_844Event_Challenge04",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [
+                "OnsenDead"
+              ],
+              "SpawnCommandIdList": [
+                "OnsenCommand"
+              ],
+              "MovePoints": [],
+              "TileX": 30,
+              "TileY": 195,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.92,
+                "y": 34.48
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "OnsenSpawn",
+                "Onsen_Camera_Spawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "OnsenDev_GL_E_844Event_Challenge04",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [
+                "OnsenDead"
+              ],
+              "SpawnCommandIdList": [
+                "OnsenCommand"
+              ],
+              "MovePoints": [],
+              "TileX": 26,
+              "TileY": 209,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -2.81,
+                "y": 37.35
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "OnsenSpawn",
+                "Onsen_Camera_Spawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "OnsenDev_GL_E_844Event_Challenge04",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [
+                "OnsenDead"
+              ],
+              "SpawnCommandIdList": [
+                "OnsenCommand"
+              ],
+              "MovePoints": [],
+              "TileX": 52,
+              "TileY": 215,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 2.45,
+                "y": 38.4
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "OnsenSpawn",
+                "Onsen_Camera_Spawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Dummy_C_2_844Event_Challenge04",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [
+                "OnsenDead",
+                "OnsenBossDead"
+              ],
+              "SpawnCommandIdList": [
+                "UntargetCheck",
+                "OnsenBossCommand"
+              ],
+              "MovePoints": [],
+              "TileX": 47,
+              "TileY": 263,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 1.46,
+                "y": 48.05
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "OnsenSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "EatofDie",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Haruna_E_844Event_Challenge04",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [
+                "EatorDieDead",
+                "HarunaDead"
+              ],
+              "SpawnCommandIdList": [
+                "EatorDieCommand"
+              ],
+              "MovePoints": [],
+              "TileX": 37,
+              "TileY": 289,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.59,
+                "y": 53.2800026
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "EatorDieSpawn",
+                "EatorDie_Camera_Spawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Izumi_E_844Event_Challenge04",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [
+                "EatorDieDead"
+              ],
+              "SpawnCommandIdList": [
+                "EatorDieCommand"
+              ],
+              "MovePoints": [],
+              "TileX": 50,
+              "TileY": 289,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 1.96,
+                "y": 53.2800026
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "EatorDieSpawn",
+                "EatorDie_Camera_Spawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Zunko_E_844Event_Challenge04",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [
+                "EatorDieDead"
+              ],
+              "SpawnCommandIdList": [
+                "EatorDieCommand"
+              ],
+              "MovePoints": [],
+              "TileX": 31,
+              "TileY": 282,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.82,
+                "y": 51.81
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "EatorDieSpawn",
+                "EatorDie_Camera_Spawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Akari_E_844Event_Challenge04",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [
+                "EatorDieDead"
+              ],
+              "SpawnCommandIdList": [
+                "EatorDieCommand"
+              ],
+              "MovePoints": [],
+              "TileX": 56,
+              "TileY": 282,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 3.22,
+                "y": 51.81
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "EatorDieSpawn",
+                "EatorDie_Camera_Spawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Dummy_C_3_844Event_Challenge04",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [
+                "EatorDieDead",
+                "Boss"
+              ],
+              "SpawnCommandIdList": [
+                "UntargetCheck",
+                "EatorDieBossCommand"
+              ],
+              "MovePoints": [],
+              "TileX": 40,
+              "TileY": 336,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.08,
+                "y": 62.72
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "EatorDieSpawn"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Formations": [
+    {
+      "SectionIndex": 0,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": 1.2
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 1,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": 17.37
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 1,
+      "IgnorePathFind": false,
+      "Index": 1,
+      "Position": {
+        "x": 0,
+        "y": 54.57
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    }
+  ],
+  "EnemyFormations": [],
+  "TemporaryCanUseSkillAreas": []
+}

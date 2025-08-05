@@ -1,0 +1,1383 @@
+{
+  "Version": "",
+  "Global": {
+    "Position": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "Events": [
+      {
+        "EventName": "SpawnPlayer",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": "0"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSpawnPlayer, BlueArchive",
+            "IsEnemy": false,
+            "IgnoreSkillCardShuffle": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 50,
+            "MaxCameraSpeed": 3,
+            "RotationSpeed": 1,
+            "ZoomSpeed": 1,
+            "RailPoints": [
+              {
+                "UseTableData": false,
+                "Position": {
+                  "x": -2,
+                  "y": 0,
+                  "z": -2.18
+                },
+                "MinCameraDistance": 33,
+                "MaxCameraDistance": 55,
+                "CameraForward": {
+                  "x": -0.803465664,
+                  "y": -0.426617652,
+                  "z": 0.415259331
+                }
+              },
+              {
+                "UseTableData": false,
+                "Position": {
+                  "x": -2,
+                  "y": 0,
+                  "z": 68.76
+                },
+                "MinCameraDistance": 33,
+                "MaxCameraDistance": 55,
+                "CameraForward": {
+                  "x": -0.803465664,
+                  "y": -0.426617652,
+                  "z": 0.415259331
+                }
+              }
+            ],
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandCameraShake, BlueArchive",
+            "StartDelay": 0,
+            "Duration": 1,
+            "Intensity": {
+              "x": 0,
+              "y": 0.25,
+              "z": 0
+            },
+            "YawPitchRoll": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "curvePath": "miscellaneous/curves/CurveContainer_ExpressTrain",
+            "Loop": true,
+            "CommandID": "Shake_Train",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 1,
+            "SetConditionCommandOnly": false,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "StartSection2",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 1,
+            "CheckSummonedCharacterDead": false,
+            "CheckDelayMilliSecond": 0,
+            "ConditionID": "SCondition_Enemy_1-2"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 2,
+            "SetConditionCommandOnly": false,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "StartSection3",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 1,
+            "CheckSummonedCharacterDead": false,
+            "CheckDelayMilliSecond": 0,
+            "ConditionID": "SCondition_Enemy_2-2"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 3,
+            "SetConditionCommandOnly": false,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "EndBattle",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 1,
+            "CheckSummonedCharacterDead": false,
+            "CheckDelayMilliSecond": 0,
+            "ConditionID": "SCondition_Enemy_2-2"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandEndBattle, BlueArchive",
+            "BattleEndType": 4,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      }
+    ]
+  },
+  "Sections": [
+    {
+      "SectionID": 1,
+      "Position": {
+        "x": -0.35,
+        "y": 0,
+        "z": 5
+      },
+      "Events": [
+        {
+          "EventName": "Spawn_Enemy_1-1",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "Command_Enemy_1-1",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "Spawn_Enemy_1-2",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+              "DeadCheck": 1,
+              "CheckSummonedCharacterDead": false,
+              "CheckDelayMilliSecond": 0,
+              "ConditionID": "SCondition_Enemy_1-1"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "Command_Enemy_1-2",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent_Enemy_1-1",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Soldier_Helmet_AR_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_1-1"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_1-1"
+              ],
+              "MovePoints": [],
+              "TileX": 88,
+              "TileY": 297,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.18999994,
+                "y": 15.67
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_1-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Soldier_Helmet_AR_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_1-1"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_1-1"
+              ],
+              "MovePoints": [],
+              "TileX": 98,
+              "TileY": 296,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.909999967,
+                "y": 15.58
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_1-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Soldier_Helmet_SG_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_1-1"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_1-1"
+              ],
+              "MovePoints": [],
+              "TileX": 94,
+              "TileY": 283,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.01000002,
+                "y": 12.960001
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_1-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Soldier_Helmet_SR_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_1-1"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_1-1"
+              ],
+              "MovePoints": [],
+              "TileX": 91,
+              "TileY": 309,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.44,
+                "y": 18.16
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_1-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointParent_Enemy_1-2",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Ladies_Biker_AR_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_1-2"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_1-2"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 86,
+                  "TileY": 324,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -1.41000032,
+                    "y": 21.0700016
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 86,
+              "TileY": 342,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.41,
+                "y": 24.79
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_1-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Ladies_Biker_SG_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_1-2"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_1-2"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 94,
+                  "TileY": 318,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.009999633,
+                    "y": 19.93
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 94,
+              "TileY": 340,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.01000002,
+                "y": 24.43
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_1-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Ladies_Biker_MG_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_1-2"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_1-2"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 97,
+                  "TileY": 330,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.754999638,
+                    "y": 22.424
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 97,
+              "TileY": 350,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.755,
+                "y": 26.24
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_1-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Ladies_Biker_MG_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "B",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_1-2"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_1-2"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 89,
+                  "TileY": 330,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.8400003,
+                    "y": 22.33
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 89,
+              "TileY": 346,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.840000033,
+                "y": 25.48
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_1-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "SectionID": 2,
+      "Position": {
+        "x": -0.35,
+        "y": 0,
+        "z": 5
+      },
+      "Events": [
+        {
+          "EventName": "Spawn_Enemy_2-1",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "Command_Enemy_2-1",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "Spawn_Enemy_2-2",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+              "DeadCheck": 1,
+              "CheckSummonedCharacterDead": false,
+              "CheckDelayMilliSecond": 0,
+              "ConditionID": "SCondition_Enemy_2-1"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "Command_Enemy_2-2",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [
+        {
+          "UniqueName": "TrainRoof_Railing_01_Standard",
+          "Position": {
+            "x": -2,
+            "y": 0,
+            "z": 30.77
+          },
+          "Forward": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "TrainRoof_ExhaustPort_Jump_01_Standard",
+          "Position": {
+            "x": 1.43,
+            "y": 0,
+            "z": 31.63
+          },
+          "Forward": {
+            "x": 0.999986053,
+            "y": 0,
+            "z": -0.005283796
+          },
+          "ActiveEnemyPointIndices": [
+            2
+          ],
+          "ActivePlayerPointIndices": [
+            3
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        }
+      ],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent_Enemy_2-1",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Soldier_Helmet_SG_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-1"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-1"
+              ],
+              "MovePoints": [],
+              "TileX": 90,
+              "TileY": 383,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.6,
+                "y": 32.92
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Soldier_Helmet_AR_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-1"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-1"
+              ],
+              "MovePoints": [],
+              "TileX": 86,
+              "TileY": 396,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.50900006,
+                "y": 35.55
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Soldier_Helmet_SR_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-1"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-1"
+              ],
+              "MovePoints": [],
+              "TileX": 90,
+              "TileY": 410,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.77,
+                "y": 38.3
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Soldier_Helmet_SR_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-1"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-1"
+              ],
+              "MovePoints": [],
+              "TileX": 97,
+              "TileY": 410,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.6999999,
+                "y": 38.3749962
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Soldier_Helmet_SG_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-1"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-1"
+              ],
+              "MovePoints": [],
+              "TileX": 96,
+              "TileY": 383,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.46,
+                "y": 33.02
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Soldier_Helmet_AR_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-1"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-1"
+              ],
+              "MovePoints": [],
+              "TileX": 92,
+              "TileY": 397,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.37,
+                "y": 35.65
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointParent_Enemy_2-2",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Ladies_Biker_MG_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "D",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-2"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-2"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 88,
+                  "TileY": 436,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -1.1900003,
+                    "y": 43.4800034
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 88,
+              "TileY": 459,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -1.18999994,
+                "y": 48.06
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Ladies_Biker_MG_M",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "D",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-2"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-2"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 98,
+                  "TileY": 436,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.9429996,
+                    "y": 43.54
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 98,
+              "TileY": 459,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.942999959,
+                "y": 48.06
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Ladies_Biker_SG_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "D",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-2"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-2"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 90,
+                  "TileY": 418,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": -0.6400006,
+                    "y": 40.0200043
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 90,
+              "TileY": 454,
+              "PositionHeight": 0,
+              "Position": {
+                "x": -0.64,
+                "y": 47.1900024
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Ladies_Biker_SG_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "D",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-2"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-2"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 97,
+                  "TileY": 418,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.633999467,
+                    "y": 40.039
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 97,
+              "TileY": 455,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.634000063,
+                "y": 47.2590027
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Ladies_Biker_AR_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "D",
+              "SpawnConditionIdList": [
+                "SCondition_Enemy_2-2"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Enemy_2-2"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 94,
+                  "TileY": 429,
+                  "PositionHeight": 0,
+                  "Position": {
+                    "x": 0.009999514,
+                    "y": 42.1900024
+                  },
+                  "Direction": {
+                    "x": -8.742278e-08,
+                    "y": -1
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 94,
+              "TileY": 459,
+              "PositionHeight": 0,
+              "Position": {
+                "x": 0.01000002,
+                "y": 48.06
+              },
+              "Direction": {
+                "x": -8.742278e-08,
+                "y": -1
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Command_Enemy_2-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Formations": [
+    {
+      "SectionIndex": 0,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": -3.27
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 1,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": 26.13
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 2,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": 54.18
+      },
+      "Forward": {
+        "x": 0,
+        "y": 1
+      },
+      "Height": 0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 3,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0,
+        "y": 61.73
+      },
+      "Forward": {
+        "x": -0.8661931,
+        "y": 0.499709427
+      },
+      "Height": 0,
+      "IsEnemy": false
+    }
+  ],
+  "EnemyFormations": [],
+  "TemporaryCanUseSkillAreas": []
+}
