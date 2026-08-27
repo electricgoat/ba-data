@@ -1,0 +1,720 @@
+{
+  "Version": "",
+  "Global": {
+    "Position": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "Events": [
+      {
+        "EventName": "SpawnPlayer",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": "0"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSpawnPlayer, BlueArchive",
+            "IsEnemy": false,
+            "IgnoreSkillCardShuffle": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 1,
+            "MaxCameraSpeed": 5.0,
+            "RotationSpeed": 5.0,
+            "ZoomSpeed": 5.0,
+            "RailPoints": [
+              {
+                "UseTableData": false,
+                "Position": {
+                  "x": -2.3,
+                  "y": 0.0,
+                  "z": 495.7
+                },
+                "MinCameraDistance": 49.0,
+                "MaxCameraDistance": 49.0,
+                "CameraForward": {
+                  "x": -0.584139764,
+                  "y": -0.563526154,
+                  "z": 0.5841396
+                }
+              }
+            ],
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 1,
+            "SetConditionCommandOnly": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "StartSection1",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 0,
+            "CheckSummonedCharacterDead": false,
+            "CheckDelayMilliSecond": 0,
+            "ConditionID": "CharacterDead2PhaseFirst"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandForceUpdateRaidBossIndex, BlueArchive",
+            "RaidBossIndex": 2,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandChangeGroundNodeType, BlueArchive",
+            "ShapeType": 0,
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 502.81
+            },
+            "Rect": {
+              "Direction": {
+                "x": 0.0,
+                "y": 1.0
+              },
+              "Width": 25.0,
+              "Height": 3.0
+            },
+            "Circle": {
+              "Radius": 1.0
+            },
+            "GroundNodeTypeToChange": 1,
+            "IsResetToOriginal": false,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 1,
+            "MaxCameraSpeed": 5.0,
+            "RotationSpeed": 5.0,
+            "ZoomSpeed": 5.0,
+            "RailPoints": [
+              {
+                "UseTableData": false,
+                "Position": {
+                  "x": -1.7,
+                  "y": 0.0,
+                  "z": 530.0
+                },
+                "MinCameraDistance": 35.0,
+                "MaxCameraDistance": 35.0,
+                "CameraForward": {
+                  "x": -0.6123724,
+                  "y": -0.5000002,
+                  "z": 0.6123724
+                }
+              }
+            ],
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 2,
+            "SetConditionCommandOnly": false,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "EndBattle",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 0,
+            "CheckSummonedCharacterDead": false,
+            "CheckDelayMilliSecond": 0,
+            "ConditionID": "CharacterDead3PhaseBossDead"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandBattleTimer, BlueArchive",
+            "Stop": true,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandFadeOutIn, BlueArchive",
+            "DelayBeforeFadeOut": 0.0,
+            "DelayBeforeFadeIn": 2.0,
+            "VisualDelayFadeInStart": 2.0,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+            "Milliseconds": 1000,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandForceIdle, BlueArchive",
+            "IsForceIdleOn": true,
+            "CommandID": "Player_command",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandPlayTimeline, BlueArchive",
+            "TimelinePath": "Timeline/Timeline_EN0013_Original_ED",
+            "UseGameTime": false,
+            "CanSkip": false,
+            "FadeInImmediately": false,
+            "FadeInWhenStart": false,
+            "FadeOutInWhenEnd": false,
+            "FadeInWhenEnd": false,
+            "ForceExecuteEndTimeOnPlaying": 13000,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandEndBattle, BlueArchive",
+            "BattleEndType": 4,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "Area1On",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": ""
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandTemporaryCanUseSkillArea, BlueArchive",
+            "OnOff": true,
+            "TemporaryCanUseSkillAreaCommandId": "Area1",
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "Area1Off",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 0,
+            "CheckSummonedCharacterDead": false,
+            "CheckDelayMilliSecond": 0,
+            "ConditionID": "CharacterDead2PhaseFirst"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandTemporaryCanUseSkillArea, BlueArchive",
+            "OnOff": false,
+            "TemporaryCanUseSkillAreaCommandId": "Area1",
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "Area2On",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionArea, BlueArchive",
+            "SpawnTemplateId": "",
+            "Shape": 1,
+            "Target": 0,
+            "Trigger": 0,
+            "StayTime": 0,
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 508.04
+            },
+            "Rect": {
+              "Direction": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "Width": 1.0,
+              "Height": 1.0
+            },
+            "Circle": {
+              "Radius": 10.0
+            },
+            "InactivateWhenStart": false,
+            "ConditionID": "0"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandTemporaryCanUseSkillArea, BlueArchive",
+            "OnOff": true,
+            "TemporaryCanUseSkillAreaCommandId": "Area2",
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      }
+    ]
+  },
+  "Sections": [
+    {
+      "SectionID": 1,
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 25.0
+      },
+      "Events": [
+        {
+          "EventName": "Spawn2PhaseBoss",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundConditionArea, BlueArchive",
+              "SpawnTemplateId": "",
+              "Shape": 1,
+              "Target": 0,
+              "Trigger": 0,
+              "StayTime": 0,
+              "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 486.43
+              },
+              "Rect": {
+                "Direction": {
+                  "x": 0.0,
+                  "y": 0.0
+                },
+                "Width": 1.0,
+                "Height": 1.0
+              },
+              "Circle": {
+                "Radius": 10.0
+              },
+              "InactivateWhenStart": false,
+              "ConditionID": "0"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "Spawn2PhaseBoss",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandChangeGroundNodeType, BlueArchive",
+              "ShapeType": 0,
+              "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 502.81
+              },
+              "Rect": {
+                "Direction": {
+                  "x": 0.0,
+                  "y": 1.0
+                },
+                "Width": 25.0,
+                "Height": 2.0
+              },
+              "Circle": {
+                "Radius": 1.0
+              },
+              "GroundNodeTypeToChange": 2147483647,
+              "IsResetToOriginal": false,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandLocateCamera, BlueArchive",
+              "ID": 1,
+              "MaxCameraSpeed": 5.0,
+              "RotationSpeed": 5.0,
+              "ZoomSpeed": 5.0,
+              "RailPoints": [
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": -2.3,
+                    "y": 0.0,
+                    "z": 495.7
+                  },
+                  "MinCameraDistance": 49.0,
+                  "MaxCameraDistance": 49.0,
+                  "CameraForward": {
+                    "x": -0.584139764,
+                    "y": -0.563526154,
+                    "z": 0.5841396
+                  }
+                }
+              ],
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Immortal",
+              "isAdd": true,
+              "CommandID": "BeImmortal",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 5000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Immortal",
+              "isAdd": false,
+              "CommandID": "NotBeImmortal",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandOperator, BlueArchive",
+              "GroupId": "EN0013_2PhaseStart",
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent2PhaseFirstBoss",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EN0013_Original_RightHand01_Street_ElasticArmor_Hard",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "CharacterDead2PhaseFirst"
+              ],
+              "SpawnCommandIdList": [
+                "BeImmortal",
+                "NotBeImmortal"
+              ],
+              "MovePoints": [],
+              "TileX": 31,
+              "TileY": 2770,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.5,
+                "y": 501.07
+              },
+              "Direction": {
+                "x": 0.0,
+                "y": 1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Spawn2PhaseBoss"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "SectionID": 2,
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 25.0
+      },
+      "Events": [
+        {
+          "EventName": "Spawn3PhaseBoss",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionArea, BlueArchive",
+              "SpawnTemplateId": "",
+              "Shape": 1,
+              "Target": 0,
+              "Trigger": 0,
+              "StayTime": 0,
+              "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 508.04
+              },
+              "Rect": {
+                "Direction": {
+                  "x": 0.0,
+                  "y": 0.0
+                },
+                "Width": 1.0,
+                "Height": 1.0
+              },
+              "Circle": {
+                "Radius": 10.0
+              },
+              "InactivateWhenStart": false,
+              "ConditionID": "0"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "Spawn3PhaseBoss",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandChangeGroundNodeType, BlueArchive",
+              "ShapeType": 0,
+              "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 521.49
+              },
+              "Rect": {
+                "Direction": {
+                  "x": 0.0,
+                  "y": 1.0
+                },
+                "Width": 25.0,
+                "Height": 2.0
+              },
+              "Circle": {
+                "Radius": 1.0
+              },
+              "GroundNodeTypeToChange": 2147483647,
+              "IsResetToOriginal": false,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandLocateCamera, BlueArchive",
+              "ID": 1,
+              "MaxCameraSpeed": 5.0,
+              "RotationSpeed": 1.0,
+              "ZoomSpeed": 1.0,
+              "RailPoints": [
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": -2.3,
+                    "y": 0.0,
+                    "z": 515.0
+                  },
+                  "MinCameraDistance": 49.0,
+                  "MaxCameraDistance": 49.0,
+                  "CameraForward": {
+                    "x": -0.584139764,
+                    "y": -0.563526154,
+                    "z": 0.5841396
+                  }
+                }
+              ],
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Immortal",
+              "isAdd": true,
+              "CommandID": "BeImmortal",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 5000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Immortal",
+              "isAdd": false,
+              "CommandID": "NotBeImmortal",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent3PhaseBoss",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EN0013_Original_RightHand02_Street_ElasticArmor_Hard",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "CharacterDead3PhaseBossDead"
+              ],
+              "SpawnCommandIdList": [
+                "BeImmortal",
+                "NotBeImmortal"
+              ],
+              "MovePoints": [],
+              "TileX": 31,
+              "TileY": 2861,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.5,
+                "y": 519.22
+              },
+              "Direction": {
+                "x": 0.0,
+                "y": 1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Spawn3PhaseBoss"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Formations": [
+    {
+      "SectionIndex": 0,
+      "IgnorePathFind": true,
+      "Index": 0,
+      "Position": {
+        "x": 0.5,
+        "y": 477.45
+      },
+      "Forward": {
+        "x": 0.0,
+        "y": 1.0
+      },
+      "Height": 0.0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 1,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0.5,
+        "y": 498.28
+      },
+      "Forward": {
+        "x": 0.0,
+        "y": 1.0
+      },
+      "Height": 0.0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 2,
+      "IgnorePathFind": true,
+      "Index": 0,
+      "Position": {
+        "x": 0.5,
+        "y": 525.56
+      },
+      "Forward": {
+        "x": 0.0,
+        "y": 1.0
+      },
+      "Height": 0.0,
+      "IsEnemy": false
+    }
+  ],
+  "EnemyFormations": [],
+  "TemporaryCanUseSkillAreas": [
+    {
+      "IsHideVisual": false,
+      "CommandId": "Area2",
+      "Radius": 2500,
+      "GroupTag": 1,
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 495.4
+      },
+      "RadiusSqr": 0.0,
+      "Position2D": {
+        "x": 0.0,
+        "y": 0.0
+      }
+    },
+    {
+      "IsHideVisual": false,
+      "CommandId": "Area3",
+      "Radius": 2500,
+      "GroupTag": 1,
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 523.02
+      },
+      "RadiusSqr": 0.0,
+      "Position2D": {
+        "x": 0.0,
+        "y": 0.0
+      }
+    }
+  ]
+}

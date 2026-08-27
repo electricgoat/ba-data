@@ -1,0 +1,1454 @@
+{
+  "Version": "1.0",
+  "Global": {
+    "Position": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "Events": [
+      {
+        "EventName": "SpawnPlayer",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": "0"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSpawnPlayer, BlueArchive",
+            "IsEnemy": false,
+            "IgnoreSkillCardShuffle": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 2,
+            "MaxCameraSpeed": 3.0,
+            "RotationSpeed": 1.0,
+            "ZoomSpeed": 3.0,
+            "RailPoints": [
+              {
+                "UseTableData": false,
+                "Position": {
+                  "x": 1.07,
+                  "y": 1.45,
+                  "z": 93.81
+                },
+                "MinCameraDistance": 30.0,
+                "MaxCameraDistance": 30.0,
+                "CameraForward": {
+                  "x": -0.8034659,
+                  "y": -0.426618159,
+                  "z": 0.415258348
+                }
+              },
+              {
+                "UseTableData": false,
+                "Position": {
+                  "x": 1.07,
+                  "y": 1.45,
+                  "z": 100.26
+                },
+                "MinCameraDistance": 35.0,
+                "MaxCameraDistance": 35.0,
+                "CameraForward": {
+                  "x": -0.8034659,
+                  "y": -0.426618159,
+                  "z": 0.415258348
+                }
+              }
+            ],
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 1,
+            "SetConditionCommandOnly": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "EndBattle",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 0,
+            "CheckSummonedCharacterDead": false,
+            "CheckDelayMilliSecond": 0,
+            "ConditionID": "Enemy"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "GroundCommandHideHPBar, BlueArchive",
+            "IsShow": false,
+            "CommandID": "Player_command",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+            "heroStatus": "ForcedIdle",
+            "isAdd": true,
+            "CommandID": "Player_command",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+            "heroStatus": "ForcedIdle",
+            "isAdd": true,
+            "CommandID": "NPC",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandShowBattleUI, BlueArchive",
+            "DisappearInstantly": false,
+            "IsShowBattleUI": false,
+            "IsShowEmoji": false,
+            "IsShowSpeechBubble": false,
+            "ShowBattleStartSign": false,
+            "SoundOn": true,
+            "BGMOn": true,
+            "BGMId": null,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSetTimeScale, BlueArchive",
+            "TimeScale": 0.4,
+            "DurationInMilliseconds": 10000,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandBattleTimer, BlueArchive",
+            "Stop": true,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 2,
+            "MaxCameraSpeed": 3.0,
+            "RotationSpeed": 1.0,
+            "ZoomSpeed": 5.0,
+            "RailPoints": [
+              {
+                "UseTableData": false,
+                "Position": {
+                  "x": 1.799,
+                  "y": 1.45,
+                  "z": 103.103
+                },
+                "MinCameraDistance": 15.0,
+                "MaxCameraDistance": 15.0,
+                "CameraForward": {
+                  "x": -0.8034659,
+                  "y": -0.426618159,
+                  "z": 0.415258348
+                }
+              }
+            ],
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+            "Milliseconds": 3500,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandEndBattle, BlueArchive",
+            "BattleEndType": 4,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      }
+    ]
+  },
+  "Sections": [
+    {
+      "SectionID": 1,
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 5.0
+      },
+      "Events": [
+        {
+          "EventName": "SpawnEN0014_Original",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 0,
+              "CommandID": "SpawnBoss",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 1500,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandRemoveFromCameraTarget, BlueArchive",
+              "EntityCommandIds": [
+                "Player_command",
+                "NPC",
+                "Boss"
+              ],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandLocateCamera, BlueArchive",
+              "ID": 2,
+              "MaxCameraSpeed": 3.0,
+              "RotationSpeed": 1.0,
+              "ZoomSpeed": 3.0,
+              "RailPoints": [
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": 1.07,
+                    "y": 1.45,
+                    "z": 100.26
+                  },
+                  "MinCameraDistance": 30.0,
+                  "MaxCameraDistance": 30.0,
+                  "CameraForward": {
+                    "x": -0.8034659,
+                    "y": -0.426618159,
+                    "z": 0.415258348
+                  }
+                }
+              ],
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "SpawnNPC",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 30000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 0,
+              "CommandID": "SpawnNPC1",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 15000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandLocateCamera, BlueArchive",
+              "ID": 2,
+              "MaxCameraSpeed": 3.0,
+              "RotationSpeed": 1.0,
+              "ZoomSpeed": 1.0,
+              "RailPoints": [
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": 1.07,
+                    "y": 1.45,
+                    "z": 100.26
+                  },
+                  "MinCameraDistance": 40.0,
+                  "MaxCameraDistance": 40.0,
+                  "CameraForward": {
+                    "x": -0.8034659,
+                    "y": -0.426618159,
+                    "z": 0.415258348
+                  }
+                }
+              ],
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 0,
+              "CommandID": "SpawnNPC2",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "RespawnNPC1-1",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+              "DeadCheck": 0,
+              "CheckSummonedCharacterDead": false,
+              "CheckDelayMilliSecond": 0,
+              "ConditionID": "DeadNPC1-1"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 3000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 0,
+              "CommandID": "SpawnNPC1-1",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "RespawnNPC1-2",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+              "DeadCheck": 0,
+              "CheckSummonedCharacterDead": false,
+              "CheckDelayMilliSecond": 0,
+              "ConditionID": "DeadNPC1-2"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 3000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 0,
+              "CommandID": "SpawnNPC1-2",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "RespawnNPC1-3",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+              "DeadCheck": 0,
+              "CheckSummonedCharacterDead": false,
+              "CheckDelayMilliSecond": 0,
+              "ConditionID": "DeadNPC1-3"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 3000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 0,
+              "CommandID": "SpawnNPC1-3",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "RespawnNPC1-4",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+              "DeadCheck": 0,
+              "CheckSummonedCharacterDead": false,
+              "CheckDelayMilliSecond": 0,
+              "ConditionID": "DeadNPC1-4"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 3000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 0,
+              "CommandID": "SpawnNPC1-4",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "RespawnNPC2-1",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+              "DeadCheck": 0,
+              "CheckSummonedCharacterDead": false,
+              "CheckDelayMilliSecond": 0,
+              "ConditionID": "DeadNPC2-1"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 3000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 0,
+              "CommandID": "SpawnNPC2-1",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "RespawnNPC2-2",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+              "DeadCheck": 0,
+              "CheckSummonedCharacterDead": false,
+              "CheckDelayMilliSecond": 0,
+              "ConditionID": "DeadNPC2-2"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 3000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 0,
+              "CommandID": "SpawnNPC2-2",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "RespawnNPC2-3",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+              "DeadCheck": 0,
+              "CheckSummonedCharacterDead": false,
+              "CheckDelayMilliSecond": 0,
+              "ConditionID": "DeadNPC2-3"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 3000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 0,
+              "CommandID": "SpawnNPC2-3",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "RespawnNPC2-4",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+              "DeadCheck": 0,
+              "CheckSummonedCharacterDead": false,
+              "CheckDelayMilliSecond": 0,
+              "ConditionID": "DeadNPC2-4"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 3000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 0,
+              "CommandID": "SpawnNPC2-4",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [
+        {
+          "UniqueName": "Hieronymus_bench_01",
+          "Position": {
+            "x": 0.805,
+            "y": 0.0,
+            "z": 97.815
+          },
+          "Forward": {
+            "x": -0.009106603,
+            "y": 0.0,
+            "z": 0.9999585
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Hieronymus_rock_01",
+          "Position": {
+            "x": -1.635,
+            "y": 0.0,
+            "z": 98.1349945
+          },
+          "Forward": {
+            "x": 0.9820813,
+            "y": 0.0,
+            "z": 0.188457653
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [
+            3
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Hieronymus_rock_03",
+          "Position": {
+            "x": -5.26,
+            "y": 0.0,
+            "z": 102.39
+          },
+          "Forward": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 1.0
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Hieronymus_rock_01",
+          "Position": {
+            "x": -2.84,
+            "y": 0.0,
+            "z": 94.8999939
+          },
+          "Forward": {
+            "x": 0.7749139,
+            "y": 0.0,
+            "z": 0.6320668
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Hieronymus_rock_02",
+          "Position": {
+            "x": -4.47,
+            "y": 0.0,
+            "z": 97.18
+          },
+          "Forward": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": -1.0
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Hieronymus_rock_02",
+          "Position": {
+            "x": -2.89,
+            "y": 0.0,
+            "z": 96.1499939
+          },
+          "Forward": {
+            "x": -0.0365714468,
+            "y": 0.0,
+            "z": 0.999331057
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Hieronymus_bench_01",
+          "Position": {
+            "x": 4.13,
+            "y": 0.0,
+            "z": 95.81
+          },
+          "Forward": {
+            "x": -0.258615136,
+            "y": 0.0,
+            "z": 0.9659804
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Hieronymus_rock_01",
+          "Position": {
+            "x": -1.11,
+            "y": 0.0,
+            "z": 100.31
+          },
+          "Forward": {
+            "x": -0.172354415,
+            "y": 0.0,
+            "z": 0.985035
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Hieronymus_rock_02",
+          "Position": {
+            "x": 2.67,
+            "y": 0.0,
+            "z": 100.69
+          },
+          "Forward": {
+            "x": -0.331047982,
+            "y": 0.0,
+            "z": 0.943613946
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Hieronymus_bench_01",
+          "Position": {
+            "x": 5.1,
+            "y": 0.0,
+            "z": 96.6
+          },
+          "Forward": {
+            "x": 0.6363175,
+            "y": 0.0,
+            "z": 0.7714273
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Hieronymus_bench_01",
+          "Position": {
+            "x": -3.58999968,
+            "y": 0.0,
+            "z": 102.03
+          },
+          "Forward": {
+            "x": 0.7903354,
+            "y": 0.0,
+            "z": 0.6126744
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Hieronymus_rock_02",
+          "Position": {
+            "x": 5.74,
+            "y": 0.0,
+            "z": 107.57
+          },
+          "Forward": {
+            "x": -0.331047982,
+            "y": 0.0,
+            "z": 0.943613946
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Hieronymus_rock_02",
+          "Position": {
+            "x": 6.75,
+            "y": 0.0,
+            "z": 105.810005
+          },
+          "Forward": {
+            "x": -0.672435641,
+            "y": 0.0,
+            "z": 0.740155637
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        }
+      ],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointEN0014_Original",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EN0014_Original_05",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "Enemy"
+              ],
+              "SpawnCommandIdList": [
+                "Boss"
+              ],
+              "MovePoints": [],
+              "TileX": 55,
+              "TileY": 520,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 8.940697E-7,
+                "y": 104.0
+              },
+              "Direction": {
+                "x": 8.940697E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "SpawnBoss"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointNPC1",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "GasMask_Arius_GL_NPC",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "DeadNPC1-1"
+              ],
+              "SpawnCommandIdList": [
+                "NPC"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 42,
+                  "TileY": 499,
+                  "PositionHeight": 0.0,
+                  "Position": {
+                    "x": -2.53,
+                    "y": 99.7
+                  },
+                  "Direction": {
+                    "x": 0.0,
+                    "y": 1.0
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 50,
+              "TileY": 445,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.83,
+                "y": 88.95
+              },
+              "Direction": {
+                "x": 0.0,
+                "y": 1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "SpawnNPC1",
+                "SpawnNPC1-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "GasMask_Arius_MG_NPC",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "DeadNPC1-2"
+              ],
+              "SpawnCommandIdList": [
+                "NPC"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 44,
+                  "TileY": 484,
+                  "PositionHeight": 0.0,
+                  "Position": {
+                    "x": -2.09,
+                    "y": 96.76
+                  },
+                  "Direction": {
+                    "x": 0.0,
+                    "y": 1.0
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 36,
+                  "TileY": 496,
+                  "PositionHeight": 0.0,
+                  "Position": {
+                    "x": -3.80000019,
+                    "y": 99.2
+                  },
+                  "Direction": {
+                    "x": 0.0,
+                    "y": 1.0
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 48,
+              "TileY": 445,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -1.39,
+                "y": 89.03
+              },
+              "Direction": {
+                "x": 0.0,
+                "y": 1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "SpawnNPC1",
+                "SpawnNPC1-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "GasMask_Arius_GL_NPC",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "DeadNPC1-3"
+              ],
+              "SpawnCommandIdList": [
+                "NPC"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 40,
+                  "TileY": 496,
+                  "PositionHeight": 0.0,
+                  "Position": {
+                    "x": -2.83,
+                    "y": 99.16
+                  },
+                  "Direction": {
+                    "x": 0.0,
+                    "y": 1.0
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 37,
+                  "TileY": 502,
+                  "PositionHeight": 0.0,
+                  "Position": {
+                    "x": -3.43,
+                    "y": 100.4
+                  },
+                  "Direction": {
+                    "x": 0.0,
+                    "y": 1.0
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 52,
+              "TileY": 454,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.49,
+                "y": 90.75
+              },
+              "Direction": {
+                "x": 0.0,
+                "y": 1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "SpawnNPC1",
+                "SpawnNPC1-3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "GasMask_Arius_SMG_NPC",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "DeadNPC1-4"
+              ],
+              "SpawnCommandIdList": [
+                "NPC"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 44,
+                  "TileY": 509,
+                  "PositionHeight": 0.0,
+                  "Position": {
+                    "x": -2.08000016,
+                    "y": 101.74
+                  },
+                  "Direction": {
+                    "x": 0.0,
+                    "y": 1.0
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 44,
+              "TileY": 453,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -2.18,
+                "y": 90.69
+              },
+              "Direction": {
+                "x": 0.0,
+                "y": 1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "SpawnNPC1",
+                "SpawnNPC1-4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointNPC2",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "GasMask_Arius_MG_NPC",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "DeadNPC2-1"
+              ],
+              "SpawnCommandIdList": [
+                "NPC"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 63,
+                  "TileY": 495,
+                  "PositionHeight": 0.0,
+                  "Position": {
+                    "x": 1.7,
+                    "y": 99.03
+                  },
+                  "Direction": {
+                    "x": 0.0,
+                    "y": 1.0
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 61,
+              "TileY": 445,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.23,
+                "y": 89.03
+              },
+              "Direction": {
+                "x": 0.0,
+                "y": 1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "SpawnNPC2",
+                "SpawnNPC2-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "GasMask_Arius_MG_NPC",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "DeadNPC2-2"
+              ],
+              "SpawnCommandIdList": [
+                "NPC"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 78,
+                  "TileY": 503,
+                  "PositionHeight": 0.0,
+                  "Position": {
+                    "x": 4.76,
+                    "y": 100.65
+                  },
+                  "Direction": {
+                    "x": 0.0,
+                    "y": 1.0
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 63,
+              "TileY": 446,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.71,
+                "y": 89.15
+              },
+              "Direction": {
+                "x": 0.0,
+                "y": 1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "SpawnNPC2",
+                "SpawnNPC2-2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "GasMask_Arius_SMG_NPC",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "DeadNPC2-3"
+              ],
+              "SpawnCommandIdList": [
+                "NPC"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 74,
+                  "TileY": 509,
+                  "PositionHeight": 0.0,
+                  "Position": {
+                    "x": 3.81,
+                    "y": 101.75
+                  },
+                  "Direction": {
+                    "x": 0.0,
+                    "y": 1.0
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                },
+                {
+                  "NeedFindPath": false,
+                  "TileX": 69,
+                  "TileY": 511,
+                  "PositionHeight": 0.0,
+                  "Position": {
+                    "x": 2.94,
+                    "y": 102.25
+                  },
+                  "Direction": {
+                    "x": 0.0,
+                    "y": 1.0
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 72,
+              "TileY": 454,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 3.52,
+                "y": 90.83
+              },
+              "Direction": {
+                "x": 0.0,
+                "y": 1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "SpawnNPC2",
+                "SpawnNPC2-3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "GasMask_Arius_GL_NPC",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "DeadNPC2-4"
+              ],
+              "SpawnCommandIdList": [
+                "NPC"
+              ],
+              "MovePoints": [
+                {
+                  "NeedFindPath": false,
+                  "TileX": 69,
+                  "TileY": 497,
+                  "PositionHeight": 0.0,
+                  "Position": {
+                    "x": 2.87999988,
+                    "y": 99.340004
+                  },
+                  "Direction": {
+                    "x": 0.0,
+                    "y": 1.0
+                  },
+                  "ConditionIdList": [],
+                  "CommandIdList": [],
+                  "EntityId": {
+                    "uniqueId": 0
+                  },
+                  "Active": false
+                }
+              ],
+              "TileX": 65,
+              "TileY": 450,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 2.1,
+                "y": 90.01
+              },
+              "Direction": {
+                "x": 0.0,
+                "y": 1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "SpawnNPC2",
+                "SpawnNPC2-4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Formations": [
+    {
+      "SectionIndex": 0,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": -0.5,
+        "y": 88.89
+      },
+      "Forward": {
+        "x": 0.0,
+        "y": 1.0
+      },
+      "Height": 0.0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 1,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": -0.5,
+        "y": 101.22
+      },
+      "Forward": {
+        "x": 0.0,
+        "y": 1.0
+      },
+      "Height": 0.0,
+      "IsEnemy": false
+    }
+  ],
+  "EnemyFormations": [],
+  "TemporaryCanUseSkillAreas": []
+}

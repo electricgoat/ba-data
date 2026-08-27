@@ -2,9 +2,9 @@
   "Version": "1.0",
   "Global": {
     "Position": {
-      "x": 1.74,
+      "x": 0.0,
       "y": 0.0,
-      "z": 9.393
+      "z": 0.0
     },
     "Events": [
       {
@@ -18,50 +18,35 @@
         ],
         "Commands": [
           {
-            "$type": "MX.Logic.Battles.GroundCommandSpawnPlayer, BlueArchive",
-            "IsEnemy": false,
-            "IgnoreSkillCardShuffle": false,
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 103,
+            "MaxCameraSpeed": 3.0,
+            "RotationSpeed": 1.0,
+            "ZoomSpeed": 3.0,
+            "RailPoints": [
+              {
+                "UseTableData": false,
+                "Position": {
+                  "x": 11.6531172,
+                  "y": 0.319999933,
+                  "z": 17.4458
+                },
+                "MinCameraDistance": 20.0,
+                "MaxCameraDistance": 20.0,
+                "CameraForward": {
+                  "x": 0.909627259,
+                  "y": -0.11662899,
+                  "z": -0.398718059
+                }
+              }
+            ],
             "CommandID": "0",
             "WaitExecuteEnd": false
           },
           {
-            "$type": "GroundCommandLocateCamera, BlueArchive",
-            "ID": 2,
-            "MaxCameraSpeed": 3.0,
-            "RotationSpeed": 1.0,
-            "ZoomSpeed": 1.0,
-            "RailPoints": [
-              {
-                "UseTableData": true,
-                "Position": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
-                },
-                "MinCameraDistance": 42.0,
-                "MaxCameraDistance": 42.0,
-                "CameraForward": {
-                  "x": -0.8034659,
-                  "y": -0.426618159,
-                  "z": 0.415258348
-                }
-              },
-              {
-                "UseTableData": true,
-                "Position": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 18.93
-                },
-                "MinCameraDistance": 42.0,
-                "MaxCameraDistance": 42.0,
-                "CameraForward": {
-                  "x": -0.8034659,
-                  "y": -0.426618159,
-                  "z": 0.415258348
-                }
-              }
-            ],
+            "$type": "MX.Logic.Battles.GroundCommandSpawnPlayer, BlueArchive",
+            "IsEnemy": false,
+            "IgnoreSkillCardShuffle": false,
             "CommandID": "0",
             "WaitExecuteEnd": false
           },
@@ -73,20 +58,585 @@
             "WaitExecuteEnd": false
           },
           {
-            "$type": "MX.Logic.Battles.GroundCommandOperator, BlueArchive",
-            "GroupId": "WeekDungeonCombatStart_03_01",
-            "CommandID": "0",
+            "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+            "Milliseconds": 6500,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandShowBattleUI, BlueArchive",
+            "DisappearInstantly": true,
+            "IsShowBattleUI": true,
+            "IsShowEmoji": true,
+            "IsShowSpeechBubble": true,
+            "ShowBattleStartSign": true,
+            "SoundOn": true,
+            "BGMOn": true,
+            "BGMId": null,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "EndBattle",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 0,
+            "CheckSummonedCharacterDead": false,
+            "CheckDelayMilliSecond": 0,
+            "ConditionID": "ConditionBoss"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandBattleTimer, BlueArchive",
+            "Stop": true,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandShowBattleUI, BlueArchive",
+            "DisappearInstantly": false,
+            "IsShowBattleUI": false,
+            "IsShowEmoji": false,
+            "IsShowSpeechBubble": false,
+            "ShowBattleStartSign": false,
+            "SoundOn": true,
+            "BGMOn": true,
+            "BGMId": null,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandHideHPBar, BlueArchive",
+            "IsShow": false,
+            "CommandID": "CommandNPC_2",
             "WaitExecuteEnd": false
           },
           {
             "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
-            "Milliseconds": 180000,
+            "Milliseconds": 8000,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandSkipBattleResult, BlueArchive",
             "CommandID": "",
             "WaitExecuteEnd": false
           },
           {
             "$type": "MX.Logic.Battles.GroundCommandEndBattle, BlueArchive",
             "BattleEndType": 4,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "PlayPropAni_2",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+            "LogicEffectGroupId": "EN0021_PlayPropAni_2",
+            "TriggerMaxCount": 1,
+            "TriggerCooltime": 0,
+            "ConditionID": "ConditionBoss"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandPlayPropAnimation, BlueArchive",
+            "repeatCount": 0,
+            "propKey": 0,
+            "animationName": "EN0021_FX_Ani_01_Deactive",
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandPlayPropAnimation, BlueArchive",
+            "repeatCount": 0,
+            "propKey": 1,
+            "animationName": "EN0021_FX_Ani_02_Active",
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "PlayPropAni_3",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+            "LogicEffectGroupId": "EN0021_PlayPropAni_3",
+            "TriggerMaxCount": 1,
+            "TriggerCooltime": 0,
+            "ConditionID": "ConditionBoss"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandPlayPropAnimation, BlueArchive",
+            "repeatCount": 0,
+            "propKey": 1,
+            "animationName": "EN0021_FX_Ani_02_Deactive",
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandPlayPropAnimation, BlueArchive",
+            "repeatCount": 0,
+            "propKey": 2,
+            "animationName": "EN0021_FX_Ani_03_Active",
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "PlayPropAni_4",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+            "LogicEffectGroupId": "EN0021_PlayPropAni_4",
+            "TriggerMaxCount": 1,
+            "TriggerCooltime": 0,
+            "ConditionID": "ConditionBoss"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandPlayPropAnimation, BlueArchive",
+            "repeatCount": 0,
+            "propKey": 2,
+            "animationName": "EN0021_FX_Ani_03_Deactive",
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandPlayPropAnimation, BlueArchive",
+            "repeatCount": 0,
+            "propKey": 3,
+            "animationName": "EN0021_FX_Ani_04_Active",
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+            "Milliseconds": 300,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandCharacterDie, BlueArchive",
+            "CharacterCommandIdList": [
+              "CommandBoss"
+            ],
+            "CharacterSpawnTemplateIdList": [],
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandForceIdle, BlueArchive",
+            "IsForceIdleOn": true,
+            "CommandID": "CommandNPC_2",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "SetSkillDeck_Toki_1",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+            "LogicEffectGroupId": "EN0021_SkillCard_CheckDummy_01",
+            "TriggerMaxCount": 1,
+            "TriggerCooltime": 0,
+            "ConditionID": "ConditionRio"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+            "Milliseconds": 4000,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSetSkillDeckDecagram, BlueArchive",
+            "CharacterId": 19000211,
+            "CharacterLevel": 80,
+            "CharacterGrade": 3,
+            "CharacterPosition": {
+              "x": 0.0,
+              "y": -1290.08
+            },
+            "SkillGroupId": "M89ExtraEx02",
+            "SkillLevel": 1,
+            "SkillUseCount": 1,
+            "AutoUseDelay": 0,
+            "InitialAbilities": [
+              {
+                "skillGroupId": "SkillCardSizeAppendDecagram_EXS02",
+                "skillLevel": 1
+              }
+            ],
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandAddSkillCost, BlueArchive",
+            "cost": 9,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "SetSkillDeck_Aris",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+            "LogicEffectGroupId": "EN0021_SkillCard_CheckDummy_02",
+            "TriggerMaxCount": 1,
+            "TriggerCooltime": 0,
+            "ConditionID": "ConditionToki"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+            "Milliseconds": 4000,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSetSkillDeckDecagram, BlueArchive",
+            "CharacterId": 19000212,
+            "CharacterLevel": 80,
+            "CharacterGrade": 3,
+            "CharacterPosition": {
+              "x": 0.0,
+              "y": -1290.08
+            },
+            "SkillGroupId": "M89ExtraEx03",
+            "SkillLevel": 1,
+            "SkillUseCount": 1,
+            "AutoUseDelay": 0,
+            "InitialAbilities": [
+              {
+                "skillGroupId": "SkillCardSizeAppendDecagram_EXS03",
+                "skillLevel": 1
+              }
+            ],
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandAddSkillCost, BlueArchive",
+            "cost": 9,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "SetSkillDeck_Toki_2",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+            "LogicEffectGroupId": "EN0021_SkillCard_CheckDummy_03",
+            "TriggerMaxCount": 1,
+            "TriggerCooltime": 0,
+            "ConditionID": "ConditionAris"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+            "Milliseconds": 4000,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSetSkillDeckDecagram, BlueArchive",
+            "CharacterId": 19000213,
+            "CharacterLevel": 80,
+            "CharacterGrade": 3,
+            "CharacterPosition": {
+              "x": 0.0,
+              "y": -1290.08
+            },
+            "SkillGroupId": "M89ExtraEx04",
+            "SkillLevel": 1,
+            "SkillUseCount": 1,
+            "AutoUseDelay": 0,
+            "InitialAbilities": [
+              {
+                "skillGroupId": "SkillCardSizeAppendDecagram_EXS04",
+                "skillLevel": 1
+              }
+            ],
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandAddSkillCost, BlueArchive",
+            "cost": 9,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "SetSkillDeck_Eimi_1",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+            "LogicEffectGroupId": "EN0021_SkillCard_CheckDummy_04",
+            "TriggerMaxCount": 1,
+            "TriggerCooltime": 0,
+            "ConditionID": "ConditionToki"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+            "Milliseconds": 4000,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSetSkillDeckDecagram, BlueArchive",
+            "CharacterId": 19000214,
+            "CharacterLevel": 80,
+            "CharacterGrade": 3,
+            "CharacterPosition": {
+              "x": 0.0,
+              "y": -1290.08
+            },
+            "SkillGroupId": "M89ExtraEx05",
+            "SkillLevel": 1,
+            "SkillUseCount": 1,
+            "AutoUseDelay": 0,
+            "InitialAbilities": [
+              {
+                "skillGroupId": "SkillCardSizeAppendDecagram_EXS05",
+                "skillLevel": 1
+              }
+            ],
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandAddSkillCost, BlueArchive",
+            "cost": 9,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "SetSkillDeck_Rio_2",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+            "LogicEffectGroupId": "EN0021_SkillCard_CheckDummy_05",
+            "TriggerMaxCount": 1,
+            "TriggerCooltime": 0,
+            "ConditionID": "ConditionEimi"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+            "Milliseconds": 8000,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSetSkillDeckDecagram, BlueArchive",
+            "CharacterId": 19000215,
+            "CharacterLevel": 80,
+            "CharacterGrade": 3,
+            "CharacterPosition": {
+              "x": 0.0,
+              "y": -1290.08
+            },
+            "SkillGroupId": "M89ExtraEx06",
+            "SkillLevel": 1,
+            "SkillUseCount": 1,
+            "AutoUseDelay": 0,
+            "InitialAbilities": [
+              {
+                "skillGroupId": "SkillCardSizeAppendDecagram_EXS06",
+                "skillLevel": 1
+              }
+            ],
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandAddSkillCost, BlueArchive",
+            "cost": 9,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "SetSkillDeck_Eimi_2",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+            "LogicEffectGroupId": "EN0021_SkillCard_CheckDummy_06",
+            "TriggerMaxCount": 1,
+            "TriggerCooltime": 0,
+            "ConditionID": "ConditionRio"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+            "Milliseconds": 3000,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSetSkillDeckDecagram, BlueArchive",
+            "CharacterId": 19000216,
+            "CharacterLevel": 80,
+            "CharacterGrade": 3,
+            "CharacterPosition": {
+              "x": 0.0,
+              "y": -1290.08
+            },
+            "SkillGroupId": "M89ExtraEx07",
+            "SkillLevel": 1,
+            "SkillUseCount": 1,
+            "AutoUseDelay": 120,
+            "InitialAbilities": [
+              {
+                "skillGroupId": "SkillCardSizeAppendDecagram_EXS07",
+                "skillLevel": 1
+              }
+            ],
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "SetSkillDeck_Kei",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+            "LogicEffectGroupId": "EN0021_SkillCard_CheckDummy_07",
+            "TriggerMaxCount": 1,
+            "TriggerCooltime": 0,
+            "ConditionID": "ConditionEimi"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+            "Milliseconds": 15000,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSetSkillDeckDecagram, BlueArchive",
+            "CharacterId": 19000217,
+            "CharacterLevel": 80,
+            "CharacterGrade": 3,
+            "CharacterPosition": {
+              "x": 0.0,
+              "y": -1290.08
+            },
+            "SkillGroupId": "M89ExtraEx08",
+            "SkillLevel": 1,
+            "SkillUseCount": 1,
+            "AutoUseDelay": 0,
+            "InitialAbilities": [
+              {
+                "skillGroupId": "SkillCardSizeAppendDecagram_EXS08",
+                "skillLevel": 1
+              }
+            ],
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandAddSkillCost, BlueArchive",
+            "cost": 9,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "StartSection2",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": "0"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+            "Milliseconds": 19000,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandShowBattleUI, BlueArchive",
+            "DisappearInstantly": false,
+            "IsShowBattleUI": false,
+            "IsShowEmoji": false,
+            "IsShowSpeechBubble": false,
+            "ShowBattleStartSign": false,
+            "SoundOn": false,
+            "BGMOn": true,
+            "BGMId": null,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+            "Milliseconds": 2000,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 2,
+            "SetConditionCommandOnly": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSetActiveSkillCardColider, BlueArchive",
+            "Active": false,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandHideHPBar, BlueArchive",
+            "IsShow": true,
             "CommandID": "",
             "WaitExecuteEnd": false
           }
@@ -98,58 +648,167 @@
     {
       "SectionID": 1,
       "Position": {
-        "x": 1.74,
+        "x": 0.0,
         "y": 0.0,
-        "z": 15.3029995
+        "z": 5.0
       },
       "Events": [
         {
-          "EventName": "SpawnUnit",
+          "EventName": "SpawnEnemy",
           "Operator": 0,
           "Conditions": [
             {
-              "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
-              "ConditionID": "0"
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
             }
           ],
           "Commands": [
             {
               "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
-              "Interval": 100,
-              "CommandID": "1",
+              "Interval": 10,
+              "CommandID": "SpawnNPC",
               "WaitExecuteEnd": false
             },
             {
               "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
-              "Milliseconds": 8000,
+              "Milliseconds": 200,
               "CommandID": "",
               "WaitExecuteEnd": false
             },
             {
               "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
               "Interval": 100,
-              "CommandID": "5",
+              "CommandID": "SpawnBoss",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 3000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Immortal",
+              "isAdd": true,
+              "CommandID": "CommandNPC",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "DisableExSkill",
+              "isAdd": true,
+              "CommandID": "CommandNPC",
               "WaitExecuteEnd": false
             }
           ]
         },
         {
-          "EventName": "SpawnUnit_1",
+          "EventName": "Panic_Aris",
           "Operator": 0,
           "Conditions": [
             {
-              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
-              "DeadCheck": 0,
-              "CheckSummonedCharacterDead": false,
-              "CheckDelayMilliSecond": 0,
-              "ConditionID": "1"
+              "$type": "MX.Logic.Battles.GroundConditionCharacterHPChanged, BlueArchive",
+              "TriggerRateUnder": 4000,
+              "TriggerRateOver": -9999999,
+              "TriggerMaxCount": 1,
+              "ConditionID": "ConditionAris_01"
             }
           ],
           "Commands": [
             {
-              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
-              "Interval": 100,
-              "CommandID": "2",
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Stunned",
+              "isAdd": true,
+              "CommandID": "CommandAris",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "Panic_Eimi",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharacterHPChanged, BlueArchive",
+              "TriggerRateUnder": 4000,
+              "TriggerRateOver": -99999,
+              "TriggerMaxCount": 1,
+              "ConditionID": "ConditionEimi_01"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Stunned",
+              "isAdd": true,
+              "CommandID": "CommandEimi",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "Panic_Rio",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharacterHPChanged, BlueArchive",
+              "TriggerRateUnder": 4000,
+              "TriggerRateOver": -99999,
+              "TriggerMaxCount": 1,
+              "ConditionID": "ConditionRio_01"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Stunned",
+              "isAdd": true,
+              "CommandID": "CommandRio",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "Panic_Kei",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharacterHPChanged, BlueArchive",
+              "TriggerRateUnder": 4000,
+              "TriggerRateOver": -99999,
+              "TriggerMaxCount": 1,
+              "ConditionID": "ConditionKei_01"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Stunned",
+              "isAdd": true,
+              "CommandID": "CommandKei",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "Panic_Toki",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharacterHPChanged, BlueArchive",
+              "TriggerRateUnder": 4000,
+              "TriggerRateOver": -99999,
+              "TriggerMaxCount": 1,
+              "ConditionID": "ConditionToki_01"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetStatus, BlueArchive",
+              "heroStatus": "Stunned",
+              "isAdd": true,
+              "CommandID": "CommandToki",
               "WaitExecuteEnd": false
             }
           ]
@@ -158,15 +817,57 @@
       "Obstacles": [],
       "EnemySpawnPointGroupList": [
         {
-          "GroupName": "SpawnPointParent",
+          "GroupName": "SpawnPointParent1-1",
           "SpawnPoints": [
             {
               "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
               "SpawnData": {
-                "SpawnTemplateId": "CH0244_Enemy_C",
+                "SpawnTemplateId": "NPC_EN0021_3Phase_Enemy_Decagramaton",
                 "CostumeId": 0,
                 "AIId": 0,
-                "AppearAction": true,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "ConditionBoss"
+              ],
+              "SpawnCommandIdList": [
+                "CommandBoss"
+              ],
+              "MovePoints": [],
+              "TileX": 148,
+              "TileY": 6624,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 3.000002,
+                "y": 13.5300055
+              },
+              "Direction": {
+                "x": 0.0,
+                "y": 1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "SpawnBoss"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
                 "SkillLevel": {
                   "ExSkill": [],
                   "PublicSkill": [],
@@ -175,29 +876,23 @@
                 }
               },
               "SpawnAIGroupId": "\u0000",
-              "SpawnConditionIdList": [
-                "1"
-              ],
-              "SpawnCommandIdList": [
-                "1"
-              ],
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
               "MovePoints": [],
-              "TileX": 37,
-              "TileY": 143,
+              "TileX": 148,
+              "TileY": 147,
               "PositionHeight": 0.0,
               "Position": {
-                "x": -0.6700001,
-                "y": 24.063
+                "x": 2.998,
+                "y": -1282.008
               },
               "Direction": {
-                "x": -8.742278E-8,
-                "y": -1.0
+                "x": 0.0,
+                "y": 1.0
               },
-              "ConditionIdList": [
-                "1"
-              ],
+              "ConditionIdList": [],
               "CommandIdList": [
-                "1"
+                "BossMovePoint"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -207,8 +902,702 @@
           ]
         },
         {
-          "GroupName": "SpawnPointParent_1",
-          "SpawnPoints": []
+          "GroupName": "SpawnPointStudent",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "NPC_EN0021_3Phase_Aris",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "ConditionAris_01"
+              ],
+              "SpawnCommandIdList": [
+                "CommandNPC",
+                "CommandAris"
+              ],
+              "MovePoints": [],
+              "TileX": 142,
+              "TileY": 6682,
+              "PositionHeight": 0.06999999,
+              "Position": {
+                "x": 1.82000339,
+                "y": 25.1600113
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "SpawnNPC"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "NPC_EN0021_3Phase_Eimi",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "ConditionEimi_01"
+              ],
+              "SpawnCommandIdList": [
+                "CommandNPC",
+                "CommandEimi"
+              ],
+              "MovePoints": [],
+              "TileX": 154,
+              "TileY": 6675,
+              "PositionHeight": 0.07,
+              "Position": {
+                "x": 4.23000145,
+                "y": 23.6700058
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "SpawnNPC"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "NPC_EN0021_3Phase_Kei_01",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "ConditionKei_01"
+              ],
+              "SpawnCommandIdList": [
+                "CommandNPC",
+                "CommandKei"
+              ],
+              "MovePoints": [],
+              "TileX": 151,
+              "TileY": 6687,
+              "PositionHeight": 0.06999999,
+              "Position": {
+                "x": 3.5300045,
+                "y": 26.12002
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "SpawnNPC"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "NPC_EN0021_3Phase_Rio",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "ConditionRio_01"
+              ],
+              "SpawnCommandIdList": [
+                "CommandNPC",
+                "CommandRio"
+              ],
+              "MovePoints": [],
+              "TileX": 137,
+              "TileY": 6675,
+              "PositionHeight": 0.06999999,
+              "Position": {
+                "x": 0.823713064,
+                "y": 23.6950226
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "SpawnNPC"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "NPC_EN0021_3Phase_Toki",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "ConditionToki_01"
+              ],
+              "SpawnCommandIdList": [
+                "CommandNPC",
+                "CommandToki"
+              ],
+              "MovePoints": [],
+              "TileX": 159,
+              "TileY": 6681,
+              "PositionHeight": 0.06999999,
+              "Position": {
+                "x": 5.07000351,
+                "y": 24.86231
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "SpawnNPC"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "SectionID": 2,
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 5.0
+      },
+      "Events": [
+        {
+          "EventName": "Sectio2Start",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandPlayPropAnimation, BlueArchive",
+              "repeatCount": 0,
+              "propKey": 0,
+              "animationName": "EN0021_FX_Ani_01_Active",
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceIdle, BlueArchive",
+              "IsForceIdleOn": true,
+              "CommandID": "CommandNPC",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceMoveToGroundPoint, BlueArchive",
+              "IsInstantMove": true,
+              "IsInterruptCurrentAction": true,
+              "PointCommandID": "BossMovePoint",
+              "IsCommandWaitForMoveStart": false,
+              "IsCommandWaitForMoveEnd": false,
+              "UseGroundPointDirection": true,
+              "CommandID": "CommandBoss",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "SpawnNPC_2",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandLocateCamera, BlueArchive",
+              "ID": 103,
+              "MaxCameraSpeed": 3.0,
+              "RotationSpeed": 1.0,
+              "ZoomSpeed": 3.0,
+              "RailPoints": [
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": 11.3129883,
+                    "y": 0.320000648,
+                    "z": -1277.914
+                  },
+                  "MinCameraDistance": 20.0,
+                  "MaxCameraDistance": 20.0,
+                  "CameraForward": {
+                    "x": 0.9096274,
+                    "y": -0.11662899,
+                    "z": -0.39871794
+                  }
+                }
+              ],
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 500,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandAddSkillCost, BlueArchive",
+              "cost": 9,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandShowBattleUI, BlueArchive",
+              "DisappearInstantly": true,
+              "IsShowBattleUI": true,
+              "IsShowEmoji": true,
+              "IsShowSpeechBubble": true,
+              "ShowBattleStartSign": true,
+              "SoundOn": true,
+              "BGMOn": false,
+              "BGMId": null,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetActiveSkillCardColider, BlueArchive",
+              "Active": true,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "SetSkillDeckStart_Rio",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 4000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetSkillDeckDecagram, BlueArchive",
+              "CharacterId": 19000210,
+              "CharacterLevel": 80,
+              "CharacterGrade": 3,
+              "CharacterPosition": {
+                "x": 0.0,
+                "y": -1290.08
+              },
+              "SkillGroupId": "M89ExtraEx01",
+              "SkillLevel": 1,
+              "SkillUseCount": 1,
+              "AutoUseDelay": 0,
+              "InitialAbilities": [
+                {
+                  "skillGroupId": "SkillCardSizeAppendDecagram_EXS01",
+                  "skillLevel": 1
+                }
+              ],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandAddSkillCost, BlueArchive",
+              "cost": 9,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "PlayScenario",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetActiveSkillCardColider, BlueArchive",
+              "Active": false,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandPlayScenario, BlueArchive",
+              "ScenarioGroupIds": [
+                10052195
+              ],
+              "UnloadOnStart": false,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 10,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandHideHPBar, BlueArchive",
+              "IsShow": false,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 1000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandCurrentBGMChange, BlueArchive",
+              "BGMIdToChange": 327,
+              "PlayStartPoint": 0,
+              "PlayEndPoint": 0,
+              "FadeOutTime": 3,
+              "FadeInTime": 3,
+              "FadeOutTimeSecond": 0.003,
+              "FadeInTimeSecond": 0.003,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent1-1",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "NPC_EN0021_3Phase_Enemy_Decagramaton",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "ConditionBoss"
+              ],
+              "SpawnCommandIdList": [
+                "CommandBoss"
+              ],
+              "MovePoints": [],
+              "TileX": 148,
+              "TileY": 147,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 2.998,
+                "y": -1282.008
+              },
+              "Direction": {
+                "x": 0.0,
+                "y": 1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "SpawnBoss"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointStudent",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "NPC_EN0021_3Phase_Aris",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "ConditionAris"
+              ],
+              "SpawnCommandIdList": [
+                "CommandNPC_2"
+              ],
+              "MovePoints": [],
+              "TileX": 142,
+              "TileY": 206,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.81,
+                "y": -1270.11
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "SpawnNPC_2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "NPC_EN0021_3Phase_Eimi",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "ConditionEimi"
+              ],
+              "SpawnCommandIdList": [
+                "CommandNPC_2"
+              ],
+              "MovePoints": [],
+              "TileX": 154,
+              "TileY": 198,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 4.116,
+                "y": -1271.808
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "SpawnNPC_2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "NPC_EN0021_3Phase_Kei_02",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "ConditionKei"
+              ],
+              "SpawnCommandIdList": [
+                "CommandNPC_2"
+              ],
+              "MovePoints": [],
+              "TileX": 151,
+              "TileY": 210,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 3.595,
+                "y": -1269.25
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "SpawnNPC_2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "NPC_EN0021_3Phase_Rio",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "ConditionRio"
+              ],
+              "SpawnCommandIdList": [
+                "CommandNPC_2"
+              ],
+              "MovePoints": [],
+              "TileX": 137,
+              "TileY": 198,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.714,
+                "y": -1271.742
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "SpawnNPC_2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "NPC_EN0021_3Phase_Toki",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "ConditionToki"
+              ],
+              "SpawnCommandIdList": [
+                "CommandNPC_2"
+              ],
+              "MovePoints": [],
+              "TileX": 159,
+              "TileY": 204,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 5.195,
+                "y": -1270.495
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "SpawnNPC_2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
         }
       ]
     }
@@ -219,8 +1608,8 @@
       "IgnorePathFind": false,
       "Index": 0,
       "Position": {
-        "x": 0.659999967,
-        "y": 12.67
+        "x": 3.1,
+        "y": 23.0700588
       },
       "Forward": {
         "x": 0.0,
@@ -234,8 +1623,38 @@
       "IgnorePathFind": false,
       "Index": 0,
       "Position": {
-        "x": 0.76,
-        "y": 17.53
+        "x": 3.1,
+        "y": 23.26
+      },
+      "Forward": {
+        "x": 0.0,
+        "y": 1.0
+      },
+      "Height": 0.0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 2,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 3.1,
+        "y": -1273.36
+      },
+      "Forward": {
+        "x": 0.0,
+        "y": 1.0
+      },
+      "Height": 0.0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 2,
+      "IgnorePathFind": false,
+      "Index": 1,
+      "Position": {
+        "x": 3.1,
+        "y": -1273.17
       },
       "Forward": {
         "x": 0.0,

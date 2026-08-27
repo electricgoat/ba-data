@@ -1,97 +1,105 @@
 {
-  "$type": "MX.Logic.Data.PassiveSkillData, BlueArchive",
+  "$type": "MX.GameData.DAO.Battle.PassiveSkillDAO, BlueArchive",
   "Duration": -1,
   "MaxTriggerCount": -1,
   "CoolTimeNotTrigger": 630,
   "TryCount": 0,
   "ResetTryCountUseSkill": false,
   "TriggerCondition": {
-    "$type": "MX.Logic.Data.PassiveTriggerData, BlueArchive",
     "Event": 301,
     "Parameters": "",
     "ConditionExpression": "GetCurrentBehavior() == [BehaviorType.Groggy]",
     "TriggerRate": 10000,
     "EchelonConstraint": {
-      "$type": "MX.Logic.Data.EchelonConstraint, BlueArchive",
       "CountConstraint": {
-        "$type": "MX.Logic.Data.CountConstraint, BlueArchive",
         "Count": 0,
         "DiffOperator": 0
       },
       "SchoolConstraint": {
-        "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
         "School": 0,
         "IncludeType": 0
       },
       "WeaponConstraint": {
-        "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
         "Weapon": 0,
         "IncludeType": 0
-      },
-      "IsEmpty": true
+      }
     }
   },
   "TriggerSourceFindRule": {
-    "$type": "MX.Logic.Skills.TargetFindRule, BlueArchive",
     "Sort": {
-      "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+      "IsValid": true,
       "SortCriteria": "Distance",
       "SortStat": 0,
       "SortParameter": null,
-      "OrderBy": "Lowest"
+      "OrderBy": "Lowest",
+      "Reindexing": 0,
+      "AllowedSummonedCount": 0,
+      "RandomTargetSelect": false
     },
     "EssentialCandidate": {
-      "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
       "TargetSide": "Self",
       "TargetingType": "Target",
       "ApplyEntityType": 1,
       "MaxTargetCount": 1
     },
     "OptionalCandidate": {
-      "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+      "IgnoreUntargetable": false,
       "AliveState": 0,
       "SchoolConstraint": {
-        "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
         "School": 0,
         "IncludeType": 0
       },
+      "PersonalityIdConstraint": {
+        "IncludeType": 0,
+        "PersonalityIds": []
+      },
       "WeaponConstraint": {
-        "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
         "Weapon": 0,
         "IncludeType": 0
       },
       "SquadTypeConstraint": {
-        "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
         "SquadType": 0,
         "IncludeType": 0
       },
       "AdaptationConstraint": {
-        "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
         "AdaptationType": 0,
         "AdaptationValues": [],
         "IncludeType": 0
       },
       "BulletConstraint": {
-        "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
         "BulletType": 5,
         "IncludeType": 0
       },
-      "TagConstraint": {
-        "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
+      "TacticRangeConstraint": {
+        "TacticRanges": [],
         "IncludeType": 0
+      },
+      "TagConstraint": {
+        "IncludeType": 0,
+        "TagNamesInt": []
       },
       "CoverState": 0,
       "HPRateConstraint": {
-        "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
         "ConstraintType": 0,
         "HPRate": 0
+      },
+      "TacticRoleConstraint": {
+        "TacticRole": [],
+        "IncludeType": 0
+      },
+      "SpawnSourceConstraint": {
+        "SpawnSources": [],
+        "IncludeType": 0
+      },
+      "BlackboardConstraint": {
+        "KeyType": 0,
+        "KeyString": ""
       }
     }
   },
   "SkillTargetType": 3,
   "EntityTimeline": [
     {
-      "$type": "MX.Logic.Data.ExSkillEntityTimelineData, BlueArchive",
       "Tag": "ActionRelease",
       "InvokerDirectionOverride": "None",
       "InvokerDirectionOverrideWorldPosition": {
@@ -101,45 +109,62 @@
       "Frame": 1,
       "DamageDistributeRate": 10000,
       "Entity": {
-        "$type": "MX.Logic.Data.SkillEntitySpawnerData, BlueArchive",
+        "$type": "MX.GameData.DAO.Battle.SkillEntitySpawnerDAO, BlueArchive",
         "Duration": 3,
         "SpawnRule": "SpawnAll",
         "RemoveEntityIfSkillCancel": false,
         "OverrideSkillStartTimingWithSpawnerSpawn": false,
+        "DistributeType": 0,
+        "FireToNextTargetWhenEachToEach": false,
         "EntityTimeline": [
           {
-            "$type": "MX.Logic.Data.SkillEntitySpawnerTimelineData, BlueArchive",
             "SpawnCondition": "IncludeLogicEffectTemplateId",
             "SpawnConditionParameter": "EN0006_Dummy_GroundEx02",
             "SpawnConditionParameterForTag": "",
             "SpawnConditionCheckTarget": "Caster",
+            "UsePlayTrackBranch": false,
+            "PlayTrackBranch": {
+              "PlayTrackGroupName": [],
+              "MuteTrackGroupName": [],
+              "InterruptSkillAction": false,
+              "InterruptSkillActionFrame": 0
+            },
             "Frame": 1,
             "DamageDistributeRate": 0,
             "Entity": {
-              "$type": "MX.Logic.Data.SummonGroupSpawnerData, BlueArchive",
+              "$type": "MX.GameData.DAO.Battle.SummonGroupSpawnerDAO, BlueArchive",
               "SummonGroups": [
                 {
-                  "$type": "MX.Logic.Data.SummonGroupData, BlueArchive",
                   "GroupName": "Insane",
                   "Rate": 10000,
                   "SummonEntities": [
                     {
-                      "$type": "MX.Logic.Data.LevelCharacterEntityData, BlueArchive",
+                      "$type": "MX.GameData.DAO.Battle.CharacterEntityDAO, BlueArchive",
                       "CostumeId": 0,
                       "InitialAbilities": [
                         {
-                          "$type": "MX.Logic.Data.LevelOneTimeAbilityData, BlueArchive",
+                          "$type": "MX.GameData.DAO.Battle.LevelOneTimeAbilityDAO, BlueArchive",
+                          "name": "EN0006_ExtraPassive04_Insane_LevelOneTimeAbility02",
                           "StartDelay": 0,
                           "LogicEffectGroupIds": [
                             "EN0006_ExtraPassive04_Effect01"
                           ],
-                          "name": "EN0006_ExtraPassive04_Insane_LevelOneTimeAbility02",
-                          "hideFlags": 0
+                          "Modifiers": [],
+                          "IsReferenceSkillSlot": false,
+                          "ReferenceSkillSlot": "None"
                         }
                       ],
                       "SuccessionFromCasterEquip": false,
                       "SuccessionFromCasterCharacterWeapon": false,
                       "SuccessionFromCasterCharacterGear": false,
+                      "InvisibleToStrikerPathing": false,
+                      "UseLinkedSummons": false,
+                      "UseLinkedFormation": false,
+                      "LinkedFormationOffset": [],
+                      "IsUseRetreat": false,
+                      "RetreatLogicId": {
+                        "RetreatLogicEffectGroupIdList": []
+                      },
                       "UniqueName": "EN0006_GroggyFire_Street_ElasticArmor_Insane",
                       "AngleOffset": 0.0,
                       "Duration": 570,
@@ -148,6 +173,8 @@
                       "InitialEntitySpawner": null,
                       "SpawnSameGridLayerAsInvoker": false,
                       "SummonAsEnemy": false,
+                      "MovingAreaOption": 0,
+                      "name": "EN0006_ExtraPassive04_Insane_LevelCharacterEntity01",
                       "EntityName": "",
                       "SpawnRate": 10000,
                       "SpawnDelay": 0,
@@ -168,81 +195,106 @@
                       "SpawnDirectionType": "Invoker",
                       "OverrideTargetingRule": false,
                       "TargetSortRule": {
-                        "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+                        "IsValid": false,
                         "SortCriteria": "None",
                         "SortStat": 0,
                         "SortParameter": null,
-                        "OrderBy": "None"
+                        "OrderBy": "None",
+                        "Reindexing": 0,
+                        "AllowedSummonedCount": 0,
+                        "RandomTargetSelect": false
                       },
                       "EssentialCandidateRule": {
-                        "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
                         "TargetSide": "None",
                         "TargetingType": "None",
                         "ApplyEntityType": 0,
                         "MaxTargetCount": 0
                       },
                       "OptionalCandidateRule": {
-                        "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+                        "IgnoreUntargetable": false,
                         "AliveState": 0,
                         "SchoolConstraint": {
-                          "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
                           "School": 0,
                           "IncludeType": 0
                         },
+                        "PersonalityIdConstraint": {
+                          "IncludeType": 0,
+                          "PersonalityIds": []
+                        },
                         "WeaponConstraint": {
-                          "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
                           "Weapon": 0,
                           "IncludeType": 0
                         },
                         "SquadTypeConstraint": {
-                          "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
                           "SquadType": 0,
                           "IncludeType": 0
                         },
                         "AdaptationConstraint": {
-                          "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
                           "AdaptationType": 0,
                           "AdaptationValues": [],
                           "IncludeType": 0
                         },
                         "BulletConstraint": {
-                          "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
                           "BulletType": 5,
                           "IncludeType": 0
                         },
-                        "TagConstraint": {
-                          "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
+                        "TacticRangeConstraint": {
+                          "TacticRanges": [],
                           "IncludeType": 0
+                        },
+                        "TagConstraint": {
+                          "IncludeType": 0,
+                          "TagNamesInt": []
                         },
                         "CoverState": 0,
                         "HPRateConstraint": {
-                          "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
                           "ConstraintType": 0,
                           "HPRate": 0
+                        },
+                        "TacticRoleConstraint": {
+                          "TacticRole": [],
+                          "IncludeType": 0
+                        },
+                        "SpawnSourceConstraint": {
+                          "SpawnSources": [],
+                          "IncludeType": 0
+                        },
+                        "BlackboardConstraint": {
+                          "KeyType": 0,
+                          "KeyString": ""
                         }
                       },
                       "HighlightOption": 0,
                       "CheckSpawnPositionMovable": false,
-                      "name": "EN0006_ExtraPassive04_Insane_LevelCharacterEntity01",
-                      "hideFlags": 0
+                      "TargetContainerIndex": 0
                     },
                     {
-                      "$type": "MX.Logic.Data.LevelCharacterEntityData, BlueArchive",
+                      "$type": "MX.GameData.DAO.Battle.CharacterEntityDAO, BlueArchive",
                       "CostumeId": 0,
                       "InitialAbilities": [
                         {
-                          "$type": "MX.Logic.Data.LevelOneTimeAbilityData, BlueArchive",
+                          "$type": "MX.GameData.DAO.Battle.LevelOneTimeAbilityDAO, BlueArchive",
+                          "name": "EN0006_ExtraPassive04_Insane_LevelOneTimeAbility02",
                           "StartDelay": 0,
                           "LogicEffectGroupIds": [
                             "EN0006_ExtraPassive04_Effect01"
                           ],
-                          "name": "EN0006_ExtraPassive04_Insane_LevelOneTimeAbility02",
-                          "hideFlags": 0
+                          "Modifiers": [],
+                          "IsReferenceSkillSlot": false,
+                          "ReferenceSkillSlot": "None"
                         }
                       ],
                       "SuccessionFromCasterEquip": false,
                       "SuccessionFromCasterCharacterWeapon": false,
                       "SuccessionFromCasterCharacterGear": false,
+                      "InvisibleToStrikerPathing": false,
+                      "UseLinkedSummons": false,
+                      "UseLinkedFormation": false,
+                      "LinkedFormationOffset": [],
+                      "IsUseRetreat": false,
+                      "RetreatLogicId": {
+                        "RetreatLogicEffectGroupIdList": []
+                      },
                       "UniqueName": "EN0006_GroggyFire_Street_ElasticArmor_Insane",
                       "AngleOffset": 0.0,
                       "Duration": 570,
@@ -251,6 +303,8 @@
                       "InitialEntitySpawner": null,
                       "SpawnSameGridLayerAsInvoker": false,
                       "SummonAsEnemy": false,
+                      "MovingAreaOption": 0,
+                      "name": "EN0006_ExtraPassive04_Insane_LevelCharacterEntity02",
                       "EntityName": "",
                       "SpawnRate": 10000,
                       "SpawnDelay": 0,
@@ -271,81 +325,106 @@
                       "SpawnDirectionType": "Invoker",
                       "OverrideTargetingRule": false,
                       "TargetSortRule": {
-                        "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+                        "IsValid": false,
                         "SortCriteria": "None",
                         "SortStat": 0,
                         "SortParameter": null,
-                        "OrderBy": "None"
+                        "OrderBy": "None",
+                        "Reindexing": 0,
+                        "AllowedSummonedCount": 0,
+                        "RandomTargetSelect": false
                       },
                       "EssentialCandidateRule": {
-                        "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
                         "TargetSide": "None",
                         "TargetingType": "None",
                         "ApplyEntityType": 0,
                         "MaxTargetCount": 0
                       },
                       "OptionalCandidateRule": {
-                        "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+                        "IgnoreUntargetable": false,
                         "AliveState": 0,
                         "SchoolConstraint": {
-                          "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
                           "School": 0,
                           "IncludeType": 0
                         },
+                        "PersonalityIdConstraint": {
+                          "IncludeType": 0,
+                          "PersonalityIds": []
+                        },
                         "WeaponConstraint": {
-                          "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
                           "Weapon": 0,
                           "IncludeType": 0
                         },
                         "SquadTypeConstraint": {
-                          "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
                           "SquadType": 0,
                           "IncludeType": 0
                         },
                         "AdaptationConstraint": {
-                          "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
                           "AdaptationType": 0,
                           "AdaptationValues": [],
                           "IncludeType": 0
                         },
                         "BulletConstraint": {
-                          "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
                           "BulletType": 5,
                           "IncludeType": 0
                         },
-                        "TagConstraint": {
-                          "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
+                        "TacticRangeConstraint": {
+                          "TacticRanges": [],
                           "IncludeType": 0
+                        },
+                        "TagConstraint": {
+                          "IncludeType": 0,
+                          "TagNamesInt": []
                         },
                         "CoverState": 0,
                         "HPRateConstraint": {
-                          "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
                           "ConstraintType": 0,
                           "HPRate": 0
+                        },
+                        "TacticRoleConstraint": {
+                          "TacticRole": [],
+                          "IncludeType": 0
+                        },
+                        "SpawnSourceConstraint": {
+                          "SpawnSources": [],
+                          "IncludeType": 0
+                        },
+                        "BlackboardConstraint": {
+                          "KeyType": 0,
+                          "KeyString": ""
                         }
                       },
                       "HighlightOption": 0,
                       "CheckSpawnPositionMovable": false,
-                      "name": "EN0006_ExtraPassive04_Insane_LevelCharacterEntity02",
-                      "hideFlags": 0
+                      "TargetContainerIndex": 0
                     },
                     {
-                      "$type": "MX.Logic.Data.LevelCharacterEntityData, BlueArchive",
+                      "$type": "MX.GameData.DAO.Battle.CharacterEntityDAO, BlueArchive",
                       "CostumeId": 0,
                       "InitialAbilities": [
                         {
-                          "$type": "MX.Logic.Data.LevelOneTimeAbilityData, BlueArchive",
+                          "$type": "MX.GameData.DAO.Battle.LevelOneTimeAbilityDAO, BlueArchive",
+                          "name": "EN0006_ExtraPassive04_Insane_LevelOneTimeAbility02",
                           "StartDelay": 0,
                           "LogicEffectGroupIds": [
                             "EN0006_ExtraPassive04_Effect01"
                           ],
-                          "name": "EN0006_ExtraPassive04_Insane_LevelOneTimeAbility02",
-                          "hideFlags": 0
+                          "Modifiers": [],
+                          "IsReferenceSkillSlot": false,
+                          "ReferenceSkillSlot": "None"
                         }
                       ],
                       "SuccessionFromCasterEquip": false,
                       "SuccessionFromCasterCharacterWeapon": false,
                       "SuccessionFromCasterCharacterGear": false,
+                      "InvisibleToStrikerPathing": false,
+                      "UseLinkedSummons": false,
+                      "UseLinkedFormation": false,
+                      "LinkedFormationOffset": [],
+                      "IsUseRetreat": false,
+                      "RetreatLogicId": {
+                        "RetreatLogicEffectGroupIdList": []
+                      },
                       "UniqueName": "EN0006_GroggyFire_Street_ElasticArmor_Insane",
                       "AngleOffset": 0.0,
                       "Duration": 570,
@@ -354,6 +433,8 @@
                       "InitialEntitySpawner": null,
                       "SpawnSameGridLayerAsInvoker": false,
                       "SummonAsEnemy": false,
+                      "MovingAreaOption": 0,
+                      "name": "EN0006_ExtraPassive04_Insane_LevelCharacterEntity03",
                       "EntityName": "",
                       "SpawnRate": 10000,
                       "SpawnDelay": 0,
@@ -374,81 +455,106 @@
                       "SpawnDirectionType": "Invoker",
                       "OverrideTargetingRule": false,
                       "TargetSortRule": {
-                        "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+                        "IsValid": false,
                         "SortCriteria": "None",
                         "SortStat": 0,
                         "SortParameter": null,
-                        "OrderBy": "None"
+                        "OrderBy": "None",
+                        "Reindexing": 0,
+                        "AllowedSummonedCount": 0,
+                        "RandomTargetSelect": false
                       },
                       "EssentialCandidateRule": {
-                        "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
                         "TargetSide": "None",
                         "TargetingType": "None",
                         "ApplyEntityType": 0,
                         "MaxTargetCount": 0
                       },
                       "OptionalCandidateRule": {
-                        "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+                        "IgnoreUntargetable": false,
                         "AliveState": 0,
                         "SchoolConstraint": {
-                          "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
                           "School": 0,
                           "IncludeType": 0
                         },
+                        "PersonalityIdConstraint": {
+                          "IncludeType": 0,
+                          "PersonalityIds": []
+                        },
                         "WeaponConstraint": {
-                          "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
                           "Weapon": 0,
                           "IncludeType": 0
                         },
                         "SquadTypeConstraint": {
-                          "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
                           "SquadType": 0,
                           "IncludeType": 0
                         },
                         "AdaptationConstraint": {
-                          "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
                           "AdaptationType": 0,
                           "AdaptationValues": [],
                           "IncludeType": 0
                         },
                         "BulletConstraint": {
-                          "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
                           "BulletType": 5,
                           "IncludeType": 0
                         },
-                        "TagConstraint": {
-                          "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
+                        "TacticRangeConstraint": {
+                          "TacticRanges": [],
                           "IncludeType": 0
+                        },
+                        "TagConstraint": {
+                          "IncludeType": 0,
+                          "TagNamesInt": []
                         },
                         "CoverState": 0,
                         "HPRateConstraint": {
-                          "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
                           "ConstraintType": 0,
                           "HPRate": 0
+                        },
+                        "TacticRoleConstraint": {
+                          "TacticRole": [],
+                          "IncludeType": 0
+                        },
+                        "SpawnSourceConstraint": {
+                          "SpawnSources": [],
+                          "IncludeType": 0
+                        },
+                        "BlackboardConstraint": {
+                          "KeyType": 0,
+                          "KeyString": ""
                         }
                       },
                       "HighlightOption": 0,
                       "CheckSpawnPositionMovable": false,
-                      "name": "EN0006_ExtraPassive04_Insane_LevelCharacterEntity03",
-                      "hideFlags": 0
+                      "TargetContainerIndex": 0
                     },
                     {
-                      "$type": "MX.Logic.Data.LevelCharacterEntityData, BlueArchive",
+                      "$type": "MX.GameData.DAO.Battle.CharacterEntityDAO, BlueArchive",
                       "CostumeId": 0,
                       "InitialAbilities": [
                         {
-                          "$type": "MX.Logic.Data.LevelOneTimeAbilityData, BlueArchive",
+                          "$type": "MX.GameData.DAO.Battle.LevelOneTimeAbilityDAO, BlueArchive",
+                          "name": "EN0006_ExtraPassive04_Insane_LevelOneTimeAbility02",
                           "StartDelay": 0,
                           "LogicEffectGroupIds": [
                             "EN0006_ExtraPassive04_Effect01"
                           ],
-                          "name": "EN0006_ExtraPassive04_Insane_LevelOneTimeAbility02",
-                          "hideFlags": 0
+                          "Modifiers": [],
+                          "IsReferenceSkillSlot": false,
+                          "ReferenceSkillSlot": "None"
                         }
                       ],
                       "SuccessionFromCasterEquip": false,
                       "SuccessionFromCasterCharacterWeapon": false,
                       "SuccessionFromCasterCharacterGear": false,
+                      "InvisibleToStrikerPathing": false,
+                      "UseLinkedSummons": false,
+                      "UseLinkedFormation": false,
+                      "LinkedFormationOffset": [],
+                      "IsUseRetreat": false,
+                      "RetreatLogicId": {
+                        "RetreatLogicEffectGroupIdList": []
+                      },
                       "UniqueName": "EN0006_GroggyFire_Street_ElasticArmor_Insane",
                       "AngleOffset": 0.0,
                       "Duration": 570,
@@ -457,6 +563,8 @@
                       "InitialEntitySpawner": null,
                       "SpawnSameGridLayerAsInvoker": false,
                       "SummonAsEnemy": false,
+                      "MovingAreaOption": 0,
+                      "name": "EN0006_ExtraPassive04_Insane_LevelCharacterEntity04",
                       "EntityName": "",
                       "SpawnRate": 10000,
                       "SpawnDelay": 0,
@@ -477,67 +585,83 @@
                       "SpawnDirectionType": "Invoker",
                       "OverrideTargetingRule": false,
                       "TargetSortRule": {
-                        "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+                        "IsValid": false,
                         "SortCriteria": "None",
                         "SortStat": 0,
                         "SortParameter": null,
-                        "OrderBy": "None"
+                        "OrderBy": "None",
+                        "Reindexing": 0,
+                        "AllowedSummonedCount": 0,
+                        "RandomTargetSelect": false
                       },
                       "EssentialCandidateRule": {
-                        "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
                         "TargetSide": "None",
                         "TargetingType": "None",
                         "ApplyEntityType": 0,
                         "MaxTargetCount": 0
                       },
                       "OptionalCandidateRule": {
-                        "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+                        "IgnoreUntargetable": false,
                         "AliveState": 0,
                         "SchoolConstraint": {
-                          "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
                           "School": 0,
                           "IncludeType": 0
                         },
+                        "PersonalityIdConstraint": {
+                          "IncludeType": 0,
+                          "PersonalityIds": []
+                        },
                         "WeaponConstraint": {
-                          "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
                           "Weapon": 0,
                           "IncludeType": 0
                         },
                         "SquadTypeConstraint": {
-                          "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
                           "SquadType": 0,
                           "IncludeType": 0
                         },
                         "AdaptationConstraint": {
-                          "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
                           "AdaptationType": 0,
                           "AdaptationValues": [],
                           "IncludeType": 0
                         },
                         "BulletConstraint": {
-                          "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
                           "BulletType": 5,
                           "IncludeType": 0
                         },
-                        "TagConstraint": {
-                          "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
+                        "TacticRangeConstraint": {
+                          "TacticRanges": [],
                           "IncludeType": 0
+                        },
+                        "TagConstraint": {
+                          "IncludeType": 0,
+                          "TagNamesInt": []
                         },
                         "CoverState": 0,
                         "HPRateConstraint": {
-                          "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
                           "ConstraintType": 0,
                           "HPRate": 0
+                        },
+                        "TacticRoleConstraint": {
+                          "TacticRole": [],
+                          "IncludeType": 0
+                        },
+                        "SpawnSourceConstraint": {
+                          "SpawnSources": [],
+                          "IncludeType": 0
+                        },
+                        "BlackboardConstraint": {
+                          "KeyType": 0,
+                          "KeyString": ""
                         }
                       },
                       "HighlightOption": 0,
                       "CheckSpawnPositionMovable": false,
-                      "name": "EN0006_ExtraPassive04_Insane_LevelCharacterEntity04",
-                      "hideFlags": 0
+                      "TargetContainerIndex": 0
                     }
                   ]
                 }
               ],
+              "name": "EN0006_ExtraPassive04_Insane_SummonGroupSpawner01",
               "EntityName": "",
               "SpawnRate": 10000,
               "SpawnDelay": 0,
@@ -558,66 +682,82 @@
               "SpawnDirectionType": "None",
               "OverrideTargetingRule": false,
               "TargetSortRule": {
-                "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+                "IsValid": false,
                 "SortCriteria": "None",
                 "SortStat": 0,
                 "SortParameter": null,
-                "OrderBy": "None"
+                "OrderBy": "None",
+                "Reindexing": 0,
+                "AllowedSummonedCount": 0,
+                "RandomTargetSelect": false
               },
               "EssentialCandidateRule": {
-                "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
                 "TargetSide": "None",
                 "TargetingType": "None",
                 "ApplyEntityType": 0,
                 "MaxTargetCount": 0
               },
               "OptionalCandidateRule": {
-                "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+                "IgnoreUntargetable": false,
                 "AliveState": 0,
                 "SchoolConstraint": {
-                  "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
                   "School": 0,
                   "IncludeType": 0
                 },
+                "PersonalityIdConstraint": {
+                  "IncludeType": 0,
+                  "PersonalityIds": []
+                },
                 "WeaponConstraint": {
-                  "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
                   "Weapon": 0,
                   "IncludeType": 0
                 },
                 "SquadTypeConstraint": {
-                  "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
                   "SquadType": 0,
                   "IncludeType": 0
                 },
                 "AdaptationConstraint": {
-                  "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
                   "AdaptationType": 0,
                   "AdaptationValues": [],
                   "IncludeType": 0
                 },
                 "BulletConstraint": {
-                  "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
                   "BulletType": 5,
                   "IncludeType": 0
                 },
-                "TagConstraint": {
-                  "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
+                "TacticRangeConstraint": {
+                  "TacticRanges": [],
                   "IncludeType": 0
+                },
+                "TagConstraint": {
+                  "IncludeType": 0,
+                  "TagNamesInt": []
                 },
                 "CoverState": 0,
                 "HPRateConstraint": {
-                  "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
                   "ConstraintType": 0,
                   "HPRate": 0
+                },
+                "TacticRoleConstraint": {
+                  "TacticRole": [],
+                  "IncludeType": 0
+                },
+                "SpawnSourceConstraint": {
+                  "SpawnSources": [],
+                  "IncludeType": 0
+                },
+                "BlackboardConstraint": {
+                  "KeyType": 0,
+                  "KeyString": ""
                 }
               },
               "HighlightOption": 0,
               "CheckSpawnPositionMovable": false,
-              "name": "EN0006_ExtraPassive04_Insane_SummonGroupSpawner01",
-              "hideFlags": 0
+              "TargetContainerIndex": 0
             }
           }
         ],
+        "name": "EN0006_ExtraPassive04_Insane_SkillEntitySpawner01",
         "EntityName": "",
         "SpawnRate": 10000,
         "SpawnDelay": 0,
@@ -638,67 +778,81 @@
         "SpawnDirectionType": "Invoker",
         "OverrideTargetingRule": true,
         "TargetSortRule": {
-          "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+          "IsValid": true,
           "SortCriteria": "Distance",
           "SortStat": 0,
           "SortParameter": null,
-          "OrderBy": "Lowest"
+          "OrderBy": "Lowest",
+          "Reindexing": 0,
+          "AllowedSummonedCount": 0,
+          "RandomTargetSelect": false
         },
         "EssentialCandidateRule": {
-          "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
           "TargetSide": "Self",
           "TargetingType": "Target",
           "ApplyEntityType": 1,
           "MaxTargetCount": 1
         },
         "OptionalCandidateRule": {
-          "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+          "IgnoreUntargetable": false,
           "AliveState": 0,
           "SchoolConstraint": {
-            "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
             "School": 0,
             "IncludeType": 0
           },
+          "PersonalityIdConstraint": {
+            "IncludeType": 0,
+            "PersonalityIds": []
+          },
           "WeaponConstraint": {
-            "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
             "Weapon": 0,
             "IncludeType": 0
           },
           "SquadTypeConstraint": {
-            "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
             "SquadType": 0,
             "IncludeType": 0
           },
           "AdaptationConstraint": {
-            "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
             "AdaptationType": 0,
             "AdaptationValues": [],
             "IncludeType": 0
           },
           "BulletConstraint": {
-            "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
             "BulletType": 5,
             "IncludeType": 0
           },
-          "TagConstraint": {
-            "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
+          "TacticRangeConstraint": {
+            "TacticRanges": [],
             "IncludeType": 0
+          },
+          "TagConstraint": {
+            "IncludeType": 0,
+            "TagNamesInt": []
           },
           "CoverState": 0,
           "HPRateConstraint": {
-            "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
             "ConstraintType": 0,
             "HPRate": 0
+          },
+          "TacticRoleConstraint": {
+            "TacticRole": [],
+            "IncludeType": 0
+          },
+          "SpawnSourceConstraint": {
+            "SpawnSources": [],
+            "IncludeType": 0
+          },
+          "BlackboardConstraint": {
+            "KeyType": 0,
+            "KeyString": ""
           }
         },
         "HighlightOption": 0,
         "CheckSpawnPositionMovable": false,
-        "name": "EN0006_ExtraPassive04_Insane_SkillEntitySpawner01",
-        "hideFlags": 0
+        "TargetContainerIndex": 0
       }
     },
     {
-      "$type": "MX.Logic.Data.ExSkillEntityTimelineData, BlueArchive",
       "Tag": "ActionEnd",
       "InvokerDirectionOverride": "None",
       "InvokerDirectionOverrideWorldPosition": {
@@ -708,44 +862,45 @@
       "Frame": 2,
       "DamageDistributeRate": 10000,
       "Entity": {
-        "$type": "MX.Logic.Data.LevelCircleAreaEntityData, BlueArchive",
-        "Radius": 400,
+        "$type": "MX.GameData.DAO.Battle.CircleAreaEntityDAO, BlueArchive",
         "AttachTarget": false,
         "AllowDuplicateHit": false,
         "RemoveEntityIfSkillCancel": false,
         "Duration": 2,
         "RotateEntityDirectionEveryFrame": false,
         "ApplyOffsetRotateEntityDirection": false,
+        "MovingAreaOption": 0,
         "HitFrames": [
           1
         ],
         "CollisionProperty": {
-          "$type": "MX.Logic.Data.AreaCollisionProperty, BlueArchive",
           "TransformType": "None",
           "TransformCount": 0
         },
         "CheckBlockHit": false,
         "AreaAbilities": [
           {
-            "$type": "MX.Logic.Data.LevelOneTimeAbilityData, BlueArchive",
+            "$type": "MX.GameData.DAO.Battle.LevelOneTimeAbilityDAO, BlueArchive",
+            "name": "EN0006_ExtraPassive04_Insane_LevelOneTimeAbility01",
             "StartDelay": 0,
             "LogicEffectGroupIds": [
               "EN0006_Passive03_Effect01"
             ],
             "Modifiers": [
               {
-                "$type": "MX.Logic.Data.LogicEffectTemplateModifierData, BlueArchive",
+                "$type": "MX.GameData.DAO.Battle.LogicEffectTemplateModifierDAO, BlueArchive",
                 "TemplateId": "EN0006_Dummy_ExtraPassive04",
                 "IncludeType": 1,
-                "CheckTarget": 1,
-                "name": "EN0006_ExtraPassive04_Insane_LogicEffectTemplateModifier01",
-                "hideFlags": 0
+                "CheckTarget": 1
               }
             ],
-            "name": "EN0006_ExtraPassive04_Insane_LevelOneTimeAbility01",
-            "hideFlags": 0
+            "IsReferenceSkillSlot": false,
+            "ReferenceSkillSlot": "None"
           }
         ],
+        "HitCheckCouplingKey": "",
+        "Radius": 400,
+        "name": "EN0006_ExtraPassive04_Insane_LevelCircleAreaEntity01",
         "EntityName": "",
         "SpawnRate": 10000,
         "SpawnDelay": 0,
@@ -766,67 +921,81 @@
         "SpawnDirectionType": "Invoker",
         "OverrideTargetingRule": true,
         "TargetSortRule": {
-          "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+          "IsValid": true,
           "SortCriteria": "Distance",
           "SortStat": 0,
           "SortParameter": null,
-          "OrderBy": "Lowest"
+          "OrderBy": "Lowest",
+          "Reindexing": 0,
+          "AllowedSummonedCount": 0,
+          "RandomTargetSelect": false
         },
         "EssentialCandidateRule": {
-          "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
           "TargetSide": "Ally_Except_Self",
           "TargetingType": "Position",
           "ApplyEntityType": 5,
           "MaxTargetCount": -1
         },
         "OptionalCandidateRule": {
-          "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+          "IgnoreUntargetable": false,
           "AliveState": 0,
           "SchoolConstraint": {
-            "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
             "School": 0,
             "IncludeType": 0
           },
+          "PersonalityIdConstraint": {
+            "IncludeType": 0,
+            "PersonalityIds": []
+          },
           "WeaponConstraint": {
-            "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
             "Weapon": 0,
             "IncludeType": 0
           },
           "SquadTypeConstraint": {
-            "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
             "SquadType": 0,
             "IncludeType": 0
           },
           "AdaptationConstraint": {
-            "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
             "AdaptationType": 0,
             "AdaptationValues": [],
             "IncludeType": 0
           },
           "BulletConstraint": {
-            "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
             "BulletType": 5,
             "IncludeType": 0
           },
-          "TagConstraint": {
-            "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
+          "TacticRangeConstraint": {
+            "TacticRanges": [],
             "IncludeType": 0
+          },
+          "TagConstraint": {
+            "IncludeType": 0,
+            "TagNamesInt": []
           },
           "CoverState": 0,
           "HPRateConstraint": {
-            "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
             "ConstraintType": 0,
             "HPRate": 0
+          },
+          "TacticRoleConstraint": {
+            "TacticRole": [],
+            "IncludeType": 0
+          },
+          "SpawnSourceConstraint": {
+            "SpawnSources": [],
+            "IncludeType": 0
+          },
+          "BlackboardConstraint": {
+            "KeyType": 0,
+            "KeyString": ""
           }
         },
         "HighlightOption": 0,
         "CheckSpawnPositionMovable": false,
-        "name": "EN0006_ExtraPassive04_Insane_LevelCircleAreaEntity01",
-        "hideFlags": 0
+        "TargetContainerIndex": 0
       }
     },
     {
-      "$type": "MX.Logic.Data.ExSkillEntityTimelineData, BlueArchive",
       "Tag": "ActionEnd",
       "InvokerDirectionOverride": "None",
       "InvokerDirectionOverrideWorldPosition": {
@@ -838,7 +1007,6 @@
       "Entity": null
     }
   ],
-  "SkillDataKey": "EN0006ExtraPassive04_Insane",
   "name": "EN0006_ExtraPassive04_Insane_PassiveSkill01",
-  "hideFlags": 0
+  "SkillDataKey": "EN0006ExtraPassive04_Insane"
 }

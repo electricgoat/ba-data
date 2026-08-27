@@ -2,9 +2,9 @@
   "Version": "1.0",
   "Global": {
     "Position": {
-      "x": 1.74,
+      "x": 0.0,
       "y": 0.0,
-      "z": 9.393
+      "z": 0.0
     },
     "Events": [
       {
@@ -26,20 +26,20 @@
           },
           {
             "$type": "GroundCommandLocateCamera, BlueArchive",
-            "ID": 2,
+            "ID": 1,
             "MaxCameraSpeed": 3.0,
             "RotationSpeed": 1.0,
             "ZoomSpeed": 1.0,
             "RailPoints": [
               {
-                "UseTableData": true,
+                "UseTableData": false,
                 "Position": {
-                  "x": 0.0,
+                  "x": -0.35,
                   "y": 0.0,
-                  "z": 0.0
+                  "z": 15.19
                 },
-                "MinCameraDistance": 42.0,
-                "MaxCameraDistance": 42.0,
+                "MinCameraDistance": 50.0,
+                "MaxCameraDistance": 50.0,
                 "CameraForward": {
                   "x": -0.8034659,
                   "y": -0.426618159,
@@ -47,14 +47,14 @@
                 }
               },
               {
-                "UseTableData": true,
+                "UseTableData": false,
                 "Position": {
-                  "x": 0.0,
+                  "x": -0.350000024,
                   "y": 0.0,
-                  "z": 18.93
+                  "z": 24.01
                 },
-                "MinCameraDistance": 42.0,
-                "MaxCameraDistance": 42.0,
+                "MinCameraDistance": 50.0,
+                "MaxCameraDistance": 50.0,
                 "CameraForward": {
                   "x": -0.8034659,
                   "y": -0.426618159,
@@ -73,75 +73,44 @@
             "WaitExecuteEnd": false
           },
           {
-            "$type": "MX.Logic.Battles.GroundCommandOperator, BlueArchive",
-            "GroupId": "WeekDungeonCombatStart_03_01",
-            "CommandID": "0",
+            "$type": "MX.Logic.Battles.GroundCommandForceIdle, BlueArchive",
+            "IsForceIdleOn": true,
+            "CommandID": "Player_command",
             "WaitExecuteEnd": false
           }
         ]
       },
       {
-        "EventName": "ChangeBGM",
+        "EventName": "EndBattle",
         "Operator": 0,
         "Conditions": [
           {
-            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
-            "ConditionID": "0"
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 1,
+            "CheckSummonedCharacterDead": false,
+            "CheckDelayMilliSecond": 0,
+            "ConditionID": "BossDead"
           }
         ],
         "Commands": [
           {
-            "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
-            "Milliseconds": 10000,
+            "$type": "MX.Logic.Battles.GroundCommandPlayPropAnimation, BlueArchive",
+            "repeatCount": 0,
+            "propKey": 1,
+            "animationName": "EN0018_Original_Vital_Death_FX",
             "CommandID": "",
-            "WaitExecuteEnd": false
-          },
-          {
-            "$type": "MX.Logic.Battles.GroundCommandCurrentBGMChange, BlueArchive",
-            "BGMIdToChange": 72,
-            "PlayStartPoint": 0,
-            "PlayEndPoint": 0,
-            "FadeOutTime": 5000,
-            "FadeInTime": 5000,
-            "CommandID": "",
-            "FadeOutTimeSecond": 5.0,
-            "FadeInTimeSecond": 5.0,
             "WaitExecuteEnd": false
           },
           {
             "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
-            "Milliseconds": 50000,
+            "Milliseconds": 3000,
             "CommandID": "",
             "WaitExecuteEnd": false
           },
           {
-            "$type": "MX.Logic.Battles.GroundCommandCurrentBGMChange, BlueArchive",
-            "BGMIdToChange": 158,
-            "PlayStartPoint": 1,
-            "PlayEndPoint": 1,
-            "FadeOutTime": 5000,
-            "FadeInTime": 5000,
+            "$type": "MX.Logic.Battles.GroundCommandEndBattle, BlueArchive",
+            "BattleEndType": 4,
             "CommandID": "",
-            "FadeOutTimeSecond": 5.0,
-            "FadeInTimeSecond": 5.0,
-            "WaitExecuteEnd": false
-          },
-          {
-            "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
-            "Milliseconds": 50000,
-            "CommandID": "",
-            "WaitExecuteEnd": false
-          },
-          {
-            "$type": "MX.Logic.Battles.GroundCommandCurrentBGMChange, BlueArchive",
-            "BGMIdToChange": 165,
-            "PlayStartPoint": 0,
-            "PlayEndPoint": 1,
-            "FadeOutTime": 5000,
-            "FadeInTime": 5000,
-            "CommandID": "",
-            "FadeOutTimeSecond": 5.0,
-            "FadeInTimeSecond": 5.0,
             "WaitExecuteEnd": false
           }
         ]
@@ -152,31 +121,71 @@
     {
       "SectionID": 1,
       "Position": {
-        "x": 1.74,
+        "x": 0.0,
         "y": 0.0,
-        "z": 15.3029995
+        "z": 5.0
       },
       "Events": [
         {
-          "EventName": "SpawnUnit",
+          "EventName": "Spawn1-1",
           "Operator": 0,
           "Conditions": [
             {
-              "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
-              "ConditionID": "0"
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
             }
           ],
           "Commands": [
             {
-              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
-              "Interval": 100,
-              "CommandID": "1",
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 9000,
+              "CommandID": "",
               "WaitExecuteEnd": false
             },
             {
               "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
               "Interval": 100,
-              "CommandID": "2",
+              "CommandID": "CommandSpawn1-1",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceIdle, BlueArchive",
+              "IsForceIdleOn": false,
+              "CommandID": "Player_command",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "Camera",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandPlayPropAnimation, BlueArchive",
+              "repeatCount": 0,
+              "propKey": 1,
+              "animationName": "EN0018_Original_Appearance_FX",
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 8866,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandPlayPropAnimation, BlueArchive",
+              "repeatCount": 99,
+              "propKey": 1,
+              "animationName": "EN0018_Original_Normal_Idle_FX",
+              "CommandID": "",
               "WaitExecuteEnd": false
             }
           ]
@@ -185,15 +194,15 @@
       "Obstacles": [],
       "EnemySpawnPointGroupList": [
         {
-          "GroupName": "SpawnPointParent",
+          "GroupName": "SpawnPointParent1-1",
           "SpawnPoints": [
             {
               "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
               "SpawnData": {
-                "SpawnTemplateId": "Masked_Kyogeki_SR_C",
+                "SpawnTemplateId": "EN0019_Original",
                 "CostumeId": 0,
                 "AIId": 0,
-                "AppearAction": false,
+                "AppearAction": true,
                 "SkillLevel": {
                   "ExSkill": [],
                   "PublicSkill": [],
@@ -201,250 +210,26 @@
                   "ExtraPassiveSkill": []
                 }
               },
-              "SpawnAIGroupId": "\u0000",
+              "SpawnAIGroupId": "A",
               "SpawnConditionIdList": [
-                "10"
+                "BossDead"
               ],
-              "SpawnCommandIdList": [
-                "1"
-              ],
+              "SpawnCommandIdList": [],
               "MovePoints": [],
-              "TileX": 44,
-              "TileY": 130,
+              "TileX": 43,
+              "TileY": 131,
               "PositionHeight": 0.0,
               "Position": {
-                "x": 0.8200002,
-                "y": 21.403
+                "x": 0.63,
+                "y": 17.59
               },
               "Direction": {
                 "x": -8.742278E-8,
                 "y": -1.0
               },
-              "ConditionIdList": [
-                "1"
-              ],
+              "ConditionIdList": [],
               "CommandIdList": [
-                "1"
-              ],
-              "EntityId": {
-                "uniqueId": 0
-              },
-              "Active": false
-            },
-            {
-              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
-              "SpawnData": {
-                "SpawnTemplateId": "Masked_Kyogeki_SR_E",
-                "CostumeId": 0,
-                "AIId": 0,
-                "AppearAction": false,
-                "SkillLevel": {
-                  "ExSkill": [],
-                  "PublicSkill": [],
-                  "PassiveSkill": [],
-                  "ExtraPassiveSkill": []
-                }
-              },
-              "SpawnAIGroupId": "\u0000",
-              "SpawnConditionIdList": [
-                "10"
-              ],
-              "SpawnCommandIdList": [
-                "1"
-              ],
-              "MovePoints": [],
-              "TileX": 41,
-              "TileY": 130,
-              "PositionHeight": 0.0,
-              "Position": {
-                "x": 0.235000014,
-                "y": 21.403
-              },
-              "Direction": {
-                "x": -8.742278E-8,
-                "y": -1.0
-              },
-              "ConditionIdList": [
-                "1"
-              ],
-              "CommandIdList": [
-                "1"
-              ],
-              "EntityId": {
-                "uniqueId": 0
-              },
-              "Active": false
-            },
-            {
-              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
-              "SpawnData": {
-                "SpawnTemplateId": "Masked_Kyogeki_SR_E",
-                "CostumeId": 0,
-                "AIId": 0,
-                "AppearAction": false,
-                "SkillLevel": {
-                  "ExSkill": [],
-                  "PublicSkill": [],
-                  "PassiveSkill": [],
-                  "ExtraPassiveSkill": []
-                }
-              },
-              "SpawnAIGroupId": "\u0000",
-              "SpawnConditionIdList": [
-                "10"
-              ],
-              "SpawnCommandIdList": [
-                "1"
-              ],
-              "MovePoints": [],
-              "TileX": 47,
-              "TileY": 130,
-              "PositionHeight": 0.0,
-              "Position": {
-                "x": 1.379,
-                "y": 21.403
-              },
-              "Direction": {
-                "x": -8.742278E-8,
-                "y": -1.0
-              },
-              "ConditionIdList": [
-                "1"
-              ],
-              "CommandIdList": [
-                "1"
-              ],
-              "EntityId": {
-                "uniqueId": 0
-              },
-              "Active": false
-            },
-            {
-              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
-              "SpawnData": {
-                "SpawnTemplateId": "Masked_Kyogeki_SR_M",
-                "CostumeId": 0,
-                "AIId": 0,
-                "AppearAction": false,
-                "SkillLevel": {
-                  "ExSkill": [],
-                  "PublicSkill": [],
-                  "PassiveSkill": [],
-                  "ExtraPassiveSkill": []
-                }
-              },
-              "SpawnAIGroupId": "\u0000",
-              "SpawnConditionIdList": [
-                "10"
-              ],
-              "SpawnCommandIdList": [
-                "1"
-              ],
-              "MovePoints": [],
-              "TileX": 38,
-              "TileY": 130,
-              "PositionHeight": 0.0,
-              "Position": {
-                "x": -0.467999935,
-                "y": 21.403
-              },
-              "Direction": {
-                "x": -8.742278E-8,
-                "y": -1.0
-              },
-              "ConditionIdList": [
-                "1"
-              ],
-              "CommandIdList": [
-                "1"
-              ],
-              "EntityId": {
-                "uniqueId": 0
-              },
-              "Active": false
-            },
-            {
-              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
-              "SpawnData": {
-                "SpawnTemplateId": "Masked_Kyogeki_SR_M",
-                "CostumeId": 0,
-                "AIId": 0,
-                "AppearAction": false,
-                "SkillLevel": {
-                  "ExSkill": [],
-                  "PublicSkill": [],
-                  "PassiveSkill": [],
-                  "ExtraPassiveSkill": []
-                }
-              },
-              "SpawnAIGroupId": "\u0000",
-              "SpawnConditionIdList": [
-                "10"
-              ],
-              "SpawnCommandIdList": [
-                "1"
-              ],
-              "MovePoints": [],
-              "TileX": 50,
-              "TileY": 130,
-              "PositionHeight": 0.0,
-              "Position": {
-                "x": 1.924,
-                "y": 21.403
-              },
-              "Direction": {
-                "x": -8.742278E-8,
-                "y": -1.0
-              },
-              "ConditionIdList": [
-                "1"
-              ],
-              "CommandIdList": [
-                "1"
-              ],
-              "EntityId": {
-                "uniqueId": 0
-              },
-              "Active": false
-            },
-            {
-              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
-              "SpawnData": {
-                "SpawnTemplateId": "NPC_Haunted_King_E_STORY_01",
-                "CostumeId": 0,
-                "AIId": 0,
-                "AppearAction": false,
-                "SkillLevel": {
-                  "ExSkill": [],
-                  "PublicSkill": [],
-                  "PassiveSkill": [],
-                  "ExtraPassiveSkill": []
-                }
-              },
-              "SpawnAIGroupId": "\u0000",
-              "SpawnConditionIdList": [
-                "11"
-              ],
-              "SpawnCommandIdList": [
-                "2"
-              ],
-              "MovePoints": [],
-              "TileX": 50,
-              "TileY": 87,
-              "PositionHeight": 0.0,
-              "Position": {
-                "x": 1.924,
-                "y": 12.9229994
-              },
-              "Direction": {
-                "x": -8.742278E-8,
-                "y": -1.0
-              },
-              "ConditionIdList": [
-                "1"
-              ],
-              "CommandIdList": [
-                "2"
+                "CommandSpawn1-1"
               ],
               "EntityId": {
                 "uniqueId": 0
@@ -462,8 +247,8 @@
       "IgnorePathFind": false,
       "Index": 0,
       "Position": {
-        "x": 0.74,
-        "y": 12.67
+        "x": 0.65,
+        "y": 9.03
       },
       "Forward": {
         "x": 0.0,
@@ -477,8 +262,8 @@
       "IgnorePathFind": false,
       "Index": 0,
       "Position": {
-        "x": 0.840000033,
-        "y": 17.53
+        "x": 0.65,
+        "y": 24.0
       },
       "Forward": {
         "x": 0.0,
