@@ -1,0 +1,657 @@
+{
+  "Version": "",
+  "Global": {
+    "Position": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "Events": [
+      {
+        "EventName": "SpawnPlayer",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": "0"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSpawnPlayer, BlueArchive",
+            "IsEnemy": false,
+            "IgnoreSkillCardShuffle": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 52,
+            "MaxCameraSpeed": 5.0,
+            "RotationSpeed": 5.0,
+            "ZoomSpeed": 5.0,
+            "RailPoints": [
+              {
+                "UseTableData": false,
+                "Position": {
+                  "x": -1.74365,
+                  "y": 9.733182,
+                  "z": 262.854
+                },
+                "MinCameraDistance": 25.0,
+                "MaxCameraDistance": 25.0,
+                "CameraForward": {
+                  "x": -0.30535993,
+                  "y": -0.464318931,
+                  "z": 0.831362247
+                }
+              }
+            ],
+            "CameraIndex": 0,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 52,
+            "MaxCameraSpeed": 5.0,
+            "RotationSpeed": 5.0,
+            "ZoomSpeed": 5.0,
+            "RailPoints": [
+              {
+                "UseTableData": false,
+                "Position": {
+                  "x": -1.74365,
+                  "y": 9.733182,
+                  "z": 261.63
+                },
+                "MinCameraDistance": 15.0,
+                "MaxCameraDistance": 15.0,
+                "CameraForward": {
+                  "x": -0.305360168,
+                  "y": -0.5226,
+                  "z": 0.7960178
+                }
+              }
+            ],
+            "CameraIndex": 1,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 52,
+            "MaxCameraSpeed": 5.0,
+            "RotationSpeed": 5.0,
+            "ZoomSpeed": 5.0,
+            "RailPoints": [
+              {
+                "UseTableData": false,
+                "Position": {
+                  "x": -1.74365,
+                  "y": 9.733182,
+                  "z": 266.18
+                },
+                "MinCameraDistance": 35.0,
+                "MaxCameraDistance": 35.0,
+                "CameraForward": {
+                  "x": -0.305360049,
+                  "y": -0.485483676,
+                  "z": 0.819183052
+                }
+              }
+            ],
+            "CameraIndex": 2,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 1,
+            "SetConditionCommandOnly": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "EndBattle",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 0,
+            "CheckSummonedCharacterDead": false,
+            "CheckDelayMilliSecond": 0,
+            "ConditionID": "ConditionDead"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandBattleTimer, BlueArchive",
+            "Stop": true,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandCharacterDie, BlueArchive",
+            "CharacterCommandIdList": [
+              "2PhaseBossDie"
+            ],
+            "CharacterSpawnTemplateIdList": [],
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+            "Milliseconds": 2000,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandEndBattle, BlueArchive",
+            "BattleEndType": 4,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "Area1On",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": ""
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandTemporaryCanUseSkillArea, BlueArchive",
+            "OnOff": true,
+            "TemporaryCanUseSkillAreaCommandId": "Area1",
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      }
+    ]
+  },
+  "Sections": [
+    {
+      "SectionID": 1,
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 5.0
+      },
+      "Events": [
+        {
+          "EventName": "Spawn3-1",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 10,
+              "CommandID": "CommandSpawnPhase02",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 100,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandHideHPBar, BlueArchive",
+              "IsShow": false,
+              "CommandID": "Command_SteelPincer",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSetLimitBreakGauge, BlueArchive",
+              "UIPath": "UI/UIAssetObject/UIBattleAdditionalLimitBreak_EN0022",
+              "PrefabPath": "UI/UIAssetObject/UIBattleAdditionalLimitBreak_EN0022",
+              "NotUseDefaultSkillSlotUI": false,
+              "MaxGauge": 20000,
+              "DefaultGauge": 0,
+              "GainRules": [],
+              "characterId": 614130100,
+              "characterLevel": 90,
+              "characterGrade": 5,
+              "LimitBreakSkills": [
+                {
+                  "LimitGaugeCost": 20000,
+                  "skillGroupId": "EN0022GroundEx01",
+                  "skillLevel": 1,
+                  "skillCardTexture": "UIs/01_Common/30_RaidContent/Skill_Portrait_EN0022_GroggyTrigger01",
+                  "skillUseCount": 5,
+                  "forceCoolTimeComplete": false
+                }
+              ],
+              "LockRules": [],
+              "AdditionalUIDataParameters": [],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandOverrideRaidBossBuffIcon, BlueArchive",
+              "CommandID": "2PhaseBossBuff_Icon_Set",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "SteelPincerAttack",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+              "LogicEffectGroupId": "EN0022_Original02_Ex02_Effect02",
+              "TriggerMaxCount": 10,
+              "TriggerCooltime": 10000,
+              "ConditionID": "Condition_SteelPincer"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "GroundCommandHideHPBar, BlueArchive",
+              "IsShow": true,
+              "CommandID": "Command_SteelPincer",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 22000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandHideHPBar, BlueArchive",
+              "IsShow": false,
+              "CommandID": "Command_SteelPincer",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "SteelPincerAttack_Groggy",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+              "LogicEffectGroupId": "EN0022_Original02_Body_Passive01_Effect04",
+              "TriggerMaxCount": 10,
+              "TriggerCooltime": 10000,
+              "ConditionID": "Condition_Boss_Groggy"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 1000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceMoveToGroundPoint, BlueArchive",
+              "IsInstantMove": true,
+              "IsInterruptCurrentAction": true,
+              "PointCommandID": "SteelPincer_MonePoint02",
+              "IsCommandWaitForMoveStart": false,
+              "IsCommandWaitForMoveEnd": false,
+              "UseGroundPointDirection": true,
+              "CommandID": "Move_SteelPincer",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 20000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceMoveToGroundPoint, BlueArchive",
+              "IsInstantMove": true,
+              "IsInterruptCurrentAction": true,
+              "PointCommandID": "SteelPincer_MonePoint01",
+              "IsCommandWaitForMoveStart": false,
+              "IsCommandWaitForMoveEnd": false,
+              "UseGroundPointDirection": true,
+              "CommandID": "Move_SteelPincer",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "ActiveGroggy",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+              "LogicEffectGroupId": "EN0022_Ground_Ex01_Effect01",
+              "TriggerMaxCount": 10,
+              "TriggerCooltime": 10000,
+              "ConditionID": "Hit_Groggy"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandPlayPropAnimation, BlueArchive",
+              "repeatCount": 0,
+              "propKey": 2,
+              "animationName": "EN0022_Object_03_Vital_Groggy",
+              "stopWhenBattleEnd": false,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EN0022_TotalHP_Street_Unarmed_Normal",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "ConditionDead"
+              ],
+              "SpawnCommandIdList": [],
+              "MovePoints": [],
+              "TileX": 76,
+              "TileY": 1499,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -14.77,
+                "y": 289.71
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandSpawnPhase02"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.MultiPartCharacterSpawnPoint, BlueArchive",
+              "MainSpawnData": {
+                "SpawnTemplateId": "EN0022_Original_02_Street_Unarmed_Normal",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SubSpawnData": [
+                {
+                  "PartName": "Body",
+                  "SpawnTemplateId": "EN0022_Original_02_Body_Street_Unarmed_Normal",
+                  "PositionHeight": 0.0,
+                  "Position": {
+                    "x": -4.000001,
+                    "y": 277.0
+                  },
+                  "Direction": {
+                    "x": 1.74845553E-7,
+                    "y": 1.0
+                  },
+                  "SpawnConditionIdList": [
+                    "Hit_Groggy"
+                  ],
+                  "SpawnCommandIdList": [
+                    "2PhaseBossDie",
+                    "2PhaseBossBuff_Icon_Set"
+                  ]
+                },
+                {
+                  "PartName": "SteelPincer",
+                  "SpawnTemplateId": "EN0022_Original_02_SteelPincer_Street_LightAmor_Normal",
+                  "PositionHeight": 0.0,
+                  "Position": {
+                    "x": -7.480001,
+                    "y": 273.48
+                  },
+                  "Direction": {
+                    "x": 1.74845553E-7,
+                    "y": 1.0
+                  },
+                  "SpawnConditionIdList": [
+                    "Condition_SteelPincer"
+                  ],
+                  "SpawnCommandIdList": [
+                    "Command_SteelPincer",
+                    "Move_SteelPincer",
+                    "2PhaseBossDie"
+                  ]
+                }
+              ],
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "Condition_Boss_Groggy"
+              ],
+              "SpawnCommandIdList": [
+                "2PhaseBossDie"
+              ],
+              "MovePoints": [],
+              "TileX": 140,
+              "TileY": 1483,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -2.0,
+                "y": 286.5
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandSpawnPhase02"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EN0022_Original_02_SteelDrum_Street_Unarmed_Normal",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
+              "MovePoints": [],
+              "TileX": 95,
+              "TileY": 1390,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -10.99,
+                "y": 268.01
+              },
+              "Direction": {
+                "x": 0.0,
+                "y": 1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandSpawnPhase02"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
+              "MovePoints": [],
+              "TileX": 113,
+              "TileY": 1417,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -7.480001,
+                "y": 273.48
+              },
+              "Direction": {
+                "x": 1.74845553E-7,
+                "y": 1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "SteelPincer_MonePoint01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
+              "MovePoints": [],
+              "TileX": 107,
+              "TileY": 1420,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -8.67,
+                "y": 274.06
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "SteelPincer_MonePoint02"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Formations": [
+    {
+      "SectionIndex": 0,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": -6.5,
+        "y": 266.0
+      },
+      "Forward": {
+        "x": 0.0,
+        "y": 1.0
+      },
+      "Height": 0.0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 1,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": -6.5,
+        "y": 271.5
+      },
+      "Forward": {
+        "x": 0.0,
+        "y": 1.0
+      },
+      "Height": 0.0,
+      "IsEnemy": false
+    }
+  ],
+  "EnemyFormations": [],
+  "TemporaryCanUseSkillAreas": [
+    {
+      "IsHideVisual": false,
+      "CommandId": "Area1",
+      "Radius": 2500,
+      "GroupTag": 1,
+      "Position": {
+        "x": -8.0,
+        "y": 0.0,
+        "z": 270.0
+      },
+      "RadiusSqr": 0.0,
+      "Position2D": {
+        "x": 0.0,
+        "y": 0.0
+      }
+    }
+  ]
+}

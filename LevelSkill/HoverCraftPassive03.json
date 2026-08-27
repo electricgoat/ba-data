@@ -1,97 +1,105 @@
 {
-  "$type": "MX.Logic.Data.PassiveSkillData, BlueArchive",
+  "$type": "MX.GameData.DAO.Battle.PassiveSkillDAO, BlueArchive",
   "Duration": -1,
   "MaxTriggerCount": 1,
   "CoolTimeNotTrigger": 0,
   "TryCount": 0,
   "ResetTryCountUseSkill": false,
   "TriggerCondition": {
-    "$type": "MX.Logic.Data.PassiveTriggerData, BlueArchive",
     "Event": 1,
     "Parameters": "",
     "ConditionExpression": "",
     "TriggerRate": 10000,
     "EchelonConstraint": {
-      "$type": "MX.Logic.Data.EchelonConstraint, BlueArchive",
       "CountConstraint": {
-        "$type": "MX.Logic.Data.CountConstraint, BlueArchive",
         "Count": 0,
         "DiffOperator": 0
       },
       "SchoolConstraint": {
-        "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
         "School": 0,
         "IncludeType": 0
       },
       "WeaponConstraint": {
-        "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
         "Weapon": 0,
         "IncludeType": 0
-      },
-      "IsEmpty": true
+      }
     }
   },
   "TriggerSourceFindRule": {
-    "$type": "MX.Logic.Skills.TargetFindRule, BlueArchive",
     "Sort": {
-      "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+      "IsValid": true,
       "SortCriteria": "Distance",
       "SortStat": 0,
       "SortParameter": null,
-      "OrderBy": "Lowest"
+      "OrderBy": "Lowest",
+      "Reindexing": 0,
+      "AllowedSummonedCount": 0,
+      "RandomTargetSelect": false
     },
     "EssentialCandidate": {
-      "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
       "TargetSide": "Self",
       "TargetingType": "Position",
       "ApplyEntityType": 1,
       "MaxTargetCount": 1
     },
     "OptionalCandidate": {
-      "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+      "IgnoreUntargetable": false,
       "AliveState": 0,
       "SchoolConstraint": {
-        "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
         "School": 0,
         "IncludeType": 0
       },
+      "PersonalityIdConstraint": {
+        "IncludeType": 0,
+        "PersonalityIds": []
+      },
       "WeaponConstraint": {
-        "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
         "Weapon": 0,
         "IncludeType": 0
       },
       "SquadTypeConstraint": {
-        "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
         "SquadType": 0,
         "IncludeType": 0
       },
       "AdaptationConstraint": {
-        "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
         "AdaptationType": 0,
         "AdaptationValues": [],
         "IncludeType": 0
       },
       "BulletConstraint": {
-        "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
         "BulletType": 5,
         "IncludeType": 0
       },
-      "TagConstraint": {
-        "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
+      "TacticRangeConstraint": {
+        "TacticRanges": [],
         "IncludeType": 0
+      },
+      "TagConstraint": {
+        "IncludeType": 0,
+        "TagNamesInt": []
       },
       "CoverState": 0,
       "HPRateConstraint": {
-        "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
         "ConstraintType": 0,
         "HPRate": 0
+      },
+      "TacticRoleConstraint": {
+        "TacticRole": [],
+        "IncludeType": 0
+      },
+      "SpawnSourceConstraint": {
+        "SpawnSources": [],
+        "IncludeType": 0
+      },
+      "BlackboardConstraint": {
+        "KeyType": 0,
+        "KeyString": ""
       }
     }
   },
   "SkillTargetType": 3,
   "EntityTimeline": [
     {
-      "$type": "MX.Logic.Data.ExSkillEntityTimelineData, BlueArchive",
       "Tag": "ActionStart",
       "InvokerDirectionOverride": "None",
       "InvokerDirectionOverrideWorldPosition": {
@@ -103,7 +111,6 @@
       "Entity": null
     },
     {
-      "$type": "MX.Logic.Data.ExSkillEntityTimelineData, BlueArchive",
       "Tag": "ActionRelease",
       "InvokerDirectionOverride": "None",
       "InvokerDirectionOverrideWorldPosition": {
@@ -113,9 +120,7 @@
       "Frame": 1,
       "DamageDistributeRate": 0,
       "Entity": {
-        "$type": "MX.Logic.Data.LevelCircleAuraEntityData, BlueArchive",
-        "BarrierTransferAbilities": [],
-        "Radius": 600,
+        "$type": "MX.GameData.DAO.Battle.CircleAuraEntityDAO, BlueArchive",
         "AttachSpawnTarget": false,
         "RotateEntityDirectionEveryFrame": false,
         "ApplyOffsetRotateEntityDirection": false,
@@ -124,18 +129,24 @@
         "Interval": 9,
         "RemoveEntityIfSameEntitySpawn": 0,
         "RemoveEntityIfSkillCancel": false,
+        "MovingAreaOption": 0,
         "AreaAbilities": [
           {
-            "$type": "MX.Logic.Data.LevelOneTimeAbilityData, BlueArchive",
+            "$type": "MX.GameData.DAO.Battle.LevelOneTimeAbilityDAO, BlueArchive",
+            "name": "HoverCraft01_Passive03_LevelOneTimeAbility01",
             "StartDelay": 0,
             "LogicEffectGroupIds": [
               "HoverCraft01_Passive01_Effect03",
               "HoverCraft01_Passive01_Effect04"
             ],
-            "name": "HoverCraft01_Passive03_LevelOneTimeAbility01",
-            "hideFlags": 0
+            "Modifiers": [],
+            "IsReferenceSkillSlot": false,
+            "ReferenceSkillSlot": "None"
           }
         ],
+        "BarrierTransferAbilities": [],
+        "Radius": 600,
+        "name": "HoverCraft01_Passive03_LevelAuraEntity01",
         "EntityName": "HoverCraftPassive01Entity01",
         "SpawnRate": 10000,
         "SpawnDelay": 0,
@@ -156,73 +167,83 @@
         "SpawnDirectionType": "None",
         "OverrideTargetingRule": true,
         "TargetSortRule": {
-          "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+          "IsValid": true,
           "SortCriteria": "Distance",
           "SortStat": 0,
           "SortParameter": null,
-          "OrderBy": "Lowest"
+          "OrderBy": "Lowest",
+          "Reindexing": 0,
+          "AllowedSummonedCount": 0,
+          "RandomTargetSelect": false
         },
         "EssentialCandidateRule": {
-          "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
           "TargetSide": "Ally_Except_Self",
           "TargetingType": "Position",
           "ApplyEntityType": 5,
           "MaxTargetCount": -1
         },
         "OptionalCandidateRule": {
-          "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+          "IgnoreUntargetable": false,
           "AliveState": 1,
           "SchoolConstraint": {
-            "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
             "School": 0,
             "IncludeType": 0
           },
+          "PersonalityIdConstraint": {
+            "IncludeType": 0,
+            "PersonalityIds": []
+          },
           "WeaponConstraint": {
-            "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
             "Weapon": 0,
             "IncludeType": 0
           },
           "SquadTypeConstraint": {
-            "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
             "SquadType": 0,
             "IncludeType": 0
           },
           "AdaptationConstraint": {
-            "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
             "AdaptationType": 0,
             "AdaptationValues": [],
             "IncludeType": 0
           },
           "BulletConstraint": {
-            "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
             "BulletType": 5,
             "IncludeType": 0
           },
+          "TacticRangeConstraint": {
+            "TacticRanges": [],
+            "IncludeType": 0
+          },
           "TagConstraint": {
-            "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
             "IncludeType": 1,
-            "TagNames": [
-              "HoverMissile"
-            ],
             "TagNamesInt": [
               509
             ]
           },
           "CoverState": 0,
           "HPRateConstraint": {
-            "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
             "ConstraintType": 0,
             "HPRate": 0
+          },
+          "TacticRoleConstraint": {
+            "TacticRole": [],
+            "IncludeType": 0
+          },
+          "SpawnSourceConstraint": {
+            "SpawnSources": [],
+            "IncludeType": 0
+          },
+          "BlackboardConstraint": {
+            "KeyType": 0,
+            "KeyString": ""
           }
         },
         "HighlightOption": 0,
         "CheckSpawnPositionMovable": false,
-        "name": "HoverCraft01_Passive03_LevelAuraEntity01",
-        "hideFlags": 0
+        "TargetContainerIndex": 0
       }
     },
     {
-      "$type": "MX.Logic.Data.ExSkillEntityTimelineData, BlueArchive",
       "Tag": "ActionRelease",
       "InvokerDirectionOverride": "None",
       "InvokerDirectionOverrideWorldPosition": {
@@ -232,9 +253,7 @@
       "Frame": 1,
       "DamageDistributeRate": 0,
       "Entity": {
-        "$type": "MX.Logic.Data.LevelCircleAuraEntityData, BlueArchive",
-        "BarrierTransferAbilities": [],
-        "Radius": 600,
+        "$type": "MX.GameData.DAO.Battle.CircleAuraEntityDAO, BlueArchive",
         "AttachSpawnTarget": false,
         "RotateEntityDirectionEveryFrame": false,
         "ApplyOffsetRotateEntityDirection": false,
@@ -243,18 +262,24 @@
         "Interval": 9,
         "RemoveEntityIfSameEntitySpawn": 0,
         "RemoveEntityIfSkillCancel": false,
+        "MovingAreaOption": 0,
         "AreaAbilities": [
           {
-            "$type": "MX.Logic.Data.LevelOneTimeAbilityData, BlueArchive",
+            "$type": "MX.GameData.DAO.Battle.LevelOneTimeAbilityDAO, BlueArchive",
+            "name": "HoverCraft01_Passive03_LevelOneTimeAbility01",
             "StartDelay": 0,
             "LogicEffectGroupIds": [
               "HoverCraft01_Passive01_Effect03",
               "HoverCraft01_Passive01_Effect04"
             ],
-            "name": "HoverCraft01_Passive03_LevelOneTimeAbility01",
-            "hideFlags": 0
+            "Modifiers": [],
+            "IsReferenceSkillSlot": false,
+            "ReferenceSkillSlot": "None"
           }
         ],
+        "BarrierTransferAbilities": [],
+        "Radius": 600,
+        "name": "HoverCraft01_Passive03_LevelAuraEntity02",
         "EntityName": "HoverCraftPassive01Entity02",
         "SpawnRate": 10000,
         "SpawnDelay": 0,
@@ -275,73 +300,83 @@
         "SpawnDirectionType": "None",
         "OverrideTargetingRule": true,
         "TargetSortRule": {
-          "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+          "IsValid": true,
           "SortCriteria": "Distance",
           "SortStat": 0,
           "SortParameter": null,
-          "OrderBy": "Lowest"
+          "OrderBy": "Lowest",
+          "Reindexing": 0,
+          "AllowedSummonedCount": 0,
+          "RandomTargetSelect": false
         },
         "EssentialCandidateRule": {
-          "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
           "TargetSide": "Ally_Except_Self",
           "TargetingType": "Position",
           "ApplyEntityType": 5,
           "MaxTargetCount": -1
         },
         "OptionalCandidateRule": {
-          "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+          "IgnoreUntargetable": false,
           "AliveState": 1,
           "SchoolConstraint": {
-            "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
             "School": 0,
             "IncludeType": 0
           },
+          "PersonalityIdConstraint": {
+            "IncludeType": 0,
+            "PersonalityIds": []
+          },
           "WeaponConstraint": {
-            "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
             "Weapon": 0,
             "IncludeType": 0
           },
           "SquadTypeConstraint": {
-            "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
             "SquadType": 0,
             "IncludeType": 0
           },
           "AdaptationConstraint": {
-            "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
             "AdaptationType": 0,
             "AdaptationValues": [],
             "IncludeType": 0
           },
           "BulletConstraint": {
-            "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
             "BulletType": 5,
             "IncludeType": 0
           },
+          "TacticRangeConstraint": {
+            "TacticRanges": [],
+            "IncludeType": 0
+          },
           "TagConstraint": {
-            "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
             "IncludeType": 1,
-            "TagNames": [
-              "HoverMissile"
-            ],
             "TagNamesInt": [
               509
             ]
           },
           "CoverState": 0,
           "HPRateConstraint": {
-            "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
             "ConstraintType": 0,
             "HPRate": 0
+          },
+          "TacticRoleConstraint": {
+            "TacticRole": [],
+            "IncludeType": 0
+          },
+          "SpawnSourceConstraint": {
+            "SpawnSources": [],
+            "IncludeType": 0
+          },
+          "BlackboardConstraint": {
+            "KeyType": 0,
+            "KeyString": ""
           }
         },
         "HighlightOption": 0,
         "CheckSpawnPositionMovable": false,
-        "name": "HoverCraft01_Passive03_LevelAuraEntity02",
-        "hideFlags": 0
+        "TargetContainerIndex": 0
       }
     },
     {
-      "$type": "MX.Logic.Data.ExSkillEntityTimelineData, BlueArchive",
       "Tag": "ActionRelease",
       "InvokerDirectionOverride": "None",
       "InvokerDirectionOverrideWorldPosition": {
@@ -351,9 +386,7 @@
       "Frame": 1,
       "DamageDistributeRate": 0,
       "Entity": {
-        "$type": "MX.Logic.Data.LevelCircleAuraEntityData, BlueArchive",
-        "BarrierTransferAbilities": [],
-        "Radius": 600,
+        "$type": "MX.GameData.DAO.Battle.CircleAuraEntityDAO, BlueArchive",
         "AttachSpawnTarget": false,
         "RotateEntityDirectionEveryFrame": false,
         "ApplyOffsetRotateEntityDirection": false,
@@ -362,18 +395,24 @@
         "Interval": 9,
         "RemoveEntityIfSameEntitySpawn": 0,
         "RemoveEntityIfSkillCancel": false,
+        "MovingAreaOption": 0,
         "AreaAbilities": [
           {
-            "$type": "MX.Logic.Data.LevelOneTimeAbilityData, BlueArchive",
+            "$type": "MX.GameData.DAO.Battle.LevelOneTimeAbilityDAO, BlueArchive",
+            "name": "HoverCraft01_Passive03_LevelOneTimeAbility01",
             "StartDelay": 0,
             "LogicEffectGroupIds": [
               "HoverCraft01_Passive01_Effect03",
               "HoverCraft01_Passive01_Effect04"
             ],
-            "name": "HoverCraft01_Passive03_LevelOneTimeAbility01",
-            "hideFlags": 0
+            "Modifiers": [],
+            "IsReferenceSkillSlot": false,
+            "ReferenceSkillSlot": "None"
           }
         ],
+        "BarrierTransferAbilities": [],
+        "Radius": 600,
+        "name": "HoverCraft01_Passive03_LevelAuraEntity03",
         "EntityName": "HoverCraftPassive01Entity03",
         "SpawnRate": 10000,
         "SpawnDelay": 0,
@@ -394,73 +433,83 @@
         "SpawnDirectionType": "None",
         "OverrideTargetingRule": true,
         "TargetSortRule": {
-          "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+          "IsValid": true,
           "SortCriteria": "Distance",
           "SortStat": 0,
           "SortParameter": null,
-          "OrderBy": "Lowest"
+          "OrderBy": "Lowest",
+          "Reindexing": 0,
+          "AllowedSummonedCount": 0,
+          "RandomTargetSelect": false
         },
         "EssentialCandidateRule": {
-          "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
           "TargetSide": "Ally_Except_Self",
           "TargetingType": "Position",
           "ApplyEntityType": 5,
           "MaxTargetCount": -1
         },
         "OptionalCandidateRule": {
-          "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+          "IgnoreUntargetable": false,
           "AliveState": 1,
           "SchoolConstraint": {
-            "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
             "School": 0,
             "IncludeType": 0
           },
+          "PersonalityIdConstraint": {
+            "IncludeType": 0,
+            "PersonalityIds": []
+          },
           "WeaponConstraint": {
-            "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
             "Weapon": 0,
             "IncludeType": 0
           },
           "SquadTypeConstraint": {
-            "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
             "SquadType": 0,
             "IncludeType": 0
           },
           "AdaptationConstraint": {
-            "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
             "AdaptationType": 0,
             "AdaptationValues": [],
             "IncludeType": 0
           },
           "BulletConstraint": {
-            "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
             "BulletType": 5,
             "IncludeType": 0
           },
+          "TacticRangeConstraint": {
+            "TacticRanges": [],
+            "IncludeType": 0
+          },
           "TagConstraint": {
-            "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
             "IncludeType": 1,
-            "TagNames": [
-              "HoverMissile"
-            ],
             "TagNamesInt": [
               509
             ]
           },
           "CoverState": 0,
           "HPRateConstraint": {
-            "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
             "ConstraintType": 0,
             "HPRate": 0
+          },
+          "TacticRoleConstraint": {
+            "TacticRole": [],
+            "IncludeType": 0
+          },
+          "SpawnSourceConstraint": {
+            "SpawnSources": [],
+            "IncludeType": 0
+          },
+          "BlackboardConstraint": {
+            "KeyType": 0,
+            "KeyString": ""
           }
         },
         "HighlightOption": 0,
         "CheckSpawnPositionMovable": false,
-        "name": "HoverCraft01_Passive03_LevelAuraEntity03",
-        "hideFlags": 0
+        "TargetContainerIndex": 0
       }
     },
     {
-      "$type": "MX.Logic.Data.ExSkillEntityTimelineData, BlueArchive",
       "Tag": "ActionRelease",
       "InvokerDirectionOverride": "None",
       "InvokerDirectionOverrideWorldPosition": {
@@ -470,9 +519,7 @@
       "Frame": 1,
       "DamageDistributeRate": 0,
       "Entity": {
-        "$type": "MX.Logic.Data.LevelCircleAuraEntityData, BlueArchive",
-        "BarrierTransferAbilities": [],
-        "Radius": 600,
+        "$type": "MX.GameData.DAO.Battle.CircleAuraEntityDAO, BlueArchive",
         "AttachSpawnTarget": false,
         "RotateEntityDirectionEveryFrame": false,
         "ApplyOffsetRotateEntityDirection": false,
@@ -481,17 +528,23 @@
         "Interval": 9,
         "RemoveEntityIfSameEntitySpawn": 0,
         "RemoveEntityIfSkillCancel": false,
+        "MovingAreaOption": 0,
         "AreaAbilities": [
           {
-            "$type": "MX.Logic.Data.LevelOneTimeAbilityData, BlueArchive",
+            "$type": "MX.GameData.DAO.Battle.LevelOneTimeAbilityDAO, BlueArchive",
+            "name": "HoverCraft01_Passive03_LevelOneTimeAbility03",
             "StartDelay": 0,
             "LogicEffectGroupIds": [
               "HoverCraft01_Passive03_Effect01"
             ],
-            "name": "HoverCraft01_Passive03_LevelOneTimeAbility03",
-            "hideFlags": 0
+            "Modifiers": [],
+            "IsReferenceSkillSlot": false,
+            "ReferenceSkillSlot": "None"
           }
         ],
+        "BarrierTransferAbilities": [],
+        "Radius": 600,
+        "name": "HoverCraft01_Passive03_LevelAuraEntity06",
         "EntityName": "HoverCraftPassive01Entity06",
         "SpawnRate": 10000,
         "SpawnDelay": 0,
@@ -512,73 +565,83 @@
         "SpawnDirectionType": "None",
         "OverrideTargetingRule": true,
         "TargetSortRule": {
-          "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+          "IsValid": true,
           "SortCriteria": "Distance",
           "SortStat": 0,
           "SortParameter": null,
-          "OrderBy": "Lowest"
+          "OrderBy": "Lowest",
+          "Reindexing": 0,
+          "AllowedSummonedCount": 0,
+          "RandomTargetSelect": false
         },
         "EssentialCandidateRule": {
-          "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
           "TargetSide": "Ally_Except_Self",
           "TargetingType": "Position",
           "ApplyEntityType": 5,
           "MaxTargetCount": -1
         },
         "OptionalCandidateRule": {
-          "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+          "IgnoreUntargetable": false,
           "AliveState": 1,
           "SchoolConstraint": {
-            "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
             "School": 0,
             "IncludeType": 0
           },
+          "PersonalityIdConstraint": {
+            "IncludeType": 0,
+            "PersonalityIds": []
+          },
           "WeaponConstraint": {
-            "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
             "Weapon": 0,
             "IncludeType": 0
           },
           "SquadTypeConstraint": {
-            "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
             "SquadType": 0,
             "IncludeType": 0
           },
           "AdaptationConstraint": {
-            "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
             "AdaptationType": 0,
             "AdaptationValues": [],
             "IncludeType": 0
           },
           "BulletConstraint": {
-            "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
             "BulletType": 5,
             "IncludeType": 0
           },
+          "TacticRangeConstraint": {
+            "TacticRanges": [],
+            "IncludeType": 0
+          },
           "TagConstraint": {
-            "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
             "IncludeType": 1,
-            "TagNames": [
-              "HoverMissile"
-            ],
             "TagNamesInt": [
               509
             ]
           },
           "CoverState": 0,
           "HPRateConstraint": {
-            "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
             "ConstraintType": 0,
             "HPRate": 0
+          },
+          "TacticRoleConstraint": {
+            "TacticRole": [],
+            "IncludeType": 0
+          },
+          "SpawnSourceConstraint": {
+            "SpawnSources": [],
+            "IncludeType": 0
+          },
+          "BlackboardConstraint": {
+            "KeyType": 0,
+            "KeyString": ""
           }
         },
         "HighlightOption": 0,
         "CheckSpawnPositionMovable": false,
-        "name": "HoverCraft01_Passive03_LevelAuraEntity06",
-        "hideFlags": 0
+        "TargetContainerIndex": 0
       }
     },
     {
-      "$type": "MX.Logic.Data.ExSkillEntityTimelineData, BlueArchive",
       "Tag": "ActionRelease",
       "InvokerDirectionOverride": "None",
       "InvokerDirectionOverrideWorldPosition": {
@@ -588,9 +651,7 @@
       "Frame": 1,
       "DamageDistributeRate": 0,
       "Entity": {
-        "$type": "MX.Logic.Data.LevelCircleAuraEntityData, BlueArchive",
-        "BarrierTransferAbilities": [],
-        "Radius": 600,
+        "$type": "MX.GameData.DAO.Battle.CircleAuraEntityDAO, BlueArchive",
         "AttachSpawnTarget": false,
         "RotateEntityDirectionEveryFrame": false,
         "ApplyOffsetRotateEntityDirection": false,
@@ -599,17 +660,23 @@
         "Interval": 9,
         "RemoveEntityIfSameEntitySpawn": 0,
         "RemoveEntityIfSkillCancel": false,
+        "MovingAreaOption": 0,
         "AreaAbilities": [
           {
-            "$type": "MX.Logic.Data.LevelOneTimeAbilityData, BlueArchive",
+            "$type": "MX.GameData.DAO.Battle.LevelOneTimeAbilityDAO, BlueArchive",
+            "name": "HoverCraft01_Passive03_LevelOneTimeAbility03",
             "StartDelay": 0,
             "LogicEffectGroupIds": [
               "HoverCraft01_Passive03_Effect01"
             ],
-            "name": "HoverCraft01_Passive03_LevelOneTimeAbility03",
-            "hideFlags": 0
+            "Modifiers": [],
+            "IsReferenceSkillSlot": false,
+            "ReferenceSkillSlot": "None"
           }
         ],
+        "BarrierTransferAbilities": [],
+        "Radius": 600,
+        "name": "HoverCraft01_Passive03_LevelAuraEntity07",
         "EntityName": "HoverCraftPassive01Entity07",
         "SpawnRate": 10000,
         "SpawnDelay": 0,
@@ -630,73 +697,83 @@
         "SpawnDirectionType": "None",
         "OverrideTargetingRule": true,
         "TargetSortRule": {
-          "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+          "IsValid": true,
           "SortCriteria": "Distance",
           "SortStat": 0,
           "SortParameter": null,
-          "OrderBy": "Lowest"
+          "OrderBy": "Lowest",
+          "Reindexing": 0,
+          "AllowedSummonedCount": 0,
+          "RandomTargetSelect": false
         },
         "EssentialCandidateRule": {
-          "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
           "TargetSide": "Ally_Except_Self",
           "TargetingType": "Position",
           "ApplyEntityType": 5,
           "MaxTargetCount": -1
         },
         "OptionalCandidateRule": {
-          "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+          "IgnoreUntargetable": false,
           "AliveState": 1,
           "SchoolConstraint": {
-            "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
             "School": 0,
             "IncludeType": 0
           },
+          "PersonalityIdConstraint": {
+            "IncludeType": 0,
+            "PersonalityIds": []
+          },
           "WeaponConstraint": {
-            "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
             "Weapon": 0,
             "IncludeType": 0
           },
           "SquadTypeConstraint": {
-            "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
             "SquadType": 0,
             "IncludeType": 0
           },
           "AdaptationConstraint": {
-            "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
             "AdaptationType": 0,
             "AdaptationValues": [],
             "IncludeType": 0
           },
           "BulletConstraint": {
-            "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
             "BulletType": 5,
             "IncludeType": 0
           },
+          "TacticRangeConstraint": {
+            "TacticRanges": [],
+            "IncludeType": 0
+          },
           "TagConstraint": {
-            "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
             "IncludeType": 1,
-            "TagNames": [
-              "HoverMissile"
-            ],
             "TagNamesInt": [
               509
             ]
           },
           "CoverState": 0,
           "HPRateConstraint": {
-            "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
             "ConstraintType": 0,
             "HPRate": 0
+          },
+          "TacticRoleConstraint": {
+            "TacticRole": [],
+            "IncludeType": 0
+          },
+          "SpawnSourceConstraint": {
+            "SpawnSources": [],
+            "IncludeType": 0
+          },
+          "BlackboardConstraint": {
+            "KeyType": 0,
+            "KeyString": ""
           }
         },
         "HighlightOption": 0,
         "CheckSpawnPositionMovable": false,
-        "name": "HoverCraft01_Passive03_LevelAuraEntity07",
-        "hideFlags": 0
+        "TargetContainerIndex": 0
       }
     },
     {
-      "$type": "MX.Logic.Data.ExSkillEntityTimelineData, BlueArchive",
       "Tag": "ActionRelease",
       "InvokerDirectionOverride": "None",
       "InvokerDirectionOverrideWorldPosition": {
@@ -706,9 +783,7 @@
       "Frame": 1,
       "DamageDistributeRate": 0,
       "Entity": {
-        "$type": "MX.Logic.Data.LevelCircleAuraEntityData, BlueArchive",
-        "BarrierTransferAbilities": [],
-        "Radius": 600,
+        "$type": "MX.GameData.DAO.Battle.CircleAuraEntityDAO, BlueArchive",
         "AttachSpawnTarget": false,
         "RotateEntityDirectionEveryFrame": false,
         "ApplyOffsetRotateEntityDirection": false,
@@ -717,17 +792,23 @@
         "Interval": 9,
         "RemoveEntityIfSameEntitySpawn": 0,
         "RemoveEntityIfSkillCancel": false,
+        "MovingAreaOption": 0,
         "AreaAbilities": [
           {
-            "$type": "MX.Logic.Data.LevelOneTimeAbilityData, BlueArchive",
+            "$type": "MX.GameData.DAO.Battle.LevelOneTimeAbilityDAO, BlueArchive",
+            "name": "HoverCraft01_Passive03_LevelOneTimeAbility03",
             "StartDelay": 0,
             "LogicEffectGroupIds": [
               "HoverCraft01_Passive03_Effect01"
             ],
-            "name": "HoverCraft01_Passive03_LevelOneTimeAbility03",
-            "hideFlags": 0
+            "Modifiers": [],
+            "IsReferenceSkillSlot": false,
+            "ReferenceSkillSlot": "None"
           }
         ],
+        "BarrierTransferAbilities": [],
+        "Radius": 600,
+        "name": "HoverCraft01_Passive03_LevelAuraEntity08",
         "EntityName": "HoverCraftPassive01Entity08",
         "SpawnRate": 10000,
         "SpawnDelay": 0,
@@ -748,73 +829,83 @@
         "SpawnDirectionType": "None",
         "OverrideTargetingRule": true,
         "TargetSortRule": {
-          "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+          "IsValid": true,
           "SortCriteria": "Distance",
           "SortStat": 0,
           "SortParameter": null,
-          "OrderBy": "Lowest"
+          "OrderBy": "Lowest",
+          "Reindexing": 0,
+          "AllowedSummonedCount": 0,
+          "RandomTargetSelect": false
         },
         "EssentialCandidateRule": {
-          "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
           "TargetSide": "Ally_Except_Self",
           "TargetingType": "Position",
           "ApplyEntityType": 5,
           "MaxTargetCount": -1
         },
         "OptionalCandidateRule": {
-          "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+          "IgnoreUntargetable": false,
           "AliveState": 1,
           "SchoolConstraint": {
-            "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
             "School": 0,
             "IncludeType": 0
           },
+          "PersonalityIdConstraint": {
+            "IncludeType": 0,
+            "PersonalityIds": []
+          },
           "WeaponConstraint": {
-            "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
             "Weapon": 0,
             "IncludeType": 0
           },
           "SquadTypeConstraint": {
-            "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
             "SquadType": 0,
             "IncludeType": 0
           },
           "AdaptationConstraint": {
-            "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
             "AdaptationType": 0,
             "AdaptationValues": [],
             "IncludeType": 0
           },
           "BulletConstraint": {
-            "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
             "BulletType": 5,
             "IncludeType": 0
           },
+          "TacticRangeConstraint": {
+            "TacticRanges": [],
+            "IncludeType": 0
+          },
           "TagConstraint": {
-            "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
             "IncludeType": 1,
-            "TagNames": [
-              "HoverMissile"
-            ],
             "TagNamesInt": [
               509
             ]
           },
           "CoverState": 0,
           "HPRateConstraint": {
-            "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
             "ConstraintType": 0,
             "HPRate": 0
+          },
+          "TacticRoleConstraint": {
+            "TacticRole": [],
+            "IncludeType": 0
+          },
+          "SpawnSourceConstraint": {
+            "SpawnSources": [],
+            "IncludeType": 0
+          },
+          "BlackboardConstraint": {
+            "KeyType": 0,
+            "KeyString": ""
           }
         },
         "HighlightOption": 0,
         "CheckSpawnPositionMovable": false,
-        "name": "HoverCraft01_Passive03_LevelAuraEntity08",
-        "hideFlags": 0
+        "TargetContainerIndex": 0
       }
     },
     {
-      "$type": "MX.Logic.Data.ExSkillEntityTimelineData, BlueArchive",
       "Tag": "ActionRelease",
       "InvokerDirectionOverride": "None",
       "InvokerDirectionOverrideWorldPosition": {
@@ -824,18 +915,21 @@
       "Frame": 1,
       "DamageDistributeRate": 0,
       "Entity": {
-        "$type": "MX.Logic.Data.LevelTargetSkillEntityData, BlueArchive",
+        "$type": "MX.GameData.DAO.Battle.TargetSkillEntityDAO, BlueArchive",
         "Abilities": [
           {
-            "$type": "MX.Logic.Data.LevelOneTimeAbilityData, BlueArchive",
+            "$type": "MX.GameData.DAO.Battle.LevelOneTimeAbilityDAO, BlueArchive",
+            "name": "HoverCraft01_Passive03_LevelOneTimeAbility03",
             "StartDelay": 0,
             "LogicEffectGroupIds": [
               "HoverCraft01_Passive03_Effect01"
             ],
-            "name": "HoverCraft01_Passive03_LevelOneTimeAbility03",
-            "hideFlags": 0
+            "Modifiers": [],
+            "IsReferenceSkillSlot": false,
+            "ReferenceSkillSlot": "None"
           }
         ],
+        "name": "HoverCraft01_Passive03_LevelTargetSkillEntity01",
         "EntityName": "HoverCraftPassive01Entity06",
         "SpawnRate": 10000,
         "SpawnDelay": 0,
@@ -856,67 +950,81 @@
         "SpawnDirectionType": "None",
         "OverrideTargetingRule": true,
         "TargetSortRule": {
-          "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+          "IsValid": true,
           "SortCriteria": "Distance",
           "SortStat": 0,
           "SortParameter": null,
-          "OrderBy": "Lowest"
+          "OrderBy": "Lowest",
+          "Reindexing": 0,
+          "AllowedSummonedCount": 0,
+          "RandomTargetSelect": false
         },
         "EssentialCandidateRule": {
-          "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
           "TargetSide": "Self",
           "TargetingType": "Target",
           "ApplyEntityType": 1,
           "MaxTargetCount": 1
         },
         "OptionalCandidateRule": {
-          "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+          "IgnoreUntargetable": false,
           "AliveState": 0,
           "SchoolConstraint": {
-            "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
             "School": 0,
             "IncludeType": 0
           },
+          "PersonalityIdConstraint": {
+            "IncludeType": 0,
+            "PersonalityIds": []
+          },
           "WeaponConstraint": {
-            "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
             "Weapon": 0,
             "IncludeType": 0
           },
           "SquadTypeConstraint": {
-            "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
             "SquadType": 0,
             "IncludeType": 0
           },
           "AdaptationConstraint": {
-            "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
             "AdaptationType": 0,
             "AdaptationValues": [],
             "IncludeType": 0
           },
           "BulletConstraint": {
-            "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
             "BulletType": 5,
             "IncludeType": 0
           },
-          "TagConstraint": {
-            "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
+          "TacticRangeConstraint": {
+            "TacticRanges": [],
             "IncludeType": 0
+          },
+          "TagConstraint": {
+            "IncludeType": 0,
+            "TagNamesInt": []
           },
           "CoverState": 0,
           "HPRateConstraint": {
-            "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
             "ConstraintType": 0,
             "HPRate": 0
+          },
+          "TacticRoleConstraint": {
+            "TacticRole": [],
+            "IncludeType": 0
+          },
+          "SpawnSourceConstraint": {
+            "SpawnSources": [],
+            "IncludeType": 0
+          },
+          "BlackboardConstraint": {
+            "KeyType": 0,
+            "KeyString": ""
           }
         },
         "HighlightOption": 0,
         "CheckSpawnPositionMovable": false,
-        "name": "HoverCraft01_Passive03_LevelTargetSkillEntity01",
-        "hideFlags": 0
+        "TargetContainerIndex": 0
       }
     },
     {
-      "$type": "MX.Logic.Data.ExSkillEntityTimelineData, BlueArchive",
       "Tag": "ActionEnd",
       "InvokerDirectionOverride": "None",
       "InvokerDirectionOverrideWorldPosition": {
@@ -928,7 +1036,6 @@
       "Entity": null
     }
   ],
-  "SkillDataKey": "HoverCraftPassive03",
   "name": "HoverCraft01_Passive03_PassiveSkill01",
-  "hideFlags": 0
+  "SkillDataKey": "HoverCraftPassive03"
 }

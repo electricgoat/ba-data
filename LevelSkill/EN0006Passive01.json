@@ -1,97 +1,105 @@
 {
-  "$type": "MX.Logic.Data.PassiveSkillData, BlueArchive",
+  "$type": "MX.GameData.DAO.Battle.PassiveSkillDAO, BlueArchive",
   "Duration": -1,
   "MaxTriggerCount": -1,
   "CoolTimeNotTrigger": 0,
   "TryCount": 0,
   "ResetTryCountUseSkill": false,
   "TriggerCondition": {
-    "$type": "MX.Logic.Data.PassiveTriggerData, BlueArchive",
     "Event": 105,
     "Parameters": "200",
     "ConditionExpression": "",
     "TriggerRate": 10000,
     "EchelonConstraint": {
-      "$type": "MX.Logic.Data.EchelonConstraint, BlueArchive",
       "CountConstraint": {
-        "$type": "MX.Logic.Data.CountConstraint, BlueArchive",
         "Count": 0,
         "DiffOperator": 0
       },
       "SchoolConstraint": {
-        "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
         "School": 0,
         "IncludeType": 0
       },
       "WeaponConstraint": {
-        "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
         "Weapon": 0,
         "IncludeType": 0
-      },
-      "IsEmpty": true
+      }
     }
   },
   "TriggerSourceFindRule": {
-    "$type": "MX.Logic.Skills.TargetFindRule, BlueArchive",
     "Sort": {
-      "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+      "IsValid": true,
       "SortCriteria": "Distance",
       "SortStat": 0,
       "SortParameter": null,
-      "OrderBy": "Lowest"
+      "OrderBy": "Lowest",
+      "Reindexing": 0,
+      "AllowedSummonedCount": 0,
+      "RandomTargetSelect": false
     },
     "EssentialCandidate": {
-      "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
       "TargetSide": "Self",
       "TargetingType": "Target",
       "ApplyEntityType": 5,
       "MaxTargetCount": 1
     },
     "OptionalCandidate": {
-      "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+      "IgnoreUntargetable": false,
       "AliveState": 0,
       "SchoolConstraint": {
-        "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
         "School": 0,
         "IncludeType": 0
       },
+      "PersonalityIdConstraint": {
+        "IncludeType": 0,
+        "PersonalityIds": []
+      },
       "WeaponConstraint": {
-        "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
         "Weapon": 0,
         "IncludeType": 0
       },
       "SquadTypeConstraint": {
-        "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
         "SquadType": 0,
         "IncludeType": 0
       },
       "AdaptationConstraint": {
-        "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
         "AdaptationType": 0,
         "AdaptationValues": [],
         "IncludeType": 0
       },
       "BulletConstraint": {
-        "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
         "BulletType": 5,
         "IncludeType": 0
       },
-      "TagConstraint": {
-        "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
+      "TacticRangeConstraint": {
+        "TacticRanges": [],
         "IncludeType": 0
+      },
+      "TagConstraint": {
+        "IncludeType": 0,
+        "TagNamesInt": []
       },
       "CoverState": 0,
       "HPRateConstraint": {
-        "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
         "ConstraintType": 0,
         "HPRate": 0
+      },
+      "TacticRoleConstraint": {
+        "TacticRole": [],
+        "IncludeType": 0
+      },
+      "SpawnSourceConstraint": {
+        "SpawnSources": [],
+        "IncludeType": 0
+      },
+      "BlackboardConstraint": {
+        "KeyType": 0,
+        "KeyString": ""
       }
     }
   },
   "SkillTargetType": 3,
   "EntityTimeline": [
     {
-      "$type": "MX.Logic.Data.ExSkillEntityTimelineData, BlueArchive",
       "Tag": "ActionRelease",
       "InvokerDirectionOverride": "None",
       "InvokerDirectionOverrideWorldPosition": {
@@ -101,7 +109,7 @@
       "Frame": 1,
       "DamageDistributeRate": 10000,
       "Entity": {
-        "$type": "MX.Logic.Data.LevelTargetProjectileEntityData, BlueArchive",
+        "$type": "MX.GameData.DAO.Battle.TargetProjectileEntityDAO, BlueArchive",
         "DestinationType": "BattleEntity",
         "DestinationWorldPosition": {
           "x": 0.0,
@@ -122,42 +130,53 @@
         "Speed": 2000,
         "FireDelayFrame": 0,
         "IsStickToTargetAfterHit": true,
+        "Abilities": [],
         "SplashDelayFrame": 1,
         "SplashAreaEntityData": null,
         "AreaSpawnerData": null,
         "SkillEntitySpawnerData": {
-          "$type": "MX.Logic.Data.SkillEntitySpawnerData, BlueArchive",
           "Duration": 151,
           "SpawnRule": "SpawnAll",
           "RemoveEntityIfSkillCancel": false,
           "OverrideSkillStartTimingWithSpawnerSpawn": false,
+          "DistributeType": 0,
+          "FireToNextTargetWhenEachToEach": false,
           "EntityTimeline": [
             {
-              "$type": "MX.Logic.Data.SkillEntitySpawnerTimelineData, BlueArchive",
               "SpawnCondition": "None",
               "SpawnConditionParameter": "",
               "SpawnConditionParameterForTag": "",
               "SpawnConditionCheckTarget": "Caster",
+              "UsePlayTrackBranch": false,
+              "PlayTrackBranch": {
+                "PlayTrackGroupName": [],
+                "MuteTrackGroupName": [],
+                "InterruptSkillAction": false,
+                "InterruptSkillActionFrame": 0
+              },
               "Frame": 1,
               "DamageDistributeRate": 0,
               "Entity": {
-                "$type": "MX.Logic.Data.LevelCircleAreaEntityData, BlueArchive",
-                "Radius": 150,
+                "$type": "MX.GameData.DAO.Battle.CircleAreaEntityDAO, BlueArchive",
                 "AttachTarget": false,
                 "AllowDuplicateHit": false,
                 "RemoveEntityIfSkillCancel": false,
                 "Duration": 150,
                 "RotateEntityDirectionEveryFrame": false,
                 "ApplyOffsetRotateEntityDirection": false,
+                "MovingAreaOption": 0,
                 "HitFrames": [
                   0
                 ],
                 "CollisionProperty": {
-                  "$type": "MX.Logic.Data.AreaCollisionProperty, BlueArchive",
                   "TransformType": "None",
                   "TransformCount": 0
                 },
                 "CheckBlockHit": false,
+                "AreaAbilities": [],
+                "HitCheckCouplingKey": "",
+                "Radius": 150,
+                "name": "EN0006_Passive01_LevelCircleAreaEntity01",
                 "EntityName": "EN0006Passive01Entity01",
                 "SpawnRate": 10000,
                 "SpawnDelay": 0,
@@ -178,102 +197,127 @@
                 "SpawnDirectionType": "Input",
                 "OverrideTargetingRule": true,
                 "TargetSortRule": {
-                  "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+                  "IsValid": true,
                   "SortCriteria": "Distance",
                   "SortStat": 0,
                   "SortParameter": null,
-                  "OrderBy": "Lowest"
+                  "OrderBy": "Lowest",
+                  "Reindexing": 0,
+                  "AllowedSummonedCount": 0,
+                  "RandomTargetSelect": false
                 },
                 "EssentialCandidateRule": {
-                  "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
                   "TargetSide": "Enemy",
                   "TargetingType": "Position",
                   "ApplyEntityType": 7,
                   "MaxTargetCount": -1
                 },
                 "OptionalCandidateRule": {
-                  "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+                  "IgnoreUntargetable": false,
                   "AliveState": 0,
                   "SchoolConstraint": {
-                    "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
                     "School": 0,
                     "IncludeType": 0
                   },
+                  "PersonalityIdConstraint": {
+                    "IncludeType": 0,
+                    "PersonalityIds": []
+                  },
                   "WeaponConstraint": {
-                    "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
                     "Weapon": 0,
                     "IncludeType": 0
                   },
                   "SquadTypeConstraint": {
-                    "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
                     "SquadType": 0,
                     "IncludeType": 0
                   },
                   "AdaptationConstraint": {
-                    "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
                     "AdaptationType": 0,
                     "AdaptationValues": [],
                     "IncludeType": 0
                   },
                   "BulletConstraint": {
-                    "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
                     "BulletType": 5,
                     "IncludeType": 0
                   },
-                  "TagConstraint": {
-                    "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
+                  "TacticRangeConstraint": {
+                    "TacticRanges": [],
                     "IncludeType": 0
+                  },
+                  "TagConstraint": {
+                    "IncludeType": 0,
+                    "TagNamesInt": []
                   },
                   "CoverState": 0,
                   "HPRateConstraint": {
-                    "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
                     "ConstraintType": 0,
                     "HPRate": 0
+                  },
+                  "TacticRoleConstraint": {
+                    "TacticRole": [],
+                    "IncludeType": 0
+                  },
+                  "SpawnSourceConstraint": {
+                    "SpawnSources": [],
+                    "IncludeType": 0
+                  },
+                  "BlackboardConstraint": {
+                    "KeyType": 0,
+                    "KeyString": ""
                   }
                 },
                 "HighlightOption": 0,
                 "CheckSpawnPositionMovable": false,
-                "name": "EN0006_Passive01_LevelCircleAreaEntity01",
-                "hideFlags": 0
+                "TargetContainerIndex": 0
               }
             },
             {
-              "$type": "MX.Logic.Data.SkillEntitySpawnerTimelineData, BlueArchive",
               "SpawnCondition": "IncludeTag",
               "SpawnConditionParameter": "Raid_Normal",
               "SpawnConditionParameterForTag": "515",
               "SpawnConditionCheckTarget": "Caster",
+              "UsePlayTrackBranch": false,
+              "PlayTrackBranch": {
+                "PlayTrackGroupName": [],
+                "MuteTrackGroupName": [],
+                "InterruptSkillAction": false,
+                "InterruptSkillActionFrame": 0
+              },
               "Frame": 150,
               "DamageDistributeRate": 10000,
               "Entity": {
-                "$type": "MX.Logic.Data.LevelCircleAreaEntityData, BlueArchive",
-                "Radius": 150,
+                "$type": "MX.GameData.DAO.Battle.CircleAreaEntityDAO, BlueArchive",
                 "AttachTarget": false,
                 "AllowDuplicateHit": false,
                 "RemoveEntityIfSkillCancel": false,
                 "Duration": 2,
                 "RotateEntityDirectionEveryFrame": false,
                 "ApplyOffsetRotateEntityDirection": false,
+                "MovingAreaOption": 0,
                 "HitFrames": [
                   1
                 ],
                 "CollisionProperty": {
-                  "$type": "MX.Logic.Data.AreaCollisionProperty, BlueArchive",
                   "TransformType": "None",
                   "TransformCount": 0
                 },
                 "CheckBlockHit": false,
                 "AreaAbilities": [
                   {
-                    "$type": "MX.Logic.Data.LevelOneTimeAbilityData, BlueArchive",
+                    "$type": "MX.GameData.DAO.Battle.LevelOneTimeAbilityDAO, BlueArchive",
+                    "name": "EN0006_Passive01_LevelOneTimeAbility01_Normal",
                     "StartDelay": 0,
                     "LogicEffectGroupIds": [
                       "EN0006_Passive01_Effect01_Normal"
                     ],
-                    "name": "EN0006_Passive01_LevelOneTimeAbility01_Normal",
-                    "hideFlags": 0
+                    "Modifiers": [],
+                    "IsReferenceSkillSlot": false,
+                    "ReferenceSkillSlot": "None"
                   }
                 ],
+                "HitCheckCouplingKey": "",
+                "Radius": 150,
+                "name": "EN0006_Passive01_LevelCircleAreaEntity02_Normal",
                 "EntityName": "EN0006Passive01Entity02_Normal",
                 "SpawnRate": 10000,
                 "SpawnDelay": 0,
@@ -294,102 +338,127 @@
                 "SpawnDirectionType": "Input",
                 "OverrideTargetingRule": true,
                 "TargetSortRule": {
-                  "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+                  "IsValid": true,
                   "SortCriteria": "Distance",
                   "SortStat": 0,
                   "SortParameter": null,
-                  "OrderBy": "Lowest"
+                  "OrderBy": "Lowest",
+                  "Reindexing": 0,
+                  "AllowedSummonedCount": 0,
+                  "RandomTargetSelect": false
                 },
                 "EssentialCandidateRule": {
-                  "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
                   "TargetSide": "Enemy",
                   "TargetingType": "Position",
                   "ApplyEntityType": 7,
                   "MaxTargetCount": -1
                 },
                 "OptionalCandidateRule": {
-                  "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+                  "IgnoreUntargetable": false,
                   "AliveState": 0,
                   "SchoolConstraint": {
-                    "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
                     "School": 0,
                     "IncludeType": 0
                   },
+                  "PersonalityIdConstraint": {
+                    "IncludeType": 0,
+                    "PersonalityIds": []
+                  },
                   "WeaponConstraint": {
-                    "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
                     "Weapon": 0,
                     "IncludeType": 0
                   },
                   "SquadTypeConstraint": {
-                    "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
                     "SquadType": 0,
                     "IncludeType": 0
                   },
                   "AdaptationConstraint": {
-                    "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
                     "AdaptationType": 0,
                     "AdaptationValues": [],
                     "IncludeType": 0
                   },
                   "BulletConstraint": {
-                    "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
                     "BulletType": 5,
                     "IncludeType": 0
                   },
-                  "TagConstraint": {
-                    "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
+                  "TacticRangeConstraint": {
+                    "TacticRanges": [],
                     "IncludeType": 0
+                  },
+                  "TagConstraint": {
+                    "IncludeType": 0,
+                    "TagNamesInt": []
                   },
                   "CoverState": 0,
                   "HPRateConstraint": {
-                    "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
                     "ConstraintType": 0,
                     "HPRate": 0
+                  },
+                  "TacticRoleConstraint": {
+                    "TacticRole": [],
+                    "IncludeType": 0
+                  },
+                  "SpawnSourceConstraint": {
+                    "SpawnSources": [],
+                    "IncludeType": 0
+                  },
+                  "BlackboardConstraint": {
+                    "KeyType": 0,
+                    "KeyString": ""
                   }
                 },
                 "HighlightOption": 0,
                 "CheckSpawnPositionMovable": false,
-                "name": "EN0006_Passive01_LevelCircleAreaEntity02_Normal",
-                "hideFlags": 0
+                "TargetContainerIndex": 0
               }
             },
             {
-              "$type": "MX.Logic.Data.SkillEntitySpawnerTimelineData, BlueArchive",
               "SpawnCondition": "IncludeTag",
               "SpawnConditionParameter": "Raid_Hard",
               "SpawnConditionParameterForTag": "516",
               "SpawnConditionCheckTarget": "Caster",
+              "UsePlayTrackBranch": false,
+              "PlayTrackBranch": {
+                "PlayTrackGroupName": [],
+                "MuteTrackGroupName": [],
+                "InterruptSkillAction": false,
+                "InterruptSkillActionFrame": 0
+              },
               "Frame": 150,
               "DamageDistributeRate": 10000,
               "Entity": {
-                "$type": "MX.Logic.Data.LevelCircleAreaEntityData, BlueArchive",
-                "Radius": 150,
+                "$type": "MX.GameData.DAO.Battle.CircleAreaEntityDAO, BlueArchive",
                 "AttachTarget": false,
                 "AllowDuplicateHit": false,
                 "RemoveEntityIfSkillCancel": false,
                 "Duration": 2,
                 "RotateEntityDirectionEveryFrame": false,
                 "ApplyOffsetRotateEntityDirection": false,
+                "MovingAreaOption": 0,
                 "HitFrames": [
                   1
                 ],
                 "CollisionProperty": {
-                  "$type": "MX.Logic.Data.AreaCollisionProperty, BlueArchive",
                   "TransformType": "None",
                   "TransformCount": 0
                 },
                 "CheckBlockHit": false,
                 "AreaAbilities": [
                   {
-                    "$type": "MX.Logic.Data.LevelOneTimeAbilityData, BlueArchive",
+                    "$type": "MX.GameData.DAO.Battle.LevelOneTimeAbilityDAO, BlueArchive",
+                    "name": "EN0006_Passive01_LevelOneTimeAbility01_Hard",
                     "StartDelay": 0,
                     "LogicEffectGroupIds": [
                       "EN0006_Passive01_Effect01_Hard"
                     ],
-                    "name": "EN0006_Passive01_LevelOneTimeAbility01_Hard",
-                    "hideFlags": 0
+                    "Modifiers": [],
+                    "IsReferenceSkillSlot": false,
+                    "ReferenceSkillSlot": "None"
                   }
                 ],
+                "HitCheckCouplingKey": "",
+                "Radius": 150,
+                "name": "EN0006_Passive01_LevelCircleAreaEntity02_Hard",
                 "EntityName": "EN0006Passive01Entity02_Hard",
                 "SpawnRate": 10000,
                 "SpawnDelay": 0,
@@ -410,102 +479,127 @@
                 "SpawnDirectionType": "Input",
                 "OverrideTargetingRule": true,
                 "TargetSortRule": {
-                  "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+                  "IsValid": true,
                   "SortCriteria": "Distance",
                   "SortStat": 0,
                   "SortParameter": null,
-                  "OrderBy": "Lowest"
+                  "OrderBy": "Lowest",
+                  "Reindexing": 0,
+                  "AllowedSummonedCount": 0,
+                  "RandomTargetSelect": false
                 },
                 "EssentialCandidateRule": {
-                  "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
                   "TargetSide": "Enemy",
                   "TargetingType": "Position",
                   "ApplyEntityType": 7,
                   "MaxTargetCount": -1
                 },
                 "OptionalCandidateRule": {
-                  "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+                  "IgnoreUntargetable": false,
                   "AliveState": 0,
                   "SchoolConstraint": {
-                    "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
                     "School": 0,
                     "IncludeType": 0
                   },
+                  "PersonalityIdConstraint": {
+                    "IncludeType": 0,
+                    "PersonalityIds": []
+                  },
                   "WeaponConstraint": {
-                    "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
                     "Weapon": 0,
                     "IncludeType": 0
                   },
                   "SquadTypeConstraint": {
-                    "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
                     "SquadType": 0,
                     "IncludeType": 0
                   },
                   "AdaptationConstraint": {
-                    "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
                     "AdaptationType": 0,
                     "AdaptationValues": [],
                     "IncludeType": 0
                   },
                   "BulletConstraint": {
-                    "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
                     "BulletType": 5,
                     "IncludeType": 0
                   },
-                  "TagConstraint": {
-                    "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
+                  "TacticRangeConstraint": {
+                    "TacticRanges": [],
                     "IncludeType": 0
+                  },
+                  "TagConstraint": {
+                    "IncludeType": 0,
+                    "TagNamesInt": []
                   },
                   "CoverState": 0,
                   "HPRateConstraint": {
-                    "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
                     "ConstraintType": 0,
                     "HPRate": 0
+                  },
+                  "TacticRoleConstraint": {
+                    "TacticRole": [],
+                    "IncludeType": 0
+                  },
+                  "SpawnSourceConstraint": {
+                    "SpawnSources": [],
+                    "IncludeType": 0
+                  },
+                  "BlackboardConstraint": {
+                    "KeyType": 0,
+                    "KeyString": ""
                   }
                 },
                 "HighlightOption": 0,
                 "CheckSpawnPositionMovable": false,
-                "name": "EN0006_Passive01_LevelCircleAreaEntity02_Hard",
-                "hideFlags": 0
+                "TargetContainerIndex": 0
               }
             },
             {
-              "$type": "MX.Logic.Data.SkillEntitySpawnerTimelineData, BlueArchive",
               "SpawnCondition": "IncludeTag",
               "SpawnConditionParameter": "Raid_VeryHard",
               "SpawnConditionParameterForTag": "517",
               "SpawnConditionCheckTarget": "Caster",
+              "UsePlayTrackBranch": false,
+              "PlayTrackBranch": {
+                "PlayTrackGroupName": [],
+                "MuteTrackGroupName": [],
+                "InterruptSkillAction": false,
+                "InterruptSkillActionFrame": 0
+              },
               "Frame": 150,
               "DamageDistributeRate": 10000,
               "Entity": {
-                "$type": "MX.Logic.Data.LevelCircleAreaEntityData, BlueArchive",
-                "Radius": 150,
+                "$type": "MX.GameData.DAO.Battle.CircleAreaEntityDAO, BlueArchive",
                 "AttachTarget": false,
                 "AllowDuplicateHit": false,
                 "RemoveEntityIfSkillCancel": false,
                 "Duration": 2,
                 "RotateEntityDirectionEveryFrame": false,
                 "ApplyOffsetRotateEntityDirection": false,
+                "MovingAreaOption": 0,
                 "HitFrames": [
                   1
                 ],
                 "CollisionProperty": {
-                  "$type": "MX.Logic.Data.AreaCollisionProperty, BlueArchive",
                   "TransformType": "None",
                   "TransformCount": 0
                 },
                 "CheckBlockHit": false,
                 "AreaAbilities": [
                   {
-                    "$type": "MX.Logic.Data.LevelOneTimeAbilityData, BlueArchive",
+                    "$type": "MX.GameData.DAO.Battle.LevelOneTimeAbilityDAO, BlueArchive",
+                    "name": "EN0006_Passive01_LevelOneTimeAbility01_VeryHard",
                     "StartDelay": 0,
                     "LogicEffectGroupIds": [
                       "EN0006_Passive01_Effect01_VeryHard"
                     ],
-                    "name": "EN0006_Passive01_LevelOneTimeAbility01_VeryHard",
-                    "hideFlags": 0
+                    "Modifiers": [],
+                    "IsReferenceSkillSlot": false,
+                    "ReferenceSkillSlot": "None"
                   }
                 ],
+                "HitCheckCouplingKey": "",
+                "Radius": 150,
+                "name": "EN0006_Passive01_LevelCircleAreaEntity02_VeryHard",
                 "EntityName": "EN0006Passive01Entity02_VeryHard",
                 "SpawnRate": 10000,
                 "SpawnDelay": 0,
@@ -526,102 +620,127 @@
                 "SpawnDirectionType": "Input",
                 "OverrideTargetingRule": true,
                 "TargetSortRule": {
-                  "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+                  "IsValid": true,
                   "SortCriteria": "Distance",
                   "SortStat": 0,
                   "SortParameter": null,
-                  "OrderBy": "Lowest"
+                  "OrderBy": "Lowest",
+                  "Reindexing": 0,
+                  "AllowedSummonedCount": 0,
+                  "RandomTargetSelect": false
                 },
                 "EssentialCandidateRule": {
-                  "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
                   "TargetSide": "Enemy",
                   "TargetingType": "Position",
                   "ApplyEntityType": 7,
                   "MaxTargetCount": -1
                 },
                 "OptionalCandidateRule": {
-                  "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+                  "IgnoreUntargetable": false,
                   "AliveState": 0,
                   "SchoolConstraint": {
-                    "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
                     "School": 0,
                     "IncludeType": 0
                   },
+                  "PersonalityIdConstraint": {
+                    "IncludeType": 0,
+                    "PersonalityIds": []
+                  },
                   "WeaponConstraint": {
-                    "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
                     "Weapon": 0,
                     "IncludeType": 0
                   },
                   "SquadTypeConstraint": {
-                    "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
                     "SquadType": 0,
                     "IncludeType": 0
                   },
                   "AdaptationConstraint": {
-                    "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
                     "AdaptationType": 0,
                     "AdaptationValues": [],
                     "IncludeType": 0
                   },
                   "BulletConstraint": {
-                    "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
                     "BulletType": 5,
                     "IncludeType": 0
                   },
-                  "TagConstraint": {
-                    "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
+                  "TacticRangeConstraint": {
+                    "TacticRanges": [],
                     "IncludeType": 0
+                  },
+                  "TagConstraint": {
+                    "IncludeType": 0,
+                    "TagNamesInt": []
                   },
                   "CoverState": 0,
                   "HPRateConstraint": {
-                    "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
                     "ConstraintType": 0,
                     "HPRate": 0
+                  },
+                  "TacticRoleConstraint": {
+                    "TacticRole": [],
+                    "IncludeType": 0
+                  },
+                  "SpawnSourceConstraint": {
+                    "SpawnSources": [],
+                    "IncludeType": 0
+                  },
+                  "BlackboardConstraint": {
+                    "KeyType": 0,
+                    "KeyString": ""
                   }
                 },
                 "HighlightOption": 0,
                 "CheckSpawnPositionMovable": false,
-                "name": "EN0006_Passive01_LevelCircleAreaEntity02_VeryHard",
-                "hideFlags": 0
+                "TargetContainerIndex": 0
               }
             },
             {
-              "$type": "MX.Logic.Data.SkillEntitySpawnerTimelineData, BlueArchive",
               "SpawnCondition": "IncludeTag",
               "SpawnConditionParameter": "Raid_HardCore",
               "SpawnConditionParameterForTag": "518",
               "SpawnConditionCheckTarget": "Caster",
+              "UsePlayTrackBranch": false,
+              "PlayTrackBranch": {
+                "PlayTrackGroupName": [],
+                "MuteTrackGroupName": [],
+                "InterruptSkillAction": false,
+                "InterruptSkillActionFrame": 0
+              },
               "Frame": 150,
               "DamageDistributeRate": 10000,
               "Entity": {
-                "$type": "MX.Logic.Data.LevelCircleAreaEntityData, BlueArchive",
-                "Radius": 150,
+                "$type": "MX.GameData.DAO.Battle.CircleAreaEntityDAO, BlueArchive",
                 "AttachTarget": false,
                 "AllowDuplicateHit": false,
                 "RemoveEntityIfSkillCancel": false,
                 "Duration": 2,
                 "RotateEntityDirectionEveryFrame": false,
                 "ApplyOffsetRotateEntityDirection": false,
+                "MovingAreaOption": 0,
                 "HitFrames": [
                   1
                 ],
                 "CollisionProperty": {
-                  "$type": "MX.Logic.Data.AreaCollisionProperty, BlueArchive",
                   "TransformType": "None",
                   "TransformCount": 0
                 },
                 "CheckBlockHit": false,
                 "AreaAbilities": [
                   {
-                    "$type": "MX.Logic.Data.LevelOneTimeAbilityData, BlueArchive",
+                    "$type": "MX.GameData.DAO.Battle.LevelOneTimeAbilityDAO, BlueArchive",
+                    "name": "EN0006_Passive01_LevelOneTimeAbility01_HardCore",
                     "StartDelay": 0,
                     "LogicEffectGroupIds": [
                       "EN0006_Passive01_Effect01_HardCore"
                     ],
-                    "name": "EN0006_Passive01_LevelOneTimeAbility01_HardCore",
-                    "hideFlags": 0
+                    "Modifiers": [],
+                    "IsReferenceSkillSlot": false,
+                    "ReferenceSkillSlot": "None"
                   }
                 ],
+                "HitCheckCouplingKey": "",
+                "Radius": 150,
+                "name": "EN0006_Passive01_LevelCircleAreaEntity02_HardCore",
                 "EntityName": "EN0006Passive01Entity02_HardCore",
                 "SpawnRate": 10000,
                 "SpawnDelay": 0,
@@ -642,102 +761,127 @@
                 "SpawnDirectionType": "Input",
                 "OverrideTargetingRule": true,
                 "TargetSortRule": {
-                  "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+                  "IsValid": true,
                   "SortCriteria": "Distance",
                   "SortStat": 0,
                   "SortParameter": null,
-                  "OrderBy": "Lowest"
+                  "OrderBy": "Lowest",
+                  "Reindexing": 0,
+                  "AllowedSummonedCount": 0,
+                  "RandomTargetSelect": false
                 },
                 "EssentialCandidateRule": {
-                  "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
                   "TargetSide": "Enemy",
                   "TargetingType": "Position",
                   "ApplyEntityType": 7,
                   "MaxTargetCount": -1
                 },
                 "OptionalCandidateRule": {
-                  "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+                  "IgnoreUntargetable": false,
                   "AliveState": 0,
                   "SchoolConstraint": {
-                    "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
                     "School": 0,
                     "IncludeType": 0
                   },
+                  "PersonalityIdConstraint": {
+                    "IncludeType": 0,
+                    "PersonalityIds": []
+                  },
                   "WeaponConstraint": {
-                    "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
                     "Weapon": 0,
                     "IncludeType": 0
                   },
                   "SquadTypeConstraint": {
-                    "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
                     "SquadType": 0,
                     "IncludeType": 0
                   },
                   "AdaptationConstraint": {
-                    "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
                     "AdaptationType": 0,
                     "AdaptationValues": [],
                     "IncludeType": 0
                   },
                   "BulletConstraint": {
-                    "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
                     "BulletType": 5,
                     "IncludeType": 0
                   },
-                  "TagConstraint": {
-                    "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
+                  "TacticRangeConstraint": {
+                    "TacticRanges": [],
                     "IncludeType": 0
+                  },
+                  "TagConstraint": {
+                    "IncludeType": 0,
+                    "TagNamesInt": []
                   },
                   "CoverState": 0,
                   "HPRateConstraint": {
-                    "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
                     "ConstraintType": 0,
                     "HPRate": 0
+                  },
+                  "TacticRoleConstraint": {
+                    "TacticRole": [],
+                    "IncludeType": 0
+                  },
+                  "SpawnSourceConstraint": {
+                    "SpawnSources": [],
+                    "IncludeType": 0
+                  },
+                  "BlackboardConstraint": {
+                    "KeyType": 0,
+                    "KeyString": ""
                   }
                 },
                 "HighlightOption": 0,
                 "CheckSpawnPositionMovable": false,
-                "name": "EN0006_Passive01_LevelCircleAreaEntity02_HardCore",
-                "hideFlags": 0
+                "TargetContainerIndex": 0
               }
             },
             {
-              "$type": "MX.Logic.Data.SkillEntitySpawnerTimelineData, BlueArchive",
               "SpawnCondition": "IncludeTag",
               "SpawnConditionParameter": "Raid_Extreme",
               "SpawnConditionParameterForTag": "519",
               "SpawnConditionCheckTarget": "Caster",
+              "UsePlayTrackBranch": false,
+              "PlayTrackBranch": {
+                "PlayTrackGroupName": [],
+                "MuteTrackGroupName": [],
+                "InterruptSkillAction": false,
+                "InterruptSkillActionFrame": 0
+              },
               "Frame": 150,
               "DamageDistributeRate": 10000,
               "Entity": {
-                "$type": "MX.Logic.Data.LevelCircleAreaEntityData, BlueArchive",
-                "Radius": 150,
+                "$type": "MX.GameData.DAO.Battle.CircleAreaEntityDAO, BlueArchive",
                 "AttachTarget": false,
                 "AllowDuplicateHit": false,
                 "RemoveEntityIfSkillCancel": false,
                 "Duration": 2,
                 "RotateEntityDirectionEveryFrame": false,
                 "ApplyOffsetRotateEntityDirection": false,
+                "MovingAreaOption": 0,
                 "HitFrames": [
                   1
                 ],
                 "CollisionProperty": {
-                  "$type": "MX.Logic.Data.AreaCollisionProperty, BlueArchive",
                   "TransformType": "None",
                   "TransformCount": 0
                 },
                 "CheckBlockHit": false,
                 "AreaAbilities": [
                   {
-                    "$type": "MX.Logic.Data.LevelOneTimeAbilityData, BlueArchive",
+                    "$type": "MX.GameData.DAO.Battle.LevelOneTimeAbilityDAO, BlueArchive",
+                    "name": "EN0006_Passive01_LevelOneTimeAbility01_Extreme",
                     "StartDelay": 0,
                     "LogicEffectGroupIds": [
                       "EN0006_Passive01_Effect01_Extreme"
                     ],
-                    "name": "EN0006_Passive01_LevelOneTimeAbility01_Extreme",
-                    "hideFlags": 0
+                    "Modifiers": [],
+                    "IsReferenceSkillSlot": false,
+                    "ReferenceSkillSlot": "None"
                   }
                 ],
+                "HitCheckCouplingKey": "",
+                "Radius": 150,
+                "name": "EN0006_Passive01_LevelCircleAreaEntity02_Extreme",
                 "EntityName": "EN0006Passive01Entity02_Extreme",
                 "SpawnRate": 10000,
                 "SpawnDelay": 0,
@@ -758,102 +902,127 @@
                 "SpawnDirectionType": "Input",
                 "OverrideTargetingRule": true,
                 "TargetSortRule": {
-                  "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+                  "IsValid": true,
                   "SortCriteria": "Distance",
                   "SortStat": 0,
                   "SortParameter": null,
-                  "OrderBy": "Lowest"
+                  "OrderBy": "Lowest",
+                  "Reindexing": 0,
+                  "AllowedSummonedCount": 0,
+                  "RandomTargetSelect": false
                 },
                 "EssentialCandidateRule": {
-                  "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
                   "TargetSide": "Enemy",
                   "TargetingType": "Position",
                   "ApplyEntityType": 7,
                   "MaxTargetCount": -1
                 },
                 "OptionalCandidateRule": {
-                  "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+                  "IgnoreUntargetable": false,
                   "AliveState": 0,
                   "SchoolConstraint": {
-                    "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
                     "School": 0,
                     "IncludeType": 0
                   },
+                  "PersonalityIdConstraint": {
+                    "IncludeType": 0,
+                    "PersonalityIds": []
+                  },
                   "WeaponConstraint": {
-                    "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
                     "Weapon": 0,
                     "IncludeType": 0
                   },
                   "SquadTypeConstraint": {
-                    "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
                     "SquadType": 0,
                     "IncludeType": 0
                   },
                   "AdaptationConstraint": {
-                    "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
                     "AdaptationType": 0,
                     "AdaptationValues": [],
                     "IncludeType": 0
                   },
                   "BulletConstraint": {
-                    "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
                     "BulletType": 5,
                     "IncludeType": 0
                   },
-                  "TagConstraint": {
-                    "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
+                  "TacticRangeConstraint": {
+                    "TacticRanges": [],
                     "IncludeType": 0
+                  },
+                  "TagConstraint": {
+                    "IncludeType": 0,
+                    "TagNamesInt": []
                   },
                   "CoverState": 0,
                   "HPRateConstraint": {
-                    "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
                     "ConstraintType": 0,
                     "HPRate": 0
+                  },
+                  "TacticRoleConstraint": {
+                    "TacticRole": [],
+                    "IncludeType": 0
+                  },
+                  "SpawnSourceConstraint": {
+                    "SpawnSources": [],
+                    "IncludeType": 0
+                  },
+                  "BlackboardConstraint": {
+                    "KeyType": 0,
+                    "KeyString": ""
                   }
                 },
                 "HighlightOption": 0,
                 "CheckSpawnPositionMovable": false,
-                "name": "EN0006_Passive01_LevelCircleAreaEntity02_Extreme",
-                "hideFlags": 0
+                "TargetContainerIndex": 0
               }
             },
             {
-              "$type": "MX.Logic.Data.SkillEntitySpawnerTimelineData, BlueArchive",
               "SpawnCondition": "IncludeTag",
               "SpawnConditionParameter": "Raid_Insane",
               "SpawnConditionParameterForTag": "520",
               "SpawnConditionCheckTarget": "Caster",
+              "UsePlayTrackBranch": false,
+              "PlayTrackBranch": {
+                "PlayTrackGroupName": [],
+                "MuteTrackGroupName": [],
+                "InterruptSkillAction": false,
+                "InterruptSkillActionFrame": 0
+              },
               "Frame": 150,
               "DamageDistributeRate": 10000,
               "Entity": {
-                "$type": "MX.Logic.Data.LevelCircleAreaEntityData, BlueArchive",
-                "Radius": 150,
+                "$type": "MX.GameData.DAO.Battle.CircleAreaEntityDAO, BlueArchive",
                 "AttachTarget": false,
                 "AllowDuplicateHit": false,
                 "RemoveEntityIfSkillCancel": false,
                 "Duration": 2,
                 "RotateEntityDirectionEveryFrame": false,
                 "ApplyOffsetRotateEntityDirection": false,
+                "MovingAreaOption": 0,
                 "HitFrames": [
                   1
                 ],
                 "CollisionProperty": {
-                  "$type": "MX.Logic.Data.AreaCollisionProperty, BlueArchive",
                   "TransformType": "None",
                   "TransformCount": 0
                 },
                 "CheckBlockHit": false,
                 "AreaAbilities": [
                   {
-                    "$type": "MX.Logic.Data.LevelOneTimeAbilityData, BlueArchive",
+                    "$type": "MX.GameData.DAO.Battle.LevelOneTimeAbilityDAO, BlueArchive",
+                    "name": "EN0006_Passive01_LevelOneTimeAbility01_Insane",
                     "StartDelay": 0,
                     "LogicEffectGroupIds": [
                       "EN0006_Passive01_Effect01_Insane"
                     ],
-                    "name": "EN0006_Passive01_LevelOneTimeAbility01_Insane",
-                    "hideFlags": 0
+                    "Modifiers": [],
+                    "IsReferenceSkillSlot": false,
+                    "ReferenceSkillSlot": "None"
                   }
                 ],
+                "HitCheckCouplingKey": "",
+                "Radius": 150,
+                "name": "EN0006_Passive01_LevelCircleAreaEntity02_Insane",
                 "EntityName": "EN0006Passive01Entity02_Insane",
                 "SpawnRate": 10000,
                 "SpawnDelay": 0,
@@ -874,102 +1043,127 @@
                 "SpawnDirectionType": "Input",
                 "OverrideTargetingRule": true,
                 "TargetSortRule": {
-                  "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+                  "IsValid": true,
                   "SortCriteria": "Distance",
                   "SortStat": 0,
                   "SortParameter": null,
-                  "OrderBy": "Lowest"
+                  "OrderBy": "Lowest",
+                  "Reindexing": 0,
+                  "AllowedSummonedCount": 0,
+                  "RandomTargetSelect": false
                 },
                 "EssentialCandidateRule": {
-                  "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
                   "TargetSide": "Enemy",
                   "TargetingType": "Position",
                   "ApplyEntityType": 7,
                   "MaxTargetCount": -1
                 },
                 "OptionalCandidateRule": {
-                  "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+                  "IgnoreUntargetable": false,
                   "AliveState": 0,
                   "SchoolConstraint": {
-                    "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
                     "School": 0,
                     "IncludeType": 0
                   },
+                  "PersonalityIdConstraint": {
+                    "IncludeType": 0,
+                    "PersonalityIds": []
+                  },
                   "WeaponConstraint": {
-                    "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
                     "Weapon": 0,
                     "IncludeType": 0
                   },
                   "SquadTypeConstraint": {
-                    "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
                     "SquadType": 0,
                     "IncludeType": 0
                   },
                   "AdaptationConstraint": {
-                    "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
                     "AdaptationType": 0,
                     "AdaptationValues": [],
                     "IncludeType": 0
                   },
                   "BulletConstraint": {
-                    "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
                     "BulletType": 5,
                     "IncludeType": 0
                   },
-                  "TagConstraint": {
-                    "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
+                  "TacticRangeConstraint": {
+                    "TacticRanges": [],
                     "IncludeType": 0
+                  },
+                  "TagConstraint": {
+                    "IncludeType": 0,
+                    "TagNamesInt": []
                   },
                   "CoverState": 0,
                   "HPRateConstraint": {
-                    "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
                     "ConstraintType": 0,
                     "HPRate": 0
+                  },
+                  "TacticRoleConstraint": {
+                    "TacticRole": [],
+                    "IncludeType": 0
+                  },
+                  "SpawnSourceConstraint": {
+                    "SpawnSources": [],
+                    "IncludeType": 0
+                  },
+                  "BlackboardConstraint": {
+                    "KeyType": 0,
+                    "KeyString": ""
                   }
                 },
                 "HighlightOption": 0,
                 "CheckSpawnPositionMovable": false,
-                "name": "EN0006_Passive01_LevelCircleAreaEntity02_Insane",
-                "hideFlags": 0
+                "TargetContainerIndex": 0
               }
             },
             {
-              "$type": "MX.Logic.Data.SkillEntitySpawnerTimelineData, BlueArchive",
               "SpawnCondition": "IncludeTag",
               "SpawnConditionParameter": "Raid_Torment",
               "SpawnConditionParameterForTag": "521",
               "SpawnConditionCheckTarget": "Caster",
+              "UsePlayTrackBranch": false,
+              "PlayTrackBranch": {
+                "PlayTrackGroupName": [],
+                "MuteTrackGroupName": [],
+                "InterruptSkillAction": false,
+                "InterruptSkillActionFrame": 0
+              },
               "Frame": 150,
               "DamageDistributeRate": 10000,
               "Entity": {
-                "$type": "MX.Logic.Data.LevelCircleAreaEntityData, BlueArchive",
-                "Radius": 150,
+                "$type": "MX.GameData.DAO.Battle.CircleAreaEntityDAO, BlueArchive",
                 "AttachTarget": false,
                 "AllowDuplicateHit": false,
                 "RemoveEntityIfSkillCancel": false,
                 "Duration": 2,
                 "RotateEntityDirectionEveryFrame": false,
                 "ApplyOffsetRotateEntityDirection": false,
+                "MovingAreaOption": 0,
                 "HitFrames": [
                   1
                 ],
                 "CollisionProperty": {
-                  "$type": "MX.Logic.Data.AreaCollisionProperty, BlueArchive",
                   "TransformType": "None",
                   "TransformCount": 0
                 },
                 "CheckBlockHit": false,
                 "AreaAbilities": [
                   {
-                    "$type": "MX.Logic.Data.LevelOneTimeAbilityData, BlueArchive",
+                    "$type": "MX.GameData.DAO.Battle.LevelOneTimeAbilityDAO, BlueArchive",
+                    "name": "EN0006_Passive01_LevelOneTimeAbility01_Torment",
                     "StartDelay": 0,
                     "LogicEffectGroupIds": [
                       "EN0006_Passive01_Effect01_Torment"
                     ],
-                    "name": "EN0006_Passive01_LevelOneTimeAbility01_Torment",
-                    "hideFlags": 0
+                    "Modifiers": [],
+                    "IsReferenceSkillSlot": false,
+                    "ReferenceSkillSlot": "None"
                   }
                 ],
+                "HitCheckCouplingKey": "",
+                "Radius": 150,
+                "name": "EN0006_Passive01_LevelCircleAreaEntity02_Torment",
                 "EntityName": "EN0006Passive01Entity02_Torment",
                 "SpawnRate": 10000,
                 "SpawnDelay": 0,
@@ -990,102 +1184,127 @@
                 "SpawnDirectionType": "Input",
                 "OverrideTargetingRule": true,
                 "TargetSortRule": {
-                  "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+                  "IsValid": true,
                   "SortCriteria": "Distance",
                   "SortStat": 0,
                   "SortParameter": null,
-                  "OrderBy": "Lowest"
+                  "OrderBy": "Lowest",
+                  "Reindexing": 0,
+                  "AllowedSummonedCount": 0,
+                  "RandomTargetSelect": false
                 },
                 "EssentialCandidateRule": {
-                  "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
                   "TargetSide": "Enemy",
                   "TargetingType": "Position",
                   "ApplyEntityType": 7,
                   "MaxTargetCount": -1
                 },
                 "OptionalCandidateRule": {
-                  "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+                  "IgnoreUntargetable": false,
                   "AliveState": 0,
                   "SchoolConstraint": {
-                    "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
                     "School": 0,
                     "IncludeType": 0
                   },
+                  "PersonalityIdConstraint": {
+                    "IncludeType": 0,
+                    "PersonalityIds": []
+                  },
                   "WeaponConstraint": {
-                    "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
                     "Weapon": 0,
                     "IncludeType": 0
                   },
                   "SquadTypeConstraint": {
-                    "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
                     "SquadType": 0,
                     "IncludeType": 0
                   },
                   "AdaptationConstraint": {
-                    "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
                     "AdaptationType": 0,
                     "AdaptationValues": [],
                     "IncludeType": 0
                   },
                   "BulletConstraint": {
-                    "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
                     "BulletType": 5,
                     "IncludeType": 0
                   },
-                  "TagConstraint": {
-                    "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
+                  "TacticRangeConstraint": {
+                    "TacticRanges": [],
                     "IncludeType": 0
+                  },
+                  "TagConstraint": {
+                    "IncludeType": 0,
+                    "TagNamesInt": []
                   },
                   "CoverState": 0,
                   "HPRateConstraint": {
-                    "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
                     "ConstraintType": 0,
                     "HPRate": 0
+                  },
+                  "TacticRoleConstraint": {
+                    "TacticRole": [],
+                    "IncludeType": 0
+                  },
+                  "SpawnSourceConstraint": {
+                    "SpawnSources": [],
+                    "IncludeType": 0
+                  },
+                  "BlackboardConstraint": {
+                    "KeyType": 0,
+                    "KeyString": ""
                   }
                 },
                 "HighlightOption": 0,
                 "CheckSpawnPositionMovable": false,
-                "name": "EN0006_Passive01_LevelCircleAreaEntity02_Torment",
-                "hideFlags": 0
+                "TargetContainerIndex": 0
               }
             },
             {
-              "$type": "MX.Logic.Data.SkillEntitySpawnerTimelineData, BlueArchive",
               "SpawnCondition": "IncludeTag",
               "SpawnConditionParameter": "Kurokage_Scenario",
               "SpawnConditionParameterForTag": "568",
               "SpawnConditionCheckTarget": "Caster",
+              "UsePlayTrackBranch": false,
+              "PlayTrackBranch": {
+                "PlayTrackGroupName": [],
+                "MuteTrackGroupName": [],
+                "InterruptSkillAction": false,
+                "InterruptSkillActionFrame": 0
+              },
               "Frame": 150,
               "DamageDistributeRate": 10000,
               "Entity": {
-                "$type": "MX.Logic.Data.LevelCircleAreaEntityData, BlueArchive",
-                "Radius": 150,
+                "$type": "MX.GameData.DAO.Battle.CircleAreaEntityDAO, BlueArchive",
                 "AttachTarget": false,
                 "AllowDuplicateHit": false,
                 "RemoveEntityIfSkillCancel": false,
                 "Duration": 2,
                 "RotateEntityDirectionEveryFrame": false,
                 "ApplyOffsetRotateEntityDirection": false,
+                "MovingAreaOption": 0,
                 "HitFrames": [
                   1
                 ],
                 "CollisionProperty": {
-                  "$type": "MX.Logic.Data.AreaCollisionProperty, BlueArchive",
                   "TransformType": "None",
                   "TransformCount": 0
                 },
                 "CheckBlockHit": false,
                 "AreaAbilities": [
                   {
-                    "$type": "MX.Logic.Data.LevelOneTimeAbilityData, BlueArchive",
+                    "$type": "MX.GameData.DAO.Battle.LevelOneTimeAbilityDAO, BlueArchive",
+                    "name": "EN0006_Passive01_LevelOneTimeAbility01_Scenario",
                     "StartDelay": 0,
                     "LogicEffectGroupIds": [
                       "EN0006_Passive01_Effect01_Normal"
                     ],
-                    "name": "EN0006_Passive01_LevelOneTimeAbility01_Scenario",
-                    "hideFlags": 0
+                    "Modifiers": [],
+                    "IsReferenceSkillSlot": false,
+                    "ReferenceSkillSlot": "None"
                   }
                 ],
+                "HitCheckCouplingKey": "",
+                "Radius": 150,
+                "name": "EN0006_Passive01_LevelCircleAreaEntity02_Scenario",
                 "EntityName": "EN0006Passive01Entity02_Scenario",
                 "SpawnRate": 10000,
                 "SpawnDelay": 0,
@@ -1106,66 +1325,364 @@
                 "SpawnDirectionType": "Input",
                 "OverrideTargetingRule": true,
                 "TargetSortRule": {
-                  "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+                  "IsValid": true,
                   "SortCriteria": "Distance",
                   "SortStat": 0,
                   "SortParameter": null,
-                  "OrderBy": "Lowest"
+                  "OrderBy": "Lowest",
+                  "Reindexing": 0,
+                  "AllowedSummonedCount": 0,
+                  "RandomTargetSelect": false
                 },
                 "EssentialCandidateRule": {
-                  "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
                   "TargetSide": "Enemy",
                   "TargetingType": "Position",
                   "ApplyEntityType": 7,
                   "MaxTargetCount": -1
                 },
                 "OptionalCandidateRule": {
-                  "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+                  "IgnoreUntargetable": false,
                   "AliveState": 0,
                   "SchoolConstraint": {
-                    "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
                     "School": 0,
                     "IncludeType": 0
                   },
+                  "PersonalityIdConstraint": {
+                    "IncludeType": 0,
+                    "PersonalityIds": []
+                  },
                   "WeaponConstraint": {
-                    "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
                     "Weapon": 0,
                     "IncludeType": 0
                   },
                   "SquadTypeConstraint": {
-                    "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
                     "SquadType": 0,
                     "IncludeType": 0
                   },
                   "AdaptationConstraint": {
-                    "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
                     "AdaptationType": 0,
                     "AdaptationValues": [],
                     "IncludeType": 0
                   },
                   "BulletConstraint": {
-                    "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
                     "BulletType": 5,
                     "IncludeType": 0
                   },
-                  "TagConstraint": {
-                    "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
+                  "TacticRangeConstraint": {
+                    "TacticRanges": [],
                     "IncludeType": 0
+                  },
+                  "TagConstraint": {
+                    "IncludeType": 0,
+                    "TagNamesInt": []
                   },
                   "CoverState": 0,
                   "HPRateConstraint": {
-                    "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
                     "ConstraintType": 0,
                     "HPRate": 0
+                  },
+                  "TacticRoleConstraint": {
+                    "TacticRole": [],
+                    "IncludeType": 0
+                  },
+                  "SpawnSourceConstraint": {
+                    "SpawnSources": [],
+                    "IncludeType": 0
+                  },
+                  "BlackboardConstraint": {
+                    "KeyType": 0,
+                    "KeyString": ""
                   }
                 },
                 "HighlightOption": 0,
                 "CheckSpawnPositionMovable": false,
-                "name": "EN0006_Passive01_LevelCircleAreaEntity02_Scenario",
-                "hideFlags": 0
+                "TargetContainerIndex": 0
+              }
+            },
+            {
+              "SpawnCondition": "IncludeTag",
+              "SpawnConditionParameter": "Raid_Lunatic",
+              "SpawnConditionParameterForTag": "696",
+              "SpawnConditionCheckTarget": "Caster",
+              "UsePlayTrackBranch": false,
+              "PlayTrackBranch": {
+                "PlayTrackGroupName": [],
+                "MuteTrackGroupName": [],
+                "InterruptSkillAction": false,
+                "InterruptSkillActionFrame": 0
+              },
+              "Frame": 150,
+              "DamageDistributeRate": 10000,
+              "Entity": {
+                "$type": "MX.GameData.DAO.Battle.CircleAreaEntityDAO, BlueArchive",
+                "AttachTarget": false,
+                "AllowDuplicateHit": false,
+                "RemoveEntityIfSkillCancel": false,
+                "Duration": 10,
+                "RotateEntityDirectionEveryFrame": false,
+                "ApplyOffsetRotateEntityDirection": false,
+                "MovingAreaOption": 0,
+                "HitFrames": [
+                  1
+                ],
+                "CollisionProperty": {
+                  "TransformType": "None",
+                  "TransformCount": 0
+                },
+                "CheckBlockHit": false,
+                "AreaAbilities": [
+                  {
+                    "$type": "MX.GameData.DAO.Battle.LevelOneTimeAbilityDAO, BlueArchive",
+                    "name": "EN0006_Passive01_LevelOneTimeAbility01_Lunatic",
+                    "StartDelay": 0,
+                    "LogicEffectGroupIds": [
+                      "EN0006_Passive01_Effect01_Lunatic"
+                    ],
+                    "Modifiers": [],
+                    "IsReferenceSkillSlot": false,
+                    "ReferenceSkillSlot": "None"
+                  }
+                ],
+                "HitCheckCouplingKey": "",
+                "Radius": 50,
+                "name": "EN0006_Passive01_LevelCircleAreaEntity02_Lunatic",
+                "EntityName": "EN0006Passive01Entity02_Torment",
+                "SpawnRate": 10000,
+                "SpawnDelay": 0,
+                "ApplyType": 4,
+                "DecideTiming": 1,
+                "EntitySpawnIncludeOutOfRangeInputTarget": false,
+                "SpawnPositionType": "InputPosition",
+                "SpawnWorldPosition": {
+                  "x": 0.0,
+                  "y": 0.0
+                },
+                "PositionOffset": {
+                  "x": 0.0,
+                  "y": 0.0
+                },
+                "PositionRandomOffsetRange": 0,
+                "OffsetDirectionType": "Input",
+                "SpawnDirectionType": "Input",
+                "OverrideTargetingRule": true,
+                "TargetSortRule": {
+                  "IsValid": true,
+                  "SortCriteria": "Distance",
+                  "SortStat": 0,
+                  "SortParameter": null,
+                  "OrderBy": "Lowest",
+                  "Reindexing": 0,
+                  "AllowedSummonedCount": 0,
+                  "RandomTargetSelect": false
+                },
+                "EssentialCandidateRule": {
+                  "TargetSide": "Enemy",
+                  "TargetingType": "Position",
+                  "ApplyEntityType": 7,
+                  "MaxTargetCount": -1
+                },
+                "OptionalCandidateRule": {
+                  "IgnoreUntargetable": false,
+                  "AliveState": 0,
+                  "SchoolConstraint": {
+                    "School": 0,
+                    "IncludeType": 0
+                  },
+                  "PersonalityIdConstraint": {
+                    "IncludeType": 0,
+                    "PersonalityIds": []
+                  },
+                  "WeaponConstraint": {
+                    "Weapon": 0,
+                    "IncludeType": 0
+                  },
+                  "SquadTypeConstraint": {
+                    "SquadType": 0,
+                    "IncludeType": 0
+                  },
+                  "AdaptationConstraint": {
+                    "AdaptationType": 0,
+                    "AdaptationValues": [],
+                    "IncludeType": 0
+                  },
+                  "BulletConstraint": {
+                    "BulletType": 5,
+                    "IncludeType": 0
+                  },
+                  "TacticRangeConstraint": {
+                    "TacticRanges": [],
+                    "IncludeType": 0
+                  },
+                  "TagConstraint": {
+                    "IncludeType": 0,
+                    "TagNamesInt": []
+                  },
+                  "CoverState": 0,
+                  "HPRateConstraint": {
+                    "ConstraintType": 0,
+                    "HPRate": 0
+                  },
+                  "TacticRoleConstraint": {
+                    "TacticRole": [],
+                    "IncludeType": 0
+                  },
+                  "SpawnSourceConstraint": {
+                    "SpawnSources": [],
+                    "IncludeType": 0
+                  },
+                  "BlackboardConstraint": {
+                    "KeyType": 0,
+                    "KeyString": ""
+                  }
+                },
+                "HighlightOption": 0,
+                "CheckSpawnPositionMovable": false,
+                "TargetContainerIndex": 0
+              }
+            },
+            {
+              "SpawnCondition": "IncludeTag",
+              "SpawnConditionParameter": "Raid_Lunatic",
+              "SpawnConditionParameterForTag": "696",
+              "SpawnConditionCheckTarget": "Caster",
+              "UsePlayTrackBranch": false,
+              "PlayTrackBranch": {
+                "PlayTrackGroupName": [],
+                "MuteTrackGroupName": [],
+                "InterruptSkillAction": false,
+                "InterruptSkillActionFrame": 0
+              },
+              "Frame": 150,
+              "DamageDistributeRate": 10000,
+              "Entity": {
+                "$type": "MX.GameData.DAO.Battle.CircleAreaEntityDAO, BlueArchive",
+                "AttachTarget": false,
+                "AllowDuplicateHit": false,
+                "RemoveEntityIfSkillCancel": false,
+                "Duration": 10,
+                "RotateEntityDirectionEveryFrame": false,
+                "ApplyOffsetRotateEntityDirection": false,
+                "MovingAreaOption": 0,
+                "HitFrames": [
+                  1
+                ],
+                "CollisionProperty": {
+                  "TransformType": "None",
+                  "TransformCount": 0
+                },
+                "CheckBlockHit": false,
+                "AreaAbilities": [
+                  {
+                    "$type": "MX.GameData.DAO.Battle.LevelOneTimeAbilityDAO, BlueArchive",
+                    "name": "EN0006_Passive01_LevelOneTimeAbility02_Lunatic",
+                    "StartDelay": 0,
+                    "LogicEffectGroupIds": [
+                      "EN0006_Passive01_Effect02_Lunatic"
+                    ],
+                    "Modifiers": [],
+                    "IsReferenceSkillSlot": false,
+                    "ReferenceSkillSlot": "None"
+                  }
+                ],
+                "HitCheckCouplingKey": "",
+                "Radius": 150,
+                "name": "EN0006_Passive01_LevelCircleAreaEntity03_Lunatic",
+                "EntityName": "EN0006Passive01Entity03_Torment",
+                "SpawnRate": 10000,
+                "SpawnDelay": 0,
+                "ApplyType": 4,
+                "DecideTiming": 1,
+                "EntitySpawnIncludeOutOfRangeInputTarget": false,
+                "SpawnPositionType": "InputPosition",
+                "SpawnWorldPosition": {
+                  "x": 0.0,
+                  "y": 0.0
+                },
+                "PositionOffset": {
+                  "x": 0.0,
+                  "y": 0.0
+                },
+                "PositionRandomOffsetRange": 0,
+                "OffsetDirectionType": "Input",
+                "SpawnDirectionType": "Input",
+                "OverrideTargetingRule": true,
+                "TargetSortRule": {
+                  "IsValid": true,
+                  "SortCriteria": "Distance",
+                  "SortStat": 0,
+                  "SortParameter": null,
+                  "OrderBy": "Lowest",
+                  "Reindexing": 0,
+                  "AllowedSummonedCount": 0,
+                  "RandomTargetSelect": false
+                },
+                "EssentialCandidateRule": {
+                  "TargetSide": "Enemy",
+                  "TargetingType": "Position",
+                  "ApplyEntityType": 7,
+                  "MaxTargetCount": -1
+                },
+                "OptionalCandidateRule": {
+                  "IgnoreUntargetable": false,
+                  "AliveState": 0,
+                  "SchoolConstraint": {
+                    "School": 0,
+                    "IncludeType": 0
+                  },
+                  "PersonalityIdConstraint": {
+                    "IncludeType": 0,
+                    "PersonalityIds": []
+                  },
+                  "WeaponConstraint": {
+                    "Weapon": 0,
+                    "IncludeType": 0
+                  },
+                  "SquadTypeConstraint": {
+                    "SquadType": 0,
+                    "IncludeType": 0
+                  },
+                  "AdaptationConstraint": {
+                    "AdaptationType": 0,
+                    "AdaptationValues": [],
+                    "IncludeType": 0
+                  },
+                  "BulletConstraint": {
+                    "BulletType": 5,
+                    "IncludeType": 0
+                  },
+                  "TacticRangeConstraint": {
+                    "TacticRanges": [],
+                    "IncludeType": 0
+                  },
+                  "TagConstraint": {
+                    "IncludeType": 0,
+                    "TagNamesInt": []
+                  },
+                  "CoverState": 0,
+                  "HPRateConstraint": {
+                    "ConstraintType": 0,
+                    "HPRate": 0
+                  },
+                  "TacticRoleConstraint": {
+                    "TacticRole": [],
+                    "IncludeType": 0
+                  },
+                  "SpawnSourceConstraint": {
+                    "SpawnSources": [],
+                    "IncludeType": 0
+                  },
+                  "BlackboardConstraint": {
+                    "KeyType": 0,
+                    "KeyString": ""
+                  }
+                },
+                "HighlightOption": 0,
+                "CheckSpawnPositionMovable": false,
+                "TargetContainerIndex": 0
               }
             }
           ],
+          "name": "EN0006_Passive01_SkillEntitySpawner01",
           "EntityName": "",
           "SpawnRate": 10000,
           "SpawnDelay": 0,
@@ -1186,64 +1703,81 @@
           "SpawnDirectionType": "Input",
           "OverrideTargetingRule": true,
           "TargetSortRule": {
-            "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+            "IsValid": true,
             "SortCriteria": "Distance",
             "SortStat": 0,
             "SortParameter": null,
-            "OrderBy": "Lowest"
+            "OrderBy": "Lowest",
+            "Reindexing": 0,
+            "AllowedSummonedCount": 0,
+            "RandomTargetSelect": false
           },
           "EssentialCandidateRule": {
-            "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
             "TargetSide": "Enemy",
             "TargetingType": "Target",
             "ApplyEntityType": 5,
             "MaxTargetCount": 1
           },
           "OptionalCandidateRule": {
-            "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+            "IgnoreUntargetable": false,
             "AliveState": 0,
             "SchoolConstraint": {
-              "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
               "School": 0,
               "IncludeType": 0
             },
+            "PersonalityIdConstraint": {
+              "IncludeType": 0,
+              "PersonalityIds": []
+            },
             "WeaponConstraint": {
-              "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
               "Weapon": 0,
               "IncludeType": 0
             },
             "SquadTypeConstraint": {
-              "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
               "SquadType": 0,
               "IncludeType": 0
             },
             "AdaptationConstraint": {
-              "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
               "AdaptationType": 0,
               "AdaptationValues": [],
               "IncludeType": 0
             },
             "BulletConstraint": {
-              "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
               "BulletType": 5,
               "IncludeType": 0
             },
-            "TagConstraint": {
-              "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
+            "TacticRangeConstraint": {
+              "TacticRanges": [],
               "IncludeType": 0
+            },
+            "TagConstraint": {
+              "IncludeType": 0,
+              "TagNamesInt": []
             },
             "CoverState": 0,
             "HPRateConstraint": {
-              "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
               "ConstraintType": 0,
               "HPRate": 0
+            },
+            "TacticRoleConstraint": {
+              "TacticRole": [],
+              "IncludeType": 0
+            },
+            "SpawnSourceConstraint": {
+              "SpawnSources": [],
+              "IncludeType": 0
+            },
+            "BlackboardConstraint": {
+              "KeyType": 0,
+              "KeyString": ""
             }
           },
           "HighlightOption": 0,
           "CheckSpawnPositionMovable": false,
-          "name": "EN0006_Passive01_SkillEntitySpawner01",
-          "hideFlags": 0
+          "TargetContainerIndex": 0
         },
+        "SplashEachTarget": false,
+        "name": "EN0006_Passive01_LevelTargetProjectileEntity01",
         "EntityName": "EN0006Passive01Entity03",
         "SpawnRate": 10000,
         "SpawnDelay": 0,
@@ -1264,67 +1798,83 @@
         "SpawnDirectionType": "Invoker",
         "OverrideTargetingRule": true,
         "TargetSortRule": {
-          "$type": "MX.Logic.Skills.TargetSortRule, BlueArchive",
+          "IsValid": true,
           "SortCriteria": "Distance",
           "SortStat": 0,
           "SortParameter": null,
-          "OrderBy": "Random"
+          "OrderBy": "CyclicRandom",
+          "Reindexing": 0,
+          "AllowedSummonedCount": 0,
+          "RandomTargetSelect": false
         },
         "EssentialCandidateRule": {
-          "$type": "MX.Logic.Skills.EssentialCandidateRule, BlueArchive",
           "TargetSide": "Enemy",
           "TargetingType": "Target",
           "ApplyEntityType": 5,
           "MaxTargetCount": 1
         },
         "OptionalCandidateRule": {
-          "$type": "MX.Logic.Skills.OptionalCandidateRule, BlueArchive",
+          "IgnoreUntargetable": false,
           "AliveState": 0,
           "SchoolConstraint": {
-            "$type": "MX.Logic.Data.SchoolConstraint, BlueArchive",
             "School": 0,
             "IncludeType": 0
           },
+          "PersonalityIdConstraint": {
+            "IncludeType": 0,
+            "PersonalityIds": []
+          },
           "WeaponConstraint": {
-            "$type": "MX.Logic.Data.WeaponConstraint, BlueArchive",
             "Weapon": 0,
             "IncludeType": 0
           },
           "SquadTypeConstraint": {
-            "$type": "MX.Logic.Data.SquadTypeConstraint, BlueArchive",
             "SquadType": 0,
             "IncludeType": 0
           },
           "AdaptationConstraint": {
-            "$type": "MX.Logic.Data.AdaptationConstraint, BlueArchive",
             "AdaptationType": 0,
             "AdaptationValues": [],
             "IncludeType": 0
           },
           "BulletConstraint": {
-            "$type": "MX.Logic.Data.BulletConstraint, BlueArchive",
             "BulletType": 5,
             "IncludeType": 0
           },
-          "TagConstraint": {
-            "$type": "MX.Logic.Data.TagConstraint, BlueArchive",
+          "TacticRangeConstraint": {
+            "TacticRanges": [],
             "IncludeType": 0
+          },
+          "TagConstraint": {
+            "IncludeType": 0,
+            "TagNamesInt": []
           },
           "CoverState": 0,
           "HPRateConstraint": {
-            "$type": "MX.Logic.Data.HPRateConstraint, BlueArchive",
             "ConstraintType": 0,
             "HPRate": 0
+          },
+          "TacticRoleConstraint": {
+            "TacticRole": [],
+            "IncludeType": 0
+          },
+          "SpawnSourceConstraint": {
+            "SpawnSources": [
+              0
+            ],
+            "IncludeType": 1
+          },
+          "BlackboardConstraint": {
+            "KeyType": 0,
+            "KeyString": ""
           }
         },
         "HighlightOption": 0,
         "CheckSpawnPositionMovable": false,
-        "name": "EN0006_Passive01_LevelTargetProjectileEntity01",
-        "hideFlags": 0
+        "TargetContainerIndex": 0
       }
     },
     {
-      "$type": "MX.Logic.Data.ExSkillEntityTimelineData, BlueArchive",
       "Tag": "ActionEnd",
       "InvokerDirectionOverride": "None",
       "InvokerDirectionOverrideWorldPosition": {
@@ -1336,7 +1886,6 @@
       "Entity": null
     }
   ],
-  "SkillDataKey": "EN0006Passive01",
   "name": "EN0006_Passive01_PassiveSkill01",
-  "hideFlags": 0
+  "SkillDataKey": "EN0006Passive01"
 }

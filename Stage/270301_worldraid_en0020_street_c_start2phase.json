@@ -1,0 +1,1316 @@
+{
+  "Version": "",
+  "Global": {
+    "Position": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "Events": [
+      {
+        "EventName": "SpawnPlayer",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": "0"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSpawnPlayer, BlueArchive",
+            "IsEnemy": false,
+            "IgnoreSkillCardShuffle": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 6,
+            "MaxCameraSpeed": 1.32,
+            "RotationSpeed": 1.0,
+            "ZoomSpeed": 1.0,
+            "RailPoints": [
+              {
+                "UseTableData": false,
+                "Position": {
+                  "x": 1.61,
+                  "y": 2.42,
+                  "z": -27.35
+                },
+                "MinCameraDistance": 15.0,
+                "MaxCameraDistance": 22.0,
+                "CameraForward": {
+                  "x": -0.515580356,
+                  "y": -0.2808535,
+                  "z": 0.8095049
+                }
+              },
+              {
+                "UseTableData": false,
+                "Position": {
+                  "x": 1.61,
+                  "y": 2.42,
+                  "z": -14.750001
+                },
+                "MinCameraDistance": 22.0,
+                "MaxCameraDistance": 15.8,
+                "CameraForward": {
+                  "x": -0.515580356,
+                  "y": -0.2808535,
+                  "z": 0.8095049
+                }
+              }
+            ],
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 2,
+            "SetConditionCommandOnly": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "StartSection3",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharacterPhaseChanged, BlueArchive",
+            "Phase": 2,
+            "MaxTriggerCount": 1,
+            "ConditionID": "SCondition_TrueBoss"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 3,
+            "SetConditionCommandOnly": false,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "EndBattle",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 1,
+            "CheckSummonedCharacterDead": false,
+            "CheckDelayMilliSecond": 0,
+            "ConditionID": "SCondition_TrueBoss"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandCharacterDie, BlueArchive",
+            "CharacterCommandIdList": [
+              "SCommand_Boss"
+            ],
+            "CharacterSpawnTemplateIdList": [],
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandEndBattle, BlueArchive",
+            "BattleEndType": 4,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      }
+    ]
+  },
+  "Sections": [
+    {
+      "SectionID": 1,
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Events": [],
+      "Obstacles": [],
+      "EnemySpawnPointGroupList": []
+    },
+    {
+      "SectionID": 2,
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Events": [
+        {
+          "EventName": "SpawnBossFrontAtStart",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "Command_TrueBoss",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandRemoveFromCameraTarget, BlueArchive",
+              "EntityCommandIds": [
+                "SCommand_TrueBoss"
+              ],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "SpawnJyaco04A",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+              "LogicEffectGroupId": "EN0020_Shared_TrueBossEx01Dummy_C",
+              "TriggerMaxCount": 3,
+              "TriggerCooltime": 0,
+              "ConditionID": "SCondition_TrueBoss"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "Command_Jyaco04",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "SpawnJyaco05B",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+              "LogicEffectGroupId": "EN0020_Shared_TrueBossEx01Dummy_B",
+              "TriggerMaxCount": 3,
+              "TriggerCooltime": 0,
+              "ConditionID": "SCondition_TrueBoss"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "Command_Jyaco05",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "SpawnJyaco06C",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionLogicEffect, BlueArchive",
+              "LogicEffectGroupId": "EN0020_Shared_TrueBossEx01Dummy_C",
+              "TriggerMaxCount": 3,
+              "TriggerCooltime": 0,
+              "ConditionID": "SCondition_TrueBoss"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "Command_Jyaco06",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "Wave01",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaveLoop, BlueArchive",
+              "UniqueId": "Wave",
+              "Waves": [
+                {
+                  "SpawnPointCommandId": "Command_Wave01",
+                  "EndCount": 1,
+                  "WaveDelay": 100,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 100
+                },
+                {
+                  "SpawnPointCommandId": "Command_Wave02",
+                  "EndCount": 1,
+                  "WaveDelay": 100,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 100
+                },
+                {
+                  "SpawnPointCommandId": "Command_Wave03",
+                  "EndCount": 1,
+                  "WaveDelay": 100,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 100
+                },
+                {
+                  "SpawnPointCommandId": "Command_Wave04",
+                  "EndCount": 1,
+                  "WaveDelay": 100,
+                  "StartOperator": "",
+                  "ClearOperator": "",
+                  "SpawnDelay": 100
+                }
+              ],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent_Dummy",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EN0020_SpawnDummy_C",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_TrueBoss"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_TrueBoss"
+              ],
+              "MovePoints": [],
+              "TileX": 153,
+              "TileY": 175,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 3.0,
+                "y": 1.0
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "Condition_TrueBoss"
+              ],
+              "CommandIdList": [
+                "Command_TrueBoss"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointParent_Jyaco04A",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EN0020_Labor_Decagram_Explosive_Guard_C",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Jyaco04"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Jyaco04"
+              ],
+              "MovePoints": [],
+              "TileX": 127,
+              "TileY": 58,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -2.19,
+                "y": -22.36
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "Condition_Jyaco04"
+              ],
+              "CommandIdList": [
+                "Command_Jyaco04"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EN0020_Labor_Decagram_Defense_Guard_C",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Jyaco04"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Jyaco04"
+              ],
+              "MovePoints": [],
+              "TileX": 133,
+              "TileY": 65,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.94,
+                "y": -21.0
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "Condition_Jyaco04"
+              ],
+              "CommandIdList": [
+                "Command_Jyaco04"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EN0020_Labor_Decagram_Explosive_Guard_C",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Jyaco04"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Jyaco04"
+              ],
+              "MovePoints": [],
+              "TileX": 142,
+              "TileY": 61,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.85,
+                "y": -21.65
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "Condition_Jyaco04"
+              ],
+              "CommandIdList": [
+                "Command_Jyaco04"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EN0020_Labor_Decagram_Explosive_Guard_C",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Jyaco04"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Jyaco04"
+              ],
+              "MovePoints": [],
+              "TileX": 149,
+              "TileY": 54,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 2.29,
+                "y": -23.04
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "Condition_Jyaco04"
+              ],
+              "CommandIdList": [
+                "Command_Jyaco04"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointParent_Jyaco05B",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EN0020_Labor_Decagram_Original_C",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Jyaco05"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Jyaco05"
+              ],
+              "MovePoints": [],
+              "TileX": 127,
+              "TileY": 65,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -2.19,
+                "y": -20.92
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "Condition_Jyaco05"
+              ],
+              "CommandIdList": [
+                "Command_Jyaco05"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EN0020_Labor_Decagram_Explosive_Guard_C",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Jyaco05"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Jyaco05"
+              ],
+              "MovePoints": [],
+              "TileX": 133,
+              "TileY": 72,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.94,
+                "y": -19.56
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "Condition_Jyaco05"
+              ],
+              "CommandIdList": [
+                "Command_Jyaco05"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EN0020_Labor_Decagram_Original_C",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Jyaco05"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Jyaco05"
+              ],
+              "MovePoints": [],
+              "TileX": 142,
+              "TileY": 69,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.85,
+                "y": -20.21
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "Condition_Jyaco05"
+              ],
+              "CommandIdList": [
+                "Command_Jyaco05"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EN0020_Labor_Decagram_Original_C",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Jyaco05"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Jyaco05"
+              ],
+              "MovePoints": [],
+              "TileX": 149,
+              "TileY": 62,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 2.29,
+                "y": -21.6
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "Condition_Jyaco05"
+              ],
+              "CommandIdList": [
+                "Command_Jyaco05"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointParent_Jyaco06C",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EN0020_Labor_Decagram_Original_C",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Jyaco06"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Jyaco06"
+              ],
+              "MovePoints": [],
+              "TileX": 127,
+              "TileY": 75,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -2.19,
+                "y": -18.98
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "Condition_Jyaco06"
+              ],
+              "CommandIdList": [
+                "Command_Jyaco06"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EN0020_Labor_Decagram_Explosive_Guard_C",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Jyaco06"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Jyaco06"
+              ],
+              "MovePoints": [],
+              "TileX": 133,
+              "TileY": 82,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.94,
+                "y": -17.6199989
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "Condition_Jyaco06"
+              ],
+              "CommandIdList": [
+                "Command_Jyaco06"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EN0020_Labor_Decagram_Original_C",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Jyaco06"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Jyaco06"
+              ],
+              "MovePoints": [],
+              "TileX": 142,
+              "TileY": 78,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.85,
+                "y": -18.2699986
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "Condition_Jyaco06"
+              ],
+              "CommandIdList": [
+                "Command_Jyaco06"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EN0020_Labor_Decagram_Original_C",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Jyaco06"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Jyaco06"
+              ],
+              "MovePoints": [],
+              "TileX": 149,
+              "TileY": 71,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 2.29,
+                "y": -19.66
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "Condition_Jyaco06"
+              ],
+              "CommandIdList": [
+                "Command_Jyaco06"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointParent_Waves",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "EN0020_Labor_Decagram_Original_C",
+                    "CostumeId": 0,
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "RandomAmountSum": 10000,
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Wave01"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Wave01"
+              ],
+              "MovePoints": [],
+              "TileX": 129,
+              "TileY": 61,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -1.69,
+                "y": -21.79
+              },
+              "Direction": {
+                "x": 0.39456445,
+                "y": -0.9188683
+              },
+              "ConditionIdList": [
+                "Condition_Wave01"
+              ],
+              "CommandIdList": [
+                "Command_Wave01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "EN0020_Labor_Decagram_Original_C",
+                    "CostumeId": 0,
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "RandomAmountSum": 10000,
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Wave02"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Wave02"
+              ],
+              "MovePoints": [],
+              "TileX": 152,
+              "TileY": 61,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 2.9,
+                "y": -21.79
+              },
+              "Direction": {
+                "x": -0.511687338,
+                "y": -0.859171867
+              },
+              "ConditionIdList": [
+                "Condition_Wave02"
+              ],
+              "CommandIdList": [
+                "Command_Wave02"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "EN0020_Labor_Decagram_Original_C",
+                    "CostumeId": 0,
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "RandomAmountSum": 10000,
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Wave03"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Wave03"
+              ],
+              "MovePoints": [],
+              "TileX": 143,
+              "TileY": 75,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.96,
+                "y": -18.96
+              },
+              "Direction": {
+                "x": -0.511687338,
+                "y": -0.859171867
+              },
+              "ConditionIdList": [
+                "Condition_Wave03"
+              ],
+              "CommandIdList": [
+                "Command_Wave03"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.RandomSpawnPoint, BlueArchive",
+              "Delay": 0,
+              "SpawnList": [
+                {
+                  "RandomAmount": 10000,
+                  "SpawnData": {
+                    "SpawnTemplateId": "EN0020_Labor_Decagram_Original_C",
+                    "CostumeId": 0,
+                    "AIId": 0,
+                    "AppearAction": true,
+                    "SkillLevel": {
+                      "ExSkill": [],
+                      "PublicSkill": [],
+                      "PassiveSkill": [],
+                      "ExtraPassiveSkill": []
+                    }
+                  }
+                }
+              ],
+              "RandomAmountSum": 10000,
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Wave04"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Wave04"
+              ],
+              "MovePoints": [],
+              "TileX": 132,
+              "TileY": 75,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -1.2,
+                "y": -18.96
+              },
+              "Direction": {
+                "x": -0.0409954749,
+                "y": -0.999159455
+              },
+              "ConditionIdList": [
+                "Condition_Wave04"
+              ],
+              "CommandIdList": [
+                "Command_Wave04"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "SectionID": 3,
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Events": [
+        {
+          "EventName": "PropAniSet_2Phase",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "GroundCommandFadeOutIn, BlueArchive",
+              "DelayBeforeFadeOut": 0.0,
+              "DelayBeforeFadeIn": 1.0,
+              "VisualDelayFadeInStart": 0.0,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandPlayPropAnimation, BlueArchive",
+              "repeatCount": 0,
+              "propKey": 2,
+              "animationName": "FX_rb_01_EN0020_p01_d_01_Phase01_BG_Off",
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandPlayPropAnimation, BlueArchive",
+              "repeatCount": 0,
+              "propKey": 3,
+              "animationName": "FX_rb_01_EN0020_p01_d_01_Phase02_BG_On",
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "SpawnMainEnemy",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "GroundCommandHideHPBar, BlueArchive",
+              "IsShow": true,
+              "CommandID": "SCommand_TrueBoss",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "Command_Boss",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 1000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandLocateCamera, BlueArchive",
+              "ID": 6,
+              "MaxCameraSpeed": 1.32,
+              "RotationSpeed": 1.0,
+              "ZoomSpeed": 1.0,
+              "RailPoints": [
+                {
+                  "UseTableData": false,
+                  "Position": {
+                    "x": 10.07,
+                    "y": 4.12,
+                    "z": -20.45
+                  },
+                  "MinCameraDistance": 15.0,
+                  "MaxCameraDistance": 22.0,
+                  "CameraForward": {
+                    "x": -0.621387839,
+                    "y": -0.199926734,
+                    "z": 0.757566154
+                  }
+                }
+              ],
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent_Boss",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "EN0020_Main_C",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "A",
+              "SpawnConditionIdList": [
+                "SCondition_Boss"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_Boss"
+              ],
+              "MovePoints": [],
+              "TileX": 153,
+              "TileY": 110,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 3.0,
+                "y": -12.0
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "Condition_Boss"
+              ],
+              "CommandIdList": [
+                "Command_Boss"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Formations": [
+    {
+      "SectionIndex": 0,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": -0.4000001,
+        "y": -21.0
+      },
+      "Forward": {
+        "x": 0.0,
+        "y": 1.0
+      },
+      "Height": 0.0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 1,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": -0.4000001,
+        "y": -21.0
+      },
+      "Forward": {
+        "x": 0.0,
+        "y": 1.0
+      },
+      "Height": 0.0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 2,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": -0.4000001,
+        "y": -21.0
+      },
+      "Forward": {
+        "x": 0.0,
+        "y": 1.0
+      },
+      "Height": 0.0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 3,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": -0.4000001,
+        "y": -17.17
+      },
+      "Forward": {
+        "x": 0.0,
+        "y": 1.0
+      },
+      "Height": 0.0,
+      "IsEnemy": false
+    }
+  ],
+  "EnemyFormations": [],
+  "TemporaryCanUseSkillAreas": []
+}

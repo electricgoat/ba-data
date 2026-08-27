@@ -1,0 +1,401 @@
+{
+  "Version": "1.0",
+  "Global": {
+    "Position": {
+      "x": 1.74,
+      "y": 0.0,
+      "z": 9.393
+    },
+    "Events": [
+      {
+        "EventName": "SpawnPlayer",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": "0"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSpawnPlayer, BlueArchive",
+            "IsEnemy": false,
+            "IgnoreSkillCardShuffle": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 2,
+            "MaxCameraSpeed": 3.0,
+            "RotationSpeed": 1.0,
+            "ZoomSpeed": 1.0,
+            "RailPoints": [
+              {
+                "UseTableData": true,
+                "Position": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "MinCameraDistance": 42.0,
+                "MaxCameraDistance": 42.0,
+                "CameraForward": {
+                  "x": -0.8034659,
+                  "y": -0.426618159,
+                  "z": 0.415258348
+                }
+              },
+              {
+                "UseTableData": true,
+                "Position": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 18.93
+                },
+                "MinCameraDistance": 42.0,
+                "MaxCameraDistance": 42.0,
+                "CameraForward": {
+                  "x": -0.8034659,
+                  "y": -0.426618159,
+                  "z": 0.415258348
+                }
+              }
+            ],
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 1,
+            "SetConditionCommandOnly": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandOperator, BlueArchive",
+            "GroupId": "WeekDungeonCombatStart_03_01",
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          }
+        ]
+      }
+    ]
+  },
+  "Sections": [
+    {
+      "SectionID": 1,
+      "Position": {
+        "x": 1.74,
+        "y": 0.0,
+        "z": 15.3029995
+      },
+      "Events": [
+        {
+          "EventName": "SpawnUnit",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+              "ConditionID": "0"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "Command_A",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "AdditionalUI_Set",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+              "ConditionID": "0"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 2000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandBattleAdditionalUISet, BlueArchive",
+              "PrefabPath": "UI/UIBattleAdditionalFillingGauge",
+              "dataParameters": [
+                {
+                  "Key": "Reverse HPRate Target1 SpawnConditionID",
+                  "Value": "SCondition_A"
+                }
+              ],
+              "decoParameters": [
+                {
+                  "Key": "Portrait1 Path",
+                  "Value": "UIs/02_Tactics/05_CampaignBoss/Champion_Hpbar_Portrait_HeavyTank01_Helmet_Cannon"
+                },
+                {
+                  "Key": "Text1 Localize Key",
+                  "Value": "Event_Zone_85502"
+                }
+              ],
+              "UIPath": "UI/UIBattleAdditionalFillingGauge",
+              "AdditionalUIDataParameters": [
+                {
+                  "Key": "Reverse HPRate Target1 SpawnConditionID",
+                  "Value": "SCondition_A"
+                }
+              ],
+              "AdditionalUIDecoParameters": [
+                {
+                  "Key": "Portrait1 Path",
+                  "Value": "UIs/02_Tactics/05_CampaignBoss/Champion_Hpbar_Portrait_HeavyTank01_Helmet_Cannon"
+                },
+                {
+                  "Key": "Text1 Localize Key",
+                  "Value": "Event_Zone_85502"
+                }
+              ],
+              "CommandID": "Command_UI",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "AdditionalUI_Action",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharacterHPChanged, BlueArchive",
+              "TriggerRateUnder": 5000,
+              "TriggerRateOver": 2,
+              "TriggerMaxCount": 1,
+              "ConditionID": "SCondition_A"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandBattleAdditionalUIAction, BlueArchive",
+              "PrefabPath": "UI/UIBattleAdditionalFillingGauge",
+              "decoParameters": [
+                {
+                  "Key": "Portrait1 Path",
+                  "Value": "UIs/02_Tactics/05_CampaignBoss/Champion_Hpbar_Portrait_TwinsTurret_Highlander_MG"
+                },
+                {
+                  "Key": "Text1 Localize Key",
+                  "Value": "Event_Zone_85500"
+                }
+              ],
+              "actionParameters": [],
+              "UIPath": "UI/UIBattleAdditionalFillingGauge",
+              "AdditionalUIActionParameters": [],
+              "AdditionalUIDecoParameters": [
+                {
+                  "Key": "Portrait1 Path",
+                  "Value": "UIs/02_Tactics/05_CampaignBoss/Champion_Hpbar_Portrait_TwinsTurret_Highlander_MG"
+                },
+                {
+                  "Key": "Text1 Localize Key",
+                  "Value": "Event_Zone_85500"
+                }
+              ],
+              "CommandID": "Command_UI",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "AdditionalUI_Action_1",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+              "DeadCheck": 1,
+              "CheckSummonedCharacterDead": false,
+              "CheckDelayMilliSecond": 0,
+              "ConditionID": "SCondition_A"
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandBattleAdditionalUIAction, BlueArchive",
+              "PrefabPath": "UI/UIBattleAdditionalFillingGauge",
+              "decoParameters": [
+                {
+                  "Key": "Portrait1 Path",
+                  "Value": "UIs/02_Tactics/05_CampaignBoss/Champion_Hpbar_Portrait_HeavyTank01_Helmet_Cannon"
+                },
+                {
+                  "Key": "Text1 Localize Key",
+                  "Value": "Event_Zone_85500"
+                }
+              ],
+              "actionParameters": [
+                {
+                  "Key": "Anim Success",
+                  "Value": ""
+                }
+              ],
+              "UIPath": "UI/UIBattleAdditionalFillingGauge",
+              "AdditionalUIActionParameters": [
+                {
+                  "Key": "Anim Success",
+                  "Value": ""
+                }
+              ],
+              "AdditionalUIDecoParameters": [
+                {
+                  "Key": "Portrait1 Path",
+                  "Value": "UIs/02_Tactics/05_CampaignBoss/Champion_Hpbar_Portrait_HeavyTank01_Helmet_Cannon"
+                },
+                {
+                  "Key": "Text1 Localize Key",
+                  "Value": "Event_Zone_85500"
+                }
+              ],
+              "CommandID": "Command_UI",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 2000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandBattleAdditionalUIAction, BlueArchive",
+              "PrefabPath": "UI/UIBattleAdditionalFillingGauge",
+              "decoParameters": [
+                {
+                  "Key": "Portrait1 Path",
+                  "Value": "UIs/02_Tactics/05_CampaignBoss/Champion_Hpbar_Portrait_HeavyTank01_Helmet_Cannon"
+                },
+                {
+                  "Key": "Text1 Localize Key",
+                  "Value": "Event_Zone_85500"
+                }
+              ],
+              "actionParameters": [
+                {
+                  "Key": "Close UI",
+                  "Value": ""
+                }
+              ],
+              "UIPath": "UI/UIBattleAdditionalFillingGauge",
+              "AdditionalUIActionParameters": [
+                {
+                  "Key": "Close UI",
+                  "Value": ""
+                }
+              ],
+              "AdditionalUIDecoParameters": [
+                {
+                  "Key": "Portrait1 Path",
+                  "Value": "UIs/02_Tactics/05_CampaignBoss/Champion_Hpbar_Portrait_HeavyTank01_Helmet_Cannon"
+                },
+                {
+                  "Key": "Text1 Localize Key",
+                  "Value": "Event_Zone_85500"
+                }
+              ],
+              "CommandID": "Command_UI",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Boxcat_DamageTestLevel_Human",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SCondition_A"
+              ],
+              "SpawnCommandIdList": [
+                "SCommand_A"
+              ],
+              "MovePoints": [],
+              "TileX": 44,
+              "TileY": 130,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.8200002,
+                "y": 21.403
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "Condition_A"
+              ],
+              "CommandIdList": [
+                "Command_A"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Formations": [
+    {
+      "SectionIndex": 0,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0.74,
+        "y": 12.67
+      },
+      "Forward": {
+        "x": 0.0,
+        "y": 1.0
+      },
+      "Height": 0.0,
+      "IsEnemy": false
+    },
+    {
+      "SectionIndex": 1,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0.840000033,
+        "y": 17.53
+      },
+      "Forward": {
+        "x": 0.0,
+        "y": 1.0
+      },
+      "Height": 0.0,
+      "IsEnemy": false
+    }
+  ],
+  "EnemyFormations": [],
+  "TemporaryCanUseSkillAreas": []
+}
