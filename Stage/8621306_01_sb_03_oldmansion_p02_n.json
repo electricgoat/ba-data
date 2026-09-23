@@ -1,0 +1,1157 @@
+{
+  "Version": "",
+  "Global": {
+    "Position": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "Events": [
+      {
+        "EventName": "SpawnPlayer",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": "0"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSpawnPlayer, BlueArchive",
+            "IsEnemy": false,
+            "IgnoreSkillCardShuffle": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 1,
+            "MaxCameraSpeed": 3.0,
+            "RotationSpeed": 1.0,
+            "ZoomSpeed": 1.0,
+            "RailPoints": [],
+            "CameraIndex": 0,
+            "DontDestroyOptionalCameras": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 2,
+            "SetConditionCommandOnly": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "StartSection2",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 1,
+            "CheckSummonedCharacterDead": false,
+            "CheckDelayMilliSecond": 0,
+            "ConditionID": "ConditionDead1-2"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 2,
+            "SetConditionCommandOnly": false,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "EndBattle",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 1,
+            "CheckSummonedCharacterDead": false,
+            "CheckDelayMilliSecond": 0,
+            "ConditionID": "ConditionDead2-1"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandEndBattle, BlueArchive",
+            "BattleEndType": 4,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "2-1AreaOn",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": ""
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandTemporaryCanUseSkillArea, BlueArchive",
+            "OnOff": false,
+            "TemporaryCanUseSkillAreaCommandId": "1-2Area",
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandTemporaryCanUseSkillArea, BlueArchive",
+            "OnOff": true,
+            "TemporaryCanUseSkillAreaCommandId": "2-1Area",
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      }
+    ]
+  },
+  "Sections": [
+    {
+      "SectionID": 2,
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 25.0
+      },
+      "Events": [
+        {
+          "EventName": "Spawn2-1",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "GroundCommandShowBattleUI, BlueArchive",
+              "DisappearInstantly": true,
+              "IsShowBattleUI": false,
+              "IsShowEmoji": true,
+              "IsShowSpeechBubble": true,
+              "ShowBattleStartSign": false,
+              "SoundOn": true,
+              "BGMOn": true,
+              "BGMId": null,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandBattleTimer, BlueArchive",
+              "Stop": true,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandHideHPBar, BlueArchive",
+              "IsShow": false,
+              "CommandID": "Player_command",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceIdle, BlueArchive",
+              "IsForceIdleOn": true,
+              "CommandID": "Player_command",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 500,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandFadeOutInV2, BlueArchive",
+              "FadeOutOngoingDurationMs": 500,
+              "FadeOutKeepDurationMs": 1000,
+              "FadeInOngoingDurationMs": 500,
+              "FadeColorR": 0,
+              "FadeColorG": 0,
+              "FadeColorB": 0,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 1000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 0,
+              "CommandID": "CommandSpawn2-1",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 100,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandHideHPBar, BlueArchive",
+              "IsShow": false,
+              "CommandID": "Enemy",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceIdle, BlueArchive",
+              "IsForceIdleOn": true,
+              "CommandID": "CommandSpawn2-1",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 500,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandChangeLookTarget, BlueArchive",
+              "targetCommandIds": [
+                "Boss"
+              ],
+              "minDistance": 30.0,
+              "maxDistance": 42.0,
+              "moveInstantly": true,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 2000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandCharacterEmoji, BlueArchive",
+              "EmojiEvent": 25,
+              "UseWorldPosition": false,
+              "WorldPosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+              },
+              "ShowPosition": 0,
+              "CommandID": "Enemy",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 2500,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandCharacterEmoji, BlueArchive",
+              "EmojiEvent": 19,
+              "UseWorldPosition": false,
+              "WorldPosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+              },
+              "ShowPosition": 0,
+              "CommandID": "Enemy",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 3000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandLocateCamera, BlueArchive",
+              "ID": 1,
+              "MaxCameraSpeed": 3.0,
+              "RotationSpeed": 1.0,
+              "ZoomSpeed": 1.0,
+              "RailPoints": [],
+              "CameraIndex": 0,
+              "DontDestroyOptionalCameras": false,
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 500,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceIdle, BlueArchive",
+              "IsForceIdleOn": false,
+              "CommandID": "CommandSpawn2-1",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 100,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceMoveToGroundPoint, BlueArchive",
+              "IsInstantMove": false,
+              "IsInterruptCurrentAction": true,
+              "PointCommandID": "Point1",
+              "IsCommandWaitForMoveStart": false,
+              "IsCommandWaitForMoveEnd": false,
+              "UseGroundPointDirection": false,
+              "CommandID": "Boss",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceMoveToGroundPoint, BlueArchive",
+              "IsInstantMove": false,
+              "IsInterruptCurrentAction": true,
+              "PointCommandID": "Point2",
+              "IsCommandWaitForMoveStart": false,
+              "IsCommandWaitForMoveEnd": false,
+              "UseGroundPointDirection": false,
+              "CommandID": "Mob1",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceMoveToGroundPoint, BlueArchive",
+              "IsInstantMove": false,
+              "IsInterruptCurrentAction": true,
+              "PointCommandID": "Point3",
+              "IsCommandWaitForMoveStart": false,
+              "IsCommandWaitForMoveEnd": false,
+              "UseGroundPointDirection": false,
+              "CommandID": "Mob2",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceMoveToGroundPoint, BlueArchive",
+              "IsInstantMove": false,
+              "IsInterruptCurrentAction": true,
+              "PointCommandID": "Point4",
+              "IsCommandWaitForMoveStart": false,
+              "IsCommandWaitForMoveEnd": false,
+              "UseGroundPointDirection": false,
+              "CommandID": "Mob3",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceMoveToGroundPoint, BlueArchive",
+              "IsInstantMove": false,
+              "IsInterruptCurrentAction": true,
+              "PointCommandID": "Point5",
+              "IsCommandWaitForMoveStart": false,
+              "IsCommandWaitForMoveEnd": false,
+              "UseGroundPointDirection": false,
+              "CommandID": "Mob4",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceMoveToGroundPoint, BlueArchive",
+              "IsInstantMove": false,
+              "IsInterruptCurrentAction": true,
+              "PointCommandID": "Point6",
+              "IsCommandWaitForMoveStart": false,
+              "IsCommandWaitForMoveEnd": false,
+              "UseGroundPointDirection": false,
+              "CommandID": "Mob5",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 500,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceIdle, BlueArchive",
+              "IsForceIdleOn": false,
+              "CommandID": "Player_command",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 1500,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandHideHPBar, BlueArchive",
+              "IsShow": true,
+              "CommandID": "Player_command",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandHideHPBar, BlueArchive",
+              "IsShow": true,
+              "CommandID": "Enemy",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "GroundCommandShowBattleUI, BlueArchive",
+              "DisappearInstantly": false,
+              "IsShowBattleUI": true,
+              "IsShowEmoji": true,
+              "IsShowSpeechBubble": true,
+              "ShowBattleStartSign": true,
+              "SoundOn": true,
+              "BGMOn": true,
+              "BGMId": null,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandBattleTimer, BlueArchive",
+              "Stop": false,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [
+        {
+          "UniqueName": "Mansion_Jar_01",
+          "Position": {
+            "x": -3.48,
+            "y": 0.0,
+            "z": 40.73
+          },
+          "Forward": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 1.0
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Mansion_Sculpture_01",
+          "Position": {
+            "x": 0.0017128475,
+            "y": 0.0,
+            "z": 46.9614754
+          },
+          "Forward": {
+            "x": 0.955693662,
+            "y": 0.0,
+            "z": 0.2943631
+          },
+          "ActiveEnemyPointIndices": [
+            3
+          ],
+          "ActivePlayerPointIndices": [
+            2
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Mansion_Box_01",
+          "Position": {
+            "x": -0.63,
+            "y": 0.0,
+            "z": 30.32873
+          },
+          "Forward": {
+            "x": 0.127870068,
+            "y": 0.0,
+            "z": -0.99179095
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Mansion_SideTable_01",
+          "Position": {
+            "x": -3.098,
+            "y": 0.0,
+            "z": 28.8019981
+          },
+          "Forward": {
+            "x": 0.999515,
+            "y": 0.0,
+            "z": 0.0311410259
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Mansion_Box_01",
+          "Position": {
+            "x": 2.08650279,
+            "y": 0.0,
+            "z": 30.0754318
+          },
+          "Forward": {
+            "x": 0.9445021,
+            "y": 0.0,
+            "z": -0.328505278
+          },
+          "ActiveEnemyPointIndices": [
+            3
+          ],
+          "ActivePlayerPointIndices": [
+            2
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Mansion_SideTable_01",
+          "Position": {
+            "x": 1.081,
+            "y": 0.0,
+            "z": 36.074
+          },
+          "Forward": {
+            "x": 0.996404,
+            "y": 0.0,
+            "z": -0.084729515
+          },
+          "ActiveEnemyPointIndices": [
+            3
+          ],
+          "ActivePlayerPointIndices": [
+            2
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Mansion_Chair_01",
+          "Position": {
+            "x": -3.01,
+            "y": 0.0,
+            "z": 29.4279842
+          },
+          "Forward": {
+            "x": 0.991499841,
+            "y": 0.0,
+            "z": -0.130107984
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Mansion_Chair_01",
+          "Position": {
+            "x": -3.01,
+            "y": 0.0,
+            "z": 28.16
+          },
+          "Forward": {
+            "x": 0.9983784,
+            "y": 0.0,
+            "z": 0.0569264665
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Mansion_Box_01",
+          "Position": {
+            "x": -3.364,
+            "y": 0.0,
+            "z": 39.527
+          },
+          "Forward": {
+            "x": 0.472551584,
+            "y": 0.0,
+            "z": -0.881303
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        }
+      ],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent2-1",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Marina_default_C_862_Event_Story",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "ConditionDead2-1"
+              ],
+              "SpawnCommandIdList": [
+                "Enemy",
+                "Boss"
+              ],
+              "MovePoints": [],
+              "TileX": 46,
+              "TileY": 272,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.349999964,
+                "y": 49.84
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandSpawn2-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "RoyalGuard_RedWinter_SMG_M_862_Event_Quest",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "ConditionDead2-1"
+              ],
+              "SpawnCommandIdList": [
+                "Enemy",
+                "Mob1"
+              ],
+              "MovePoints": [],
+              "TileX": 41,
+              "TileY": 275,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -1.21,
+                "y": 50.58
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandSpawn2-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "RoyalGuard_RedWinter_SMG_M_862_Event_Quest",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "ConditionDead2-1"
+              ],
+              "SpawnCommandIdList": [
+                "Enemy",
+                "Mob2"
+              ],
+              "MovePoints": [],
+              "TileX": 51,
+              "TileY": 275,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.610000253,
+                "y": 50.58
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandSpawn2-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "RoyalGuard_RedWinter_AR_M_862_Event_Quest",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "ConditionDead2-1"
+              ],
+              "SpawnCommandIdList": [
+                "Enemy",
+                "Mob3"
+              ],
+              "MovePoints": [],
+              "TileX": 53,
+              "TileY": 284,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.03000009,
+                "y": 52.29
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandSpawn2-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "RoyalGuard_RedWinter_AR_M_862_Event_Quest",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "ConditionDead2-1"
+              ],
+              "SpawnCommandIdList": [
+                "Enemy",
+                "Mob4"
+              ],
+              "MovePoints": [],
+              "TileX": 41,
+              "TileY": 284,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -1.31000018,
+                "y": 52.29
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandSpawn2-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "RoyalGuard_RedWinter_GL_M_862_Event_Quest",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [
+                "ConditionDead2-1"
+              ],
+              "SpawnCommandIdList": [
+                "Enemy",
+                "Mob5"
+              ],
+              "MovePoints": [],
+              "TileX": 46,
+              "TileY": 280,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.209999979,
+                "y": 51.49
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandSpawn2-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
+              "MovePoints": [],
+              "TileX": 49,
+              "TileY": 229,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.3299997,
+                "y": 41.3899956
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Point1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
+              "MovePoints": [],
+              "TileX": 45,
+              "TileY": 233,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.5300003,
+                "y": 42.1299973
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Point2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
+              "MovePoints": [],
+              "TileX": 54,
+              "TileY": 233,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.29,
+                "y": 42.1299973
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Point3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
+              "MovePoints": [],
+              "TileX": 59,
+              "TileY": 240,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 2.34,
+                "y": 43.57
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Point4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
+              "MovePoints": [],
+              "TileX": 40,
+              "TileY": 240,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -1.46,
+                "y": 43.52
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Point5"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "C",
+              "SpawnConditionIdList": [],
+              "SpawnCommandIdList": [],
+              "MovePoints": [],
+              "TileX": 50,
+              "TileY": 238,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.4699998,
+                "y": 43.0399971
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "Point6"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Formations": [
+    {
+      "SectionIndex": 1,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0.51,
+        "y": 30.56
+      },
+      "Forward": {
+        "x": 0.0,
+        "y": 1.0
+      },
+      "Height": 0.0,
+      "IsEnemy": false,
+      "IgnoreNotMoveWait": false
+    },
+    {
+      "SectionIndex": 2,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0.0,
+        "y": 48.4
+      },
+      "Forward": {
+        "x": 0.0,
+        "y": 1.0
+      },
+      "Height": 0.0,
+      "IsEnemy": false,
+      "IgnoreNotMoveWait": false
+    }
+  ],
+  "EnemyFormations": [],
+  "TemporaryCanUseSkillAreas": []
+}

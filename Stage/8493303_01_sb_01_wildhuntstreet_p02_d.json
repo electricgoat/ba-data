@@ -62,6 +62,8 @@
                 }
               }
             ],
+            "CameraIndex": 0,
+            "DontDestroyOptionalCameras": false,
             "CommandID": "0",
             "WaitExecuteEnd": false
           },
@@ -93,6 +95,7 @@
             },
             "GroundNodeTypeToChange": 2147483647,
             "IsResetToOriginal": false,
+            "IsRecalculateGroundNodeLayer": false,
             "CommandID": "",
             "WaitExecuteEnd": false
           }
@@ -141,9 +144,63 @@
           ],
           "Commands": [
             {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 100,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceHold, BlueArchive",
+              "AllowBattleItemMove": false,
+              "IsHold": true,
+              "CommandID": "Player_command",
+              "WaitExecuteEnd": false
+            },
+            {
               "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
               "Interval": 100,
               "CommandID": "CommandSpawn1-1",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "ForceIdleOff",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionArea, BlueArchive",
+              "SpawnTemplateId": "",
+              "Shape": 0,
+              "Target": 1,
+              "Trigger": 0,
+              "StayTime": 0,
+              "Position": {
+                "x": 1.34,
+                "y": 0.0,
+                "z": 25.2200012
+              },
+              "Rect": {
+                "Direction": {
+                  "x": 0.0,
+                  "y": 0.0
+                },
+                "Width": 5.0,
+                "Height": 1.0
+              },
+              "Circle": {
+                "Radius": 1.0
+              },
+              "InactivateWhenStart": false,
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandForceHold, BlueArchive",
+              "AllowBattleItemMove": false,
+              "IsHold": false,
+              "CommandID": "Player_command",
               "WaitExecuteEnd": false
             }
           ]
@@ -324,7 +381,7 @@
                   "TileY": 145,
                   "PositionHeight": 0.0,
                   "Position": {
-                    "x": -1.65400159,
+                    "x": -1.65400231,
                     "y": 24.506
                   },
                   "Direction": {
@@ -344,8 +401,8 @@
                   "TileY": 179,
                   "PositionHeight": 0.0,
                   "Position": {
-                    "x": 1.29999566,
-                    "y": 31.2059975
+                    "x": 1.2999928,
+                    "y": 31.2059937
                   },
                   "Direction": {
                     "x": 1.78813934E-7,
@@ -405,7 +462,7 @@
                   "TileY": 152,
                   "PositionHeight": 0.0,
                   "Position": {
-                    "x": -1.61900151,
+                    "x": -1.61900222,
                     "y": 25.938
                   },
                   "Direction": {
@@ -425,7 +482,7 @@
                   "TileY": 179,
                   "PositionHeight": 0.0,
                   "Position": {
-                    "x": 1.29999471,
+                    "x": 1.29999185,
                     "y": 31.2279968
                   },
                   "Direction": {
@@ -486,7 +543,7 @@
                   "TileY": 160,
                   "PositionHeight": 0.0,
                   "Position": {
-                    "x": -1.60400152,
+                    "x": -1.60400224,
                     "y": 27.5239983
                   },
                   "Direction": {
@@ -506,7 +563,7 @@
                   "TileY": 179,
                   "PositionHeight": 0.0,
                   "Position": {
-                    "x": 1.29999518,
+                    "x": 1.29999232,
                     "y": 31.2289963
                   },
                   "Direction": {
@@ -567,7 +624,7 @@
                   "TileY": 167,
                   "PositionHeight": 0.0,
                   "Position": {
-                    "x": -1.62200153,
+                    "x": -1.62200224,
                     "y": 28.814
                   },
                   "Direction": {
@@ -587,7 +644,7 @@
                   "TileY": 179,
                   "PositionHeight": 0.0,
                   "Position": {
-                    "x": 1.29999518,
+                    "x": 1.29999232,
                     "y": 31.2069988
                   },
                   "Direction": {
@@ -658,7 +715,7 @@
                 "y": 31.51
               },
               "Direction": {
-                "x": 0.1244841,
+                "x": 0.124484077,
                 "y": -0.9922216
               },
               "ConditionIdList": [
@@ -4382,7 +4439,7 @@
                     "y": 27.2002525
                   },
                   "Direction": {
-                    "x": 0.0523358,
+                    "x": 0.0523357876,
                     "y": -0.99862957
                   },
                   "ConditionIdList": [],
@@ -4401,7 +4458,7 @@
                 "y": 36.23
               },
               "Direction": {
-                "x": 0.0523358,
+                "x": 0.0523357876,
                 "y": -0.99862957
               },
               "ConditionIdList": [
@@ -4450,7 +4507,7 @@
                   "TileY": 161,
                   "PositionHeight": 0.0,
                   "Position": {
-                    "x": 0.518336952,
+                    "x": 0.5183368,
                     "y": 27.6915817
                   },
                   "Direction": {
@@ -9990,7 +10047,8 @@
         "y": 1.0
       },
       "Height": 0.0,
-      "IsEnemy": false
+      "IsEnemy": false,
+      "IgnoreNotMoveWait": false
     },
     {
       "SectionIndex": 1,
@@ -10005,7 +10063,8 @@
         "y": 1.0
       },
       "Height": 0.0,
-      "IsEnemy": false
+      "IsEnemy": false,
+      "IgnoreNotMoveWait": false
     },
     {
       "SectionIndex": 2,
@@ -10020,7 +10079,8 @@
         "y": 1.0
       },
       "Height": 0.0,
-      "IsEnemy": false
+      "IsEnemy": false,
+      "IgnoreNotMoveWait": false
     }
   ],
   "EnemyFormations": [],
