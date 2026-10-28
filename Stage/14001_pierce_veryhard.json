@@ -1,0 +1,4083 @@
+{
+  "Version": "1.0",
+  "Global": {
+    "Position": {
+      "x": 1.8599999,
+      "y": 0.0,
+      "z": -2.72700119
+    },
+    "Events": [
+      {
+        "EventName": "SpawnPlayer",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": "0"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSpawnPlayer, BlueArchive",
+            "IsEnemy": false,
+            "IgnoreSkillCardShuffle": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 2,
+            "MaxCameraSpeed": 3.0,
+            "RotationSpeed": 1.0,
+            "ZoomSpeed": 1.0,
+            "RailPoints": [
+              {
+                "UseTableData": true,
+                "Position": {
+                  "x": 0.119999886,
+                  "y": 0.0,
+                  "z": 13.2000008
+                },
+                "MinCameraDistance": 42.0,
+                "MaxCameraDistance": 42.0,
+                "CameraForward": {
+                  "x": -0.8034659,
+                  "y": -0.426618159,
+                  "z": 0.415258348
+                }
+              },
+              {
+                "UseTableData": true,
+                "Position": {
+                  "x": 0.119999886,
+                  "y": 0.0,
+                  "z": 28.8799973
+                },
+                "MinCameraDistance": 42.0,
+                "MaxCameraDistance": 42.0,
+                "CameraForward": {
+                  "x": -0.8034659,
+                  "y": -0.426618159,
+                  "z": 0.415258348
+                }
+              }
+            ],
+            "CameraIndex": 0,
+            "DontDestroyOptionalCameras": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 1,
+            "SetConditionCommandOnly": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSetLimitBreakGauge, BlueArchive",
+            "UIPath": "UI/UIAssetObject/UIBattleAdditionalLimitBreak_TacticalRelay",
+            "PrefabPath": "UI/UIAssetObject/UIBattleAdditionalLimitBreak_TacticalRelay",
+            "NotUseDefaultSkillSlotUI": true,
+            "MaxGauge": 1000000,
+            "DefaultGauge": 0,
+            "GainRules": [
+              {
+                "Trigger": 31,
+                "GaugeGain": 1,
+                "Parameter0": 2,
+                "Parameter1": 33
+              }
+            ],
+            "characterId": 59000,
+            "characterLevel": 90,
+            "characterGrade": 5,
+            "LimitBreakSkills": [
+              {
+                "LimitGaugeCost": 1000000,
+                "skillGroupId": "TacticalRelayLimitBreak01",
+                "skillLevel": 1,
+                "skillCardTexture": "UIs/01_Common/51_TacticalRelay/Carrier_Portrait_Skill_1",
+                "skillUseCount": -1,
+                "forceCoolTimeComplete": false
+              }
+            ],
+            "LockRules": [
+              {
+                "Trigger": 10,
+                "ParamString0": "TacticalRelay_LimitBreak01_Effect01_1",
+                "Parameter0": 1,
+                "Parameter1": 0
+              }
+            ],
+            "AdditionalUIDataParameters": [],
+            "AdditionalUIDecoParameters": [],
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandBattleAdditionalUISet, BlueArchive",
+            "PrefabPath": "UI/UIBattleAdditionalTacticalRelayState",
+            "dataParameters": [
+              {
+                "Key": "Event Name - Manual Return Button",
+                "Value": "PlayerReturn"
+              }
+            ],
+            "decoParameters": [],
+            "UIPath": "UI/UIBattleAdditionalTacticalRelayState",
+            "AdditionalUIDataParameters": [
+              {
+                "Key": "Event Name - Manual Return Button",
+                "Value": "PlayerReturn"
+              }
+            ],
+            "AdditionalUIDecoParameters": [],
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "PlayerReturn",
+        "Operator": 1,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionGroundEventRaised, BlueArchive",
+            "EventName": "PlayerReturn",
+            "TriggerMaxCount": -1,
+            "EventNameCommandFinish": "",
+            "ConditionID": ""
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandCharacterEmoji, BlueArchive",
+            "EmojiEvent": 25,
+            "UseWorldPosition": false,
+            "WorldPosition": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "ShowPosition": 2,
+            "CommandID": "Player_command",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandForceMoveToFormationBeacon, BlueArchive",
+            "IsInstantMove": false,
+            "IsInterruptCurrentAction": false,
+            "KeepRelativePosition": false,
+            "DatumPointBeforeMove": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "DatumPointAfterMove": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandWaitForceMovePlayer, BlueArchive",
+            "ForceIdleOnArrival": false,
+            "ForceHoldOnArrival": true,
+            "CommandID": "Player_command",
+            "WaitExecuteEnd": false
+          }
+        ]
+      }
+    ]
+  },
+  "Sections": [
+    {
+      "SectionID": 1,
+      "Position": {
+        "x": 1.8599999,
+        "y": 0.0,
+        "z": 3.18299866
+      },
+      "Events": [
+        {
+          "EventName": "SpawnNPC",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 100,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 0,
+              "CommandID": "SpawnPointCommand01_NPC",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "SpawnUnit",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandFixedWave, BlueArchive",
+              "UniqueId": "Section01",
+              "FixedWaves": [
+                {
+                  "SpawnPointCommandId": "SpawnPointCommand01",
+                  "TotalCount": 18,
+                  "FixedSpawnCount": 9,
+                  "WaveDelay": 0,
+                  "SpawnCycle": 0
+                },
+                {
+                  "SpawnPointCommandId": "SpawnPointCommand01",
+                  "TotalCount": 18,
+                  "FixedSpawnCount": 9,
+                  "WaveDelay": 2000,
+                  "SpawnCycle": 0
+                },
+                {
+                  "SpawnPointCommandId": "SpawnPointCommand01",
+                  "TotalCount": 27,
+                  "FixedSpawnCount": 9,
+                  "WaveDelay": 2000,
+                  "SpawnCycle": 0
+                }
+              ],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "NextSection",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionClearedWaves, BlueArchive",
+              "UniqueName": "Section01",
+              "Waves": [
+                1,
+                2,
+                3
+              ],
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandBattleAdditionalUIAction, BlueArchive",
+              "PrefabPath": "UI/UIBattleAdditionalTacticalRelayState",
+              "decoParameters": [],
+              "actionParameters": [
+                {
+                  "Key": "QuickSwapRecommend",
+                  "Value": ""
+                }
+              ],
+              "UIPath": "UI/UIBattleAdditionalTacticalRelayState",
+              "AdditionalUIActionParameters": [
+                {
+                  "Key": "QuickSwapRecommend",
+                  "Value": ""
+                }
+              ],
+              "AdditionalUIDecoParameters": [],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 3000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+              "SectionID": 2,
+              "SetConditionCommandOnly": false,
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [
+        {
+          "UniqueName": "Beach_Box01_TacticalRelay",
+          "Position": {
+            "x": -3.081,
+            "y": 0.0,
+            "z": 19.528
+          },
+          "Forward": {
+            "x": 0.267774761,
+            "y": 0.0,
+            "z": 0.963481545
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Beach_Box01_TacticalRelay",
+          "Position": {
+            "x": -1.911,
+            "y": 0.0,
+            "z": 20.3100014
+          },
+          "Forward": {
+            "x": -0.3033892,
+            "y": 0.0,
+            "z": 0.952866733
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Beach_Box01_TacticalRelay",
+          "Position": {
+            "x": -0.77,
+            "y": 0.0,
+            "z": 20.973
+          },
+          "Forward": {
+            "x": 0.0249429736,
+            "y": 0.0,
+            "z": 0.999688864
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Beach_Box01_TacticalRelay",
+          "Position": {
+            "x": 0.4289999,
+            "y": 0.0,
+            "z": 20.98
+          },
+          "Forward": {
+            "x": 0.298317343,
+            "y": 0.0,
+            "z": 0.95446676
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Beach_Box01_TacticalRelay",
+          "Position": {
+            "x": 1.60099983,
+            "y": 0.0,
+            "z": 20.2879982
+          },
+          "Forward": {
+            "x": 0.44442603,
+            "y": 0.0,
+            "z": 0.895815551
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Beach_Box01_TacticalRelay",
+          "Position": {
+            "x": 2.849,
+            "y": 0.0,
+            "z": 19.48
+          },
+          "Forward": {
+            "x": 0.2913693,
+            "y": 0.0,
+            "z": 0.9566106
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        }
+      ],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SMG_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition01"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand01"
+              ],
+              "MovePoints": [],
+              "TileX": 37,
+              "TileY": 165,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.5500002,
+                "y": 28.473
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition01"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_MG_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition01"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand01"
+              ],
+              "MovePoints": [],
+              "TileX": 46,
+              "TileY": 177,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.2299999,
+                "y": 30.862999
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition01"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SR_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition01"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand01"
+              ],
+              "MovePoints": [],
+              "TileX": 33,
+              "TileY": 191,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -1.46000028,
+                "y": 33.793
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition01"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SMG_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition01"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand01"
+              ],
+              "MovePoints": [],
+              "TileX": 44,
+              "TileY": 163,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.779999852,
+                "y": 28.112999
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition01"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_MG_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition01"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand01"
+              ],
+              "MovePoints": [],
+              "TileX": 32,
+              "TileY": 177,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -1.52000022,
+                "y": 30.8730011
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition01"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SR_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition01"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand01"
+              ],
+              "MovePoints": [],
+              "TileX": 43,
+              "TileY": 191,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.5799999,
+                "y": 33.7429962
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition01"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SMG_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition01"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand01"
+              ],
+              "MovePoints": [],
+              "TileX": 50,
+              "TileY": 166,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 2.08,
+                "y": 28.7730026
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition01"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_MG_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition01"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand01"
+              ],
+              "MovePoints": [],
+              "TileX": 37,
+              "TileY": 179,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.6700001,
+                "y": 31.362999
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition01"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SR_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition01"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand01"
+              ],
+              "MovePoints": [],
+              "TileX": 51,
+              "TileY": 191,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 2.2099998,
+                "y": 33.793
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition01"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SMG_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition01"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand01"
+              ],
+              "MovePoints": [],
+              "TileX": 31,
+              "TileY": 164,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -1.81999993,
+                "y": 28.3730011
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition01"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_MG_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition01"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand01"
+              ],
+              "MovePoints": [],
+              "TileX": 50,
+              "TileY": 179,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.93999982,
+                "y": 31.333
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition01"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SR_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition01"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand01"
+              ],
+              "MovePoints": [],
+              "TileX": 37,
+              "TileY": 193,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.6200001,
+                "y": 34.043
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition01"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointParent_NPC",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Story_Enemy_Dummy_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition01_NPC"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand01_NPC"
+              ],
+              "MovePoints": [],
+              "TileX": 40,
+              "TileY": 86,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.100000024,
+                "y": 12.613
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition01_NPC"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand01_NPC"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "SectionID": 2,
+      "Position": {
+        "x": 1.8599999,
+        "y": 0.0,
+        "z": 3.18299866
+      },
+      "Events": [
+        {
+          "EventName": "SpawnUnit",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandFixedWave, BlueArchive",
+              "UniqueId": "Section02",
+              "FixedWaves": [
+                {
+                  "SpawnPointCommandId": "SpawnPointCommand02_1",
+                  "TotalCount": 1,
+                  "FixedSpawnCount": 1,
+                  "WaveDelay": 2000,
+                  "SpawnCycle": 0
+                },
+                {
+                  "SpawnPointCommandId": "SpawnPointCommand02_2",
+                  "TotalCount": 1,
+                  "FixedSpawnCount": 1,
+                  "WaveDelay": 2000,
+                  "SpawnCycle": 0
+                },
+                {
+                  "SpawnPointCommandId": "SpawnPointCommand02_3",
+                  "TotalCount": 2,
+                  "FixedSpawnCount": 2,
+                  "WaveDelay": 2000,
+                  "SpawnCycle": 0
+                }
+              ],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "NextSection",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionClearedWaves, BlueArchive",
+              "UniqueName": "Section02",
+              "Waves": [
+                1,
+                2,
+                3
+              ],
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandBattleAdditionalUIAction, BlueArchive",
+              "PrefabPath": "UI/UIBattleAdditionalTacticalRelayState",
+              "decoParameters": [],
+              "actionParameters": [
+                {
+                  "Key": "QuickSwapRecommend",
+                  "Value": ""
+                }
+              ],
+              "UIPath": "UI/UIBattleAdditionalTacticalRelayState",
+              "AdditionalUIActionParameters": [
+                {
+                  "Key": "QuickSwapRecommend",
+                  "Value": ""
+                }
+              ],
+              "AdditionalUIDecoParameters": [],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 3000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+              "SectionID": 3,
+              "SetConditionCommandOnly": false,
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Flavia_YustuinaSwim_RL_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 38,
+              "TileY": 148,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.430000067,
+                "y": 25.152998
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Terror_Barbara_Yustina_MG_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 45,
+              "TileY": 146,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.9499998,
+                "y": 24.7529964
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Flavia_YustuinaSwim_RL_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 32,
+              "TileY": 148,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -1.60000014,
+                "y": 25.093
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Terror_Barbara_Yustina_MG_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 46,
+              "TileY": 146,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.27,
+                "y": 24.733
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "SectionID": 3,
+      "Position": {
+        "x": 1.8599999,
+        "y": 0.0,
+        "z": 3.18299866
+      },
+      "Events": [
+        {
+          "EventName": "SpawnUnit",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandFixedWave, BlueArchive",
+              "UniqueId": "Section03",
+              "FixedWaves": [
+                {
+                  "SpawnPointCommandId": "SpawnPointCommand03",
+                  "TotalCount": 18,
+                  "FixedSpawnCount": 9,
+                  "WaveDelay": 2000,
+                  "SpawnCycle": 0
+                },
+                {
+                  "SpawnPointCommandId": "SpawnPointCommand03",
+                  "TotalCount": 18,
+                  "FixedSpawnCount": 9,
+                  "WaveDelay": 2000,
+                  "SpawnCycle": 0
+                },
+                {
+                  "SpawnPointCommandId": "SpawnPointCommand03",
+                  "TotalCount": 27,
+                  "FixedSpawnCount": 9,
+                  "WaveDelay": 2000,
+                  "SpawnCycle": 0
+                }
+              ],
+              "CommandID": "Section03",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "NextSection",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionClearedWaves, BlueArchive",
+              "UniqueName": "Section03",
+              "Waves": [
+                1,
+                2,
+                3
+              ],
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandBattleAdditionalUIAction, BlueArchive",
+              "PrefabPath": "UI/UIBattleAdditionalTacticalRelayState",
+              "decoParameters": [],
+              "actionParameters": [
+                {
+                  "Key": "QuickSwapRecommend",
+                  "Value": ""
+                }
+              ],
+              "UIPath": "UI/UIBattleAdditionalTacticalRelayState",
+              "AdditionalUIActionParameters": [
+                {
+                  "Key": "QuickSwapRecommend",
+                  "Value": ""
+                }
+              ],
+              "AdditionalUIDecoParameters": [],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 3000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+              "SectionID": 4,
+              "SetConditionCommandOnly": false,
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SMG_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 37,
+              "TileY": 165,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.5500002,
+                "y": 28.473
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_MG_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 48,
+              "TileY": 177,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.5999999,
+                "y": 30.862999
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SR_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 33,
+              "TileY": 191,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -1.46000028,
+                "y": 33.793
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SMG_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 43,
+              "TileY": 163,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.6099999,
+                "y": 28.112999
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_MG_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 32,
+              "TileY": 177,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -1.52000022,
+                "y": 30.8730011
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SR_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 43,
+              "TileY": 191,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.5799999,
+                "y": 33.7429962
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SMG_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 50,
+              "TileY": 166,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 2.08,
+                "y": 28.7730026
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_MG_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 37,
+              "TileY": 179,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.6700001,
+                "y": 31.362999
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SR_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 51,
+              "TileY": 191,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 2.2099998,
+                "y": 33.793
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SMG_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 31,
+              "TileY": 164,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -1.81999993,
+                "y": 28.3730011
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_MG_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 46,
+              "TileY": 179,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.11999989,
+                "y": 31.333
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SR_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 37,
+              "TileY": 193,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.6200001,
+                "y": 34.043
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "SectionID": 4,
+      "Position": {
+        "x": 1.8599999,
+        "y": 0.0,
+        "z": 3.18299866
+      },
+      "Events": [
+        {
+          "EventName": "SpawnUnit",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandFixedWave, BlueArchive",
+              "UniqueId": "Section04",
+              "FixedWaves": [
+                {
+                  "SpawnPointCommandId": "SpawnPointCommand04_1",
+                  "TotalCount": 1,
+                  "FixedSpawnCount": 1,
+                  "WaveDelay": 2000,
+                  "SpawnCycle": 0
+                },
+                {
+                  "SpawnPointCommandId": "SpawnPointCommand04_2",
+                  "TotalCount": 1,
+                  "FixedSpawnCount": 1,
+                  "WaveDelay": 2000,
+                  "SpawnCycle": 0
+                },
+                {
+                  "SpawnPointCommandId": "SpawnPointCommand04_3",
+                  "TotalCount": 2,
+                  "FixedSpawnCount": 2,
+                  "WaveDelay": 2000,
+                  "SpawnCycle": 0
+                }
+              ],
+              "CommandID": "Section04",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "NextSection",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionClearedWaves, BlueArchive",
+              "UniqueName": "Section04",
+              "Waves": [
+                1,
+                2,
+                3
+              ],
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandBattleAdditionalUIAction, BlueArchive",
+              "PrefabPath": "UI/UIBattleAdditionalTacticalRelayState",
+              "decoParameters": [],
+              "actionParameters": [
+                {
+                  "Key": "QuickSwapRecommend",
+                  "Value": ""
+                }
+              ],
+              "UIPath": "UI/UIBattleAdditionalTacticalRelayState",
+              "AdditionalUIActionParameters": [
+                {
+                  "Key": "QuickSwapRecommend",
+                  "Value": ""
+                }
+              ],
+              "AdditionalUIDecoParameters": [],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 3000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+              "SectionID": 5,
+              "SetConditionCommandOnly": false,
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Terror_Ambrosius_Communio_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition04"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand04"
+              ],
+              "MovePoints": [],
+              "TileX": 47,
+              "TileY": 154,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.4799999,
+                "y": 26.223
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition04"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand04_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Flavia_YustuinaSwim_RL_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition04"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand04"
+              ],
+              "MovePoints": [],
+              "TileX": 36,
+              "TileY": 149,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.72,
+                "y": 25.2430038
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition04"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand04_1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Terror_Barbara_Yustina_MG_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition04"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand04"
+              ],
+              "MovePoints": [],
+              "TileX": 44,
+              "TileY": 150,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.7499999,
+                "y": 25.4630051
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition04"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand04_2"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Flavia_YustuinaSwim_RL_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition04"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand04"
+              ],
+              "MovePoints": [],
+              "TileX": 33,
+              "TileY": 153,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -1.48000026,
+                "y": 26.0029984
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition04"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand04_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "SectionID": 5,
+      "Position": {
+        "x": -0.73,
+        "y": 0.0,
+        "z": 27.473
+      },
+      "Events": [
+        {
+          "EventName": "SpawnUnit",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandFixedWave, BlueArchive",
+              "UniqueId": "Section05",
+              "FixedWaves": [
+                {
+                  "SpawnPointCommandId": "SpawnPointCommand05",
+                  "TotalCount": 18,
+                  "FixedSpawnCount": 9,
+                  "WaveDelay": 2000,
+                  "SpawnCycle": 0
+                },
+                {
+                  "SpawnPointCommandId": "SpawnPointCommand05",
+                  "TotalCount": 18,
+                  "FixedSpawnCount": 9,
+                  "WaveDelay": 2000,
+                  "SpawnCycle": 0
+                },
+                {
+                  "SpawnPointCommandId": "SpawnPointCommand05_3",
+                  "TotalCount": 28,
+                  "FixedSpawnCount": 10,
+                  "WaveDelay": 2000,
+                  "SpawnCycle": 0
+                }
+              ],
+              "CommandID": "Section05",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "Clear",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionClearedWaves, BlueArchive",
+              "UniqueName": "Section05",
+              "Waves": [
+                1,
+                2,
+                3
+              ],
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandEndBattle, BlueArchive",
+              "BattleEndType": 4,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirlBoss_SukebanSwim_MG_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 40,
+              "TileY": 182,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.09000027,
+                "y": 31.9930038
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SMG_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 38,
+              "TileY": 171,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.479999661,
+                "y": 29.7430038
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05",
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_MG_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 50,
+              "TileY": 183,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.97000027,
+                "y": 32.1330032
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05",
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SR_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 33,
+              "TileY": 198,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -1.38999927,
+                "y": 35.0630035
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05",
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SMG_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 47,
+              "TileY": 171,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.3300004,
+                "y": 29.7730026
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05",
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_MG_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 34,
+              "TileY": 185,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -1.16999972,
+                "y": 32.5330048
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05",
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SR_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 45,
+              "TileY": 200,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.9300004,
+                "y": 35.403
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05",
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SMG_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 52,
+              "TileY": 173,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 2.34000063,
+                "y": 30.003006
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05",
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_MG_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 38,
+              "TileY": 185,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.4099995,
+                "y": 32.5930023
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05",
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SR_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 52,
+              "TileY": 198,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 2.47000027,
+                "y": 35.0230026
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05",
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SMG_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 31,
+              "TileY": 173,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -1.84,
+                "y": 30.0029984
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05",
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_MG_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 47,
+              "TileY": 187,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.45000029,
+                "y": 32.9630051
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05",
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SR_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 37,
+              "TileY": 201,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.639999747,
+                "y": 35.6729965
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05",
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SMG_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 52,
+              "TileY": 173,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 2.34000063,
+                "y": 30.003006
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05",
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_MG_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 35,
+              "TileY": 185,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -1.02299964,
+                "y": 32.5930023
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05",
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SR_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 52,
+              "TileY": 198,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 2.47000027,
+                "y": 35.0230026
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05",
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SMG_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 31,
+              "TileY": 173,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -1.84,
+                "y": 30.0029984
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05",
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SR_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 45,
+              "TileY": 200,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.9300004,
+                "y": 35.403
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05",
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_MG_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 32,
+              "TileY": 185,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -1.52999961,
+                "y": 32.5330048
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05",
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SMG_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 38,
+              "TileY": 171,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.479999661,
+                "y": 29.7430038
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05",
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_MG_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 48,
+              "TileY": 183,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.67000055,
+                "y": 32.1330032
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05",
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SR_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 33,
+              "TileY": 198,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -1.38999927,
+                "y": 35.0630035
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05",
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SMG_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 47,
+              "TileY": 171,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.3300004,
+                "y": 29.7730026
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05",
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_MG_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 49,
+              "TileY": 187,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.72000027,
+                "y": 32.9630051
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05",
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SR_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 37,
+              "TileY": 201,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.639999747,
+                "y": 35.6729965
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05",
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SMG_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 38,
+              "TileY": 171,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.479999661,
+                "y": 29.7430038
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_MG_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 38,
+              "TileY": 185,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.4099995,
+                "y": 32.5930023
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SR_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 52,
+              "TileY": 198,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 2.47000027,
+                "y": 35.0230026
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SMG_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 31,
+              "TileY": 173,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -1.84,
+                "y": 30.0029984
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_MG_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 34,
+              "TileY": 185,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -1.16999972,
+                "y": 32.5330048
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SR_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 45,
+              "TileY": 200,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.9300004,
+                "y": 35.403
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SMG_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 38,
+              "TileY": 171,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.479999661,
+                "y": 29.7430038
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_MG_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 48,
+              "TileY": 183,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.67000055,
+                "y": 32.1330032
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SR_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 33,
+              "TileY": 198,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -1.38999927,
+                "y": 35.0630035
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SMG_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 47,
+              "TileY": 171,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.3300004,
+                "y": 29.7730026
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_MG_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 46,
+              "TileY": 187,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.12000024,
+                "y": 32.9630051
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "SchoolGirl_SukebanSwim_SR_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition05"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand05"
+              ],
+              "MovePoints": [],
+              "TileX": 37,
+              "TileY": 201,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.639999747,
+                "y": 35.6729965
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition05"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand05_3"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Formations": [
+    {
+      "SectionIndex": 0,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0.119999886,
+        "y": 19.21
+      },
+      "Forward": {
+        "x": 0.0,
+        "y": 1.0
+      },
+      "Height": 0.0,
+      "IsEnemy": false,
+      "IgnoreNotMoveWait": false
+    },
+    {
+      "SectionIndex": 1,
+      "IgnorePathFind": true,
+      "Index": 0,
+      "Position": {
+        "x": 0.119999886,
+        "y": 20.21
+      },
+      "Forward": {
+        "x": 0.0,
+        "y": 1.0
+      },
+      "Height": 0.0,
+      "IsEnemy": false,
+      "IgnoreNotMoveWait": true
+    },
+    {
+      "SectionIndex": 2,
+      "IgnorePathFind": true,
+      "Index": 0,
+      "Position": {
+        "x": 0.119999886,
+        "y": 20.21
+      },
+      "Forward": {
+        "x": 0.0,
+        "y": 1.0
+      },
+      "Height": 0.0,
+      "IsEnemy": false,
+      "IgnoreNotMoveWait": true
+    },
+    {
+      "SectionIndex": 3,
+      "IgnorePathFind": true,
+      "Index": 0,
+      "Position": {
+        "x": 0.119999886,
+        "y": 20.21
+      },
+      "Forward": {
+        "x": 0.0,
+        "y": 1.0
+      },
+      "Height": 0.0,
+      "IsEnemy": false,
+      "IgnoreNotMoveWait": true
+    },
+    {
+      "SectionIndex": 4,
+      "IgnorePathFind": true,
+      "Index": 0,
+      "Position": {
+        "x": 0.119999886,
+        "y": 20.21
+      },
+      "Forward": {
+        "x": 0.0,
+        "y": 1.0
+      },
+      "Height": 0.0,
+      "IsEnemy": false,
+      "IgnoreNotMoveWait": true
+    },
+    {
+      "SectionIndex": 5,
+      "IgnorePathFind": true,
+      "Index": 0,
+      "Position": {
+        "x": 0.119999886,
+        "y": 20.21
+      },
+      "Forward": {
+        "x": 0.0,
+        "y": 1.0
+      },
+      "Height": 0.0,
+      "IsEnemy": false,
+      "IgnoreNotMoveWait": true
+    }
+  ],
+  "EnemyFormations": [],
+  "TemporaryCanUseSkillAreas": []
+}

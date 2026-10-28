@@ -1,0 +1,4299 @@
+{
+  "Version": "1.0",
+  "Global": {
+    "Position": {
+      "x": 3.05,
+      "y": 0.0,
+      "z": -2.46999931
+    },
+    "Events": [
+      {
+        "EventName": "SpawnPlayer",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": "0"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSpawnPlayer, BlueArchive",
+            "IsEnemy": false,
+            "IgnoreSkillCardShuffle": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 2,
+            "MaxCameraSpeed": 3.0,
+            "RotationSpeed": 1.0,
+            "ZoomSpeed": 1.0,
+            "RailPoints": [
+              {
+                "UseTableData": true,
+                "Position": {
+                  "x": 1.31,
+                  "y": 0.0,
+                  "z": 14.4570007
+                },
+                "MinCameraDistance": 42.0,
+                "MaxCameraDistance": 42.0,
+                "CameraForward": {
+                  "x": -0.8034659,
+                  "y": -0.426618159,
+                  "z": 0.415258348
+                }
+              },
+              {
+                "UseTableData": true,
+                "Position": {
+                  "x": 1.31,
+                  "y": 0.0,
+                  "z": 29.137001
+                },
+                "MinCameraDistance": 42.0,
+                "MaxCameraDistance": 42.0,
+                "CameraForward": {
+                  "x": -0.8034659,
+                  "y": -0.426618159,
+                  "z": 0.415258348
+                }
+              }
+            ],
+            "CameraIndex": 0,
+            "DontDestroyOptionalCameras": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 1,
+            "SetConditionCommandOnly": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSetLimitBreakGauge, BlueArchive",
+            "UIPath": "UI/UIAssetObject/UIBattleAdditionalLimitBreak_TacticalRelay",
+            "PrefabPath": "UI/UIAssetObject/UIBattleAdditionalLimitBreak_TacticalRelay",
+            "NotUseDefaultSkillSlotUI": true,
+            "MaxGauge": 1000000,
+            "DefaultGauge": 0,
+            "GainRules": [
+              {
+                "Trigger": 31,
+                "GaugeGain": 10,
+                "Parameter0": 2,
+                "Parameter1": 73
+              }
+            ],
+            "characterId": 59000,
+            "characterLevel": 90,
+            "characterGrade": 5,
+            "LimitBreakSkills": [
+              {
+                "LimitGaugeCost": 1000000,
+                "skillGroupId": "TacticalRelayLimitBreak01",
+                "skillLevel": 1,
+                "skillCardTexture": "UIs/01_Common/51_TacticalRelay/Carrier_Portrait_Skill_1",
+                "skillUseCount": -1,
+                "forceCoolTimeComplete": false
+              }
+            ],
+            "LockRules": [
+              {
+                "Trigger": 10,
+                "ParamString0": "TacticalRelay_LimitBreak01_Effect01_1",
+                "Parameter0": 1,
+                "Parameter1": 0
+              }
+            ],
+            "AdditionalUIDataParameters": [],
+            "AdditionalUIDecoParameters": [],
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandBattleAdditionalUISet, BlueArchive",
+            "PrefabPath": "UI/UIBattleAdditionalTacticalRelayState",
+            "dataParameters": [
+              {
+                "Key": "Event Name - Manual Return Button",
+                "Value": "PlayerReturn"
+              }
+            ],
+            "decoParameters": [],
+            "UIPath": "UI/UIBattleAdditionalTacticalRelayState",
+            "AdditionalUIDataParameters": [
+              {
+                "Key": "Event Name - Manual Return Button",
+                "Value": "PlayerReturn"
+              }
+            ],
+            "AdditionalUIDecoParameters": [],
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "PlayerReturn",
+        "Operator": 1,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionGroundEventRaised, BlueArchive",
+            "EventName": "PlayerReturn",
+            "TriggerMaxCount": -1,
+            "EventNameCommandFinish": "",
+            "ConditionID": ""
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandCharacterEmoji, BlueArchive",
+            "EmojiEvent": 25,
+            "UseWorldPosition": false,
+            "WorldPosition": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "ShowPosition": 2,
+            "CommandID": "Player_command",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandForceMoveToFormationBeacon, BlueArchive",
+            "IsInstantMove": false,
+            "IsInterruptCurrentAction": false,
+            "KeepRelativePosition": false,
+            "DatumPointBeforeMove": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "DatumPointAfterMove": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandWaitForceMovePlayer, BlueArchive",
+            "ForceIdleOnArrival": false,
+            "ForceHoldOnArrival": true,
+            "CommandID": "Player_command",
+            "WaitExecuteEnd": false
+          }
+        ]
+      }
+    ]
+  },
+  "Sections": [
+    {
+      "SectionID": 1,
+      "Position": {
+        "x": 3.05,
+        "y": 0.0,
+        "z": 3.44
+      },
+      "Events": [
+        {
+          "EventName": "SpawnNPC",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 100,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 0,
+              "CommandID": "SpawnPointCommand01_NPC",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "SpawnUnit",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandFixedWave, BlueArchive",
+              "UniqueId": "Section01",
+              "FixedWaves": [
+                {
+                  "SpawnPointCommandId": "SpawnPointCommand01",
+                  "TotalCount": 18,
+                  "FixedSpawnCount": 9,
+                  "WaveDelay": 2000,
+                  "SpawnCycle": 0
+                },
+                {
+                  "SpawnPointCommandId": "SpawnPointCommand01",
+                  "TotalCount": 18,
+                  "FixedSpawnCount": 9,
+                  "WaveDelay": 2000,
+                  "SpawnCycle": 0
+                },
+                {
+                  "SpawnPointCommandId": "SpawnPointCommand01",
+                  "TotalCount": 27,
+                  "FixedSpawnCount": 9,
+                  "WaveDelay": 2000,
+                  "SpawnCycle": 0
+                }
+              ],
+              "CommandID": "Section01",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "NextSection",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionClearedWaves, BlueArchive",
+              "UniqueName": "Section01",
+              "Waves": [
+                1,
+                2,
+                3
+              ],
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandBattleAdditionalUIAction, BlueArchive",
+              "PrefabPath": "UI/UIBattleAdditionalTacticalRelayState",
+              "decoParameters": [],
+              "actionParameters": [
+                {
+                  "Key": "QuickSwapRecommend",
+                  "Value": ""
+                }
+              ],
+              "UIPath": "UI/UIBattleAdditionalTacticalRelayState",
+              "AdditionalUIActionParameters": [
+                {
+                  "Key": "QuickSwapRecommend",
+                  "Value": ""
+                }
+              ],
+              "AdditionalUIDecoParameters": [],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 3000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+              "SectionID": 2,
+              "SetConditionCommandOnly": false,
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [
+        {
+          "UniqueName": "Insidecruiseship_Baricade_TacticalRelay",
+          "Position": {
+            "x": 4.31,
+            "y": 0.0,
+            "z": 21.847
+          },
+          "Forward": {
+            "x": 0.20791176,
+            "y": 0.0,
+            "z": 0.978147566
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Insidecruiseship_Baricade_TacticalRelay",
+          "Position": {
+            "x": 2.31,
+            "y": 0.0,
+            "z": 22.547
+          },
+          "Forward": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 1.0
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Insidecruiseship_Baricade_TacticalRelay",
+          "Position": {
+            "x": 0.309999943,
+            "y": 0.0,
+            "z": 22.547
+          },
+          "Forward": {
+            "x": 0.17364797,
+            "y": 0.0,
+            "z": 0.9848078
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Insidecruiseship_Baricade_TacticalRelay",
+          "Position": {
+            "x": -1.46000028,
+            "y": 0.0,
+            "z": 21.847
+          },
+          "Forward": {
+            "x": -0.272623181,
+            "y": 0.0,
+            "z": 0.9621209
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Insidecruiseship_Baricade_TacticalRelay",
+          "Position": {
+            "x": 2.51,
+            "y": 0.0,
+            "z": 20.547
+          },
+          "Forward": {
+            "x": -0.27262333,
+            "y": 0.0,
+            "z": 0.962120831
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Insidecruiseship_Baricade_TacticalRelay",
+          "Position": {
+            "x": 0.109999895,
+            "y": 0.0,
+            "z": 20.547
+          },
+          "Forward": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 1.0
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        }
+      ],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_HG_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition01"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand01"
+              ],
+              "MovePoints": [],
+              "TileX": 79,
+              "TileY": 174,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.639999866,
+                "y": 30.2100029
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition01"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_AR_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition01"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand01"
+              ],
+              "MovePoints": [],
+              "TileX": 89,
+              "TileY": 186,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 2.79,
+                "y": 32.6000023
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition01"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_SR_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition01"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand01"
+              ],
+              "MovePoints": [],
+              "TileX": 74,
+              "TileY": 200,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.269999981,
+                "y": 35.529995
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition01"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_HG_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition01"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand01"
+              ],
+              "MovePoints": [],
+              "TileX": 86,
+              "TileY": 172,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 2.17,
+                "y": 29.8500023
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition01"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_AR_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition01"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand01"
+              ],
+              "MovePoints": [],
+              "TileX": 74,
+              "TileY": 186,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.330000162,
+                "y": 32.6100044
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition01"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_SR_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition01"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand01"
+              ],
+              "MovePoints": [],
+              "TileX": 84,
+              "TileY": 200,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.77,
+                "y": 35.4799919
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition01"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_HG_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition01"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand01"
+              ],
+              "MovePoints": [],
+              "TileX": 92,
+              "TileY": 175,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 3.27,
+                "y": 30.5099983
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition01"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_AR_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition01"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand01"
+              ],
+              "MovePoints": [],
+              "TileX": 78,
+              "TileY": 188,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.52,
+                "y": 33.1000023
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition01"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_SR_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition01"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand01"
+              ],
+              "MovePoints": [],
+              "TileX": 93,
+              "TileY": 200,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 3.39999986,
+                "y": 35.529995
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition01"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_HG_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition01"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand01"
+              ],
+              "MovePoints": [],
+              "TileX": 72,
+              "TileY": 173,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.6300001,
+                "y": 30.1100044
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition01"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_AR_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition01"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand01"
+              ],
+              "MovePoints": [],
+              "TileX": 85,
+              "TileY": 188,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.8499999,
+                "y": 33.0700035
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition01"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_SR_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition01"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand01"
+              ],
+              "MovePoints": [],
+              "TileX": 78,
+              "TileY": 201,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.569999933,
+                "y": 35.779995
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition01"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand01"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        },
+        {
+          "GroupName": "SpawnPointParent_NPC",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Story_Enemy_Dummy_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition01_NPC"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand01_NPC"
+              ],
+              "MovePoints": [],
+              "TileX": 83,
+              "TileY": 95,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.4000001,
+                "y": 14.5529995
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition01_NPC"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand01_NPC"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "SectionID": 2,
+      "Position": {
+        "x": 3.05,
+        "y": 0.0,
+        "z": 3.44000053
+      },
+      "Events": [
+        {
+          "EventName": "SpawnUnit",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandFixedWave, BlueArchive",
+              "UniqueId": "Section02",
+              "FixedWaves": [
+                {
+                  "SpawnPointCommandId": "SpawnPointCommand02_1",
+                  "TotalCount": 18,
+                  "FixedSpawnCount": 9,
+                  "WaveDelay": 2000,
+                  "SpawnCycle": 0
+                },
+                {
+                  "SpawnPointCommandId": "SpawnPointCommand02_1",
+                  "TotalCount": 18,
+                  "FixedSpawnCount": 9,
+                  "WaveDelay": 2000,
+                  "SpawnCycle": 0
+                },
+                {
+                  "SpawnPointCommandId": "SpawnPointCommand02_4",
+                  "TotalCount": 28,
+                  "FixedSpawnCount": 10,
+                  "WaveDelay": 2000,
+                  "SpawnCycle": 0
+                }
+              ],
+              "CommandID": "Section02",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "NextSection",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionClearedWaves, BlueArchive",
+              "UniqueName": "Section02",
+              "Waves": [
+                1,
+                2,
+                3
+              ],
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandBattleAdditionalUIAction, BlueArchive",
+              "PrefabPath": "UI/UIBattleAdditionalTacticalRelayState",
+              "decoParameters": [],
+              "actionParameters": [
+                {
+                  "Key": "QuickSwapRecommend",
+                  "Value": ""
+                }
+              ],
+              "UIPath": "UI/UIBattleAdditionalTacticalRelayState",
+              "AdditionalUIActionParameters": [
+                {
+                  "Key": "QuickSwapRecommend",
+                  "Value": ""
+                }
+              ],
+              "AdditionalUIDecoParameters": [],
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandWaitSeconds, BlueArchive",
+              "Milliseconds": 3000,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            },
+            {
+              "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+              "SectionID": 3,
+              "SetConditionCommandOnly": false,
+              "CommandID": "0",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "AEV_Yoheki_Vulcan_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 82,
+              "TileY": 193,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.2299999,
+                "y": 34.15001
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_Shield_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 92,
+              "TileY": 174,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 3.24,
+                "y": 30.3800011
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_1",
+                "SpawnPointCommand02_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_AR_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 78,
+              "TileY": 187,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.49,
+                "y": 32.970005
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_1",
+                "SpawnPointCommand02_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_RL_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 92,
+              "TileY": 200,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 3.37,
+                "y": 35.4
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_1",
+                "SpawnPointCommand02_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_Shield_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 72,
+              "TileY": 172,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.6600001,
+                "y": 29.98
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_1",
+                "SpawnPointCommand02_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_AR_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 85,
+              "TileY": 187,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.81999993,
+                "y": 32.9400063
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_1",
+                "SpawnPointCommand02_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_RL_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 77,
+              "TileY": 200,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.210000038,
+                "y": 35.5199966
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_1",
+                "SpawnPointCommand02_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_Shield_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 79,
+              "TileY": 174,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.76,
+                "y": 30.3500023
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_1",
+                "SpawnPointCommand02_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_AR_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 90,
+              "TileY": 186,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 2.90999985,
+                "y": 32.74
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_1",
+                "SpawnPointCommand02_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_RL_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 75,
+              "TileY": 201,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.149999857,
+                "y": 35.67
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_1",
+                "SpawnPointCommand02_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_Shield_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 87,
+              "TileY": 172,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 2.29,
+                "y": 29.9900017
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_1",
+                "SpawnPointCommand02_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_AR_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 74,
+              "TileY": 186,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.210000277,
+                "y": 32.7500038
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_1",
+                "SpawnPointCommand02_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_RL_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 86,
+              "TileY": 201,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 2.15999985,
+                "y": 35.6299973
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_1",
+                "SpawnPointCommand02_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_Shield_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 91,
+              "TileY": 174,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 3.04,
+                "y": 30.2499962
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_1",
+                "SpawnPointCommand02_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_AR_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 77,
+              "TileY": 187,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.2900002,
+                "y": 32.84
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_1",
+                "SpawnPointCommand02_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_RL_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 91,
+              "TileY": 199,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 3.17,
+                "y": 35.2699966
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_1",
+                "SpawnPointCommand02_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_Shield_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 71,
+              "TileY": 172,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.8599999,
+                "y": 29.8500023
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_1",
+                "SpawnPointCommand02_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_AR_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 84,
+              "TileY": 187,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.62,
+                "y": 32.81
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_1",
+                "SpawnPointCommand02_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_RL_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 76,
+              "TileY": 199,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.00999999,
+                "y": 35.39
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_1",
+                "SpawnPointCommand02_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_Shield_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 78,
+              "TileY": 174,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.450000048,
+                "y": 30.3100014
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_1",
+                "SpawnPointCommand02_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_AR_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 89,
+              "TileY": 186,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 2.60000014,
+                "y": 32.7
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_1",
+                "SpawnPointCommand02_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_RL_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 73,
+              "TileY": 201,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.4599998,
+                "y": 35.6299973
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_1",
+                "SpawnPointCommand02_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_Shield_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 85,
+              "TileY": 172,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.98000014,
+                "y": 29.95
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_1",
+                "SpawnPointCommand02_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_AR_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 73,
+              "TileY": 186,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.52,
+                "y": 32.7100029
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_1",
+                "SpawnPointCommand02_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_RL_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 85,
+              "TileY": 200,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.85000014,
+                "y": 35.5899963
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_1",
+                "SpawnPointCommand02_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_Shield_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 91,
+              "TileY": 174,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 3.04,
+                "y": 30.2499962
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_1",
+                "SpawnPointCommand02_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_AR_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 77,
+              "TileY": 187,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.2900002,
+                "y": 32.84
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_1",
+                "SpawnPointCommand02_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_RL_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 91,
+              "TileY": 199,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 3.17,
+                "y": 35.2699966
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_1",
+                "SpawnPointCommand02_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_Shield_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 71,
+              "TileY": 172,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.8599999,
+                "y": 29.8500023
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_1",
+                "SpawnPointCommand02_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_AR_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 84,
+              "TileY": 187,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.62,
+                "y": 32.81
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_1",
+                "SpawnPointCommand02_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Droid_Yoheki_RL_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition02"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand02"
+              ],
+              "MovePoints": [],
+              "TileX": 76,
+              "TileY": 199,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.00999999,
+                "y": 35.39
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition02"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand02_1",
+                "SpawnPointCommand02_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "SectionID": 3,
+      "Position": {
+        "x": 3.05,
+        "y": 0.0,
+        "z": 3.44000053
+      },
+      "Events": [
+        {
+          "EventName": "SpawnUnit",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandFixedWave, BlueArchive",
+              "UniqueId": "Section03",
+              "FixedWaves": [
+                {
+                  "SpawnPointCommandId": "SpawnPointCommand03_1",
+                  "TotalCount": 18,
+                  "FixedSpawnCount": 9,
+                  "WaveDelay": 2000,
+                  "SpawnCycle": 0
+                },
+                {
+                  "SpawnPointCommandId": "SpawnPointCommand03_1",
+                  "TotalCount": 18,
+                  "FixedSpawnCount": 9,
+                  "WaveDelay": 2000,
+                  "SpawnCycle": 0
+                },
+                {
+                  "SpawnPointCommandId": "SpawnPointCommand03_4",
+                  "TotalCount": 28,
+                  "FixedSpawnCount": 10,
+                  "WaveDelay": 2000,
+                  "SpawnCycle": 0
+                }
+              ],
+              "CommandID": "Section03",
+              "WaitExecuteEnd": false
+            }
+          ]
+        },
+        {
+          "EventName": "Clear",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionClearedWaves, BlueArchive",
+              "UniqueName": "Section03",
+              "Waves": [
+                1,
+                2,
+                3
+              ],
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandEndBattle, BlueArchive",
+              "BattleEndType": 4,
+              "CommandID": "",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "Kaito_Trinity_HG_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 82,
+              "TileY": 184,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.21999991,
+                "y": 32.2500038
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_HG_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 78,
+              "TileY": 173,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.539999962,
+                "y": 30.0000038
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_1",
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_AR_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 89,
+              "TileY": 184,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 2.69,
+                "y": 32.3900032
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_1",
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_SR_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 74,
+              "TileY": 199,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.3699999,
+                "y": 35.32
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_1",
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_HG_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 87,
+              "TileY": 173,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 2.35,
+                "y": 30.029995
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_1",
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_AR_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 75,
+              "TileY": 186,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.1500001,
+                "y": 32.7900047
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_1",
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_SR_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 85,
+              "TileY": 201,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.95,
+                "y": 35.659996
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_1",
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_HG_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 92,
+              "TileY": 174,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 3.36000013,
+                "y": 30.2599983
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_1",
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_AR_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 79,
+              "TileY": 187,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.610000134,
+                "y": 32.8500023
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_1",
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_SR_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 93,
+              "TileY": 199,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 3.49,
+                "y": 35.28
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_1",
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_HG_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 71,
+              "TileY": 174,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.819999933,
+                "y": 30.2599983
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_1",
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_AR_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 84,
+              "TileY": 189,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.66,
+                "y": 33.220005
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_1",
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_SR_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 77,
+              "TileY": 202,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.379999876,
+                "y": 35.9299927
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_1",
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_HG_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 92,
+              "TileY": 174,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 3.36000013,
+                "y": 30.2599983
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_1",
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_AR_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 79,
+              "TileY": 187,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.610000134,
+                "y": 32.8500023
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_1",
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_SR_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 93,
+              "TileY": 199,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 3.49,
+                "y": 35.28
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_1",
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_HG_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 71,
+              "TileY": 174,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.819999933,
+                "y": 30.2599983
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_1",
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_SR_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 85,
+              "TileY": 201,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.95,
+                "y": 35.659996
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_1",
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_AR_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 75,
+              "TileY": 186,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.1500001,
+                "y": 32.7900047
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_1",
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_HG_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 78,
+              "TileY": 173,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.539999962,
+                "y": 30.0000038
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_1",
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_AR_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 89,
+              "TileY": 184,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 2.69,
+                "y": 32.3900032
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_1",
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_SR_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 74,
+              "TileY": 199,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.3699999,
+                "y": 35.32
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_1",
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_HG_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 87,
+              "TileY": 173,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 2.35,
+                "y": 30.029995
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_1",
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_AR_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 84,
+              "TileY": 189,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.66,
+                "y": 33.220005
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_1",
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_SR_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 77,
+              "TileY": 202,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.379999876,
+                "y": 35.9299927
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_1",
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_AR_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 79,
+              "TileY": 187,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.610000134,
+                "y": 32.8500023
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_SR_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 93,
+              "TileY": 199,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 3.49,
+                "y": 35.28
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_HG_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 71,
+              "TileY": 174,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.819999933,
+                "y": 30.2599983
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_SR_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 85,
+              "TileY": 201,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.95,
+                "y": 35.659996
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_AR_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 75,
+              "TileY": 186,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.1500001,
+                "y": 32.7900047
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_HG_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 78,
+              "TileY": 173,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.539999962,
+                "y": 30.0000038
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_AR_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 89,
+              "TileY": 184,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 2.69,
+                "y": 32.3900032
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_SR_M_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 74,
+              "TileY": 199,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.3699999,
+                "y": 35.32
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_AR_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 84,
+              "TileY": 189,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 1.66,
+                "y": 33.220005
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_HG_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 87,
+              "TileY": 173,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 2.35,
+                "y": 30.029995
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "PrefectBrigade_Wildhunt_SR_E_TacticalRelay",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": true,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "\u0000",
+              "SpawnConditionIdList": [
+                "SpawnCondition03"
+              ],
+              "SpawnCommandIdList": [
+                "SpawnCommand03"
+              ],
+              "MovePoints": [],
+              "TileX": 77,
+              "TileY": 202,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.379999876,
+                "y": 35.9299927
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [
+                "SpawnPointCondition03"
+              ],
+              "CommandIdList": [
+                "SpawnPointCommand03_4"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Formations": [
+    {
+      "SectionIndex": 0,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 1.31,
+        "y": 19.797
+      },
+      "Forward": {
+        "x": 0.0,
+        "y": 1.0
+      },
+      "Height": 0.0,
+      "IsEnemy": false,
+      "IgnoreNotMoveWait": false
+    },
+    {
+      "SectionIndex": 1,
+      "IgnorePathFind": true,
+      "Index": 0,
+      "Position": {
+        "x": 1.31,
+        "y": 21.797
+      },
+      "Forward": {
+        "x": 0.0,
+        "y": 1.0
+      },
+      "Height": 0.0,
+      "IsEnemy": false,
+      "IgnoreNotMoveWait": true
+    },
+    {
+      "SectionIndex": 2,
+      "IgnorePathFind": true,
+      "Index": 0,
+      "Position": {
+        "x": 1.31,
+        "y": 21.797
+      },
+      "Forward": {
+        "x": 0.0,
+        "y": 1.0
+      },
+      "Height": 0.0,
+      "IsEnemy": false,
+      "IgnoreNotMoveWait": true
+    },
+    {
+      "SectionIndex": 3,
+      "IgnorePathFind": true,
+      "Index": 0,
+      "Position": {
+        "x": 1.31,
+        "y": 21.797
+      },
+      "Forward": {
+        "x": 0.0,
+        "y": 1.0
+      },
+      "Height": 0.0,
+      "IsEnemy": false,
+      "IgnoreNotMoveWait": true
+    }
+  ],
+  "EnemyFormations": [],
+  "TemporaryCanUseSkillAreas": []
+}
