@@ -1,0 +1,593 @@
+{
+  "Version": "1.0",
+  "Global": {
+    "Position": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "Events": [
+      {
+        "EventName": "SpawnPlayer",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": "0"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandSpawnPlayer, BlueArchive",
+            "IsEnemy": false,
+            "IgnoreSkillCardShuffle": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "GroundCommandLocateCamera, BlueArchive",
+            "ID": 1,
+            "MaxCameraSpeed": 3.0,
+            "RotationSpeed": 1.0,
+            "ZoomSpeed": 1.0,
+            "RailPoints": [],
+            "CameraIndex": 0,
+            "DontDestroyOptionalCameras": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 3,
+            "SetConditionCommandOnly": false,
+            "CommandID": "0",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "StartSection3",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionBattleStarted, BlueArchive",
+            "ConditionID": ""
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandStartSection, BlueArchive",
+            "SectionID": 3,
+            "SetConditionCommandOnly": false,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "EndBattle",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 1,
+            "CheckSummonedCharacterDead": false,
+            "CheckDelayMilliSecond": 0,
+            "ConditionID": "ConditionDead3-1"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandEndBattle, BlueArchive",
+            "BattleEndType": 4,
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "3-1AreaOn",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 1,
+            "CheckSummonedCharacterDead": false,
+            "CheckDelayMilliSecond": 0,
+            "ConditionID": "ConditionDead2-2"
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundConditionArea, BlueArchive",
+            "SpawnTemplateId": "",
+            "Shape": 1,
+            "Target": 0,
+            "Trigger": 0,
+            "StayTime": 0,
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 53.0
+            },
+            "Rect": {
+              "Direction": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "Width": 10.0,
+              "Height": 1.0
+            },
+            "Circle": {
+              "Radius": 11.0
+            },
+            "InactivateWhenStart": false,
+            "ConditionID": ""
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandTemporaryCanUseSkillArea, BlueArchive",
+            "OnOff": false,
+            "TemporaryCanUseSkillAreaCommandId": "2-2Area",
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandTemporaryCanUseSkillArea, BlueArchive",
+            "OnOff": true,
+            "TemporaryCanUseSkillAreaCommandId": "3-1Area",
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      },
+      {
+        "EventName": "3-2AreaOn",
+        "Operator": 0,
+        "Conditions": [
+          {
+            "$type": "MX.Logic.Battles.GroundConditionCharactersDead, BlueArchive",
+            "DeadCheck": 1,
+            "CheckSummonedCharacterDead": false,
+            "CheckDelayMilliSecond": 0,
+            "ConditionID": "ConditionDead3-1"
+          }
+        ],
+        "Commands": [
+          {
+            "$type": "MX.Logic.Battles.GroundCommandTemporaryCanUseSkillArea, BlueArchive",
+            "OnOff": false,
+            "TemporaryCanUseSkillAreaCommandId": "3-1Area",
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          },
+          {
+            "$type": "MX.Logic.Battles.GroundCommandTemporaryCanUseSkillArea, BlueArchive",
+            "OnOff": true,
+            "TemporaryCanUseSkillAreaCommandId": "3-2Area",
+            "CommandID": "",
+            "WaitExecuteEnd": false
+          }
+        ]
+      }
+    ]
+  },
+  "Sections": [
+    {
+      "SectionID": 3,
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 45.0
+      },
+      "Events": [
+        {
+          "EventName": "Spawn3-1",
+          "Operator": 0,
+          "Conditions": [
+            {
+              "$type": "MX.Logic.Battles.GroundConditionSectionStarted, BlueArchive",
+              "ConditionID": ""
+            }
+          ],
+          "Commands": [
+            {
+              "$type": "MX.Logic.Battles.GroundCommandSpawnEntity, BlueArchive",
+              "Interval": 100,
+              "CommandID": "CommandSpawn3-1",
+              "WaitExecuteEnd": false
+            }
+          ]
+        }
+      ],
+      "Obstacles": [
+        {
+          "UniqueName": "Harbor_BarrelStand_01",
+          "Position": {
+            "x": -1.05,
+            "y": 0.0,
+            "z": 68.18
+          },
+          "Forward": {
+            "x": -0.999999642,
+            "y": 0.0,
+            "z": 0.0008471766
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Harbor_BarrelLying_01",
+          "Position": {
+            "x": -0.750000238,
+            "y": 0.0,
+            "z": 67.78
+          },
+          "Forward": {
+            "x": -0.690299332,
+            "y": 0.0,
+            "z": -0.723523855
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Harbor_BarrelLying_01",
+          "Position": {
+            "x": -1.55,
+            "y": 0.0,
+            "z": 67.89
+          },
+          "Forward": {
+            "x": -0.332715631,
+            "y": 0.0,
+            "z": -0.9430272
+          },
+          "ActiveEnemyPointIndices": [],
+          "ActivePlayerPointIndices": [],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Harbor_BarrelStand_01",
+          "Position": {
+            "x": -2.91,
+            "y": 0.0,
+            "z": 62.34
+          },
+          "Forward": {
+            "x": -0.970702052,
+            "y": 0.0,
+            "z": 0.240286231
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Harbor_BarrelLying_01",
+          "Position": {
+            "x": 0.098,
+            "y": 0.0,
+            "z": 57.32
+          },
+          "Forward": {
+            "x": -0.9743708,
+            "y": 0.0,
+            "z": 0.224948019
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Harbor_Box_02",
+          "Position": {
+            "x": 1.97,
+            "y": 0.0,
+            "z": 55.08
+          },
+          "Forward": {
+            "x": 0.9912952,
+            "y": 0.0,
+            "z": 0.131657645
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Harbor_Boxes_01",
+          "Position": {
+            "x": 1.21,
+            "y": 0.0,
+            "z": 47.38
+          },
+          "Forward": {
+            "x": 0.9766928,
+            "y": 0.0,
+            "z": 0.214642018
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Harbor_Boxes_02",
+          "Position": {
+            "x": -0.65,
+            "y": 0.0,
+            "z": 60.0599976
+          },
+          "Forward": {
+            "x": -0.99483794,
+            "y": 0.0,
+            "z": -0.101476625
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Harbor_Baricade_Jump_01",
+          "Position": {
+            "x": -0.67,
+            "y": 0.0,
+            "z": 57.3799973
+          },
+          "Forward": {
+            "x": -0.9994789,
+            "y": 0.0,
+            "z": -0.03227917
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Harbor_Baricade_01",
+          "Position": {
+            "x": 0.98,
+            "y": 0.0,
+            "z": 59.7600021
+          },
+          "Forward": {
+            "x": 0.9999544,
+            "y": 0.0,
+            "z": -0.009551368
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Harbor_BarrelStand_01",
+          "Position": {
+            "x": 2.73,
+            "y": 0.0,
+            "z": 57.47
+          },
+          "Forward": {
+            "x": -0.970702052,
+            "y": 0.0,
+            "z": 0.240286231
+          },
+          "ActiveEnemyPointIndices": [
+            1
+          ],
+          "ActivePlayerPointIndices": [
+            0
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        },
+        {
+          "UniqueName": "Harbor_Gondola_01",
+          "Position": {
+            "x": -2.08,
+            "y": 0.0,
+            "z": 46.4
+          },
+          "Forward": {
+            "x": 0.235822961,
+            "y": 0.0,
+            "z": -0.971796036
+          },
+          "ActiveEnemyPointIndices": [
+            0
+          ],
+          "ActivePlayerPointIndices": [
+            1
+          ],
+          "ConditionIdList": [],
+          "CommandIdList": [],
+          "SubObstacles": [],
+          "IsDummy": false
+        }
+      ],
+      "EnemySpawnPointGroupList": [
+        {
+          "GroupName": "SpawnPointParent3-1",
+          "SpawnPoints": [
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "CH0368_Enemy_861_Event_Challenge02_E",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "E",
+              "SpawnConditionIdList": [
+                "ConditionDead3-1"
+              ],
+              "SpawnCommandIdList": [],
+              "MovePoints": [],
+              "TileX": 57,
+              "TileY": 390,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": -0.6,
+                "y": 63.58
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandSpawn3-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            },
+            {
+              "$type": "MX.Logic.BattleEntities.SpawnPoint, BlueArchive",
+              "SpawnData": {
+                "SpawnTemplateId": "CH0369_Enemy_861_Event_Challenge02_C",
+                "CostumeId": 0,
+                "AIId": 0,
+                "AppearAction": false,
+                "SkillLevel": {
+                  "ExSkill": [],
+                  "PublicSkill": [],
+                  "PassiveSkill": [],
+                  "ExtraPassiveSkill": []
+                }
+              },
+              "SpawnAIGroupId": "E",
+              "SpawnConditionIdList": [
+                "ConditionDead3-1"
+              ],
+              "SpawnCommandIdList": [],
+              "MovePoints": [],
+              "TileX": 61,
+              "TileY": 379,
+              "PositionHeight": 0.0,
+              "Position": {
+                "x": 0.1,
+                "y": 61.25
+              },
+              "Direction": {
+                "x": -8.742278E-8,
+                "y": -1.0
+              },
+              "ConditionIdList": [],
+              "CommandIdList": [
+                "CommandSpawn3-1"
+              ],
+              "EntityId": {
+                "uniqueId": 0
+              },
+              "Active": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Formations": [
+    {
+      "SectionIndex": 2,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0.0,
+        "y": 50.11
+      },
+      "Forward": {
+        "x": 0.0,
+        "y": 1.0
+      },
+      "Height": 0.0,
+      "IsEnemy": false,
+      "IgnoreNotMoveWait": false
+    },
+    {
+      "SectionIndex": 3,
+      "IgnorePathFind": false,
+      "Index": 0,
+      "Position": {
+        "x": 0.0,
+        "y": 64.0
+      },
+      "Forward": {
+        "x": 0.0,
+        "y": 1.0
+      },
+      "Height": 0.0,
+      "IsEnemy": false,
+      "IgnoreNotMoveWait": false
+    }
+  ],
+  "EnemyFormations": [],
+  "TemporaryCanUseSkillAreas": []
+}
